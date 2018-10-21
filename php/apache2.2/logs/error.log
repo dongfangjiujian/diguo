@@ -1,0 +1,116 @@
+[Wed Oct 17 21:51:02 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Wed Oct 17 21:51:02 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Wed Oct 17 21:51:03 2018] [notice] Parent: Created child process 8972
+[Wed Oct 17 21:51:03 2018] [notice] Child 8972: Child process is running
+[Wed Oct 17 21:51:03 2018] [notice] Child 8972: Acquired the start mutex.
+[Wed Oct 17 21:51:03 2018] [notice] Child 8972: Starting 250 worker threads.
+[Wed Oct 17 21:51:03 2018] [notice] Child 8972: Starting thread to listen on port 80.
+[Wed Oct 17 21:51:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Wed Oct 17 21:51:16 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/news/world/2012-12-10/72.html
+[Wed Oct 17 21:54:06 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Wed Oct 17 21:54:28 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Wed Oct 17 21:54:39 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Wed Oct 17 21:55:14 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Wed Oct 17 21:55:58 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Wed Oct 17 22:02:31 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/css/none, referer: http://localhost/skin/default/css/style.css
+[Thu Oct 18 12:34:49 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Thu Oct 18 12:34:49 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Thu Oct 18 12:34:49 2018] [notice] Parent: Created child process 1236
+[Thu Oct 18 12:34:50 2018] [notice] Child 1236: Child process is running
+[Thu Oct 18 12:34:50 2018] [notice] Child 1236: Acquired the start mutex.
+[Thu Oct 18 12:34:50 2018] [notice] Child 1236: Starting 250 worker threads.
+[Thu Oct 18 12:34:50 2018] [notice] Child 1236: Starting thread to listen on port 80.
+[Thu Oct 18 13:18:01 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Thu Oct 18 13:18:01 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Thu Oct 18 13:18:04 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/
+[Thu Oct 18 14:46:03 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/download, referer: http://localhost/
+[Thu Oct 18 14:46:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/flash, referer: http://localhost/shop/
+[Thu Oct 18 14:46:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/flash, referer: http://localhost/shop/
+[Thu Oct 18 14:46:39 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/flash, referer: http://localhost/shop/
+[Thu Oct 18 14:46:42 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/photo, referer: http://localhost/movie/
+[Thu Oct 18 14:46:43 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/article, referer: http://localhost/movie/
+[Thu Oct 18 14:46:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/info, referer: http://localhost/movie/
+[Thu Oct 18 14:47:28 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/info, referer: http://localhost/
+[Thu Oct 18 14:47:40 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/download, referer: http://localhost/
+[Thu Oct 18 14:49:48 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Thu Oct 18 14:49:49 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Thu Oct 18 15:07:48 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/bootstrap.min.css.map
+[Thu Oct 18 15:12:50 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:50 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:50 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:50 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:51 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:51 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:51 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:51 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:52 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:12:52 2018] [error] [client 127.0.0.1] (20024)The given path misformatted or contained invalid characters: Cannot map GET /https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js HTTP/1.1 to file, referer: http://localhost/
+[Thu Oct 18 15:22:51 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:22:53 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:25:32 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:25:33 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:25:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:25:35 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:26:50 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:35 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:35 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:36 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:36 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:36 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:28:37 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:29:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 15:32:51 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/CFIDE
+[Thu Oct 18 15:33:39 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/CFIDE
+[Thu Oct 18 15:33:40 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/temp.html
+[Thu Oct 18 15:34:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/CFIDE
+[Thu Oct 18 16:29:16 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Thu Oct 18 16:29:16 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Thu Oct 18 16:50:27 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 16:50:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Thu Oct 18 22:43:17 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/[!--the.classurl--], referer: http://localhost/
+[Thu Oct 18 22:56:34 2018] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Oct 18 22:56:34 2018] [notice] Child 1236: Exit event signaled. Child process is ending.
+[Thu Oct 18 22:56:35 2018] [notice] Child 1236: Released the start mutex
+[Thu Oct 18 22:56:37 2018] [notice] Child 1236: Waiting for 250 worker threads to exit.
+[Thu Oct 18 22:56:37 2018] [notice] Child 1236: All worker threads have exited.
+[Thu Oct 18 22:56:37 2018] [notice] Child 1236: Child process is exiting
+[Thu Oct 18 22:56:37 2018] [notice] Parent: Child process exited successfully.
+[Fri Oct 19 13:05:25 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Fri Oct 19 13:05:25 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Fri Oct 19 13:05:25 2018] [notice] Parent: Created child process 2180
+[Fri Oct 19 13:05:26 2018] [notice] Child 2180: Child process is running
+[Fri Oct 19 13:05:26 2018] [notice] Child 2180: Acquired the start mutex.
+[Fri Oct 19 13:05:26 2018] [notice] Child 2180: Starting 250 worker threads.
+[Fri Oct 19 13:05:26 2018] [notice] Child 2180: Starting thread to listen on port 80.
+[Fri Oct 19 14:18:18 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/
+[Fri Oct 19 14:19:08 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/
+[Fri Oct 19 14:20:19 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Fri Oct 19 14:20:20 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Sat Oct 20 08:40:21 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Sat Oct 20 08:40:21 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Sat Oct 20 08:40:22 2018] [notice] Parent: Created child process 2088
+[Sat Oct 20 08:40:22 2018] [notice] Child 2088: Child process is running
+[Sat Oct 20 08:40:22 2018] [notice] Child 2088: Acquired the start mutex.
+[Sat Oct 20 08:40:22 2018] [notice] Child 2088: Starting 250 worker threads.
+[Sat Oct 20 08:40:22 2018] [notice] Child 2088: Starting thread to listen on port 80.
+[Sat Oct 20 08:48:27 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Sat Oct 20 08:48:28 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Sat Oct 20 08:48:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/
+[Sat Oct 20 19:25:06 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Sat Oct 20 19:25:06 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Sat Oct 20 19:25:08 2018] [notice] Parent: Created child process 2624
+[Sat Oct 20 19:25:08 2018] [notice] Child 2624: Child process is running
+[Sat Oct 20 19:25:08 2018] [notice] Child 2624: Acquired the start mutex.
+[Sat Oct 20 19:25:08 2018] [notice] Child 2624: Starting 250 worker threads.
+[Sat Oct 20 19:25:08 2018] [notice] Child 2624: Starting thread to listen on port 80.
+[Sun Oct 21 10:26:08 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Sun Oct 21 10:26:08 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Sun Oct 21 10:26:08 2018] [notice] Parent: Created child process 1548
+[Sun Oct 21 10:26:08 2018] [notice] Child 1548: Child process is running
+[Sun Oct 21 10:26:08 2018] [notice] Child 1548: Acquired the start mutex.
+[Sun Oct 21 10:26:08 2018] [notice] Child 1548: Starting 250 worker threads.
+[Sun Oct 21 10:26:08 2018] [notice] Child 1548: Starting thread to listen on port 80.
+[Sun Oct 21 19:48:33 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Sun Oct 21 19:48:33 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Sun Oct 21 19:48:33 2018] [notice] Parent: Created child process 1692
