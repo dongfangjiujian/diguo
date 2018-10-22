@@ -3,16 +3,20 @@ if(!defined('InEmpireCMS'))
 {
 	exit();
 }
-?><!DOCTYPE html>
-<html>
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>[!--pagetitle--] - Powered by EmpireCMS</title>
+<meta name="keywords" content="[!--pagekey--]" />
+<meta name="description" content="[!--pagedes--]" />
 
-	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="[!--news.url--]skin/default/js/tabs.js"></script>
+
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div class="container">
