@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<div>
+</div>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/205.html">穗状花序薰衣草精油Lavender spica<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/206.html">大西洋雪松精油Cedarwood<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/207.html">醒目薰衣草精油Lavandin<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/208.html">鼠尾草精油Sage<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/209.html">百里香精油 Thyme<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/210.html">紫罗兰精油 Violet<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/211.html">莳萝精油Dill<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/212.html">冬青精油 Holly<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/213.html">肉豆蔻精油Nutmeg<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/214.html">肉桂精油Cinnamon<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/215.html">香蜂草精油Melissa<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/216.html">牡丹精油<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/217.html">豆蔻精油Cardamom<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/218.html">桃金娘精油（香桃木精油）Myrtle<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/219.html">西洋耆草精油 Yarrow<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/220.html">阿米香树精油 Amyris<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/221.html">芫荽精油 Coriandrum sativum<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/222.html">龙艾精油Tarragon<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/223.html">绿花白千层精油<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/224.html">（柠檬）马鞭草精油<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/225.html">岩兰草精油 Vetivert<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/226.html">牛膝草精油<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/227.html">莱姆精油<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/228.html">意大利永久花精油<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/229.html">欧白芷精油<span class="badge">0</span></a>
+<!--list.var2-->	
+									
+</div>
+<div>
+
+  
+ 页次：2/8&nbsp;每页25&nbsp;总数187&nbsp;&nbsp;&nbsp;&nbsp;<a href='/test/index.html'>首页</a>&nbsp;&nbsp;<a href='/test/index.html'>上一页</a>&nbsp;&nbsp;<a href='/test/index_3.html'>下一页</a>&nbsp;&nbsp;<a href='/test/index_8.html'>尾页</a>&nbsp;&nbsp;&nbsp;&nbsp;转到:<select name=select onchange="self.location.href=this.options[this.selectedIndex].value"><option value='/test/index.html'>第 1 页</option><option value='/test/index_2.html' selected>第 2 页</option><option value='/test/index_3.html'>第 3 页</option><option value='/test/index_4.html'>第 4 页</option><option value='/test/index_5.html'>第 5 页</option><option value='/test/index_6.html'>第 6 页</option><option value='/test/index_7.html'>第 7 页</option><option value='/test/index_8.html'>第 8 页</option></select>
+
+</div>
+</div>
+            <div class="col-md-5"></div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

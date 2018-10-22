@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>JSP入门教程（3） - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="JSP入门教程（3）" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>JSP入门教程（3）</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:40&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">                            　<TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>用脚本 <BR>在有些地方，你大概要加一些好的，成熟的程序到你的JSP页里，JSP的标签虽然很强大，但是完成某些工作还是比较费力的困难的。这时你可以使用脚本语言段来补充JSP标签。 <BR>使用的JSP引擎是支持脚本语言的，SUN的JSP参考文说明，必须使用Java程序语言来编写脚本，但是其他第三方的JSP引擎允许使用其他语言来写脚本程。 <BR>如何增加脚本 <BR>首先，你必须了解一些增加脚本元素到JSP页中的一些基本规则 <BR>1、 在JSP页面里用Page指令定义脚本（默认值是Java，一般不需要定义） <BR>2、 声明语法&lt;%!……%&gt;声明变量和方法（函数）。 <BR>3、 表达式语法&lt;%=……%&gt;定义脚本语言表达式 <BR>4、 脚本语法〈%……%&gt;可以操作声明、表达式和其他类型合法的代码段在页脚本语言。 <BR>5、 一定要在结尾加%&gt;标签 <BR>声明、表达式、脚本使用起来有一些相似，但也有一些不同让我们用一些例子来讲述一下相同点和不同点吧。 <BR>声明&lt;%!……%&gt;包含了一个或多个变量和方法，结尾以分号分隔。 <BR>例：&lt;%! Int I=0 ; %&gt; <BR>&lt;%! Int a, b ; double c ; %&gt; <BR>&lt;%! Circle a = new circle(2.0) ; %&gt; <BR>在页面中使用变量和方法之前必须声明 <BR>声明的范围通常是JSP页，但如果页面中使用INCLUDE指令包含其他页面，范围应变得扩展到被包含的页面。 <BR>表达式&lt;%=……%&gt;可以在页面中包含任何合法的语言表达式，不用分号。 <BR>例：&lt;%= Math.sqrt(2) %&gt; <BR>&lt;%= item[I] %&gt; <BR>&lt;%= a+b+c %&gt; <BR>&lt;%= new java.util.date() %&gt; <BR>表达式和脚本的一个关键的不同点就是不需要分号。如果你需要在脚本中使用表达式就必须加分号。 <BR>脚本&lt;%……%&gt;允许你写的任何数量的脚本语言 <BR>例：&lt;% String name=null ; <BR>If (request.getParmeter("name")==null{ <BR>%&gt; <BR>记住在脚本中必须使用分号结尾。 <BR>猜数字游戏 <BR>猜数字游戏非常的有趣，而且从这里你还可以学到很多表达式的用法。 <BR>代码 <BR>显示用的主屏幕（numguess.jsp） <BR>&lt;!-- <BR>Number Guess Game <BR>Written by Jason Hunter, CTO, K&amp;A Software <BR>jasonh@kasoftware.com, http://www.servlets.com <BR>Copyright 1999, K&amp;A Software <BR>Distributed by Sun Microsystems with permission <BR>--&gt; <BR>&lt;%@ page import = "num.NumberGuessBean" %&gt; <BR><BR>&lt;jsp:useBean id="numguess" class="num.NumberGuessBean" scope="session" /&gt; <BR>&lt;jsp:setProperty name="numguess" property="*" /&gt; <BR><BR>&lt;html&gt; <BR>&lt;head&gt;&lt;title&gt;Number Guess&lt;/title&gt;&lt;/head&gt; <BR>&lt;body bgcolor="white"&gt; <BR>&lt;font size=4&gt; <BR><BR>&lt;% if (numguess.getSuccess() ) { %&gt; <BR><BR>Congratulations! You got it. <BR>And after just &lt;%= numguess.getNumGuesses() %&gt;tries.&lt;p&gt; <BR><BR>&lt;% numguess.reset(); %&gt; <BR>Care to &lt;a href="numguess.jsp"&gt;try again&lt;/a&gt;? <BR><BR>&lt;% } else if (numguess.getNumGuesses() == 0) { %&gt; <BR><BR>Welcome to the Number Guess game.&lt;p&gt; <BR>I'm thinking of a number between 1 and 100.&lt;p&gt; <BR><BR>&lt;form method=get&gt; <BR>What's your guess? &lt;input type=text name=guess&gt; <BR>&lt;input type=submit value="Submit"&gt; <BR>&lt;/form&gt; <BR><BR>&lt;% } else { %&gt; <BR>Good guess, but nope. Try &lt;b&gt;&lt;%= numguess.getHint() %&gt;&lt;/b&gt;. <BR>You have made &lt;%= numguess.getNumGuesses() %&gt; guesses. <BR>&lt;p&gt;I'm thinking of a number between 1 and 100. <BR>&lt;p&gt;&lt;form method=get&gt; <BR><BR>What's your guess? &lt;input type=text name=guess&gt; <BR>&lt;input type=submit value="Submit"&gt; <BR>&lt;/form&gt; <BR>&lt;% } %&gt; <BR>&lt;/font&gt; <BR>&lt;/body&gt; <BR>&lt;/html&gt; <BR><BR>操作程序(NumberGuessBean.java) <BR>// Number Guess Game <BR>// Written by Jason Hunter, CTO, K&amp;A Software <BR>// jasonh@kasoftware.com, http://www.servlets.com <BR>// Copyright 1999, K&amp;A Software <BR>// Distributed by Sun Microsystems with permission <BR><BR>package num; <BR>import java.util.*; <BR>public class NumberGuessBean { <BR>int answer; <BR>boolean success; <BR>String hint; <BR>int numGuesses; <BR>public NumberGuessBean() { <BR>reset(); <BR>} <BR>public void setGuess(String guess) { <BR>numGuesses++; <BR>int g; <BR>try { <BR>g = Integer.parseInt(guess); <BR>} <BR>catch (NumberFormatException e) { <BR>g = -1; <BR>} <BR>if (g == answer) { <BR>success = true; <BR>} <BR>else if (g == -1) { <BR>hint = "a number next time"; <BR>} <BR>else if (g &lt; answer) { <BR>hint = "higher"; <BR>} <BR>else if (g &gt; answer) { <BR>hint = "lower"; <BR>} <BR>} <BR>public boolean getSuccess() { <BR>return success; <BR>} <BR>public String getHint() { <BR>return "" + hint; <BR>} <BR>public int getNumGuesses() { <BR>return numGuesses; <BR>} <BR>public void reset() { <BR>answer = Math.abs(new Random().nextInt() % 100) <BR>+ 1; <BR>success = false; <BR>numGuesses = 0; <BR>} <BR>} <BR><BR>在JSP文件中使用脚本 <BR>numguess.jsp是一个非常有趣儿的用脚本写的例子，你看他的结构其实是一个很大的IF……ELSE结构，但是很一个从句又都是用HTML写的，看起来象一个大的程序段。 <BR>不过你也不一定非得象numguess.jsp那样用HTML和JSP标签一起来写脚本。在&lt;%和%&gt;标签之间，你可以写任意多行的脚本代码，在通常情况下，尽量少用脚本来处理程序，而尽可能的使用servlets或者Beans，这样你的程序看起来会非常的清析，明了。话又说回来，怎么写JSP还得根据你的习惯和爱好，我不强迫非得使用任何一种方法，SUN的JSP详细说明书不规定脚本的长度。 <BR><BR>用标签组合脚本 <BR>使用HTML和JSP标签来写脚本的时候，注意前后的标签不要忘记，一定要“封”好。说的不明白，举个例子吧： <BR>&lt;% } else { %&gt; &lt;!-- 用JSP标签的时候先关上 --&gt; <BR><BR>... 这时候用JSP标签吧 ... <BR><BR>&lt;% } %&gt; &lt;!-- 这样你应该看懂了吧？！ --&gt; <BR>开始的时候这种做法看起来可能有一点奇怪，但它以确保你JSP文件编译的时候脚本的成功转换。 <BR><BR>那么，脚本什么时候执行呢？ <BR>一个JSP原文件的处理分为两个阶段：一个是HTTP的编译时候，一个是请求的处理时间。 <BR><BR>HTTP编译的时候，当用户第一次读JSP页面的时候，JSP的原代码被编译成CLASS，通常是servlet。HTML标签和JSP标签在这个时候同时被处理了，这之前用户还没有任何的请求被提交。 <BR><BR>请求处理时间是当用户在JSP页面中提交了一个请求，这时请求由客户端被request对象传到了服务器端，JSP引擎根据用户提交的值执行编译过的JSP文件或者servlet。 <BR><BR>当你在JSP页中使用脚本的时候，你必须知道他们什么时候被执行。声明在HTTP编译阶段就已经被处理了，其他脚本，表达式在编译JSP文件的时候也可用。表达式在HTTP编译的时候也被执行了。表达式的值被转换成了字符串被插入到JSP文件中一块儿被编译。其实在请求阶段，脚本也是可以利用的。 <BR><BR>如何运行例子 <BR>我现在给出的都是在UNIX风格下的路径，如果你用Windows，那么改成Windows风格路径 <BR>1、猜数字游戏在装TOMCAT或者JSWDK的时候就已经装好了。 <BR>2、.jsp和.html文件在../jswdk-1.0.1/examples/num中 <BR>3、.java和.class文件在../jswdk-1.0.1/examples/WEB-INF/jsp/bean/num中 <BR>4、开浏览器,http://机器名/examples/jsp/num/numguess.jsp </P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=151&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=151&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=151">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=151&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="151" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/151.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=151"></script></body>
+</html>

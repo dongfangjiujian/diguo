@@ -114,3 +114,74 @@
 [Sun Oct 21 19:48:33 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
 [Sun Oct 21 19:48:33 2018] [notice] Server built: Jan  9 2007 23:17:20
 [Sun Oct 21 19:48:33 2018] [notice] Parent: Created child process 1692
+[Sun Oct 21 19:48:33 2018] [notice] Child 1692: Child process is running
+[Sun Oct 21 19:48:33 2018] [notice] Child 1692: Acquired the start mutex.
+[Sun Oct 21 19:48:33 2018] [notice] Child 1692: Starting 250 worker threads.
+[Sun Oct 21 19:48:33 2018] [notice] Child 1692: Starting thread to listen on port 80.
+[Sun Oct 21 20:00:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Sun Oct 21 20:00:41 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Mon Oct 22 09:56:26 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Mon Oct 22 09:56:26 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Mon Oct 22 09:56:27 2018] [notice] Parent: Created child process 1452
+[Mon Oct 22 09:56:27 2018] [notice] Child 1452: Child process is running
+[Mon Oct 22 09:56:27 2018] [notice] Child 1452: Acquired the start mutex.
+[Mon Oct 22 09:56:27 2018] [notice] Child 1452: Starting 250 worker threads.
+[Mon Oct 22 09:56:27 2018] [notice] Child 1452: Starting thread to listen on port 80.
+[Mon Oct 22 14:55:03 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Mon Oct 22 14:59:07 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/e/admin/ecmsinfo.php
+[Mon Oct 22 15:05:14 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:05:18 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:06:51 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:10:25 2018] [error] [client 127.0.0.1] Directory index forbidden by Options directive: D:/EmpireServer/web/test/, referer: http://localhost/e/admin/ListClass.php?ehash_N27fN=7lwgycUmrpNqQa0xRRB9
+[Mon Oct 22 15:11:06 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:11:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/156.html
+[Mon Oct 22 15:11:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/156.html
+[Mon Oct 22 15:11:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/test/2018-10-22/images, referer: http://localhost/test/2018-10-22/156.html
+[Mon Oct 22 15:11:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/images/bg2.gif, referer: http://localhost/test/2018-10-22/156.html
+[Mon Oct 22 15:11:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/156.html
+[Mon Oct 22 15:11:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/156.html
+[Mon Oct 22 15:11:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:42:32 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:43:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 15:43:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 15:43:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 15:43:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 15:43:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 15:43:45 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 15:44:12 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 15:44:15 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 18:38:37 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 18:39:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 18:39:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 18:39:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 18:39:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 18:39:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 18:39:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/180.html
+[Mon Oct 22 18:54:04 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 18:55:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/178.html
+[Mon Oct 22 18:55:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/178.html
+[Mon Oct 22 18:55:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/178.html
+[Mon Oct 22 18:55:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/178.html
+[Mon Oct 22 18:56:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 19:01:58 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 19:03:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/166.html
+[Mon Oct 22 19:03:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/166.html
+[Mon Oct 22 19:03:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_newnews.js, referer: http://localhost/test/2018-10-22/166.html
+[Mon Oct 22 19:03:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/test/2018-10-22/images, referer: http://localhost/test/2018-10-22/166.html
+[Mon Oct 22 19:03:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/images/bg2.gif, referer: http://localhost/test/2018-10-22/166.html
+[Mon Oct 22 19:03:30 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/d/js/class/class64_hotnews.js, referer: http://localhost/test/2018-10-22/166.html
+[Mon Oct 22 19:21:37 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:08:51 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:10:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:01 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:02 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:03 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:06 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:06 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:07 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:07 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:08 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:08 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:08 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:22 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Mon Oct 22 20:11:23 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<div>
+</div>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/142.html">处理Cookie<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/143.html">会话状态<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/138.html">读取HTTP请求头<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/139.html">访问CGI变量<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/136.html">第一个Servlet<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/137.html">处理表单数据<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/132.html">JAVA/JSP学习系列之二(Tomcat安装)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/133.html">JAVA/JSP学习系列之一(JDK安装)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/134.html">Servlet和JSP概述<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/135.html">设置JSP开发、运行环境<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/130.html">JAVA/JSP学习系列之四(Orion App Server的安装)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/131.html">JAVA/JSP学习系列之三(Resin+Apache的安装)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/126.html">JAVA/JSP学习系列之八(改写MySQL翻页例子)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/127.html">JAVA/JSP学习系列之七(Orion下自定义Tag)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/128.html">JAVA/JSP学习系列之六(MySQL翻页例子)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/129.html">JAVA/JSP学习系列之五(JDBC-ODBC翻页例子)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/124.html">JAVA/JSP学习系列之十(JavaMail API发邮件[servlet])<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/125.html">JAVA/JSP学习系列之九(理解构造器)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/120.html">JAVA/JSP学习系列之十四(JavaScript改变Applet状态)(译)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/121.html">JAVA/JSP学习系列之十三(Applet调用JavaScript函数)(译)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/122.html">JAVA/JSP学习系列之十二(JSP生成jpeg图片用于投票)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/123.html">JAVA/JSP学习系列之十一(简单的“抓网页”代码)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/118.html">JSP语法（2）--隐藏注释<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/119.html">JSP语法（1）--HTML注释<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/114.html">JSP语法(6)--Page指令<span class="badge">0</span></a>
+<!--list.var2-->	
+									
+</div>
+<div>
+
+  
+ 页次：6/8&nbsp;每页25&nbsp;总数187&nbsp;&nbsp;&nbsp;&nbsp;<a href='/test/index.html'>首页</a>&nbsp;&nbsp;<a href='/test/index_5.html'>上一页</a>&nbsp;&nbsp;<a href='/test/index_7.html'>下一页</a>&nbsp;&nbsp;<a href='/test/index_8.html'>尾页</a>&nbsp;&nbsp;&nbsp;&nbsp;转到:<select name=select onchange="self.location.href=this.options[this.selectedIndex].value"><option value='/test/index.html'>第 1 页</option><option value='/test/index_2.html'>第 2 页</option><option value='/test/index_3.html'>第 3 页</option><option value='/test/index_4.html'>第 4 页</option><option value='/test/index_5.html'>第 5 页</option><option value='/test/index_6.html' selected>第 6 页</option><option value='/test/index_7.html'>第 7 页</option><option value='/test/index_8.html'>第 8 页</option></select>
+
+</div>
+</div>
+            <div class="col-md-5"></div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>数据库连接池Java实现小结 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="数据库连接池Java实现小结" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>数据库连接池Java实现小结</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:19&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">503room <br><br><br><br><br><br>　　因为工作需要要使用到连接池，所以拜读了互联网上众多前辈的文章，学了不少经验，这里想做一个小结，加上自己的想法和在一起，希望能给大家一些帮助。 <br><br><br><br>　　目的：<br><br><br><br>消除数据库频繁连接带来的开销和瓶颈。 <br><br>　　解决方案：<br><br><br><br>不过多的限制用户的使用，既不能太多的要求用户按规定的方法得到和使用数据库连 <br><br>尽量保持用户的习惯 <br><br>　　目前的很多方法都是要求用户只能按规定方法使用连接，不能使用直接关闭数据连接的方法。解决办法就是使用代理类，来中间解决。可以参考http://www-900.ibm.com/developerWorks/cn/java/l-connpoolproxy/index.shtml<br><br><br><br><br><br>能维护连接的正常状态 <br><br><br><br><br><br>要求用户按规定的方法得到和使用数据库连 <br><br>尽量保持用户的习惯 <br><br>　　目前的很多方法都是要求用户只能按规定方法使用连接，不能使用直接关闭数据连接的方法。解决办法就是使用代理类，来中间解决。可以参考http://www-900.ibm.com/developerWorks/cn/java/l-connpoolproxy/index.shtml<br><br><br><br><br><br>能维护连接的正常状态 <br><br>　　因为针对数据库连接创建的资源，如果不能及时的释放，就会影响下一次数据连接的使用。例如在sql 2k中，一个连接不同创建多条Statement否则操作时会有数据连接占线的异常，所以必须在归还连接以后释放这些资源。 <br><br>//判断是使用了createStatement语句<br><br>if (CREATESTATE.equals(method.getName()))<br><br>{<br><br>obj = method.invoke(conn, args);<br><br>statRef = (Statement)obj;//记录语句<br><br>return obj;<br><br>}<br><br><br><br><br><br><br><br><br><br>　 //判断是否调用了close的方法，如果调用close方法则把连接置为无用状态<br><br>if(CLOSE.equals(method.getName()))<br><br>{<br><br>//设置不使用标志<br><br>setIsFree(false);<br><br>//检查是否有后续工作，清除该连接无用资源<br><br>if (statRef != null)<br><br>statRef.close();<br><br>if (prestatRef != null)<br><br>prestatRef.close();<br><br>return null;<br><br>}<br><br><br><br><br><br><br><br><br><br>正确保护类不被违例使用 <br><br>一个考虑就是不能让用户随便使用代理类，而只能自己使用，一个就是用内部私有类，一个就是使用只有指定类才能调用的标志。我的实现就是采用后者。<br><br><br><br>/**<br><br>* 创建连接的工厂，只能让工厂调用<br><br>* @param factory 要调用工厂，并且一定被正确初始化<br><br>* @param param 连接参数<br><br>* @return 连接<br><br>*/<br><br>static public _Connection getConnection(ConnectionFactory factory, ConnectionParam param)<br><br>{<br><br>if (factory.isCreate())//判断是否正确初始化的工厂<br><br>{<br><br>_Connection _conn = new _Connection(param);<br><br>return _conn;<br><br>}<br><br>else<br><br>return null;<br><br>}<br><br><br><br><br><br><br><br><br><br>提供良好的用户接口，简单实用 <br><br>　　使用静态方法创建工厂，然后来得到连接，使用完全和普通的Connection方法一样，没有限制。同时为了方便，设置了连接参数类和工厂参数类。<br><br>ConnectionParam param = new ConnectionParam(driver,url,user,password);<br><br>ConnectionFactory cf = null;//new ConnectionFactory(param, new FactoryParam());<br><br>try{<br><br>cf = new ConnectionFactory(param,new FactoryParam());<br><br>Connection conn1 = cf.getFreeConnection();<br><br>Connection conn2 = cf.getFreeConnection();<br><br>Connection conn3 = cf.getFreeConnection();<br><br>Statement stmt = conn1.createStatement();<br><br>ResultSet rs = stmt.executeQuery(&quot;select * from requests&quot;);<br><br>if (rs.next())<br><br>{<br><br>System.out.println(&quot;conn1 y&quot;); <br><br>}<br><br>else<br><br>{<br><br>System.out.println(&quot;conn1 n&quot;); <br><br>} <br><br>stmt.close();<br><br>conn1.close(); <br><br><br><br><br><br><br><br>为了实现连接池的正常运作，使用了单态模 <br><br>　 /**<br><br>* 使用指定的参数创建一个连接池<br><br>*/<br><br>public ConnectionFactory(ConnectionParam param, FactoryParam fparam)<br><br>throws SQLException <br><br>{<br><br>//不允许参数为空<br><br>if ((param == null)||(fparam == null))<br><br>throw new SQLException(&quot;ConnectionParam和FactoryParam不能为空&quot;);<br><br>if (m_instance == null)<br><br>{<br><br>synchronized(ConnectionFactory.class){<br><br>if (m_instance == null)<br><br>{<br><br>//new instance<br><br>//参数定制<br><br>m_instance = new ConnectionFactory();<br><br>m_instance.connparam = param;<br><br>m_instance.MaxConnectionCount = fparam.getMaxConn();<br><br>m_instance.MinConnectionCount = fparam.getMinConn();<br><br>m_instance.ManageType = fparam.getType();<br><br>m_instance.isflag = true;<br><br>//初始化，创建MinConnectionCount个连接<br><br>System.out.println(&quot;connection factory 创建！&quot;);<br><br>try{<br><br>for (int i=0; i &lt; m_instance.MinConnectionCount; i++)<br><br>{<br><br>_Connection _conn = _Connection.getConnection(m_instance, m_instance.connparam);<br><br>if (_conn == null) continue;<br><br>System.out.println(&quot;connection创建&quot;);<br><br>m_instance.FreeConnectionPool.add(_conn);//加入空闲连接池<br><br>m_instance.current_conn_count ++;<br><br>//标志是否支持事务<br><br>m_instance.supportTransaction = _conn.isSupportTransaction(); <br><br>}<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>//根据策略判断是否需要查询<br><br>if (m_instance.ManageType != 0)<br><br>{<br><br>Thread t = new Thread(new FactoryMangeThread(m_instance));<br><br>t.start();<br><br>} <br><br>}<br><br>}<br><br>}<br><br>}<br><br><br><br><br><br><br><br><br><br>连接池的管理 <br><br>　　对于连接池的管理，我是设想使用静态管理和动态管理两种策略，设置了最大限制，和恒定的连接数。使用了2个池，一个空闲池，一个使用池。静态就是使用的时候发现空闲连接不够再去检查。动态就是使用了一个线程定时检查。<br><br>//根据策略判断是否需要查询<br><br>if (m_instance.ManageType != 0)<br><br>{<br><br>Thread t = new Thread(new FactoryMangeThread(m_instance));<br><br>t.start();<br><br>}<br><br><br><br>//连接池调度线程<br><br>public class FactoryMangeThread implements Runnable {<br><br>ConnectionFactory cf = null;<br><br>long delay = 1000;<br><br>public FactoryMangeThread(ConnectionFactory obj)<br><br>{<br><br>cf = obj;<br><br>}<br><br>/* (non-Javadoc)<br><br>* @see java.lang.Runnable#run()<br><br>*/<br><br>public void run() {<br><br>while(true){<br><br>try{<br><br>Thread.sleep(delay);<br><br>}<br><br>catch(InterruptedException e){}<br><br>System.out.println(&quot;eeeee&quot;);<br><br>//判断是否已经关闭了工厂，那就退出监听<br><br>if (cf.isCreate())<br><br>cf.schedule();<br><br>else<br><br>System.exit(1);<br><br>}<br><br>}<br><br>}<br><br><br><br><br><br><br><br>最后给出完整的源代码：<br><br><br><br>　　_Connectio.java<br><br>package scut.ailab.connectionpool;<br><br><br><br>import java.lang.reflect.*;<br><br>import java.sql.*;<br><br><br><br>/**<br><br>* @author youyongming<br><br>* 定义数据库连接的代理类<br><br>*/<br><br>public class _Connection implements InvocationHandler {<br><br>//定义连接<br><br>private Connection conn = null;<br><br>//定义监控连接创建的语句<br><br>private Statement statRef = null;<br><br>private PreparedStatement prestatRef = null;<br><br>//是否支持事务标志<br><br>private boolean supportTransaction = false;<br><br>//数据库的忙状态<br><br>private boolean isFree = false;<br><br>//最后一次访问时间<br><br>long lastAccessTime = 0;<br><br>//定义要接管的函数的名字<br><br>String CREATESTATE = &quot;createStatement&quot;;<br><br>String CLOSE = &quot;close&quot;;<br><br>String PREPARESTATEMENT = &quot;prepareStatement&quot;;<br><br>String COMMIT = &quot;commit&quot;;<br><br>String ROLLBACK = &quot;rollback&quot;;<br><br><br><br>/**<br><br>* 构造函数，采用私有，防止被直接创建<br><br>* @param param 连接参数<br><br>*/<br><br>private _Connection(ConnectionParam param) {<br><br>//记录日至<br><br><br><br>try{<br><br>//创建连接<br><br>Class.forName(param.getDriver()).newInstance();<br><br>conn = DriverManager.getConnection(param.getUrl(),param.getUser(), param.getPassword()); <br><br>DatabaseMetaData dm = null;<br><br>dm = conn.getMetaData();<br><br>//判断是否支持事务<br><br>supportTransaction = dm.supportsTransactions();<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>}<br><br><br><br><br><br>/* (non-Javadoc)<br><br>* @see java.lang.reflect.InvocationHandler#invoke<br><br>　*(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])<br><br>*/<br><br>public Object invoke(Object proxy, Method method, Object[] args)<br><br>throws Throwable {<br><br>Object obj = null;<br><br>//判断是否调用了close的方法，如果调用close方法则把连接置为无用状态<br><br>if(CLOSE.equals(method.getName()))<br><br>{<br><br>//设置不使用标志<br><br>setIsFree(false);<br><br>//检查是否有后续工作，清除该连接无用资源<br><br>if (statRef != null)<br><br>statRef.close();<br><br>if (prestatRef != null)<br><br>prestatRef.close();<br><br>return null;<br><br>}<br><br>//判断是使用了createStatement语句<br><br>if (CREATESTATE.equals(method.getName()))<br><br>{<br><br>obj = method.invoke(conn, args);<br><br>statRef = (Statement)obj;//记录语句<br><br>return obj;<br><br>}<br><br>//判断是使用了prepareStatement语句<br><br>if (PREPARESTATEMENT.equals(method.getName()))<br><br>{<br><br>obj = method.invoke(conn, args);<br><br>prestatRef = (PreparedStatement)obj;<br><br>return obj;<br><br>}<br><br>//如果不支持事务，就不执行该事物的代码<br><br>if ((COMMIT.equals(method.getName())||ROLLBACK.equals(method.getName()))<br><br>&amp;&amp; (!isSupportTransaction()))<br><br>return null; <br><br>obj = method.invoke(conn, args); <br><br>//设置最后一次访问时间，以便及时清除超时的连接<br><br>lastAccessTime = System.currentTimeMillis();<br><br>return obj;<br><br>}<br><br><br><br>/**<br><br>* 创建连接的工厂，只能让工厂调用<br><br>* @param factory 要调用工厂，并且一定被正确初始化<br><br>* @param param 连接参数<br><br>* @return 连接<br><br>*/<br><br>static public _Connection getConnection(ConnectionFactory factory, ConnectionParam param)<br><br>{<br><br>if (factory.isCreate())//判断是否正确初始化的工厂<br><br>{<br><br>_Connection _conn = new _Connection(param);<br><br>return _conn;<br><br>}<br><br>else<br><br>return null;<br><br>}<br><br><br><br>public Connection getFreeConnection() {<br><br>//返回数据库连接conn的接管类，以便截住close方法<br><br>Connection conn2 = (Connection)Proxy.newProxyInstance(<br><br>conn.getClass().getClassLoader(),<br><br>conn.getClass().getInterfaces(),this);<br><br>return conn2;<br><br>}<br><br><br><br>/**<br><br>* 该方法真正的关闭了数据库的连接<br><br>* @throws SQLException<br><br>*/<br><br>void close() throws SQLException{<br><br>//由于类属性conn是没有被接管的连接，因此一旦调用close方法后就直接关闭连接<br><br>conn.close();<br><br>}<br><br><br><br>public void setIsFree(boolean value)<br><br>{<br><br>isFree = value;<br><br>}<br><br><br><br>public boolean isFree() {<br><br>return isFree;<br><br>} <br><br>/**<br><br>* 判断是否支持事务<br><br>* @return boolean<br><br>*/<br><br>public boolean isSupportTransaction() {<br><br>return supportTransaction;<br><br>} <br><br>}<br><br><br><br><br><br><br><br><br><br>　　ConnectionFactory.java <br><br><br><br>　 package scut.ailab.connectionpool;<br><br><br><br>/**<br><br>* @author youyongming<br><br>*<br><br>*/<br><br>import java.util.LinkedHashSet;<br><br>import java.sql.*;<br><br>import java.util.Iterator;<br><br><br><br>public class ConnectionFactory {<br><br>private static ConnectionFactory m_instance = null;<br><br>//在使用的连接池<br><br>private LinkedHashSet ConnectionPool = null;<br><br>//空闲连接池<br><br>private LinkedHashSet FreeConnectionPool = null;<br><br>//最大连接数<br><br>private int MaxConnectionCount = 4;<br><br>//最小连接数<br><br>private int MinConnectionCount = 2;<br><br>//当前连接数<br><br>private int current_conn_count = 0;<br><br>//连接参数<br><br>private ConnectionParam connparam = null;<br><br>//是否创建工厂的标志<br><br>private boolean isflag = false;<br><br>//是否支持事务<br><br>private boolean supportTransaction = false;<br><br>//定义管理策略<br><br>private int ManageType = 0;<br><br><br><br>private ConnectionFactory() {<br><br>ConnectionPool = new LinkedHashSet();<br><br>FreeConnectionPool = new LinkedHashSet();<br><br>}<br><br><br><br>/**<br><br>* 使用指定的参数创建一个连接池<br><br>*/<br><br>public ConnectionFactory(ConnectionParam param, FactoryParam fparam)<br><br>throws SQLException <br><br>{<br><br>//不允许参数为空<br><br>if ((param == null)||(fparam == null))<br><br>throw new SQLException(&quot;ConnectionParam和FactoryParam不能为空&quot;);<br><br>if (m_instance == null)<br><br>{<br><br>synchronized(ConnectionFactory.class){<br><br>if (m_instance == null)<br><br>{<br><br>//new instance<br><br>//参数定制<br><br>m_instance = new ConnectionFactory();<br><br>m_instance.connparam = param;<br><br>m_instance.MaxConnectionCount = fparam.getMaxConn();<br><br>m_instance.MinConnectionCount = fparam.getMinConn();<br><br>m_instance.ManageType = fparam.getType();<br><br>m_instance.isflag = true;<br><br>//初始化，创建MinConnectionCount个连接<br><br>System.out.println(&quot;connection factory 创建！&quot;);<br><br>try{<br><br>for (int i=0; i &lt; m_instance.MinConnectionCount; i++)<br><br>{<br><br>_Connection _conn = _Connection.getConnection(m_instance, m_instance.connparam);<br><br>if (_conn == null) continue;<br><br>System.out.println(&quot;connection创建&quot;);<br><br>m_instance.FreeConnectionPool.add(_conn);//加入空闲连接池<br><br>m_instance.current_conn_count ++;<br><br>//标志是否支持事务<br><br>m_instance.supportTransaction = _conn.isSupportTransaction(); <br><br>}<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>//根据策略判断是否需要查询<br><br>if (m_instance.ManageType != 0)<br><br>{<br><br>Thread t = new Thread(new FactoryMangeThread(m_instance));<br><br>t.start();<br><br>} <br><br>}<br><br>}<br><br>}<br><br>}<br><br><br><br>/**<br><br>* 标志工厂是否已经创建<br><br>* @return boolean<br><br>*/ <br><br>public boolean isCreate()<br><br>{<br><br>return m_instance.isflag;<br><br>}<br><br><br><br>/**<br><br>* 从连接池中取一个空闲的连接<br><br>* @return Connection<br><br>* @throws SQLException<br><br>*/<br><br>public synchronized Connection getFreeConnection() <br><br>throws SQLException<br><br>{<br><br>Connection conn = null;<br><br>//获取空闲连接<br><br>Iterator iter = m_instance.FreeConnectionPool.iterator();<br><br>while(iter.hasNext()){<br><br>_Connection _conn = (_Connection)iter.next();<br><br>//找到未用连接<br><br>if(!_conn.isFree()){<br><br>conn = _conn.getFreeConnection();<br><br>_conn.setIsFree(true);<br><br>//移出空闲区<br><br>m_instance.FreeConnectionPool.remove(_conn);<br><br>//加入连接池 <br><br>m_instance.ConnectionPool.add(_conn); <br><br>break;<br><br>}<br><br>}<br><br>//检查空闲池是否为空<br><br>if (m_instance.FreeConnectionPool.isEmpty())<br><br>{<br><br>//再检查是否能够分配<br><br>if (m_instance.current_conn_count &lt; m_instance.MaxConnectionCount)<br><br>{<br><br>//新建连接到空闲连接池<br><br>int newcount = 0 ;<br><br>//取得要建立的数目<br><br>if (m_instance.MaxConnectionCount - m_instance.current_conn_count &gt;=<br><br>　　　　　　　　　m_instance.MinConnectionCount)<br><br>{<br><br>newcount = m_instance.MinConnectionCount;<br><br>}<br><br>else<br><br>{<br><br>newcount = m_instance.MaxConnectionCount - m_instance.current_conn_count;<br><br>}<br><br>//创建连接<br><br>for (int i=0;i &lt;newcount; i++)<br><br>{<br><br>_Connection _conn = _Connection.getConnection(m_instance, m_instance.connparam);<br><br>m_instance.FreeConnectionPool.add(_conn);<br><br>m_instance.current_conn_count ++;<br><br>}<br><br>}<br><br>else<br><br>{//如果不能新建，检查是否有已经归还的连接<br><br>iter = m_instance.ConnectionPool.iterator();<br><br>while(iter.hasNext()){<br><br>_Connection _conn = (_Connection)iter.next();<br><br>if(!_conn.isFree()){<br><br>conn = _conn.getFreeConnection();<br><br>_conn.setIsFree(false);<br><br>m_instance.ConnectionPool.remove(_conn); <br><br>m_instance.FreeConnectionPool.add(_conn); <br><br>break;<br><br>}<br><br>} <br><br>}<br><br>}//if (FreeConnectionPool.isEmpty())<br><br>//再次检查是否能分配连接<br><br>if(conn == null){<br><br>iter = m_instance.FreeConnectionPool.iterator();<br><br>while(iter.hasNext()){<br><br>_Connection _conn = (_Connection)iter.next();<br><br>if(!_conn.isFree()){<br><br>conn = _conn.getFreeConnection();<br><br>_conn.setIsFree(true);<br><br>m_instance.FreeConnectionPool.remove(_conn); <br><br>m_instance.ConnectionPool.add(_conn); <br><br>break;<br><br>}<br><br>}<br><br>if(conn == null)//如果不能则说明无连接可用<br><br>throw new SQLException(&quot;没有可用的数据库连接&quot;);<br><br>}<br><br>System.out.println(&quot;get connection&quot;);<br><br>return conn;<br><br>}<br><br><br><br>/**<br><br>* 关闭该连接池中的所有数据库连接<br><br>* @throws SQLException<br><br>*/<br><br>public synchronized void close() throws SQLException<br><br>{<br><br>this.isflag = false;<br><br>SQLException excp = null;<br><br>//关闭空闲池<br><br>Iterator iter = m_instance.FreeConnectionPool.iterator();<br><br>while(iter.hasNext()){<br><br>try{<br><br>((_Connection)iter.next()).close();<br><br>System.out.println(&quot;close connection:free&quot;);<br><br>m_instance.current_conn_count --;<br><br>}catch(Exception e){<br><br>if(e instanceof SQLException)<br><br>excp = (SQLException)e;<br><br>}<br><br>}<br><br>//关闭在使用的连接池<br><br>iter = m_instance.ConnectionPool.iterator();<br><br>while(iter.hasNext()){<br><br>try{<br><br>((_Connection)iter.next()).close();<br><br>System.out.println(&quot;close connection:inused&quot;);<br><br>m_instance.current_conn_count --;<br><br>}catch(Exception e){<br><br>if(e instanceof SQLException)<br><br>excp = (SQLException)e;<br><br>}<br><br>} <br><br>if(excp != null)<br><br>throw excp;<br><br>} <br><br><br><br>/**<br><br>* 返回是否支持事务<br><br>* @return boolean<br><br>*/<br><br>public boolean isSupportTransaction() {<br><br>return m_instance.supportTransaction;<br><br>} <br><br>/**<br><br>* 连接池调度管理<br><br>*<br><br>*/<br><br>public void schedule()<br><br>{<br><br>Connection conn = null;<br><br>//再检查是否能够分配<br><br>Iterator iter = null;<br><br>//检查是否有已经归还的连接<br><br>{<br><br>iter = m_instance.ConnectionPool.iterator();<br><br>while(iter.hasNext()){<br><br>_Connection _conn = (_Connection)iter.next();<br><br>if(!_conn.isFree()){<br><br>conn = _conn.getFreeConnection();<br><br>_conn.setIsFree(false);<br><br>m_instance.ConnectionPool.remove(_conn); <br><br>m_instance.FreeConnectionPool.add(_conn); <br><br>break;<br><br>}<br><br>} <br><br>}<br><br>if (m_instance.current_conn_count &lt; m_instance.MaxConnectionCount)<br><br>{<br><br>//新建连接到空闲连接池<br><br>int newcount = 0 ;<br><br>//取得要建立的数目<br><br>if (m_instance.MaxConnectionCount - m_instance.current_conn_count<br><br>　　　　&gt;=m_instance.MinConnectionCount)<br><br>{<br><br>newcount = m_instance.MinConnectionCount;<br><br>}<br><br>else<br><br>{<br><br>newcount = m_instance.MaxConnectionCount - m_instance.current_conn_count;<br><br>}<br><br>//创建连接<br><br>for (int i=0;i &lt;newcount; i++)<br><br>{<br><br>_Connection _conn = _Connection.getConnection(m_instance, m_instance.connparam);<br><br>m_instance.FreeConnectionPool.add(_conn);<br><br>m_instance.current_conn_count ++;<br><br>}<br><br>}<br><br>}<br><br>}<br><br><br><br>　　ConnectionParam.java <br><br><br><br>　 package scut.ailab.connectionpool;<br><br><br><br>import java.io.Serializable;<br><br><br><br>/**<br><br>* @author youyongming<br><br>* 实现数据库连接的参数类<br><br>*/<br><br>public class ConnectionParam implements Serializable {<br><br>private String driver; //数据库驱动程序<br><br>private String url; //数据连接的URL<br><br>private String user; //数据库用户名<br><br>private String password; //数据库密码<br><br><br><br>/**<br><br>* 唯一的构造函数，需要指定连接的四个必要参数<br><br>* @param driver 数据驱动<br><br>* @param url 数据库连接url<br><br>* @param user 用户名<br><br>* @param password 密码<br><br>*/<br><br>public ConnectionParam(String driver,String url,String user,String password)<br><br>{<br><br>this.driver = driver;<br><br>this.url = url;<br><br>this.user = user;<br><br>this.password = password;<br><br>}<br><br><br><br>public String getDriver() {<br><br>return driver;<br><br>}<br><br><br><br>public String getPassword() {<br><br>return password;<br><br>}<br><br><br><br>public String getUrl() {<br><br>return url;<br><br>}<br><br><br><br>public String getUser() {<br><br>return user;<br><br>}<br><br><br><br>public void setDriver(String driver) {<br><br>this.driver = driver;<br><br>}<br><br><br><br>public void setPassword(String password) {<br><br>this.password = password;<br><br>}<br><br><br><br>public void setUrl(String url) {<br><br>this.url = url;<br><br>}<br><br><br><br>public void setUser(String user) {<br><br>this.user = user;<br><br>}<br><br><br><br>/**<br><br>* @see java.lang.Object#clone()<br><br>*/<br><br>public Object clone(){<br><br>ConnectionParam param = new ConnectionParam(driver,url,user,password);<br><br>return param;<br><br>}<br><br><br><br>/**<br><br>* @see java.lang.Object#equals(java.lang.Object)<br><br>*/<br><br>public boolean equals(Object obj) {<br><br>if(obj instanceof ConnectionParam){<br><br>ConnectionParam param = (ConnectionParam)obj;<br><br>return ((driver.compareToIgnoreCase(param.getDriver()) == 0)&amp;&amp;<br><br>(url.compareToIgnoreCase(param.getUrl()) == 0)&amp;&amp;<br><br>(user.compareToIgnoreCase(param.getUser()) == 0)&amp;&amp;<br><br>(password.compareToIgnoreCase(param.getPassword()) == 0));<br><br>}<br><br>return false;<br><br>}<br><br>}<br><br><br><br><br><br><br><br><br><br>　　FactoryMangeThread.java <br><br><br><br>　 /*<br><br>* Created on 2003-5-13<br><br>*<br><br>* To change the template for this generated file go to<br><br>* Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments<br><br>*/<br><br>package scut.ailab.connectionpool;<br><br><br><br>/**<br><br>* @author youyongming<br><br>*<br><br>*/<br><br>//连接池调度线程<br><br>public class FactoryMangeThread implements Runnable {<br><br>ConnectionFactory cf = null;<br><br>long delay = 1000;<br><br>public FactoryMangeThread(ConnectionFactory obj)<br><br>{<br><br>cf = obj;<br><br>}<br><br>/* (non-Javadoc)<br><br>* @see java.lang.Runnable#run()<br><br>*/<br><br>public void run() {<br><br>while(true){<br><br>try{<br><br>Thread.sleep(delay);<br><br>}<br><br>catch(InterruptedException e){}<br><br>System.out.println(&quot;eeeee&quot;);<br><br>//判断是否已经关闭了工厂，那就退出监听<br><br>if (cf.isCreate())<br><br>cf.schedule();<br><br>else<br><br>System.exit(1);<br><br>}<br><br>}<br><br>}<br><br><br><br><br><br><br><br><br><br>　　FactoryParam.java <br><br><br><br>　 /*<br><br>* Created on 2003-5-13<br><br>*<br><br>* To change the template for this generated file go to<br><br>* Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments<br><br>*/<br><br>package scut.ailab.connectionpool;<br><br><br><br>/**<br><br>* @author youyongming<br><br>*<br><br>*/<br><br>//连接池工厂参数<br><br>public class FactoryParam {<br><br>//最大连接数<br><br>private int MaxConnectionCount = 4;<br><br>//最小连接数<br><br>private int MinConnectionCount = 2; <br><br>//回收策略<br><br>private int ManageType = 0;<br><br><br><br>public FactoryParam() {<br><br>}<br><br><br><br>/**<br><br>* 构造连接池工厂参数的对象<br><br>* @param max 最大连接数<br><br>* @param min 最小连接数<br><br>* @param type 管理策略<br><br>*/<br><br>public FactoryParam(int max, int min, int type)<br><br>{<br><br>this.ManageType = type;<br><br>this.MaxConnectionCount = max;<br><br>this.MinConnectionCount = min;<br><br>}<br><br><br><br>/**<br><br>* 设置最大的连接数<br><br>* @param value<br><br>*/<br><br>public void setMaxConn(int value)<br><br>{<br><br>this.MaxConnectionCount = value;<br><br>}<br><br>/**<br><br>* 获取最大连接数<br><br>* @return<br><br>*/<br><br>public int getMaxConn()<br><br>{<br><br>return this.MaxConnectionCount;<br><br>}<br><br>/**<br><br>* 设置最小连接数<br><br>* @param value<br><br>*/<br><br>public void setMinConn(int value)<br><br>{<br><br>this.MinConnectionCount = value;<br><br>}<br><br>/**<br><br>* 获取最小连接数<br><br>* @return<br><br>*/<br><br>public int getMinConn()<br><br>{<br><br>return this.MinConnectionCount;<br><br>}<br><br>public int getType()<br><br>{<br><br>return this.ManageType;<br><br>}<br><br>}<br><br><br><br><br><br><br><br>　　testmypool.java <br><br><br><br>　 /*<br><br>* Created on 2003-5-13<br><br>*<br><br>* To change the template for this generated file go to<br><br>* Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments<br><br>*/<br><br>package scut.ailab.connectionpool;<br><br><br><br>/**<br><br>* @author youyongming<br><br>*<br><br>*/<br><br>import java.sql.*;<br><br><br><br>public class testmypool {<br><br><br><br>public void test1()<br><br>{<br><br>String user = &quot;DevTeam&quot;;<br><br>String password = &quot;DevTeam&quot;;<br><br>String driver = &quot;sun.jdbc.odbc.JdbcOdbcDriver&quot;;<br><br>String url = &quot;jdbc:odbc:gfqh2&quot;;<br><br>ConnectionParam param = new ConnectionParam(driver,url,user,password);<br><br>ConnectionFactory cf = null;//new ConnectionFactory(param, new FactoryParam());<br><br>try{<br><br>cf = new ConnectionFactory(param,new FactoryParam());<br><br>Connection conn1 = cf.getFreeConnection();<br><br>Connection conn2 = cf.getFreeConnection();<br><br>Connection conn3 = cf.getFreeConnection();<br><br>Statement stmt = conn1.createStatement();<br><br>ResultSet rs = stmt.executeQuery(&quot;select * from requests&quot;);<br><br>if (rs.next())<br><br>{<br><br>System.out.println(&quot;conn1 y&quot;); <br><br>}<br><br>else<br><br>{<br><br>System.out.println(&quot;conn1 n&quot;); <br><br>} <br><br>stmt.close();<br><br>conn1.close(); <br><br>Connection conn4 = cf.getFreeConnection();<br><br>Connection conn5 = cf.getFreeConnection();<br><br>stmt = conn5.createStatement();<br><br>rs = stmt.executeQuery(&quot;select * from requests&quot;);<br><br>if (rs.next())<br><br>{<br><br>System.out.println(&quot;conn5 y&quot;); <br><br>}<br><br>else<br><br>{<br><br>System.out.println(&quot;conn5 n&quot;); <br><br>} <br><br>conn2.close();<br><br>conn3.close();<br><br>conn4.close();<br><br>conn5.close();<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>finally{<br><br>try{<br><br>cf.close();<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>} <br><br>}<br><br>public static void main(String[] args) {<br><br>String user = &quot;DevTeam&quot;;<br><br>String password = &quot;DevTeam&quot;;<br><br>String driver = &quot;sun.jdbc.odbc.JdbcOdbcDriver&quot;;<br><br>String url = &quot;jdbc:odbc:gfqh2&quot;;<br><br>ConnectionParam param = new ConnectionParam(driver,url,user,password);<br><br>ConnectionFactory cf = null;//new ConnectionFactory(param,new FactoryParam());<br><br>try{<br><br>cf = new ConnectionFactory(param,new FactoryParam());<br><br>ConnectionFactory cf1= new ConnectionFactory(param,new FactoryParam());<br><br>Connection conn1 = null;<br><br>long time = System.currentTimeMillis();<br><br>for (int i=0; i &lt;10;i++)<br><br>{<br><br>conn1 = cf.getFreeConnection();<br><br>Statement stmt = conn1.createStatement();<br><br>ResultSet rs = stmt.executeQuery(&quot;select * from requests&quot;);<br><br>if (rs.next())<br><br>{<br><br>System.out.println(&quot;conn1 y&quot;); <br><br>}<br><br>else<br><br>{<br><br>System.out.println(&quot;conn1 n&quot;); <br><br>} <br><br>conn1.close(); <br><br>}<br><br>System.out.println(&quot;pool:&quot; + (System.currentTimeMillis()-time));<br><br>time = System.currentTimeMillis();<br><br>Class.forName(param.getDriver()).newInstance();<br><br>for (int i=0; i &lt;10;i++)<br><br>{<br><br>conn1 = DriverManager.getConnection(param.getUrl(),<br><br>　　　　　　param.getUser(), param.getPassword()); <br><br>Statement stmt = conn1.createStatement();<br><br>ResultSet rs = stmt.executeQuery(&quot;select * from requests&quot;);<br><br>if (rs.next())<br><br>{<br><br>System.out.println(&quot;conn1 y&quot;); <br><br>}<br><br>else<br><br>{<br><br>System.out.println(&quot;conn1 n&quot;); <br><br>} <br><br>conn1.close(); <br><br>} <br><br>System.out.println(&quot;no pool:&quot; + (System.currentTimeMillis()-time));<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>finally{<br><br>try{<br><br>cf.close();<br><br>}<br><br>catch(Exception e)<br><br>{<br><br>e.printStackTrace();<br><br>}<br><br>}<br><br>}<br><br>}<br><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=89&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=89&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=89">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=89&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="89" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/89.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=89"></script></body>
+</html>

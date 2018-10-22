@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Servlet和JSP概述 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Servlet和JSP概述" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>Servlet和JSP概述</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:34&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">                            　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>1.1 Java Servlet及其特点 <BR><BR>　　 Servlet是Java技术对CGI编程的回答。Servlet程序在服务器端运行，动态地生成Web页面。与传统的CGI和许多其他类似CGI的技术相比，Java Servlet具有更高的效率，更容易使用，功能更强大，具有更好的可移植性，更节省投资（更重要的是， Servlet程序员收入要比Perl程序员高:-）： <BR><BR>高效。 <BR><BR>在传统的CGI中，每个请求都要启动一个新的进程，如果CGI程序本身的执行时间较短，启动进程所需要的开销很可能反而超过实际执行时间。而在Servlet中，每个请求由一个轻量级的Java线程处理（而不是重量级的操作系统进程）。 <BR>在传统CGI中，如果有N个并发的对同一CGI程序的请求，则该CGI程序的代码在内存中重复装载了N次；而对于Servlet，处理请求的是N个线程，只需要一份Servlet类代码。在性能优化方面，Servlet也比CGI有着更多的选择，比如缓冲以前的计算结果，保持数据库连接的活动，等等。 <BR><BR><BR>方便。 <BR><BR>Servlet提供了大量的实用工具例程，例如自动地解析和解码HTML表单数据、读取和设置HTTP头、处理Cookie、跟踪会话状态等。 <BR><BR><BR>功能强大。 <BR><BR>在Servlet中，许多使用传统CGI程序很难完成的任务都可以轻松地完成。例如，Servlet能够直接和Web服务器交互，而普通的CGI程序不能。Servlet还能够在各个程序之间共享数据，使得数据库连接池之类的功能很容易实现。 <BR><BR><BR>可移植性好。 <BR><BR>Servlet用Java编写，Servlet API具有完善的标准。因此，为I-Planet Enterprise Server写的Servlet无需任何实质上的改动即可移植到Apache、Microsoft IIS或者WebStar。几乎所有的主流服务器都直接或通过插件支持Servlet。 <BR><BR><BR>节省投资。 <BR><BR>不仅有许多廉价甚至免费的Web服务器可供个人或小规模网站使用，而且对于现有的服务器，如果它不支持Servlet的话，要加上这部分功能也往往是免费的（或只需要极少的投资）。 <BR>　　 1.2 JSP及其特点 <BR><BR>　　 JavaServer Pages（JSP）是一种实现普通静态HTML和动态HTML混合编码的技术，有关JSP基础概念的说明请参见《JSP技术简介 》。 <BR><BR>　　 许多由CGI程序生成的页面大部分仍旧是静态HTML，动态内容只在页面中有限的几个部分出现。但是包括Servlet在内的大多数CGI技术及其变种，总是通过程序生成整个页面。JSP使得我们可以分别创建这两个部分。例如，下面就是一个简单的JSP页面： <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞＜TITLE＞欢迎访问网上商店＜/TITLE＞＜/HEAD＞ <BR>＜BODY＞ <BR>＜H1＞欢迎＜/H1＞ <BR>＜SMALL＞欢迎, <BR>＜!-- 首次访问的用户名字为"New User" --＞ <BR>＜% out.println(Utils.getUserNameFromCookie(request)); %＞ <BR>要设置帐号信息，请点击 <BR>＜A HREF="Account-Settings.html"＞这里＜/A＞＜/SMALL＞ <BR>＜P＞ <BR>页面的其余内容。. <BR>＜/BODY＞＜/HTML＞ <BR><BR><BR><BR>　　 下面是JSP和其他类似或相关技术的一个简单比较： <BR><BR>JSP和Active Server Pages（ASP）相比 <BR><BR>Microsoft的ASP是一种和JSP类似的技术。JSP和ASP相比具有两方面的优点。首先，动态部分用Java编写，而不是VB Script或其他Microsoft语言，不仅功能更强大而且更易于使用。第二，JSP应用可以移植到其他操作系统和非Microsoft的Web服务器上。 <BR><BR><BR>JSP和纯Servlet相比 <BR><BR>JSP并没有增加任何本质上不能用Servlet实现的功能。但是，在JSP中编写静态HTML更加方便，不必再用 println语句来输出每一行HTML代码。更重要的是，借助内容和外观的分离，页面制作中不同性质的任务可以方便地分开：比如，由页面设计专家进行HTML设计，同时留出供Servlet程序员插入动态内容的空间。 <BR><BR><BR>JSP和服务器端包含（Server-Side Include，SSI）相比 <BR><BR>SSI是一种受到广泛支持的在静态HTML中引入外部代码的技术。JSP在这方面的支持更为完善，因为它可以用Servlet而不是独立的程序来生成动态内容。另外，SSI实际上只用于简单的包含，而不是面向那些能够处理表单数据、访问数据库的“真正的”程序。 <BR><BR><BR>JSP和JavaScript相比 <BR><BR>JavaScript能够在客户端动态地生成HTML。虽然JavaScript很有用，但它只能处理以客户端环境为基础的动态信息。除了Cookie之外，HTTP状态和表单提交数据对JavaScript来说都是不可用的。另外，由于是在客户端运行，JavaScript不能访问服务器端资源，比如数据库、目录信息等等。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=134&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=134&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=134">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=134&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="134" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/134.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=134"></script></body>
+</html>

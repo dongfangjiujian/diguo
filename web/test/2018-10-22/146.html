@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>JSP动作 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="JSP动作" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>JSP动作</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:39&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">                            　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>JSP动作利用XML语法格式的标记来控制Servlet引擎的行为。利用JSP动作可以动态地插入文件、重用JavaBean组件、把用户重定向到另外的页面、为Java插件生成HTML代码。 <BR><BR>　　 JSP动作包括： <BR><BR>jsp:include：在页面被请求的时候引入一个文件。 <BR>jsp:useBean：寻找或者实例化一个JavaBean。 <BR>jsp:setProperty：设置JavaBean的属性。 <BR>jsp:getProperty：输出某个JavaBean的属性。 <BR>jsp:forward：把请求转到一个新的页面。 <BR>jsp:plugin：根据浏览器类型为Java插件生成OBJECT或EMBED标记。 <BR>　　 13.1 jsp:include动作 <BR><BR>　　 该动作把指定文件插入正在生成的页面。其语法如下： <BR>＜jsp:include page="relative URL" flush="true" /＞ <BR><BR><BR><BR>　　 前面已经介绍过include指令，它是在JSP文件被转换成Servlet的时候引入文件，而这里的jsp:include动作不同，插入文件的时间是在页面被请求的时候。jsp:include动作的文件引入时间决定了它的效率要稍微差一点，而且被引用文件不能包含某些JSP代码（例如不能设置HTTP头），但它的灵活性却要好得多。 <BR><BR>　　 例如，下面的JSP页面把4则新闻摘要插入一个“What's New ?”页面。改变新闻摘要时只需改变这四个文件，而主JSP页面却可以不作修改： <BR><BR>　　 WhatsNew.jsp <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞What's New＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY BGCOLOR="#FDF5E6" TEXT="#000000" LINK="#0000EE" <BR>VLINK="#551A8B" ALINK="#FF0000"＞ <BR><BR>＜CENTER＞ <BR>＜TABLE BORDER=5 BGCOLOR="#EF8429"＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>What's New at JspNews.com＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR>Here is a summary of our four most recent news stories: <BR>＜OL＞ <BR>＜LI＞＜jsp:include page="news/Item1.html" flush="true"/＞ <BR>＜LI＞＜jsp:include page="news/Item2.html" flush="true"/＞ <BR>＜LI＞＜jsp:include page="news/Item3.html" flush="true"/＞ <BR>＜LI＞＜jsp:include page="news/Item4.html" flush="true"/＞ <BR>＜/OL＞ <BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 13.2 jsp:useBean动作 <BR><BR>　　 jsp:useBean动作用来装载一个将在JSP页面中使用的JavaBean。这个功能非常有用，因为它使得我们既可以发挥Java组件重用的优势，同时也避免了损失JSP区别于Servlet的方便性。jsp:useBean动作最简单的语法为： <BR>＜jsp:useBean id="name" class="package.class" /＞ <BR><BR><BR><BR>　　 这行代码的含义是：“创建一个由class属性指定的类的实例，然后把它绑定到其名字由id属性给出的变量上”。不过，就象我们接下来会看到的，定义一个scope属性可以让Bean关联到更多的页面。此时，jsp:useBean动作只有在不存在同样id和scope的Bean时才创建新的对象实例，同时，获得现有Bean的引用就变得很有必要。 <BR><BR>　　 获得Bean实例之后，要修改Bean的属性既可以通过jsp:setProperty动作进行，也可以在Scriptlet中利用id属性所命名的对象变量，通过调用该对象的方法显式地修改其属性。这使我们想起，当我们说“某个Bean有一个类型为X的属性foo”时，就意味着“这个类有一个返回值类型为X的getFoo方法，还有一个setFoo方法以X类型的值为参数”。 <BR><BR>　　 有关jsp:setProperty动作的详细情况在后面讨论。但现在必须了解的是，我们既可以通过jsp:setProperty动作的value属性直接提供一个值，也可以通过param属性声明Bean的属性值来自指定的请求参数，还可以列出Bean属性表明它的值应该来自请求参数中的同名变量。 <BR><BR>　　 在JSP表达式或Scriptlet中读取Bean属性通过调用相应的getXXX方法实现，或者更一般地，使用jsp:getProperty动作。 <BR><BR>　　 注意包含Bean的类文件应该放到服务器正式存放Java类的目录下，而不是保留给修改后能够自动装载的类的目录。例如，对于Java Web Server来说，Bean和所有Bean用到的类都应该放入classes目录，或者封装进jar文件后放入lib目录，但不应该放到servlets下。 <BR><BR>　　 下面是一个很简单的例子，它的功能是装载一个Bean，然后设置/读取它的message属性。 <BR><BR>　　 BeanTest.jsp <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞Reusing JavaBeans in JSP＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY＞ <BR>＜CENTER＞ <BR>＜TABLE BORDER=5＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>Reusing JavaBeans in JSP＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR><BR>＜jsp:useBean id="test" class="hall.SimpleBean" /＞ <BR>＜jsp:setProperty name="test" <BR>property="message" <BR>value="Hello WWW" /＞ <BR>＜H1＞Message: ＜I＞ <BR>＜jsp:getProperty name="test" property="message" /＞ <BR>＜/I＞＜/H1＞ <BR><BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 SimpleBean.java <BR><BR>　　 BeanTest页面用到了一个SimpleBean。SimpleBean的代码如下： <BR>package hall; <BR><BR>public class SimpleBean { <BR>private String message = "No message specified"; <BR><BR>public String getMessage() { <BR>return(message); <BR>} <BR><BR>public void setMessage(String message) { <BR>this.message = message; <BR>} <BR>} <BR><BR><BR><BR>　　 13.3 关于jsp:useBean的进一步说明 <BR><BR>　　 使用Bean最简单的方法是先用下面的代码装载Bean： <BR>＜jsp:useBean id="name" class="package.class" /＞ <BR><BR><BR><BR>　　 然后通过jsp:setProperty和jsp:getProperty修改和提取Bean的属性。不过有两点必须注意。第一，我们还可以用下面这种格式实例化Bean： <BR>＜jsp:useBean ...＞ <BR>Body <BR>＜/jsp:useBean＞ <BR><BR><BR><BR>　　 它的意思是，只有当第一次实例化Bean时才执行Body部分，如果是利用现有的Bean实例则不执行Body部分。正如下面将要介绍的，jsp:useBean并非总是意味着创建一个新的Bean实例。 <BR><BR>　　 第二，除了id和class外，jsp:useBean还有其他三个属性，即：scope，type，beanName。下表简要说明这些属性的用法。 属性 用法 <BR>id 命名引用该Bean的变量。如果能够找到id和scope相同的Bean实例，jsp:useBean动作将使用已有的Bean实例而不是创建新的实例。 <BR>class 指定Bean的完整包名。 <BR>scope 指定Bean在哪种上下文内可用，可以取下面的四个值之一：page，request，session和application。 <BR>默认值是page，表示该Bean只在当前页面内可用（保存在当前页面的PageContext内）。 <BR>request表示该Bean在当前的客户请求内有效（保存在ServletRequest对象内）。 <BR>session表示该Bean对当前HttpSession内的所有页面都有效。 <BR>最后，如果取值application，则表示该Bean对所有具有相同ServletContext的页面都有效。 <BR>scope之所以很重要，是因为jsp:useBean只有在不存在具有相同id和scope的对象时才会实例化新的对象；如果已有id和scope都相同的对象则直接使用已有的对象，此时jsp:useBean开始标记和结束标记之间的任何内容都将被忽略。 <BR><BR>type 指定引用该对象的变量的类型，它必须是Bean类的名字、超类名字、该类所实现的接口名字之一。请记住变量的名字是由id属性指定的。 <BR>beanName 指定Bean的名字。如果提供了type属性和beanName属性，允许省略class属性。 <BR><BR><BR>　　 13.4 jsp:setProperty动作 <BR><BR>　　 jsp:setProperty用来设置已经实例化的Bean对象的属性，有两种用法。首先，你可以在jsp:useBean元素的外面（后面）使用jsp:setProperty，如下所示： <BR>＜jsp:useBean id="myName" ... /＞ <BR>... <BR>＜jsp:setProperty name="myName" <BR>property="someProperty" ... /＞ <BR><BR><BR><BR>　　 此时，不管jsp:useBean是找到了一个现有的Bean，还是新创建了一个Bean实例，jsp:setProperty都会执行。第二种用法是把jsp:setProperty放入jsp:useBean元素的内部，如下所示： <BR>＜jsp:useBean id="myName" ... ＞ <BR>... <BR>＜jsp:setProperty name="myName" <BR>property="someProperty" ... /＞ <BR>＜/jsp:useBean＞ <BR><BR><BR><BR>　　 此时，jsp:setProperty只有在新建Bean实例时才会执行，如果是使用现有实例则不执行jsp:setProperty。 <BR><BR>　　 jsp:setProperty动作有下面四个属性： 属性 说明 <BR>name name属性是必需的。它表示要设置属性的是哪个Bean。 <BR>property property属性是必需的。它表示要设置哪个属性。有一个特殊用法：如果property的值是“*”，表示所有名字和Bean属性名字匹配的请求参数都将被传递给相应的属性set方法。 <BR>value value属性是可选的。该属性用来指定Bean属性的值。字符串数据会在目标类中通过标准的valueOf方法自动转换成数字、boolean、Boolean、byte、Byte、char、Character。例如，boolean和Boolean类型的属性值（比如“true”）通过Boolean.valueOf转换，int和Integer类型的属性值（比如“42”）通过Integer.valueOf转换。 <BR>value和param不能同时使用，但可以使用其中任意一个。 <BR><BR>param param是可选的。它指定用哪个请求参数作为Bean属性的值。如果当前请求没有参数，则什么事情也不做，系统不会把null传递给Bean属性的set方法。因此，你可以让Bean自己提供默认属性值，只有当请求参数明确指定了新值时才修改默认属性值。 <BR>例如，下面的代码片断表示：如果存在numItems请求参数的话，把numberOfItems属性的值设置为请求参数numItems的值；否则什么也不做。 <BR><BR>＜jsp:setProperty name="orderBean" <BR>property="numberOfItems" <BR>param="numItems" /＞ <BR><BR>如果同时省略value和param，其效果相当于提供一个param且其值等于property的值。进一步利用这种借助请求参数和属性名字相同进行自动赋值的思想，你还可以在property（Bean属性的名字）中指定“*”，然后省略value和param。此时，服务器会查看所有的Bean属性和请求参数，如果两者名字相同则自动赋值。 <BR><BR><BR><BR>　　 下面是一个利用JavaBean计算素数的例子。如果请求中有一个numDigits参数，则该值被传递给Bean的numDigits属性；numPrimes也类似。 <BR><BR>　　 JspPrimes.jsp <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞在JSP中使用JavaBean＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY＞ <BR><BR>＜CENTER＞ <BR>＜TABLE BORDER=5＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>在JSP中使用JavaBean＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR><BR>＜jsp:useBean id="primeTable" class="hall.NumberedPrimes" /＞ <BR>＜jsp:setProperty name="primeTable" property="numDigits" /＞ <BR>＜jsp:setProperty name="primeTable" property="numPrimes" /＞ <BR><BR>Some ＜jsp:getProperty name="primeTable" property="numDigits" /＞ <BR>digit primes: <BR>＜jsp:getProperty name="primeTable" property="numberedList" /＞ <BR><BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 注：NumberedPrimes的代码略。 <BR><BR>　　 13.5 jsp:getProperty动作 <BR><BR>　　 jsp:getProperty动作提取指定Bean属性的值，转换成字符串，然后输出。jsp:getProperty有两个必需的属性，即：name，表示Bean的名字；property，表示要提取哪个属性的值。下面是一个例子，更多的例子可以在前文找到。 <BR>＜jsp:useBean id="itemBean" ... /＞ <BR>... <BR>＜UL＞ <BR>＜LI＞Number of items: <BR>＜jsp:getProperty name="itemBean" property="numItems" /＞ <BR>＜LI＞Cost of each: <BR>＜jsp:getProperty name="itemBean" property="unitCost" /＞ <BR>＜/UL＞ <BR><BR><BR><BR>　　 13.6 jsp:forward动作 <BR><BR>　　 jsp:forward动作把请求转到另外的页面。jsp:forward标记只有一个属性page。page属性包含的是一个相对URL。page的值既可以直接给出，也可以在请求的时候动态计算，如下面的例子所示： <BR>＜jsp:forward page="/utils/errorReporter.jsp" /＞ <BR>＜jsp:forward page="＜%= someJavaExpression %＞" /＞ <BR><BR><BR><BR>　　 13.7 jsp:plugin动作 <BR><BR>　　 jsp:plugin动作用来根据浏览器的类型，插入通过Java插件 运行Java Applet所必需的OBJECT或EMBED元素。 <BR><BR>　　 附录：JSP注释和字符引用约定 <BR><BR>　　 下面是一些特殊的标记或字符，你可以利用它们插入注释或可能被视为具有特殊含义的字符。 语法 用途 <BR>＜%-- comment --%＞ JSP注释，也称为“隐藏注释”。JSP引擎将忽略它。标记内的所有JSP脚本元素、指令和动作都将不起作用。 <BR>＜!-- comment --＞ HTML注释，也称为“输出的注释”，直接出现在结果HTML文档中。标记内的所有JSP脚本元素、指令和动作正常执行。 <BR>＜＼% 在模板文本（静态HTML）中实际上希望出现“＜%”的地方使用。 <BR>%＼＞ 在脚本元素内实际上希望出现“%＞”的地方使用。 <BR>＼' 使用单引号的属性内的单引号。不过，你既可以使用单引号也可以使用双引号，而另外一种引号将具有普通含义。 <BR>＼" 使用双引号的属性内的双引号。参见“＼'”的说明。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=146&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=146&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=146">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=146&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="146" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/146.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=146"></script></body>
+</html>

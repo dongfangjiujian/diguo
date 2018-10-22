@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Scjp笔记 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Scjp笔记" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>Scjp笔记</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:22&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">注：*表示0或多个；＋表示1个或多个<br>Object-Oriented Programming<br>1．Constructor <br>没有返回值<br>如果只定义一个带参数的constructor，则lose缺省的无参数的constructor,new xx()会出错。<br>2．Source file layout：<br>定义顺序：Package ?C &gt;import ?C&gt; class declaration<br>一个文件至少应该有一个class,只能有一个public class,文件名必须要和public class的名称一致，如果没有public class，对文件名没有限制。<br><br>3．Package:<br>如果文件中没声明Package,则class属于缺省包，即没有名字的包<br><br>Identifiers,Keywords,and Type<br>1.Identifiers:<br>开头以Unicode letter，”_”和”$”。后面可以跟数字；(中文变量，方法名居然都可以！！！牛)<br>大小写敏感；<br>没有长度限制。<br><br>Warning:<br>类名必须是ASCII的字母。因为很多文件系统不支持UNICODE.（不过我试了一下，类名是中文的，Compile的时候是可以通过，Runtime时throw java.lang.NoClassDefFoundError）<br><br>2.Keywords:<br>几个 很生僻的Keywords：<br>transient,strictfp,volatile<br><br>没有goto和const；没有sizeof()。<br><br>4．Basic Java Type:<br>共8种。<br>Boolean和integer Type之间不能转化。<br><br>5.Integral:<br>Byte:8bit -2的7次方~2的7次方-1<br>short:16bit<br>int:32bit<br>long:64bit<br><br>6.Floating point<br>float:32bit<br>double:64bit<br><br>浮点形默认是double.<br>float a = 1.02 //compile error<br>float a = 1.02f or float a = 1.02F //correct<br><br>7.类型的取值范围<br>Data TypeSize (bits)Initial ValueMin ValueMax Value<br>boolean1false falsetrue<br>Byte80-128 (-27)127 (27 ?C 1)<br>Short160-215 215 - 1<br>Char16‘u0000’‘u0000’ (0)‘uFFFF’ (216 ?C 1)<br>Int320-231 231 - 1<br>Long640L-263 263 - 1<br>Float320.0F1.4E-453.4028235E38<br>Double640.04.9E-3241.7976931348623157E308<br><br>8.Assignment of Reference Type<br>基本类型的赋值是值的赋值；int x =6; int y = x;相当于复制x的内容到y上。<br>对象的赋值不会赋值内容，两个对象的指针都是指向同一个object..<br><br>9.Pass by Value<br>Pass argument by Value. 当方法的参数是对象的引用时，参数的值是对象的地址，对象是可以在参数调用时改变的。<br>Public class test{<br>Public static void changeObject(MyDate ref){<br>Ref = new MyDate(1,2,2002);<br>}<br>public static void main(String[] arv){<br>MyDate d = new MyDate(3,3,1988);<br>ChangeObject(d);<br>}<br>}<br>结果是d还是为1988,3,3;因为对象的地址是不变的。<br><br>10.Java Coding Convention(编码惯例)<br>Package ?C 名词且小写<br>Class--名词且第一个字母大写<br>Interface?同Class<br>Methods－动词且第一个字母小写，分隔词第一个字母大写，不用”-“<br>Variable?第一个字母小写，不用”_”,”$”(对于inner class有意义)<br>Constants?大写并用”_”<br><br>Expression and Flow Control<br>1．<br>Local variables?Variable defined in method <br>Instance variables?Variable defined outside method<br><br>Instance variable initialize:<br>byte,short,int,long,float,double:0<br>boolean:false<br>char:’u0000’<br>all reference type:null<br><br><br><br>2．Bitwise logic Operators<br>位逻辑运算符作用于整形。(byte,char,short,int,long)<br><br>3．&gt;&gt;<br>右移是把第一个操作数/2的第二个操作数次方<br>e.g<br>128&gt;&gt;4 returns 128/(2的4次方)<br><br>4．优先级<br>助记词 运算符类型 运算符<br>UlcerUnary+ - ++ ?C [[ rest...]]，（）cast<br>AddictsArithmetic (and shift)* / % + - &lt;&lt; &gt;&gt;<br>ReallyRelational&gt; &lt; &gt;= &lt;= == !=<br>LikeLogical (and bitwise)&amp;&amp; || &amp; | ^ <br>CConditional (ternary)A &gt; B ? X : Y<br>A LotAssignment= (and compound assignment like *=)<br><br>Note:<br>对于int,其实是右移右操作数的求32的模；对于long,其实是右移右操作数的求64的模<br>int y = x &gt;&gt; 32 ,y没有改变，而不是0.(我试了一下，byte和short分别右移8和16，结果都为0)<br><br>4．&gt;&gt;&gt;<br>11000&gt;&gt;2 returns 11110<br>11000&gt;&gt;&gt;2 returns 00110<br><br>Note：<br>&gt;&gt;&gt;只对int,long有效。如果对于byte和short,在&gt;&gt;&gt;之前先promote成int,右移完再折回byte或short，这样，通常unsigned shift becomes signed shift<br><br>5.&lt;&lt;<br>128&lt;&lt;4 returns 128*(2的四次方)<br><br>6.+<br>short x =5;<br>short y=6;<br>short z=x+y;//compile error<br>因为+的结果最小起码是int<br><br>7.cast<br><br><br>7.if()要求的是一个boolean表达式<br>if(x) //int x cause error<br>use if(x!=0)<br><br>8.switch(exp1)<br>exp1必须是和int兼容，（byte，short，int，char）<br>float，long，和类指针（String）都不允许。<br><br>9.label:statement<br>statement必须是循环(break 还可以是switch)<br><br><br>Array:<br>1.初始化<br>s = new char[5] //initialize for ‘u0000’<br><br>2.多维数组的定义<br>int [][] a = new int [2][];<br>a[0] = new int[4];<br>a[1] = new int[6];<br><br>System.out.println(a.length);<br>System.out.println(a[0].length);<br><br>Result:<br>2<br>4<br><br>3.数组的复制<br>int a[]={1,2,3};<br>int b[]={4,5,6,7,8,9};<br>System.arraycopy(a,0,b,0,a.length);<br><br>Result:<br>b[]={1,2,3,7,8,9}<br>Note:<br>System.arraycopy拷贝的是引用，而不是Object.(我试了，如果是基本类型的数组，用arraycopy后，修改其中一个数组的值，另一个数组是不变的；如果是对象的数组，则值会改变)<br><br>Inheritance<br>1.Constructors Are not Inherited<br><br>2.instance of 检查对象的类型（类，接口，数组）<br><br>3.cast<br>Up Cast(parent class = subclass) :直接用=转化<br>Downward(subclass = parent class):如果该对象不是要转化的那个对象，则会在Runtime的时候出错。<br><br><br><br>4.OverLoading Method<br>必须有不同的参数，可以有不同的返回类型<br><br>5.Overriding Method<br>有相同的函数名，参数类型，和返回值，实现可以不一样。并且子类的方法不能比父类的函数的访问权限小。<br><br>6.Super<br>在Constructor中如果要调用Super的话应该写在第一行<br>Super能指定参数调用父类的Constructor<br>如果在Constructor中没有调用Super，则Compiler会隐含调用父类的”default”的Constructor<br>如果父类没有定义非私有的“default”的Constructor，则Compile Error<br><br>7．构造函数初始化<br>1．分配对象的空间，把instance variable设置default value(Boolean-&gt;false,Integer,float-&gt;0,reference-&gt;null)<br>2．<br>2.1绑定Constructor的参数<br>2.2如果有this(),跳到2.5<br>2.3递归调用implicit 或explicit的super<br>2.4执行instance variable的explict的赋值<br>2.5执行当前的Constructor.<br><br>7.Constructor的Rule<br>在Constructor中调用的函数应为私有函数。<br>因为如果超类Employee的Constructor中有公有函数getDetail，类Manager继承Employee,而manager中override此函数getDetail，声明一个manager的对象时会递归调用Employee的Constructor,而因为是runtime check,实际上Emplyee中调用的getDetail是Manager的getDetail。<br><br>public class Emploee extends Object {<br>private String name;<br>private double salary = 15000.00;<br>private Date birthDate;<br>private String summary;<br><br>public Emploee(String n, Date DoB) {<br>name = n;<br>birthDate = DoB;<br>summary = getDetails();<br>}<br>public Emploee(String n) {<br>this(n, null);<br>}<br><br>private String getDetails() {<br>return &quot;Name: &quot; + name + &quot; Salary: &quot; + salary<br>+ &quot; Birth Date: &quot; + birthDate;<br>}<br><br>public static void main(String[] arg)<br>{<br>Manager m = new Manager(&quot;2&quot;,&quot;gl&quot;);<br><br>}<br>}<br><br><br>class Manager extends Emploee {<br>private String department;<br>public Manager(String n, String d) {<br>super(n);<br>department = d;<br>}<br><br>public String getDetails() {<br>return &quot; Dept: &quot; + department;<br>}<br><br>}<br><br><br>8．如果重载equals,最好重载hasCode()<br><br>9.toString<br>基本类型都对应一个封装的类，在初始化时可以传入String,如果类型不对，会抛出NumberFormatException<br><br>String-&gt;数字<br>int x = Integer.valueof(str).intValue();<br>int x = Integer.parseInt(str);<br><br>Advanced Class Features<br>1.Static的方法不能被override<br>2.Final Method<br>2.1.Final方法不能被override<br>2.2.Static和private的方法都被默认为Final方法。<br><br>3.Final Variable<br>3．1．Final Reference：指向对象的内容可以改变，但不能改变指向的对象。<br>3．2．A Blank Final Instance Variable：在Constructor中赋值，而A Blank Final Local Variable在函数中赋值。<br><br>4.Abstract<br>如果子类没有实现父类（抽象类）的Abstract方法，则该方法继续声明为Abstract<br><br>5.Inner Class<br>5.1 new Inner Class<br>Outer o = new Outer();<br>Outer.Inner i = o.new Inner();<br>i.doSomething();<br><br>如果Inner类定义为static(Inner的函数定义为static则Inner也要定义为 static，这样Inner就不能访问Outer类)则<br>o.Inner.doSomething()<br><br>5.2 Inner Class 可以在一个Outer Class Method中定义，但不能访问method中的variable(final<br>Variable除外)因为如果method中建立一个Inner Class对象并返回Instance,外部用此Instance访问方法中的variable，如果该variable不再存在，就会出错。<br><br>5．3<br>内嵌类可以是final,abstract,static的,可以带public,private等modifier<br>方法内的内嵌类不能为static，也不能带任何modifier<br>匿名类不能有构造器，不能是abstract(如果abstract还有什么用，一般匿名类都是在事件处理中使用),不能是static<br><br>5.4 modifier<br>如果是default,就是只能同包里访问<br>如果是protected，在同一个包内没问题；<br>若不同包里，如果想被访问，(假定类 B 中要访问类 A 中的protected成员)<br>a. B 必须继承 A<br>b. 在 B 中, 必须用 B 或 B 的 sub-class 的实例来访问.当然, 也可以用关键字super<br>根据以上原则, 再看上面的source, 会知道, ClassOne中的getVar()方法, 如果是(default)<br>的, 在ClassTest中, 始终找不到这个方法.---compile-error<br>如果是 protected 的, 则必须用ClassTest的实例来调用.<br>char a = new ClassOne().getVar(); --- compile-error<br>// char a = new ClassTest().getVar(); ----OK<br>// char a = super.getVar(); --- OK<br>// char a = getVar(); --- OK<br><br>5．5外面一层的类不能声明成protect和pravite的<br>5．6 Interface<br>Interface的method默认为public,abstract,no-static<br>变量默认为public,final,static<br><br>5.7关于匿名类的描述。<br>Anonymous inner class are local inner classes that don&amp;acute;t have a class name.<br>You use an anonymous class when you want to create and use a class but don&amp;acute;t<br>want to bother with giving it a name or using it again.<br>When use an anonymous inner class ,the keyword class is missing,and there are<br>no modifers(public,protected,and so on). The kewords extends and implements are <br>missing too. These keywords aren&amp;acute;t allowed because we create anonymous inner <br>class through another extension to the new operator syntax. That means the complete<br>class definition is actually part of a java expression. Right after the<br>new someClass() syntax,you write a curly brace and start to write a class definition.<br>It&amp;acute;s that simple.<br>The lack of a class name has a number of implications for the definition and use of<br>inner classes.You can&amp;acute;t define contructors for an anonymous inner class because <br>you can&amp;acute;t name them. They must always (implicitly) extend a superclass or implements <br>some interface,even though you never use the extends or implements keywords.<br><br>5.8 Interface<br>interface can extend several interfaces<br>e.g<br>interface q<br>{<br>}<br><br>interface p<br>{<br>}<br><br>interface qq extends q,p<br>{<br>String s = &quot;interface&quot;;<br>}<br>is OK<br><br>5.9 构造顺序<br>First.<br>the memory for the complete object is allocated and the default values for the instance variables are assigned.（或static变量的赋值）<br>Second,<br>the top-level constructor is called and follows these steps recursively down the inheritance tree:<br>1. Bind constructor parameters.<br>2. If explicit this(), call recursively and then skip to step 5.<br>3. Call recursively the implicit or explicit super(...), except for<br>Object because Object has no parent class.<br>4. Execute explicit instance variable initializers.（{ }也在这时候执行）<br>5.Execute body of current constructor.<br><br>e.g 1.<br>class Employee extends Object {<br>private String name;<br>private double salary = 15000.00;<br>private Date birthDate;<br>public Employee(String n, Date DoB) {<br>// implicit super();<br>name = n;<br>birthDate = DoB;<br>}<br>public Employee(String n) {<br>this(n, null);<br>}<br>}<br>public class testchild extends Employee {<br>private String department;<br>public testchild(String n, String d) {<br>super(n);<br>department = d;<br><br>}<br>public static void main(String[] args)<br>{<br>testchild t = new testchild(&quot;x&quot;,&quot;d&quot;);<br>}<br>}<br><br>e.g 2<br>class X1<br>{<br>Y b = new Y();<br>X1()<br>{<br>System.out.print(&quot;X&quot;);<br>}<br>}<br><br>class Y<br>{<br>Y()<br>{<br>System.out.print(&quot;Y&quot;);<br>}<br>}<br><br>public class test extends X1<br>{<br>static int x=10;<br>Y y = new Y();<br>{<br>int i=20;<br><br>}<br>static<br>{<br>int xx=10;<br>}<br>test()<br>{<br>System.out.print(&quot;Z&quot;);<br>}<br><br>public static void main(String[] args)<br>{<br>test t = new test();<br>}<br>}<br>Exception<br>1.try/catch/finally<br>不执行finally的唯一情况：System.exit()<br><br>2.ArithmeticException<br>浮点数除0是不会抛出异常的(ArithmeticException)<br>如float x = (float)5.0/0<br>0．0/0 = NAN(not a number)<br>FPN/0 =POSITIVE_INFINITE<br>-FPN/0 =NEGATIVE_INFINITE<br><br>3.函数可以throw多个exception<br>4.函数override如果抛出异常必须是父类函数异常或异常的子集(p322)<br>5.继承图 <br>àError<br>Throwable--|<br>àException<br><br>Text Based Application<br>1.command line???(p335)<br>2.p345??<br>3.Collection/List/Set<br>Collection：无序元素可重复<br>List:有序元素可重复<br>(ArrayList:this implementation is not synchronized)<br>Set：无序元素不可重复。<br>(StoreSet,TreeSet:排序，TreeSet: this implementation is not synchronized)<br>4．ListIterator<br>Add是把元素插入到指针当前位置之前，所以在Add后调用Previous是指向新元素。<br><br>AWT<br>1.Component/Container<br>GUI component 是Component或MenuComponent的子类<br>Container是Component的子类<br>Panel是Container的子类<br><br>Component<br>|<br>Container<br>|<br>------------------------------<br>||<br>Panel Window<br>||<br>Applet-----------------------------------------<br>||<br>Frame(title and resize) Dialog(can’t resize)<br>Panel必须放到Window中去显示<br><br>3．Layout manager<br>Layout manager负责组件在容器中的位置和大小。（不基于平台）<br>如果你必须要改动组件的位置和大小。<br>Container.setLayout(null)<br>然后在调用组件的SetLocation,SetSize,SetBounds<br><br>4.Frame<br>Frame必须可见(setVisible(true))和设定大小(setSize)<br><br>5.Default Layout Mannager<br>Window/Frame/Dialog---BorderLayout<br>Panel/Applet---FlowLayout<br><br>6.<br><br><br>Applet<br>IO<br>1.InputStreamReader/OutputStreamWriter<br>Converting between Bytes and Characters<br>The StreamReader and Writer classes can take either a character encoding parameter or be left to use the platform default encoding<br>InputStreamReader(InputStream in)<br>InputStreamReader(InputStream in, String encoding);// English :“ISO8859_1&quot;,Chinese:&quot;GB2312&quot;<br><br>2.Streams operate on bytes while Readers/Writers operate on chars.<br>FileReader/FileWriter---FileInputStream/FileOutputStream<br>构造函数直接对（String）文件名或File操作<br><br>New FileWriter(“filename”) or FileOutputStream(“filename”) will overwrite if “filename” is existing or create a new file, if not existing. But we can specify the append mode in the second argument.<br><br>Others<br>1.String<br>substring(int,int),the second arg is exclusive.= [ )<br><br>还有一些是做模题的笔记：<br>1.＝＝<br>Comparing two strings with == operator checks for memory address to which the object reference is referring to. Java uses the concept of pooling. It maintains the pool of Java strings and when a new string is created, it first checks if it already exists in memory<br>Eg<br>String s3 = &quot;arit&quot;;<br>String s4 = &quot;arit&quot;;<br>String s2 = s1.replace(&amp;acute;m&amp;acute;,&amp;acute;r&amp;acute;);<br>System.out.println(s2 == s3);<br>System.out.println(s3 == s4);<br>Output:<br>False<br>True<br>(pratice 1:1)<br><br>2.equals()<br>if equals() method is not defined in 自定义的class, the equals() method of Object class, the parent class will be used. The equals() method of Object class returns true when two object references being compared, point to the same memory area<br>e.g<br>class MyClass<br>{<br>int x;<br>MyClass(int i){x = i;}<br><br>public static void main(String args[])<br>{<br>MyClass m1 = new MyClass(100);<br>MyClass m2 = new MyClass(100);<br><br>System.out.println(m1.equals(m2))<br>}<br>}<br>output:<br>false<br><br>(pratice 1:4)<br><br>3. wait/notify<br>The wait/notify protocol can only be used within code that is synchronized. In this case calling code does not have a lock on the object(not synchronized) and will thus cause an Exception at runtime<br>每个对象含有一个机锁（lock,monitor）,当你调用任何一个synchronized函数时，对象被锁定，该对象其他synchronized函数无法被调用,直到第一个函数执行完毕并解锁。<br>Wait/notify属于Object一部分；wait和sleep区别是wait会将机锁释放掉。<br>(pratice 1:6)<br><br>4.Logical /Bitwise operators<br>Logical: AND(&amp;&amp;), OR(||) , NOT(!)用于boolean,（短路short-circuiting）<br>Bitwise:<br>AND(&amp;),OR(|),XOR(^)?用于基本类型的Bits，boolean<br>NOT(~) 只用于基本类型的Bits<br>(pratice 1:15)<br><br>5. there can&amp;acute;t be more than one public class/interface<br><br>6.%<br>To calculate a % b(a modulus b), the simplest way is, drop any negative signs from both the operands and calculate the result. Now if the left-hand side operand is negative negate the result, the sign of right-hand side operand doesn&amp;acute;t matter.<br>e.g<br>int a = -5; int b = -2;<br>System.out.println(a % b);<br>a = -5;b = 2;<br>System.out.println(a % b);<br>a = 5;b = -2;<br>System.out.println(a % b);<br>Output:<br>-1<br>-1<br>1<br><br>7.yield()<br>The yield() method simply returns control back to the JVM, and unless there is a higher priority thread ready to run, this thread will continue or resume execution<br>e.g <br>public class ThreadTest extends Thread <br>{<br>public void run() <br>{<br>System.out.println(&quot;In run&quot;);<br>yield();<br>System.out.println(&quot;Leaving run&quot;);<br>}<br>public static void main(String args []) <br>{<br>(new ThreadTest()).start();<br>}<br>}<br>output:<br>The text &quot;In run&quot; followed by &quot;Leaving run&quot; will be displayed.<br><br>8.swtich<br>The default statement need not be at the end and will not be executed if there is a matching case like in the above code<br>e.g<br>switch(k)<br>{ <br>default: <br>System.out.println(&quot;This is the default output&quot;); <br>break; <br>case 10: <br>System.out.println(&quot;ten&quot;);<br>case 20: <br>System.out.println(&quot;twenty&quot;); <br>break; <br>}<br>output:<br>ten<br>twenty<br><br>9.<br>Prefixing a number with a zero indicates that it is in Octal format<br>e.g<br>int i = 012;<br>System.out.println(i);<br>Output:<br>10.<br>Before any object is constructed the object of the parent class is constructed(as there is a default call to the parent&amp;acute;s constructor from the constructor of the child class via the super() statement. Also note that when an object is constructed the variables are initialized first and then the constructor is executed. So when new Z() is executed , the object of class X will be constructed, which means Y b = new Y() will be executed and &quot;Y&quot; will be printed as a result. After that constructor of X will be called which implies &quot;X&quot; will be printed. Now the object of Z will be constructed and thus Y y = new Y() will be executed and Y will be printed and finally the constructor Z() will be called and thus &quot;Z&quot; will be printed. Thus YXYZ will be printed.<br>class X1<br>{<br>Y b = new Y();<br>X1()<br>{<br>System.out.print(&quot;X&quot;);<br>}<br>}<br><br>class Y<br>{<br>Y()<br>{<br>System.out.print(&quot;Y&quot;);<br>}<br>}<br><br>public class test extends X1<br>{<br>Y y = new Y();<br><br>test()<br>{<br>System.out.print(&quot;Z&quot;);<br>}<br><br>public static void main(String[] args)<br>{<br>test t = new test();<br>}<br>}<br><br>11. instanceof<br>instanceof后面可以跟类名，接口名，居然还可以跟数组！(Object)<br>e.g compile succeed<br>x instanceof int[]<br>x instanceof String[]<br><br>12.AWT<br>In all cases, unless a component&amp;acute;s attributes (font type, font size, foreground color, background color, etc) are explicitly defined, they are inherited from the surrounding container<br><br>13. ThreadGroup<br><br>14.sleep<br>sleep会 throws InterruptedException，一定注意要加上try/catch<br><br>15. <br><br><br>int i = 10, j = 3, k = 7;<br>int p = 30;<br>p += k -= j &lt;&lt;= i %= 4;<br>System.out.println(&quot;i = &quot; + i);<br>System.out.println(&quot;j = &quot; + j);<br>System.out.println(&quot;k = &quot; + k);<br>System.out.println(&quot;p = &quot; + p);<br>Output:<br>i = 2<br>j = 12<br>k = -5<br>p = 25<br><br>16.byte溢出<br>void infiniteLoop()<br>{<br>byte b = 1;<br>while ( ++b &gt; 0 );<br>System.out.println(&quot;Welcome to My World!&quot;);<br>}<br>output：<br>the variable &amp;acute;b&amp;acute; will go up to 127. After that overflow will occur and &amp;acute;b&amp;acute; will be set to -ve value, the loop ends and prints &quot;Welcome to My World!&quot;.<br><br>17．Integer/Long/Float/Double/String/StringBuffer is final<br><br>18. only the casting of object references may potentially require a runtime check.<br>e.g<br>int n=25600;<br>byte b=(byte)n;<br>都溢出了，居然没错！没天理，b=0;<br><br>19.native<br>native<br>e.g. generally use static intitializer<br>static {<br>System.loadLibrary(&quot;NativeLib&quot;);<br>}<br>native void nativeMethod();<br><br>20. not a &lt;&lt;&lt; operator.<br>　<p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=98&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=98&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=98">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=98&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="98" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/98.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=98"></script></body>
+</html>

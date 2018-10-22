@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>SCJP考题中的陷阱 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="SCJP考题中的陷阱" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>SCJP考题中的陷阱</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:22&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">1) Two public classes in the same file. (illegal) <br><br>(2) Main method calling a non-static method. (illegal) <br><br>(3) Methods with the same name as the constructor(s). (这种题常有) <br><br>(4) Thread initiation with classes that do not have a run() method. (常考之题) <br><br>(5) Local inner classes trying to access non-final vars. (illegal) <br><br>(6) Case statements with values out of permissible range. (byte,int, short, chat) <br><br>(7) Math class being an option for immutable classes !! (totally wrong!) <br><br>(8) instanceOf is not same as instanceof. <br><br>(9) Private constructors. (legal) <br><br>(10) An assignment statement which looks like a comparison. (比如说if(a=true),对于这种题眼睛亮一点) <br><br>(11) System.exit() in try-catch-finally blocks. (finally 不会执行) <br><br>(12) Order of try-catch-finally blocks matters. (若顺序错的话: error: No try before catch) <br><br>(13) main() can be declared final. (OK) <br><br>(14) -0.0 == 0.0 is true. <br><br>(15) A class without abstract methods can still be declared abstract. <br><br>(16) RandomAccessFile descends from Object and implements DataInput and DataOutput. <br><br>(17) Map does not implement Collection. <br><br>(18) Dictionary is a class, not an interface. <br><br>(19) Collection is an Interface where as Collections is a helper class. (这题我倒没见过,但还真容易看混) <br><br>(20) Class declarations can come in any order. <br>(也就是说: class Child extends Parents{} <br>class Parents{} <br>这种顺序是可以的.) <br><br>(21) Forward references to variables gives compiler error. <br><br>(22) Multi dimensional arrays can be sparce. <br>(这句话是说: 多维数组中子数组不一定必须有一定个数的元素,比如我们把一个二维数组看成一个矩阵,那么行与列中的元素可以不完整,可以不对齐.) <br><br>(23) Arrays, whether local or class-level, are always initialized. <br><br>(24) Strings are initialized to null, not empty string. <br><br>(25) An empty string is NOT the same as a null string. <br><br>(26) A declaration cannot be labelled. <br><br>(27) &quot;continue&quot; must be in a loop(for, do, while). It cannot appear in case constructs. <br><br>(28) Primitive array types can never be assigned to each other, eventhough the primitives themselves can be assigned. <br>(也就是说: ArrayofLongPrimitives = ArrayofIntegerPrimitives 会编译出错,但 longvar = intvar 是合法的) <br><br>(29) A constructor can throw any exception. <br><br>(30) Initilializer blocks are executed in the order of declaration. <br><br>(31) Instance initializer(s) gets executed ONLY IF the objects are constructed. <br><br>(32) All comparisons involving NaN and a non-Nan would always result false. (对大多数朋友来说这可是个盲点噢) <br><br>(33) Default type of a numeric literal with a decimal point is double. <br>(我在这里把Java成员变量默认初始化原则写一下: <br>成员变量类型 取值 <br>byte 0 <br>short 0 <br>int 0 <br>long 0L <br>char &amp;acute;u0000&amp;acute; <br>float 0.0F <br>double 0.0D <br>boolean false <br>所有引用类型 null ) <br><br>(34) integer (and long ) operations / and % can throw ArithmeticException while float / and % will never, even in case of division by zero. <br><br>(35) == gives compiler error if the operands are cast-incompatible. <br><br>(36) You can never cast objects of sibling classes( sharing the same parent ), even with an explicit cast. <br><br>(37) .equals returns false if the object types are different.It does not raise a compiler error. <br><br>(38) No inner class can have a static member.(but static inner class can) <br><br>(39) File class has NO methods to deal with the contents of the file.(also the existing directory) <br><br>(40) InputStream and OutputStream are abstract classes, while DataInput and DataOutput are interfaces. <br><br><br>当然以上这些都是从题目中总结出来的技巧,其实书上也都有,大家还是多看看书噢. 又大致翻译了一下，有意见可以提出来大家讨论 <br>(1) Two public classes in the same file. (illegal) <br>同一个文件里有两个public类。(非法) <br><br>(2) Main method calling a non-static method. (illegal) <br>在main(String[] args)方法内调用一个非静态方法。(非法) <br><br>(3) Methods with the same name as the constructor(s). (这种题常有) <br>与Constructor(s)有相同名字的方法。 <br><br>(4) Thread initiation with classes that do not have a run() method. (常考之题) <br>初始化了一个没有run()方法的线程类。 <br><br>(5) Local inner classes trying to access non-final vars. (illegal) <br>内部类尝试访问非final变量(非法) <br><br>(6) Case statements with values out of permissible range. (byte,int, short, chat) <br>选择语句case中，没有使用允许的值。如(byte,int,short,char)等 <br><br>(7) Math class being an option for immutable classes !! (totally wrong!) <br>Math类作为不可改变类。(完全错误) (请提意见) <br><br>(8) instanceOf is not same as instanceof. <br>instanceOf 不是 instanceof。 <br><br>(9) Private constructors. (legal) <br>私有 的Constructor。 (合法) <br><br>(10) An assignment statement which looks like a comparison. <br>一个 赋值语句 看起来像 比较语句。 <br>比如说if(a=true),和if(a==true)。对于这种题眼睛亮一点。 <br><br>(11) System.exit() in try-catch-finally blocks. (finally 不会执行) <br>在try-catch-final块中的退出语句。 (finally不会执行) <br><br>(12) Order of try-catch-finally blocks matters. (若顺序错的话: error: No try before catch) <br>try-catch-final块的顺序问题。 <br><br>(13) main() can be declared final. (OK) <br>main()方法 可以声明为 final. <br><br>(14) -0.0 == 0.0 is true. <br>如题。 <br><br>(15) A class without abstract methods can still be declared abstract <br>没有 抽象方法的类，仍然可以定义为抽象类。 <br><br>(16) RandomAccessFile descends from Object and implements DataInput and DataOutput. <br>RandomAccessFile 类继承Object，并且实现了DataInput和DataOutput接口。 <br><br>(17) Map does not implement Collection. <br>Map 并不实现 Collection. <br><br>(18) Dictionary is a class, not an interface. <br>Dictionary 是一个类，不是接口。 <br><br>(19) Collection is an Interface where as Collections is a helper class. (这题我倒没见过,但还真容易看混) <br>Collection是一个接口，但 Collections却是一个辅助类。 <br><br>(20) Class declarations can come in any order. <br>(也就是说: class Child extends Parents{} <br>class Parents{} <br>这种顺序是可以的.) <br>可以以任何顺序申明类。 <br><br>(21) Forward references to variables gives compiler error. <br>把 reference 给 变量，会产生编译错误。 (请提意见) <br><br>(22) Multi dimensional arrays can be sparce. <br>(这句话是说: 多维数组中子数组不一定必须有一定个数的元素,比如我们把一个二维数组看成一个矩阵,那么行与列中的元素可以不完整,可以不对齐.) <br>如jiayuan所说。 <br><br>(23) Arrays, whether local or class-level, are always initialized. <br>数组，无论是当前的，还是类等级的，都会被初始化。 <br><br>(24) Strings are initialized to null, not empty string. <br>String 是被初始化为 null,不是空字符。 <br><br>(25) An empty string is NOT the same as a null string. <br>一个空字符串 不是 一个null字符。 <br><br>(26) A declaration cannot be labelled. <br>一个声明语句不能被标记。 <br><br>(27) &quot;continue&quot; must be in a loop(for, do, while). It cannot appear in case constructs. <br>“continue”已经要在一个循环里(如for,do,while)，它不能在case语句中出现。 <br><br>(28) Primitive array types can never be assigned to each other, eventhough the primitives themselves can be assigned. <br>(也就是说: ArrayofLongPrimitives = ArrayofIntegerPrimitives 会编译出错, 但 longvar = intvar 是合法的) <br><br>Primitive(int,char,long等)数组是不能互相赋值的，即使它们本身可以。 <br>解释见jiayuan所说。 <br><br>(29) A constructor can throw any exception. <br>一个Constructor可以抛出任何异常。 <br><br>(30) Initilializer blocks are executed in the order of declaration. <br>初始化块是按照声明的顺序执行的。(请提意见) <br><br>(31) Instance initializer(s) gets executed ONLY IF the objects are constructed. <br>实例初始化语句块只有在它建立后才会被执行。 <br><br>(32) All comparisons involving NaN and a non-Nan would always result false. (对大多数朋友来说这可是个盲点噢) <br>所有关于 NaN(Not a Number) 和 non-NaN 的比较，都返回false. <br>这条很重要。 <br><br>(33) Default type of a numeric literal with a decimal point is double. <br>我在这里把Java成员变量默认初始化原则写一下: <br>成员变量类型 取值 <br>byte 0 <br>short 0 <br>int 0 <br>long 0L <br>char &amp;acute;u0000&amp;acute; <br>float 0.0F <br>double 0.0D <br>boolean false <br>所有引用类型 null <br><br>(34) integer (and long ) operations / and % can throw ArithmeticException while float / and % will never, even in case of division by zero. <br>integer和long 操作 /和% 的话， 会抛出ArithmeticException， <br>但是 float形不会，即使是除以0。 <br><br>(35) == gives compiler error if the operands are cast-incompatible. <br>==会产生编译错误，如果两边 不兼容的话。 <br><br>(36) You can never cast objects of sibling classes( sharing the same parent ), even with an explicit cast. <br>你永远不可能 转化具有同一个超类的类的对象，即使是刻意转化。(请提意见) <br><br>(37) .equals returns false if the object types are different.It does not raise a compiler error. <br>equals() 返回 false 如果对象类型不同，但不产生 编译错误。 <br><br>(38) No inner class can have a static member.(but static inner class can) <br>没有内部类 可以拥有 静态成员。(但静态内部类可以) <br><br>(39) File class has NO methods to deal with the contents of the file.(also the existing directory) <br>File类没有 任何 处理文件内容的方法。(当然，存在的目录也一样) <br><br>(40) InputStream and OutputStream are abstract classes, while DataInput and DataOutput are interfaces. <br>InputStream 和 OutputStream 是 抽象类,但是 DataInput 和 DataOutput是 接口。 <br>　 <br><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=96&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=96&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=96">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=96&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="96" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/96.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=96"></script></body>
+</html>

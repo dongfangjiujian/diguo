@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<div>
+</div>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/167.html">JSP技术简介<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/162.html">JSP概述、元素、语法、解释（2）<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/163.html">JSP中”预定义变量”的使用<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/164.html">JSP Actions的使用<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/165.html">怎么在JSP中跳转到别一页面<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/160.html">改写MySQL翻页例子<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/161.html">JSP概述、元素、语法、解释<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/156.html">Orion App Server的安装<span class="badge">1</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/157.html">JDBC-ODBC翻页例子<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/158.html">MySQL翻页例子<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/159.html">Orion下自定义Tag<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/154.html">JAVA/JSP学习系列之二(Tomcat安装)<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/155.html">JAVA/JSP学习系列之三(Resin+Apache的安装)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/152.html">JSP在win2000下的安装<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/153.html">JAVA/JSP学习系列之一(JDK安装)<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/148.html">JSP的安装、启动及简单示例<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/149.html">JSP入门教程（1）<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/150.html">JSP入门教程（2）<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/151.html">JSP入门教程（3）<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/146.html">JSP动作<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/147.html">JSP技术简介<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/144.html">JSP及语法概要<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/145.html">脚本元素、指令和预定义变量<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/140.html">HTTP应答状态<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/141.html">设置HTTP应答头<span class="badge">0</span></a>
+<!--list.var2-->	
+									
+</div>
+<div>
+
+  
+ 页次：5/8&nbsp;每页25&nbsp;总数187&nbsp;&nbsp;&nbsp;&nbsp;<a href='/test/index.html'>首页</a>&nbsp;&nbsp;<a href='/test/index_4.html'>上一页</a>&nbsp;&nbsp;<a href='/test/index_6.html'>下一页</a>&nbsp;&nbsp;<a href='/test/index_8.html'>尾页</a>&nbsp;&nbsp;&nbsp;&nbsp;转到:<select name=select onchange="self.location.href=this.options[this.selectedIndex].value"><option value='/test/index.html'>第 1 页</option><option value='/test/index_2.html'>第 2 页</option><option value='/test/index_3.html'>第 3 页</option><option value='/test/index_4.html'>第 4 页</option><option value='/test/index_5.html' selected>第 5 页</option><option value='/test/index_6.html'>第 6 页</option><option value='/test/index_7.html'>第 7 页</option><option value='/test/index_8.html'>第 8 页</option></select>
+
+</div>
+</div>
+            <div class="col-md-5"></div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -14,40 +14,27 @@ if(!defined('InEmpireCMS'))
 <script type="text/javascript" src="[!--news.url--]skin/default/js/tabs.js"></script>
 </head>
 <body class="listpage">
-<!-- 页头 -->
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="top">
-<tr>
-<td>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="63%"> 
-<!-- 登录 -->
-<script>
-document.write('<script src="[!--news.url--]e/member/login/loginjs.php?t='+Math.random()+'"><'+'/script>');
-</script>
-</td>
-<td align="right">
-<a onclick="window.external.addFavorite(location.href,document.title)" href="#ecms">加入收藏</a> | <a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('[!--news.url--]')" href="#ecms">设为首页</a> | <a href="[!--news.url--]e/member/cp/">会员中心</a> | <a href="[!--news.url--]e/DoInfo/">我要投稿</a> | <a href="[!--news.url--]e/web/?type=rss2&classid=[!--self.classid--]" target="_blank">RSS<img src="[!--news.url--]skin/default/images/rss.gif" border="0" hspace="2" /></a>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<table width="100%" border="0" cellpadding="0" cellspacing="10">
-<tr valign="middle">
-<td width="240" align="center"><a href="[!--news.url--]"><img src="[!--news.url--]skin/default/images/logo.gif" width="200" height="65" border="0" /></a></td>
-<td align="center"><a href="http://www.phome.net/OpenSource/" target="_blank"><img src="[!--news.url--]skin/default/images/opensource.gif" width="100%" height="70" border="0" /></a></td>
-</tr>
-</table>
-<!-- 导航tab选项卡 -->
-<table width="920" border="0" align="center" cellpadding="0" cellspacing="0" class="nav">
-  <tr> 
-    <td class="nav_global"><ul>
-        <li class="curr" id="tabnav_btn_0" onmouseover="tabit(this)"><a href="[!--news.url--]">首页</a></li>
-        <? @sys_ShowClassByTemp('0',12,1,0);?> </ul></td>
-  </tr>
-</table>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <? @sys_ShowClassByTemp('0',12,1,0);?>
+			
+		</ul>
+	</div>
+	</div>
+</nav>
 <table width="100%" border="0" cellspacing="10" cellpadding="0">
 <tr valign="top">
 <td class="news_list"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
@@ -59,6 +46,7 @@ document.write('<script src="[!--news.url--]e/member/login/loginjs.php?t='+Math.
 <tr>
 <td>[!--empirenews.listtemp--]<ul>
 <!--list.var1-->
+asdfdsafdasf
 <!--list.var2-->
 <!--list.var3-->
 <!--list.var4-->

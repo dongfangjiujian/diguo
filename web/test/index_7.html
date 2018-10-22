@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<div>
+</div>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/115.html">JSP语法(5)--Scriptlet<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/116.html">JSP语法(4)--表达式<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/117.html">JSP语法（3）--声明<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/110.html">JAVA程序员考试介绍<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/111.html">Java认证考试的前期准备<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/112.html">SCJP考试心得<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/113.html">一道SCJP考题,要考SCJP的不能不看!<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/108.html">SUN认证Java2程序员考试(SCJP)试题解析<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/109.html">SUN认证JAVA程序员(SCJP)招生简章<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/104.html">我该如何选择MCAD、MCSD和SCJP？<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/105.html">Java程序员（SCJP）和开发员(SCJD)认证<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/106.html">在校学生通向程序员的选择--SCJP认证<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/107.html">scjp1.4将于八月十九开始上马<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/102.html">SCJP认证套题解析之二<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/103.html">SCJP认证套题解析之一<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/100.html">SUN认证JAVA程序员考试大纲<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/101.html">SCJP的参考资料<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/96.html">SCJP考题中的陷阱<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/97.html">SCWCD考试心得分享<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/98.html">Scjp笔记<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/99.html">我的scjp考试经历<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/94.html">转scjp第一站的首页内容<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/95.html">SCJP考试过后说大纲<span class="badge">0</span></a>
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/90.html">Tomcat4的数据库连接池配置<span class="badge">0</span></a>	
+									
+</div>
+
+        <div class="list-group">
+<a  class="list-group-item list-group-item-info" href="/test/2018-10-22/91.html">通过JDBC连接oracle数据库的十大技巧<span class="badge">0</span></a>
+<!--list.var2-->	
+									
+</div>
+<div>
+
+  
+ 页次：7/8&nbsp;每页25&nbsp;总数187&nbsp;&nbsp;&nbsp;&nbsp;<a href='/test/index.html'>首页</a>&nbsp;&nbsp;<a href='/test/index_6.html'>上一页</a>&nbsp;&nbsp;<a href='/test/index_8.html'>下一页</a>&nbsp;&nbsp;<a href='/test/index_8.html'>尾页</a>&nbsp;&nbsp;&nbsp;&nbsp;转到:<select name=select onchange="self.location.href=this.options[this.selectedIndex].value"><option value='/test/index.html'>第 1 页</option><option value='/test/index_2.html'>第 2 页</option><option value='/test/index_3.html'>第 3 页</option><option value='/test/index_4.html'>第 4 页</option><option value='/test/index_5.html'>第 5 页</option><option value='/test/index_6.html'>第 6 页</option><option value='/test/index_7.html' selected>第 7 页</option><option value='/test/index_8.html'>第 8 页</option></select>
+
+</div>
+</div>
+            <div class="col-md-5"></div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

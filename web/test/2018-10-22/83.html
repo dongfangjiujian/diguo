@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>利用weblogic的POOL（连接池）连接数据库 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="利用weblogic的POOL（连接池）连接数据库" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>利用weblogic的POOL（连接池）连接数据库</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:16&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">以往用JAVA存取数据库都是直接用JDBC连接数据库； <br>一般的，每个数据库客户端应用程序都要打开一个或一个以上的数据库连接， <br>而在weblogic下我们可以利用weblogic提供的POOL来存取数据库， <br>使每个数据库客户端共同分享一个或一个以上的数据库连接， <br>从而可以提高程序的执行效率和减轻数据库服务器的负担。 <br>这篇文章主要讨论的是服务器的配置和代码的实现，在这里在下不想讨论太多POOL的概念和特点， <br><br>至于POOL的概念及原理，我建议大家看看一篇题为“用连接池提高Servlet访问数据库的效率”的资料，作者是好兵。 <br><br>本文以Weblogic 5.1＋mysql 为例向大家介绍weblogic提供的POOL， <br>我分别写了两个 servlet 作为对照的例子，一个是用 mysql 提供的JDBC来直接存取MYSQL， <br>另一个是weblogic提供的POOL来存取数据库。 <br>首先请看用 mysql 提供的JDBC来直接存取MYSQL的代码： <br><br>myjdbc.java <br>----------------------------------------------------------------------------- <br>import java.io.*; <br>import java.sql.*; <br>import weblogic.db.jdbc.*; <br>import java.util.Properties; <br>import javax.servlet.*; <br>import javax.servlet.http.*; <br><br><br>public class myjdbc extends HttpServlet { <br><br>&nbsp;&nbsp;public void service(HttpServletRequest req, HttpServletResponse res) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws IOException <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;res.setContentType(&quot;text/html&quot;); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out = res.getWriter(); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World!&lt;/title&gt;&lt;/head&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;body&gt;&lt;h1&gt;TEST JDBC!&lt;/h1&gt;&lt;pre&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;Connection Conn = null; <br><br>&nbsp;&nbsp;&nbsp;try { <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>//================================================================================= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class.forName(&quot;org.gjt.mm.mysql.Driver&quot;).newInstance();&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost/zjws?user=zjxyz&amp;password=xyz&quot;); <br>//================================================================================= <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement Stmt = Conn.createStatement(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResultSet RS = Stmt.executeQuery(&quot;SELECT * from users&quot;); <br><br><br>while (RS.next()) { <br><br>out.println(RS.getString(&quot;userid&quot;)+&quot;t&quot; <br>+RS.getString(&quot;passwd&quot;) <br>+&quot;t&quot;+RS.getString(&quot;name&quot;)); <br>&nbsp;&nbsp;} <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RS.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stmt.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn.close(); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch (Exception E) { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.println(&quot;Unable to load driver.&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E.printStackTrace(); <br>&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;&quot;); <br>&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;<br>} <br><br>上面的代码功能是把mysql 的 zjws数据库里面 users 表列出来，我把装入JDBC驱动的语句做了标记 <br>下面是利用POOL读取数据库，装入JDBC驱动的语句我也做了标记，请仔细比较。 <br><br>首先是要配置好服务器，在weblogic.properties加入， <br><br>#===================================================== <br><br>weblogic.jdbc.connectionPool.mysqlPool1= <br>&nbsp;&nbsp;&nbsp;url=jdbc:mysql://localhost/zjws?user=zjxyz, <br>&nbsp;&nbsp;&nbsp;driver=org.gjt.mm.mysql.Driver, <br>&nbsp;&nbsp;&nbsp;loginDelaySecs=1, <br>&nbsp;&nbsp;&nbsp;initialCapacity=4, <br>&nbsp;&nbsp;&nbsp;maxCapacity=10, <br>&nbsp;&nbsp;&nbsp;capacityIncrement=2, <br>&nbsp;&nbsp;&nbsp;allowShrinking=true, <br>&nbsp;&nbsp;&nbsp;shrinkPeriodMins=15, <br>&nbsp;&nbsp;&nbsp;refreshMinutes=10, <br>&nbsp;&nbsp;&nbsp;allow=guest, <br>&nbsp;&nbsp;&nbsp;props=user=zjxyz;password=xyz;server=zjxyz <br><br><br>#===================================================== <br><br>把mysql 的JDBC驱动放在 /weblogic/myserver/serverclasses/ 目录下，不知为何， <br>我把jar包把放在其目录下，把路径加入 classpath 中，结果启动时说找不到class， <br>所以我只好解开的org目录及其里面的文件放进去，结果可以了。 <br><br>mysql一定要比weblogic先启动，因为weblogic在启动时要创建POOL。 <br><br><br>mysqlpool.java <br>-------------------------------------------------------------------------------------------------- <br>import java.io.*; <br>import java.sql.*; <br>import weblogic.db.jdbc.*; <br>import java.util.Properties; <br>import javax.servlet.*; <br>import javax.servlet.http.*; <br><br><br>public class mysqlpool extends HttpServlet { <br><br>&nbsp;&nbsp;public void service(HttpServletRequest req, HttpServletResponse res) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws IOException <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;res.setContentType(&quot;text/html&quot;); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out = res.getWriter(); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World!&lt;/title&gt;&lt;/head&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;body&gt;&lt;h1&gt;TEST Weblogic Pool!&lt;/h1&gt;&lt;pre&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;Connection Conn = null; <br><br>&nbsp;&nbsp;&nbsp;try { <br>//================================================================================= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Properties props =new Properties(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>props.setProperty(&quot;user&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;system&quot;); <br>props.setProperty(&quot;password&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;zjxyzken&quot;); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Driver myDriver =&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Driver) Class.forName(&quot;weblogic.jdbc.pool.Driver&quot;).newInstance(); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn =&nbsp;&nbsp;myDriver.connect(&quot;jdbc:weblogic:pool:mysqlPool1&quot;,props); <br>//================================================================================= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement Stmt = Conn.createStatement(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResultSet RS = Stmt.executeQuery(&quot;SELECT * from users&quot;); <br><br>while (RS.next()) { <br><br>out.println(RS.getString(&quot;userid&quot;)+&quot;t&quot; <br>+RS.getString(&quot;passwd&quot;) <br>+&quot;t&quot;+RS.getString(&quot;name&quot;)); <br>&nbsp;&nbsp;} <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RS.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stmt.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn.close(); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch (Exception E) { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.println(&quot;Unable to load driver.&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E.printStackTrace(); <br>&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;&quot;); <br>&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;<br>} <br><br>经过阅读源代码，我们可以发现，作为程序员某定程度上根本不需要理会服务器装的是什么SQL数据库， <br>只需连接到weblogic创建提供的POOL就可以了，这样一来除了可以提高效率外还令到代码的可重用性大大提高。 <br><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=83&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=83&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=83">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=83&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="83" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/83.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=83"></script></body>
+</html>

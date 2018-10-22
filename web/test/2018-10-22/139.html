@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>访问CGI变量 - Powered by EmpireCMS</title>
+<meta name="keywords" content="" />
+<meta name="description" content="访问CGI变量" />
+<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+</head>
+<body class="showpage news">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">香水百合</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			  <li id="tabnav_btn_1" onmouseover="tabit(this)"><a href="/news/">新闻中心</a></li><li id="tabnav_btn_2" onmouseover="tabit(this)"><a href="/xiangshuigushi/">香水故事</a></li><li id="tabnav_btn_3" onmouseover="tabit(this)"><a href="/xiangshuiyongfa/">香水用法</a></li><li id="tabnav_btn_4" onmouseover="tabit(this)"><a href="/xiangshuipinpai/">香水品牌</a></li><li id="tabnav_btn_5" onmouseover="tabit(this)"><a href="/xiangshuifenlei/">香水分类</a></li><li id="tabnav_btn_6" onmouseover="tabit(this)"><a href="/test/">test</a></li>			
+		</ul>
+	</div>
+	</div>
+</nav>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
+<tr>
+<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
+<tr>
+<td><h1>访问CGI变量</h1></td>
+</tr>
+<tr>
+<td class="info_text">时间：2018-10-22 15:09:36&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td id="text">                            　<P>6.1 CGI变量概述 <BR><BR>　　 如果你是从传统的CGI编程转而学习Java Servlet，或许已经习惯了“CGI变量”这一概念。CGI变量汇集了各种有关请求的信息： <BR><BR>部分来自HTTP请求命令和请求头，例如Content-Length头； <BR>部分来自Socket本身，例如主机的名字和IP地址； <BR>也有部分与服务器安装配置有关，例如URL到实际路径的映射。 <BR>　　 6.2 标准CGI变量的Servlet等价表示 <BR><BR>　　 下表假定request对象是提供给doGet和doPost方法的HttpServletRequest类型对象。 CGI变量 含义 从doGet或doPost访问 <BR>AUTH_TYPE 如果提供了Authorization头，这里指定了具体的模式（basic或者digest）。 request.getAuthType() <BR>CONTENT_LENGTH 只用于POST请求，表示所发送数据的字节数。 严格地讲，等价的表达方式应该是String.valueOf(request.getContentLength())（返回一个字符串）。但更常见的是用request.getContentLength()返回含义相同的整数。 <BR>CONTENT_TYPE 如果指定的话，表示后面所跟数据的类型。 request.getContentType() <BR>DOCUMENT_ROOT 与http://host/对应的路径。 getServletContext().getRealPath("/") <BR>注意低版本Servlet规范中的等价表达方式是request.getRealPath("/")。 <BR><BR>HTTP_XXX_YYY 访问任意HTTP头。 request.getHeader("Xxx-Yyy") <BR>PATH_INFO URL中的附加路径信息，即URL中Servlet路径之后、查询字符串之前的那部分。 request.getPathInfo() <BR>PATH_TRANSLATED 映射到服务器实际路径之后的路径信息。 request.getPathTranslated() <BR>QUERY_STRING 这是字符串形式的附加到URL后面的查询字符串，数据仍旧是URL编码的。在Servlet中很少需要用到未经解码的数据，一般使用getParameter访问各个参数。 request.getQueryString() <BR>REMOTE_ADDR 发出请求的客户机的IP地址。 request.getRemoteAddr() <BR>REMOTE_HOST 发出请求的客户机的完整的域名，如java.sun.com。如果不能确定该域名，则返回IP地址。 request.getRemoteHost() <BR>REMOTE_USER 如果提供了Authorization头，则代表其用户部分。它代表发出请求的用户的名字。 request.getRemoteUser() <BR>REQUEST_METHOD 请求类型。通常是GET或者POST。但偶尔也会出现HEAD，PUT， DELETE，OPTIONS，或者 TRACE. request.getMethod() <BR>SCRIPT_NAME URL中调用Servlet的那一部分，不包含附加路径信息和查询字符串。 request.getServletPath() <BR>SERVER_NAME Web服务器名字。 request.getServerName() <BR>SERVER_PORT 服务器监听的端口。 严格地说，等价表达应该是返回字符串的String.valueOf(request.getServerPort())。但经常使用返回整数值的request.getServerPort()。 <BR>SERVER_PROTOCOL 请求命令中的协议名字和版本（即HTTP/1.0或HTTP/1.1）。 request.getProtocol() <BR>SERVER_SOFTWARE Servlet引擎的名字和版本。 getServletContext().getServerInfo() <BR><BR><BR>　　 6.3 实例：读取CGI变量 <BR><BR>　　 下面这个Servlet创建一个表格，显示除了HTTP_XXX_YYY之外的所有CGI变量。HTTP_XXX_YYY是HTTP请求头信息，请参见上一节介绍。 <BR><BR>　　 ShowCGIVariables.java <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.util.*; <BR><BR>public class ShowCGIVariables extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>String[][] variables = <BR>{ { "AUTH_TYPE", request.getAuthType() }, <BR>{ "CONTENT_LENGTH", String.valueOf(request.getContentLength()) }, <BR>{ "CONTENT_TYPE", request.getContentType() }, <BR>{ "DOCUMENT_ROOT", getServletContext().getRealPath("/") }, <BR>{ "PATH_INFO", request.getPathInfo() }, <BR>{ "PATH_TRANSLATED", request.getPathTranslated() }, <BR>{ "QUERY_STRING", request.getQueryString() }, <BR>{ "REMOTE_ADDR", request.getRemoteAddr() }, <BR>{ "REMOTE_HOST", request.getRemoteHost() }, <BR>{ "REMOTE_USER", request.getRemoteUser() }, <BR>{ "REQUEST_METHOD", request.getMethod() }, <BR>{ "SCRIPT_NAME", request.getServletPath() }, <BR>{ "SERVER_NAME", request.getServerName() }, <BR>{ "SERVER_PORT", String.valueOf(request.getServerPort()) }, <BR>{ "SERVER_PROTOCOL", request.getProtocol() }, <BR>{ "SERVER_SOFTWARE", getServletContext().getServerInfo() } <BR>}; <BR>String title = "显示CGI变量"; <BR>out.println(ServletUtilities.headWithTitle(title) + <BR>"＜BODY BGCOLOR=＼"#FDF5E6＼"＞＼n" + <BR>"＜H1 ALIGN=CENTER＞" + title + "＜/H1＞＼n" + <BR>"＜TABLE BORDER=1 ALIGN=CENTER＞＼n" + <BR>"＜TR BGCOLOR=＼"#FFAD00＼"＞＼n" + <BR>"＜TH＞CGI Variable Name＜TH＞Value"); <BR>for(int i=0; i＜variables.length; i++) { <BR>String varName = variables[i][0]; <BR>String varValue = variables[i][1]; <BR>if (varValue == null) <BR>varValue = "＜I＞Not specified＜/I＞"; <BR>out.println("＜TR＞＜TD＞" + varName + "＜TD＞" + varValue); <BR>} <BR>out.println("＜/TABLE＞＜/BODY＞＜/HTML＞"); <BR>} <BR><BR>public void doPost(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>doGet(request, response); <BR>} <BR>} <BR></P><p align="center" class="pageLink"></p></td>
+</tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="8">
+<tr>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=139&down=5"></script></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=139&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
+</tr>
+</table></td>
+<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
+<tr>
+<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
+</tr>
+<tr>
+<td class="diggit"><a href="/">返回首页</a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+          </td>
+</tr>
+</table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
+<tr>
+<td><strong>发表评论</strong></td>
+<td align="right"><a href="/e/pl/?classid=64&amp;id=139">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=139&down=2"></script></span>条评论</a></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
+<tr>
+<td width="56%" align="left">用户名:
+<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
+<td width="44%" align="left">密码:
+<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
+</tr>
+<tr>
+<td align="left">验证码:
+<input name="key" type="text" class="inputText" size="10" />
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
+<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
+匿名发表</td>
+</tr>
+</table>
+<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
+<input name="id" type="hidden" id="id" value="139" />
+<input name="classid" type="hidden" id="classid" value="64" />
+<input name="enews" type="hidden" id="enews" value="AddPl" />
+<input name="repid" type="hidden" id="repid" value="0" />
+<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/139.html"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></form>
+</td>
+<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
+<tr>
+<td><strong>推荐资讯</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
+<tr>
+<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>相关文章</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+无相关信息</ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目更新</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
+<tr>
+<td><strong>栏目热门</strong></td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
+<tr>
+<td><ul>
+              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!-- 页脚 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="search">
+<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+<table border="0" cellspacing="6" cellpadding="0">
+<tr>
+<td><strong>站内搜索：</strong>
+<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
+<input type="hidden" name="show" value="title" />
+<input type="hidden" name="tempid" value="1" />
+<select name="tbname">
+<option value="news">新闻</option>
+<option value="download">下载</option>
+<option value="photo">图库</option>
+<option value="flash">FLASH</option>
+<option value="movie">电影</option>
+<option value="shop">商品</option>
+<option value="article">文章</option>
+<option value="info">分类信息</option>
+</select>
+</td>
+<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
+</td>
+<td><a href="/search/" target="_blank">高级搜索</a></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
+        <tr> 
+          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
+            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
+            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
+        </tr>
+        <tr> 
+          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
+            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
+            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
+        </tr>
+	</table>
+</td>
+</tr>
+</table>
+<script src="/e/public/onclick/?enews=donews&classid=64&id=139"></script></body>
+</html>
