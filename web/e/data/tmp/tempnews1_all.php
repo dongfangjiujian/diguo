@@ -15,8 +15,8 @@ if(!defined('InEmpireCMS'))
 <script type="text/javascript" src="/e/data/js/ajax.js"></script>
 </head>
 <body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -25,7 +25,7 @@ if(!defined('InEmpireCMS'))
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -36,6 +36,7 @@ if(!defined('InEmpireCMS'))
 	</div>
 	</div>
 </nav>
+
 <table width="100%" border="0" cellspacing="10" cellpadding="0">
 <tr valign="top">
 <td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">

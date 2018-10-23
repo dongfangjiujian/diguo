@@ -5,13 +5,20 @@
 <title>处理Cookie - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="处理Cookie" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>处理Cookie</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:37&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">                            　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>9.1 Cookie概述 <BR><BR>　　 Cookie是服务器发送给浏览器的体积很小的纯文本信息，用户以后访问同一个Web服务器时浏览器会把它们原样发送给服务器。通过让服务器读取它原先保存到客户端的信息，网站能够为浏览者提供一系列的方便，例如在线交易过程中标识用户身份、安全要求不高的场合避免用户重复输入名字和密码、门户网站的主页定制、有针对性地投放广告，等等。 <BR><BR>　　 Cookie的目的就是为用户带来方便，为网站带来增值。虽然有着许多误传，事实上Cookie并不会造成严重的安全威胁。Cookie永远不会以任何方式执行，因此也不会带来病毒或攻击你的系统。另外，由于浏览器一般只允许存放300个Cookie，每个站点最多存放20个Cookie，每个Cookie的大小限制为4 KB，因此Cookie不会塞满你的硬盘，更不会被用作“拒绝服务”攻击手段。 <BR><BR>　　 9.2 Servlet的Cookie API <BR><BR>　　 要把Cookie发送到客户端，Servlet先要调用new Cookie(name,value)用合适的名字和值创建一个或多个Cookie（2.1节），通过cookie.setXXX设置各种属性（2.2节），通过response.addCookie(cookie)把cookie加入应答头（2.3节）。 <BR><BR>　　 要从客户端读入Cookie，Servlet应该调用request.getCookies()，getCookies()方法返回一个Cookie对象的数组。在大多数情况下，你只需要用循环访问该数组的各个元素寻找指定名字的Cookie，然后对该Cookie调用getValue方法取得与指定名字关联的值，这部分内容将在2.4节讨论。 <BR><BR>　　 9.2.1 创建Cookie <BR><BR>　　 调用Cookie对象的构造函数可以创建Cookie。Cookie对象的构造函数有两个字符串参数：Cookie名字和Cookie值。名字和值都不能包含空白字符以及下列字符： <BR>[ ] ( ) = , " / ? @ : ; <BR><BR><BR><BR><BR>　　 9.2.2 读取和设置Cookie属性 <BR><BR>　　 把Cookie加入待发送的应答头之前，你可以查看或设置Cookie的各种属性。下面摘要介绍这些方法： <BR><BR>getComment/setComment <BR>获取/设置Cookie的注释。 <BR>getDomain/setDomain <BR>获取/设置Cookie适用的域。一般地，Cookie只返回给与发送它的服务器名字完全相同的服务器。使用这里的方法可以指示浏览器把Cookie返回给同一域内的其他服务器。注意域必须以点开始（例如.sitename.com），非国家类的域（如.com，.edu，.gov）必须包含两个点，国家类的域（如.com.cn，.edu.uk）必须包含三个点。 <BR>getMaxAge/setMaxAge <BR>获取/设置Cookie过期之前的时间，以秒计。如果不设置该值，则Cookie只在当前会话内有效，即在用户关闭浏览器之前有效，而且这些Cookie不会保存到磁盘上。参见下面有关LongLivedCookie的说明。 <BR>getName/setName <BR>获取/设置Cookie的名字。本质上，名字和值是我们始终关心的两个部分。由于HttpServletRequest的getCookies方法返回的是一个Cookie对象的数组，因此通常要用循环来访问这个数组查找特定名字，然后用getValue检查它的值。 <BR>getPath/setPath <BR>获取/设置Cookie适用的路径。如果不指定路径，Cookie将返回给当前页面所在目录及其子目录下的所有页面。这里的方法可以用来设定一些更一般的条件。例如，someCookie.setPath("/")，此时服务器上的所有页面都可以接收到该Cookie。 <BR>getSecure/setSecure <BR>获取/设置一个boolean值，该值表示是否Cookie只能通过加密的连接（即SSL）发送。 <BR>getValue/setValue <BR>获取/设置Cookie的值。如前所述，名字和值实际上是我们始终关心的两个方面。不过也有一些例外情况，比如把名字作为逻辑标记（也就是说，如果名字存在，则表示true）。 <BR>getVersion/setVersion <BR>获取/设置Cookie所遵从的协议版本。默认版本0（遵从原先的Netscape规范）；版本1遵从RFC 2109 ， 但尚未得到广泛的支持。 <BR>　　 9.2.3 在应答头中设置Cookie <BR><BR>　　 Cookie可以通过HttpServletResponse的addCookie方法加入到Set-Cookie应答头。下面是一个例子： <BR>Cookie userCookie = new Cookie("user", "uid1234"); <BR>response.addCookie(userCookie); <BR><BR><BR><BR><BR>　　 9.2.4 读取保存到客户端的Cookie <BR><BR>　　 要把Cookie发送到客户端，先要创建Cookie，然后用addCookie发送一个Set-Cookie HTTP应答头。这些内容已经在上面的2.1节介绍。从客户端读取Cookie时调用的是HttpServletRequest的getCookies方法。该方法返回一个与HTTP请求头中的内容对应的Cookie对象数组。得到这个数组之后，一般是用循环访问其中的各个元素，调用getName检查各个Cookie的名字，直至找到目标Cookie。然后对这个目标Cookie调用getValue，根据获得的结果进行其他处理。 <BR><BR>　　 上述处理过程经常会遇到，为方便计下面我们提供一个getCookieValue方法。只要给出Cookie对象数组、Cookie名字和默认值，getCookieValue方法就会返回匹配指定名字的Cookie值，如果找不到指定Cookie，则返回默认值。 <BR><BR>　　 9.3 几个Cookie工具函数 <BR><BR>　　 下面是几个工具函数。这些函数虽然简单，但是，在和Cookie打交道的时候很有用。 <BR><BR>　　 9.3.1 获取指定名字的Cookie值 <BR><BR>　　 该函数是ServletUtilities.java的一部分。getCookieValue通过循环依次访问Cookie对象数组的各个元素，寻找是否有指定名字的Cookie，如找到，则返回该Cookie的值；否则，返回参数中给出的默认值。getCookieValue能够在一定程度上简化Cookie值的提取。 <BR>public static String getCookieValue(Cookie[] cookies, <BR>String cookieName, <BR>String defaultValue) { <BR>for(int i=0; i＜cookies.length; i++) { <BR>Cookie cookie = cookies[i]; <BR>if (cookieName.equals(cookie.getName())) <BR>return(cookie.getValue()); <BR>} <BR>return(defaultValue); <BR>} <BR><BR><BR><BR><BR>　　 9.3.2自动保存的Cookie <BR><BR>　　 下面是LongLivedCookie类的代码。如果你希望Cookie能够在浏览器退出的时候自动保存下来，则可以用这个LongLivedCookie类来取代标准的Cookie类。 <BR>package hall; <BR><BR>import javax.servlet.http.*; <BR><BR>public class LongLivedCookie extends Cookie { <BR>public static final int SECONDS_PER_YEAR = 60*60*24*365; <BR>public LongLivedCookie(String name, String value) { <BR>super(name, value); <BR>setMaxAge(SECONDS_PER_YEAR); <BR>} <BR>} <BR><BR><BR><BR><BR>　　 9.4.实例：定制的搜索引擎界面 <BR><BR>　　 下面也是一个搜索引擎界面的例子，通过修改前面HTTP状态代码的例子得到。在这个Servlet中，用户界面是动态生成而不是由静态HTML文件提供的。Servlet除了负责读取表单数据并把它们发送给搜索引擎之外，还要把包含表单数据的Cookie发送给客户端。以后客户再次访问同一表单时，这些Cookie的值将用来预先填充表单，使表单自动显示最近使用过的数据。 <BR><BR>　　 SearchEnginesFrontEnd.java <BR><BR>　　 该Servlet构造一个主要由表单构成的用户界面。第一次显示的时候，它和前面用静态HTML页面提供的界面差不多。然而，用户选择的值将被保存到Cookie（本页面将数据发送到CustomizedSearchEngines Servlet，由后者设置Cookie）。用户以后再访问同一页面时，即使浏览器是退出之后再启动，表单中也会自动填好上一次搜索所填写的内容。 <BR><BR>　　 注意该Servlet用到了ServletUtilities.java，其中getCookieValue前面已经介绍过，headWithTitle用于生成HTML页面的一部分。另外，这里也用到了前面已经说明的LongLiveCookie类，我们用它来创建作废期限很长的Cookie。 <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.net.*; <BR><BR>public class SearchEnginesFrontEnd extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>Cookie[] cookies = request.getCookies(); <BR>String searchString = <BR>ServletUtilities.getCookieValue(cookies, <BR>"searchString", <BR>"Java Programming"); <BR>String numResults = <BR>ServletUtilities.getCookieValue(cookies, <BR>"numResults", <BR>"10"); <BR>String searchEngine = <BR>ServletUtilities.getCookieValue(cookies, <BR>"searchEngine", <BR>"google"); <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>String title = "Searching the Web"; <BR>out.println(ServletUtilities.headWithTitle(title) + <BR>"＜BODY BGCOLOR=＼"#FDF5E6＼"＞＼n" + <BR>"＜H1 ALIGN=＼"CENTER＼"＞Searching the Web＜/H1＞＼n" + <BR>"＼n" + <BR>"＜FORM ACTION=＼"/servlet/hall.CustomizedSearchEngines＼"＞＼n" + <BR>"＜CENTER＞＼n" + <BR>"Search String:＼n" + <BR>"＜INPUT TYPE=＼"TEXT＼" NAME=＼"searchString＼"＼n" + <BR>" VALUE=＼"" + searchString + "＼"＞＜BR＞＼n" + <BR>"Results to Show Per Page:＼n" + <BR>"＜INPUT TYPE=＼"TEXT＼" NAME=＼"numResults＼"＼n" + <BR>" VALUE=" + numResults + " SIZE=3＞＜BR＞＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"google＼"" + <BR>checked("google", searchEngine) + "＞＼n" + <BR>"Google |＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"infoseek＼"" + <BR>checked("infoseek", searchEngine) + "＞＼n" + <BR>"Infoseek |＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"lycos＼"" + <BR>checked("lycos", searchEngine) + "＞＼n" + <BR>"Lycos |＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"hotbot＼"" + <BR>checked("hotbot", searchEngine) + "＞＼n" + <BR>"HotBot＼n" + <BR>"＜BR＞＼n" + <BR>"＜INPUT TYPE=＼"SUBMIT＼" VALUE=＼"Search＼"＞＼n" + <BR>"＜/CENTER＞＼n" + <BR>"＜/FORM＞＼n" + <BR>"＼n" + <BR>"＜/BODY＞＼n" + <BR>"＜/HTML＞＼n"); <BR>} <BR><BR>private String checked(String name1, String name2) { <BR>if (name1.equals(name2)) <BR>return(" CHECKED"); <BR>else <BR>return(""); <BR>} <BR>} <BR><BR><BR><BR><BR>　　 CustomizedSearchEngines.java <BR><BR>　　 前面的SearchEnginesFrontEnd Servlet把数据发送到CustomizedSearchEngines Servlet。本例在许多方面与前面介绍HTTP状态代码时的例子相似，区别在于，本例除了要构造一个针对搜索引擎的URL并向用户发送一个重定向应答之外，还要发送保存用户数据的Cookies。 <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.net.*; <BR><BR>public class CustomizedSearchEngines extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR><BR>String searchString = request.getParameter("searchString"); <BR>Cookie searchStringCookie = <BR>new LongLivedCookie("searchString", searchString); <BR>response.addCookie(searchStringCookie); <BR>searchString = URLEncoder.encode(searchString); <BR>String numResults = request.getParameter("numResults"); <BR>Cookie numResultsCookie = <BR>new LongLivedCookie("numResults", numResults); <BR>response.addCookie(numResultsCookie); <BR>String searchEngine = request.getParameter("searchEngine"); <BR>Cookie searchEngineCookie = <BR>new LongLivedCookie("searchEngine", searchEngine); <BR>response.addCookie(searchEngineCookie); <BR>SearchSpec[] commonSpecs = SearchSpec.getCommonSpecs(); <BR>for(int i=0; i＜commonSpecs.length; i++) { <BR>SearchSpec searchSpec = commonSpecs[i]; <BR>if (searchSpec.getName().equals(searchEngine)) { <BR>String url = <BR>searchSpec.makeURL(searchString, numResults); <BR>response.sendRedirect(url); <BR>return; <BR>} <BR>} <BR>response.sendError(response.SC_NOT_FOUND, <BR>"No recognized search engine specified."); <BR>} <BR><BR>public void doPost(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>doGet(request, response); <BR>} <BR>} <BR><BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE><p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=142&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=142&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=142">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=142&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="142" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/142.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=142"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">处理Cookie</h2>
+    <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:37 </span>
+                            　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>9.1 Cookie概述 <BR><BR>　　 Cookie是服务器发送给浏览器的体积很小的纯文本信息，用户以后访问同一个Web服务器时浏览器会把它们原样发送给服务器。通过让服务器读取它原先保存到客户端的信息，网站能够为浏览者提供一系列的方便，例如在线交易过程中标识用户身份、安全要求不高的场合避免用户重复输入名字和密码、门户网站的主页定制、有针对性地投放广告，等等。 <BR><BR>　　 Cookie的目的就是为用户带来方便，为网站带来增值。虽然有着许多误传，事实上Cookie并不会造成严重的安全威胁。Cookie永远不会以任何方式执行，因此也不会带来病毒或攻击你的系统。另外，由于浏览器一般只允许存放300个Cookie，每个站点最多存放20个Cookie，每个Cookie的大小限制为4 KB，因此Cookie不会塞满你的硬盘，更不会被用作“拒绝服务”攻击手段。 <BR><BR>　　 9.2 Servlet的Cookie API <BR><BR>　　 要把Cookie发送到客户端，Servlet先要调用new Cookie(name,value)用合适的名字和值创建一个或多个Cookie（2.1节），通过cookie.setXXX设置各种属性（2.2节），通过response.addCookie(cookie)把cookie加入应答头（2.3节）。 <BR><BR>　　 要从客户端读入Cookie，Servlet应该调用request.getCookies()，getCookies()方法返回一个Cookie对象的数组。在大多数情况下，你只需要用循环访问该数组的各个元素寻找指定名字的Cookie，然后对该Cookie调用getValue方法取得与指定名字关联的值，这部分内容将在2.4节讨论。 <BR><BR>　　 9.2.1 创建Cookie <BR><BR>　　 调用Cookie对象的构造函数可以创建Cookie。Cookie对象的构造函数有两个字符串参数：Cookie名字和Cookie值。名字和值都不能包含空白字符以及下列字符： <BR>[ ] ( ) = , " / ? @ : ; <BR><BR><BR><BR><BR>　　 9.2.2 读取和设置Cookie属性 <BR><BR>　　 把Cookie加入待发送的应答头之前，你可以查看或设置Cookie的各种属性。下面摘要介绍这些方法： <BR><BR>getComment/setComment <BR>获取/设置Cookie的注释。 <BR>getDomain/setDomain <BR>获取/设置Cookie适用的域。一般地，Cookie只返回给与发送它的服务器名字完全相同的服务器。使用这里的方法可以指示浏览器把Cookie返回给同一域内的其他服务器。注意域必须以点开始（例如.sitename.com），非国家类的域（如.com，.edu，.gov）必须包含两个点，国家类的域（如.com.cn，.edu.uk）必须包含三个点。 <BR>getMaxAge/setMaxAge <BR>获取/设置Cookie过期之前的时间，以秒计。如果不设置该值，则Cookie只在当前会话内有效，即在用户关闭浏览器之前有效，而且这些Cookie不会保存到磁盘上。参见下面有关LongLivedCookie的说明。 <BR>getName/setName <BR>获取/设置Cookie的名字。本质上，名字和值是我们始终关心的两个部分。由于HttpServletRequest的getCookies方法返回的是一个Cookie对象的数组，因此通常要用循环来访问这个数组查找特定名字，然后用getValue检查它的值。 <BR>getPath/setPath <BR>获取/设置Cookie适用的路径。如果不指定路径，Cookie将返回给当前页面所在目录及其子目录下的所有页面。这里的方法可以用来设定一些更一般的条件。例如，someCookie.setPath("/")，此时服务器上的所有页面都可以接收到该Cookie。 <BR>getSecure/setSecure <BR>获取/设置一个boolean值，该值表示是否Cookie只能通过加密的连接（即SSL）发送。 <BR>getValue/setValue <BR>获取/设置Cookie的值。如前所述，名字和值实际上是我们始终关心的两个方面。不过也有一些例外情况，比如把名字作为逻辑标记（也就是说，如果名字存在，则表示true）。 <BR>getVersion/setVersion <BR>获取/设置Cookie所遵从的协议版本。默认版本0（遵从原先的Netscape规范）；版本1遵从RFC 2109 ， 但尚未得到广泛的支持。 <BR>　　 9.2.3 在应答头中设置Cookie <BR><BR>　　 Cookie可以通过HttpServletResponse的addCookie方法加入到Set-Cookie应答头。下面是一个例子： <BR>Cookie userCookie = new Cookie("user", "uid1234"); <BR>response.addCookie(userCookie); <BR><BR><BR><BR><BR>　　 9.2.4 读取保存到客户端的Cookie <BR><BR>　　 要把Cookie发送到客户端，先要创建Cookie，然后用addCookie发送一个Set-Cookie HTTP应答头。这些内容已经在上面的2.1节介绍。从客户端读取Cookie时调用的是HttpServletRequest的getCookies方法。该方法返回一个与HTTP请求头中的内容对应的Cookie对象数组。得到这个数组之后，一般是用循环访问其中的各个元素，调用getName检查各个Cookie的名字，直至找到目标Cookie。然后对这个目标Cookie调用getValue，根据获得的结果进行其他处理。 <BR><BR>　　 上述处理过程经常会遇到，为方便计下面我们提供一个getCookieValue方法。只要给出Cookie对象数组、Cookie名字和默认值，getCookieValue方法就会返回匹配指定名字的Cookie值，如果找不到指定Cookie，则返回默认值。 <BR><BR>　　 9.3 几个Cookie工具函数 <BR><BR>　　 下面是几个工具函数。这些函数虽然简单，但是，在和Cookie打交道的时候很有用。 <BR><BR>　　 9.3.1 获取指定名字的Cookie值 <BR><BR>　　 该函数是ServletUtilities.java的一部分。getCookieValue通过循环依次访问Cookie对象数组的各个元素，寻找是否有指定名字的Cookie，如找到，则返回该Cookie的值；否则，返回参数中给出的默认值。getCookieValue能够在一定程度上简化Cookie值的提取。 <BR>public static String getCookieValue(Cookie[] cookies, <BR>String cookieName, <BR>String defaultValue) { <BR>for(int i=0; i＜cookies.length; i++) { <BR>Cookie cookie = cookies[i]; <BR>if (cookieName.equals(cookie.getName())) <BR>return(cookie.getValue()); <BR>} <BR>return(defaultValue); <BR>} <BR><BR><BR><BR><BR>　　 9.3.2自动保存的Cookie <BR><BR>　　 下面是LongLivedCookie类的代码。如果你希望Cookie能够在浏览器退出的时候自动保存下来，则可以用这个LongLivedCookie类来取代标准的Cookie类。 <BR>package hall; <BR><BR>import javax.servlet.http.*; <BR><BR>public class LongLivedCookie extends Cookie { <BR>public static final int SECONDS_PER_YEAR = 60*60*24*365; <BR>public LongLivedCookie(String name, String value) { <BR>super(name, value); <BR>setMaxAge(SECONDS_PER_YEAR); <BR>} <BR>} <BR><BR><BR><BR><BR>　　 9.4.实例：定制的搜索引擎界面 <BR><BR>　　 下面也是一个搜索引擎界面的例子，通过修改前面HTTP状态代码的例子得到。在这个Servlet中，用户界面是动态生成而不是由静态HTML文件提供的。Servlet除了负责读取表单数据并把它们发送给搜索引擎之外，还要把包含表单数据的Cookie发送给客户端。以后客户再次访问同一表单时，这些Cookie的值将用来预先填充表单，使表单自动显示最近使用过的数据。 <BR><BR>　　 SearchEnginesFrontEnd.java <BR><BR>　　 该Servlet构造一个主要由表单构成的用户界面。第一次显示的时候，它和前面用静态HTML页面提供的界面差不多。然而，用户选择的值将被保存到Cookie（本页面将数据发送到CustomizedSearchEngines Servlet，由后者设置Cookie）。用户以后再访问同一页面时，即使浏览器是退出之后再启动，表单中也会自动填好上一次搜索所填写的内容。 <BR><BR>　　 注意该Servlet用到了ServletUtilities.java，其中getCookieValue前面已经介绍过，headWithTitle用于生成HTML页面的一部分。另外，这里也用到了前面已经说明的LongLiveCookie类，我们用它来创建作废期限很长的Cookie。 <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.net.*; <BR><BR>public class SearchEnginesFrontEnd extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>Cookie[] cookies = request.getCookies(); <BR>String searchString = <BR>ServletUtilities.getCookieValue(cookies, <BR>"searchString", <BR>"Java Programming"); <BR>String numResults = <BR>ServletUtilities.getCookieValue(cookies, <BR>"numResults", <BR>"10"); <BR>String searchEngine = <BR>ServletUtilities.getCookieValue(cookies, <BR>"searchEngine", <BR>"google"); <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>String title = "Searching the Web"; <BR>out.println(ServletUtilities.headWithTitle(title) + <BR>"＜BODY BGCOLOR=＼"#FDF5E6＼"＞＼n" + <BR>"＜H1 ALIGN=＼"CENTER＼"＞Searching the Web＜/H1＞＼n" + <BR>"＼n" + <BR>"＜FORM ACTION=＼"/servlet/hall.CustomizedSearchEngines＼"＞＼n" + <BR>"＜CENTER＞＼n" + <BR>"Search String:＼n" + <BR>"＜INPUT TYPE=＼"TEXT＼" NAME=＼"searchString＼"＼n" + <BR>" VALUE=＼"" + searchString + "＼"＞＜BR＞＼n" + <BR>"Results to Show Per Page:＼n" + <BR>"＜INPUT TYPE=＼"TEXT＼" NAME=＼"numResults＼"＼n" + <BR>" VALUE=" + numResults + " SIZE=3＞＜BR＞＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"google＼"" + <BR>checked("google", searchEngine) + "＞＼n" + <BR>"Google |＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"infoseek＼"" + <BR>checked("infoseek", searchEngine) + "＞＼n" + <BR>"Infoseek |＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"lycos＼"" + <BR>checked("lycos", searchEngine) + "＞＼n" + <BR>"Lycos |＼n" + <BR>"＜INPUT TYPE=＼"RADIO＼" NAME=＼"searchEngine＼"＼n" + <BR>" VALUE=＼"hotbot＼"" + <BR>checked("hotbot", searchEngine) + "＞＼n" + <BR>"HotBot＼n" + <BR>"＜BR＞＼n" + <BR>"＜INPUT TYPE=＼"SUBMIT＼" VALUE=＼"Search＼"＞＼n" + <BR>"＜/CENTER＞＼n" + <BR>"＜/FORM＞＼n" + <BR>"＼n" + <BR>"＜/BODY＞＼n" + <BR>"＜/HTML＞＼n"); <BR>} <BR><BR>private String checked(String name1, String name2) { <BR>if (name1.equals(name2)) <BR>return(" CHECKED"); <BR>else <BR>return(""); <BR>} <BR>} <BR><BR><BR><BR><BR>　　 CustomizedSearchEngines.java <BR><BR>　　 前面的SearchEnginesFrontEnd Servlet把数据发送到CustomizedSearchEngines Servlet。本例在许多方面与前面介绍HTTP状态代码时的例子相似，区别在于，本例除了要构造一个针对搜索引擎的URL并向用户发送一个重定向应答之外，还要发送保存用户数据的Cookies。 <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.net.*; <BR><BR>public class CustomizedSearchEngines extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR><BR>String searchString = request.getParameter("searchString"); <BR>Cookie searchStringCookie = <BR>new LongLivedCookie("searchString", searchString); <BR>response.addCookie(searchStringCookie); <BR>searchString = URLEncoder.encode(searchString); <BR>String numResults = request.getParameter("numResults"); <BR>Cookie numResultsCookie = <BR>new LongLivedCookie("numResults", numResults); <BR>response.addCookie(numResultsCookie); <BR>String searchEngine = request.getParameter("searchEngine"); <BR>Cookie searchEngineCookie = <BR>new LongLivedCookie("searchEngine", searchEngine); <BR>response.addCookie(searchEngineCookie); <BR>SearchSpec[] commonSpecs = SearchSpec.getCommonSpecs(); <BR>for(int i=0; i＜commonSpecs.length; i++) { <BR>SearchSpec searchSpec = commonSpecs[i]; <BR>if (searchSpec.getName().equals(searchEngine)) { <BR>String url = <BR>searchSpec.makeURL(searchString, numResults); <BR>response.sendRedirect(url); <BR>return; <BR>} <BR>} <BR>response.sendError(response.SC_NOT_FOUND, <BR>"No recognized search engine specified."); <BR>} <BR><BR>public void doPost(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>doGet(request, response); <BR>} <BR>} <BR><BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>

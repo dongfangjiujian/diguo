@@ -5,13 +5,20 @@
 <title>脚本元素、指令和预定义变量 - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="脚本元素、指令和预定义变量" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>脚本元素、指令和预定义变量</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:38&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">                            　<P>12.1 JSP脚本元素 <BR><BR>　　 JSP脚本元素用来插入Java代码，这些Java代码将出现在由当前JSP页面生成的Servlet中。脚本元素有三种格式： <BR><BR>表达式格式＜%= expression %＞：计算表达式并输出其结果。 <BR>Scriptlet格式＜% code %＞：把代码插入到Servlet的service方法。 <BR>声明格式＜%! code %＞：把声明加入到Servlet类（在任何方法之外）。 <BR>　　 下面我们详细说明它们的用法。 <BR><BR>　　 12.1.1 JSP表达式 <BR><BR>　　 JSP表达式用来把Java数据直接插入到输出。其语法如下： <BR>＜%= Java Expression %＞ <BR><BR><BR><BR>　　 计算Java表达式得到的结果被转换成字符串，然后插入到页面。计算在运行时进行（页面被请求时），因此可以访问和请求有关的全部信息。例如，下面的代码显示页面被请求的日期/时间： <BR>Current time: ＜%= new java.util.Date() %＞ <BR><BR><BR><BR>　　 为简化这些表达式，JSP预定义了一组可以直接使用的对象变量。后面我们将详细介绍这些隐含声明的对象，但对于JSP表达式来说，最重要的几个对象及其类型如下： <BR><BR>request：HttpServletRequest; <BR>response：HttpServletResponse; <BR>session：和request关联的HttpSession <BR>out：PrintWriter（带缓冲的版本，JspWriter），用来把输出发送到客户端 <BR>　　 下面是一个例子： <BR>Your hostname: ＜%= request.getRemoteHost() %＞ <BR><BR><BR><BR>　　 最后，如果使用XML的话，JSP表达式也可以写成下面这种形式： <BR>＜jsp:expression＞ <BR>Java Expression <BR>＜/jsp:expression＞ <BR><BR><BR><BR>　　 请记住XML元素和HTML不一样。XML是大小写敏感的，因此务必使用小写。有关XML语法的说明，请参见《XML教程 》 <BR><BR>　　 12.1.2 JSP Scriptlet <BR><BR>　　 如果你要完成的任务比插入简单的表达式更加复杂，可以使用JSP Scriptlet。JSP Scriptlet允许你把任意的Java代码插入Servlet。JSP Scriptlet语法如下： <BR>＜% Java Code %＞ <BR><BR><BR><BR>　　 和JSP表达式一样，Scriptlet也可以访问所有预定义的变量。例如，如果你要向结果页面输出内容，可以使用out变量： <BR>＜% <BR>String queryData = request.getQueryString(); <BR>out.println("Attached GET data: " + queryData); <BR>%＞ <BR><BR><BR><BR>　　 注意Scriptlet中的代码将被照搬到Servlet内，而Scriptlet前面和后面的静态HTML（模板文本）将被转换成println语句。这就意味着，Scriptlet内的Java语句并非一定要是完整的，没有关闭的块将影响Scriptlet外的静态HTML。例如，下面的JSP片断混合了模板文本和Scriptlet： <BR>＜% if (Math.random() ＜ 0.5) { %＞ <BR>Have a ＜B＞nice＜/B＞ day! <BR>＜% } else { %＞ <BR>Have a ＜B＞lousy＜/B＞ day! <BR>＜% } %＞ <BR><BR><BR><BR>　　 上述JSP代码将被转换成如下Servlet代码： <BR>if (Math.random() ＜ 0.5) { <BR>out.println("Have a ＜B＞nice＜/B＞ day!"); <BR>} else { <BR>out.println("Have a ＜B＞lousy＜/B＞ day!"); <BR>} <BR><BR><BR><BR>　　 如果要在Scriptlet内部使用字符“%＞”，必须写成“%＼＞”。另外，请注意＜% code %＞的XML等价表达是： <BR>＜jsp:scriptlet＞ <BR>Code <BR>＜/jsp:scriptlet＞ <BR><BR><BR><BR>　　 12.1.3 JSP声明 <BR><BR>　　 JSP声明用来定义插入Servlet类的方法和成员变量，其语法如下： <BR>＜%! Java Code %＞ <BR><BR><BR><BR>　　 由于声明不会有任何输出，因此它们往往和JSP表达式或Scriptlet结合在一起使用。例如，下面的JSP代码片断输出自从服务器启动（或Servlet类被改动并重新装载以来）当前页面被请求的次数： <BR>＜%! private int accessCount = 0; %＞ <BR>自从服务器启动以来页面访问次数为： <BR>＜%= ++accessCount %＞ <BR><BR><BR><BR>　　 和Scriptlet一样，如果要使用字符串“%＞”，必须使用“%＼＞”代替。最后，＜%! code %＞的XML等价表达方式为： <BR>＜jsp:declaration＞ <BR>Code <BR>＜/jsp:declaration＞ <BR><BR><BR><BR>　　 12.2 JSP指令 <BR><BR>　　 JSP指令影响Servlet类的整体结构，它的语法一般如下： <BR>＜%@ directive attribute="value" %＞ <BR><BR><BR><BR>　　 另外，也可以把同一指令的多个属性结合起来，例如： <BR>＜%@ directive attribute1="value1" <BR>attribute2="value2" <BR>... <BR>attributeN="valueN" %＞ <BR><BR><BR><BR>　　 JSP指令分为两种类型：第一是page指令，用来完成下面这类任务：导入指定的类，自定义Servlet的超类，等等；第二是include指令，用来在JSP文件转换成Servlet时引入其他文件。JSP规范也提到了taglib指令，其目的是让JSP开发者能够自己定义标记，但JSP 1.0不支持该指令，有希望它将成为JSP 1.1的主要改进之一。 <BR><BR>　　 12.2.1 page指令 <BR><BR>　　 page指令的作用是定义下面一个或多个属性，这些属性大小写敏感。 <BR><BR><BR><BR>import="package.class"，或者import="package.class1,...,package.classN"： <BR><BR>用于指定导入哪些包，例如：＜%@ page import="java.util.*" %＞。import是唯一允许出现一次以上的属性。 <BR><BR><BR>contentType="MIME-Type" 或contentType="MIME-Type; charset=Character-Set"： <BR><BR>该属性指定输出的MIME类型。默认是text/html。例如，下面这个指令： <BR>＜%@ page contentType="text/plain" %＞。 <BR>和下面的Scriptlet效果相同： <BR>＜% response.setContentType("text/plain"); %＞ <BR><BR><BR>isThreadSafe="true|false" <BR><BR>默认值true表明Servlet按照标准的方式处理，即假定开发者已经同步对实例变量的访问，由单个Servlet实例同时地处理多个请求。如果取值false，表明Servlet应该实现SingleThreadModel，请求或者是逐个进入，或者多个并行的请求分别由不同的Servlet实例处理。 <BR><BR><BR>session="true|false" <BR><BR>默认值true表明预定义变量session（类型为HttpSession）应该绑定到已有的会话，如果不存在已有的会话，则新建一个并绑定session变量。如果取值false，表明不会用到会话，试图访问变量session将导致JSP转换成Servlet时出错。 <BR><BR><BR>buffer="size kb|none" <BR><BR>该属性指定JspWrite out的缓存大小。默认值和服务器有关，但至少应该是8 KB。 <BR><BR><BR>autoflush="true|false" <BR><BR>默认值true表明如果缓存已满则刷新它。autoflush很少取false值，false值表示如果缓存已满则抛出异常。如果buffer="none"，autoflush不能取false值。 <BR><BR><BR>extends="package.class" <BR><BR>该属性指出将要生成的Servlet使用哪个超类。使用该属性应当十分小心，因为服务器可能已经在用自定义的超类。 <BR><BR><BR>info="message" <BR><BR>该属性定义一个可以通过getServletInfo方法提取的字符串。 <BR><BR><BR>errorPage="url" <BR><BR>该属性指定一个JSP页面，所有未被当前页面捕获的异常均由该页面处理。 <BR><BR><BR>isErrorPage="true|false" <BR><BR>该属性指示当前页面是否可以作为另一JSP页面的错误处理页面。默认值false。 <BR><BR><BR>language="java" <BR><BR>该属性用来指示所使用的语言。目前没有必要关注这个属性，因为默认的Java是当前唯一可用的语言。 <BR>　　 定义指令的XML语法为： <BR>＜jsp:directive.directiveType attribute=value /＞ <BR><BR><BR><BR>　　 例如，下面这个指令： <BR>＜%@ page import="java.util.*" %＞ <BR><BR><BR><BR>　　 它的XML等价表达是： <BR>＜jsp:directive.page import="java.util.*" /＞ <BR><BR><BR><BR>　　 12.2.2 include指令 <BR><BR>　　 include指令用于JSP页面转换成Servlet时引入其他文件。该指令语法如下： <BR>＜%@ include file="relative url" %＞ <BR><BR><BR><BR>　　 这里所指定的URL是和发出引用指令的JSP页面相对的URL，然而，与通常意义上的相对URL一样，你可以利用以“/”开始的URL告诉系统把URL视为从Web服务器根目录开始。包含文件的内容也是JSP代码，即包含文件可以包含静态HTML、脚本元素、JSP指令和动作。 <BR><BR>　　 例如，许多网站的每个页面都有一个小小的导航条。由于HTML框架存在不少问题，导航条往往用页面顶端或左边的一个表格制作，同一份HTML代码重复出现在整个网站的每个页面上。include指令是实现该功能的非常理想的方法。使用include指令，开发者不必再把导航HTML代码拷贝到每个文件中，从而可以更轻松地完成维护工作。 <BR><BR>　　 由于include指令是在JSP转换成Servlet的时候引入文件，因此如果导航条改变了，所有使用该导航条的JSP页面都必须重新转换成Servlet。如果导航条改动不频繁，而且你希望包含操作具有尽可能好的效率，使用include指令是最好的选择。然而，如果导航条改动非常频繁，你可以使用jsp:include动作。jsp:include动作在出现对JSP页面请求的时候才会引用指定的文件，请参见本文后面的具体说明。 <BR><BR>　　 12.3 实例：脚本元素和指令的应用 <BR><BR>　　 下面是一个使用JSP表达式、Scriptlet、声明、指令的简单例子。 <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞JavaServer Pages＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY BGCOLOR="#FDF5E6" TEXT="#000000" LINK="#0000EE" <BR>VLINK="#551A8B" ALINK="#FF0000"＞ <BR>＜CENTER＞ <BR>＜TABLE BORDER=5 BGCOLOR="#EF8429"＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>JSP应用实例＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR>下面是一些利用各种JSP功能生成的动态内容: <BR>＜UL＞ <BR>＜LI＞＜B＞表达式.＜/B＞＜BR＞ <BR>你的主机名: ＜%= request.getRemoteHost() %＞. <BR>＜LI＞＜B＞JSP Scriptlet.＜/B＞＜BR＞ <BR>＜% out.println("查询字符串: " + <BR>request.getQueryString()); %＞ <BR>＜LI＞＜B＞声明（和表达式）.＜/B＞＜BR＞ <BR>＜%! private int accessCount = 0; %＞ <BR>服务器启动以来访问次数: ＜%= ++accessCount %＞ <BR>＜LI＞＜B＞指令（和表达式）.＜/B＞＜BR＞ <BR>＜%@ page import = "java.util.*" %＞ <BR>当前日期: ＜%= new Date() %＞ <BR>＜/UL＞ <BR><BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 12.4 JSP预定义变量 <BR><BR>　　 为了简化JSP表达式和Scriptlet的代码，JSP提供了8个预先定义的变量（或称为隐含对象）。这些变量是request、response、out、session、application、config、pageContext和page。 <BR><BR>　　 12.4.1 request <BR><BR>　　 这是和请求关联的HttpServletRequest，通过它可以查看请求参数（调用getParameter），请求类型（GET，POST，HEAD，等），以及请求的HTTP头（Cookie，Referer，等）。严格说来，如果请求所用的是HTTP之外的其他协议，request可以是ServletRequest的子类（而不是HttpServletRequest），但在实践中几乎不会用到。 <BR><BR>　　 12.4.2 response <BR><BR>　　 这是和应答关联的HttpServletResponse。注意，由于输出流（参见下面的out）是带缓冲的，因此，如果已经向客户端发送了输出内容，普通Servlet不允许再设置HTTP状态代码，但在JSP中却是合法的。 <BR><BR>　　 12.4.3 out <BR><BR>　　 这是用来向客户端发送内容的PrintWriter。然而，为了让response对象更为实用，out是带缓存功能的PrintWriter，即JspWriter。JSP允许通过page指令的buffer属性调整缓存的大小，甚至允许关闭缓存。 <BR><BR>　　 out一般只在Scriptlet内使用，这是因为JSP表达式是自动发送到输出流的，很少需要显式地引用out。 <BR><BR>　　 12.4.4 session <BR><BR>　　 这是和请求关联的HttpSession对象。前面我们已经介绍过会话的自动创建，我们知道，即使不存在session引用，这个对象也是自动绑定的。但有一个例外，这就是如果你用page指令的session属性关闭了会话，此时对session变量的引用将导致JSP页面转换成Servlet时出错。 <BR><BR>　　 12.4.5 application <BR><BR>　　 这是一个ServletContext，也可以通过getServletConfig().getContext()获得。 <BR><BR>　　 12.4.6 config <BR><BR>　　 这是当前页面的ServletConfig对象。 <BR><BR>　　 12.4.7 pageContext <BR><BR>　　 主要用来管理页面的属性。 <BR><BR>　　 12.4.8 page <BR><BR>　　 它是this的同义词，当前用处不大。它是为了Java不再是唯一的JSP编程语言而准备的占位符。 <BR></P><p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=145&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=145&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=145">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=145&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="145" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/145.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=145"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">脚本元素、指令和预定义变量</h2>
+    <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:38 </span>
+                            　<P>12.1 JSP脚本元素 <BR><BR>　　 JSP脚本元素用来插入Java代码，这些Java代码将出现在由当前JSP页面生成的Servlet中。脚本元素有三种格式： <BR><BR>表达式格式＜%= expression %＞：计算表达式并输出其结果。 <BR>Scriptlet格式＜% code %＞：把代码插入到Servlet的service方法。 <BR>声明格式＜%! code %＞：把声明加入到Servlet类（在任何方法之外）。 <BR>　　 下面我们详细说明它们的用法。 <BR><BR>　　 12.1.1 JSP表达式 <BR><BR>　　 JSP表达式用来把Java数据直接插入到输出。其语法如下： <BR>＜%= Java Expression %＞ <BR><BR><BR><BR>　　 计算Java表达式得到的结果被转换成字符串，然后插入到页面。计算在运行时进行（页面被请求时），因此可以访问和请求有关的全部信息。例如，下面的代码显示页面被请求的日期/时间： <BR>Current time: ＜%= new java.util.Date() %＞ <BR><BR><BR><BR>　　 为简化这些表达式，JSP预定义了一组可以直接使用的对象变量。后面我们将详细介绍这些隐含声明的对象，但对于JSP表达式来说，最重要的几个对象及其类型如下： <BR><BR>request：HttpServletRequest; <BR>response：HttpServletResponse; <BR>session：和request关联的HttpSession <BR>out：PrintWriter（带缓冲的版本，JspWriter），用来把输出发送到客户端 <BR>　　 下面是一个例子： <BR>Your hostname: ＜%= request.getRemoteHost() %＞ <BR><BR><BR><BR>　　 最后，如果使用XML的话，JSP表达式也可以写成下面这种形式： <BR>＜jsp:expression＞ <BR>Java Expression <BR>＜/jsp:expression＞ <BR><BR><BR><BR>　　 请记住XML元素和HTML不一样。XML是大小写敏感的，因此务必使用小写。有关XML语法的说明，请参见《XML教程 》 <BR><BR>　　 12.1.2 JSP Scriptlet <BR><BR>　　 如果你要完成的任务比插入简单的表达式更加复杂，可以使用JSP Scriptlet。JSP Scriptlet允许你把任意的Java代码插入Servlet。JSP Scriptlet语法如下： <BR>＜% Java Code %＞ <BR><BR><BR><BR>　　 和JSP表达式一样，Scriptlet也可以访问所有预定义的变量。例如，如果你要向结果页面输出内容，可以使用out变量： <BR>＜% <BR>String queryData = request.getQueryString(); <BR>out.println("Attached GET data: " + queryData); <BR>%＞ <BR><BR><BR><BR>　　 注意Scriptlet中的代码将被照搬到Servlet内，而Scriptlet前面和后面的静态HTML（模板文本）将被转换成println语句。这就意味着，Scriptlet内的Java语句并非一定要是完整的，没有关闭的块将影响Scriptlet外的静态HTML。例如，下面的JSP片断混合了模板文本和Scriptlet： <BR>＜% if (Math.random() ＜ 0.5) { %＞ <BR>Have a ＜B＞nice＜/B＞ day! <BR>＜% } else { %＞ <BR>Have a ＜B＞lousy＜/B＞ day! <BR>＜% } %＞ <BR><BR><BR><BR>　　 上述JSP代码将被转换成如下Servlet代码： <BR>if (Math.random() ＜ 0.5) { <BR>out.println("Have a ＜B＞nice＜/B＞ day!"); <BR>} else { <BR>out.println("Have a ＜B＞lousy＜/B＞ day!"); <BR>} <BR><BR><BR><BR>　　 如果要在Scriptlet内部使用字符“%＞”，必须写成“%＼＞”。另外，请注意＜% code %＞的XML等价表达是： <BR>＜jsp:scriptlet＞ <BR>Code <BR>＜/jsp:scriptlet＞ <BR><BR><BR><BR>　　 12.1.3 JSP声明 <BR><BR>　　 JSP声明用来定义插入Servlet类的方法和成员变量，其语法如下： <BR>＜%! Java Code %＞ <BR><BR><BR><BR>　　 由于声明不会有任何输出，因此它们往往和JSP表达式或Scriptlet结合在一起使用。例如，下面的JSP代码片断输出自从服务器启动（或Servlet类被改动并重新装载以来）当前页面被请求的次数： <BR>＜%! private int accessCount = 0; %＞ <BR>自从服务器启动以来页面访问次数为： <BR>＜%= ++accessCount %＞ <BR><BR><BR><BR>　　 和Scriptlet一样，如果要使用字符串“%＞”，必须使用“%＼＞”代替。最后，＜%! code %＞的XML等价表达方式为： <BR>＜jsp:declaration＞ <BR>Code <BR>＜/jsp:declaration＞ <BR><BR><BR><BR>　　 12.2 JSP指令 <BR><BR>　　 JSP指令影响Servlet类的整体结构，它的语法一般如下： <BR>＜%@ directive attribute="value" %＞ <BR><BR><BR><BR>　　 另外，也可以把同一指令的多个属性结合起来，例如： <BR>＜%@ directive attribute1="value1" <BR>attribute2="value2" <BR>... <BR>attributeN="valueN" %＞ <BR><BR><BR><BR>　　 JSP指令分为两种类型：第一是page指令，用来完成下面这类任务：导入指定的类，自定义Servlet的超类，等等；第二是include指令，用来在JSP文件转换成Servlet时引入其他文件。JSP规范也提到了taglib指令，其目的是让JSP开发者能够自己定义标记，但JSP 1.0不支持该指令，有希望它将成为JSP 1.1的主要改进之一。 <BR><BR>　　 12.2.1 page指令 <BR><BR>　　 page指令的作用是定义下面一个或多个属性，这些属性大小写敏感。 <BR><BR><BR><BR>import="package.class"，或者import="package.class1,...,package.classN"： <BR><BR>用于指定导入哪些包，例如：＜%@ page import="java.util.*" %＞。import是唯一允许出现一次以上的属性。 <BR><BR><BR>contentType="MIME-Type" 或contentType="MIME-Type; charset=Character-Set"： <BR><BR>该属性指定输出的MIME类型。默认是text/html。例如，下面这个指令： <BR>＜%@ page contentType="text/plain" %＞。 <BR>和下面的Scriptlet效果相同： <BR>＜% response.setContentType("text/plain"); %＞ <BR><BR><BR>isThreadSafe="true|false" <BR><BR>默认值true表明Servlet按照标准的方式处理，即假定开发者已经同步对实例变量的访问，由单个Servlet实例同时地处理多个请求。如果取值false，表明Servlet应该实现SingleThreadModel，请求或者是逐个进入，或者多个并行的请求分别由不同的Servlet实例处理。 <BR><BR><BR>session="true|false" <BR><BR>默认值true表明预定义变量session（类型为HttpSession）应该绑定到已有的会话，如果不存在已有的会话，则新建一个并绑定session变量。如果取值false，表明不会用到会话，试图访问变量session将导致JSP转换成Servlet时出错。 <BR><BR><BR>buffer="size kb|none" <BR><BR>该属性指定JspWrite out的缓存大小。默认值和服务器有关，但至少应该是8 KB。 <BR><BR><BR>autoflush="true|false" <BR><BR>默认值true表明如果缓存已满则刷新它。autoflush很少取false值，false值表示如果缓存已满则抛出异常。如果buffer="none"，autoflush不能取false值。 <BR><BR><BR>extends="package.class" <BR><BR>该属性指出将要生成的Servlet使用哪个超类。使用该属性应当十分小心，因为服务器可能已经在用自定义的超类。 <BR><BR><BR>info="message" <BR><BR>该属性定义一个可以通过getServletInfo方法提取的字符串。 <BR><BR><BR>errorPage="url" <BR><BR>该属性指定一个JSP页面，所有未被当前页面捕获的异常均由该页面处理。 <BR><BR><BR>isErrorPage="true|false" <BR><BR>该属性指示当前页面是否可以作为另一JSP页面的错误处理页面。默认值false。 <BR><BR><BR>language="java" <BR><BR>该属性用来指示所使用的语言。目前没有必要关注这个属性，因为默认的Java是当前唯一可用的语言。 <BR>　　 定义指令的XML语法为： <BR>＜jsp:directive.directiveType attribute=value /＞ <BR><BR><BR><BR>　　 例如，下面这个指令： <BR>＜%@ page import="java.util.*" %＞ <BR><BR><BR><BR>　　 它的XML等价表达是： <BR>＜jsp:directive.page import="java.util.*" /＞ <BR><BR><BR><BR>　　 12.2.2 include指令 <BR><BR>　　 include指令用于JSP页面转换成Servlet时引入其他文件。该指令语法如下： <BR>＜%@ include file="relative url" %＞ <BR><BR><BR><BR>　　 这里所指定的URL是和发出引用指令的JSP页面相对的URL，然而，与通常意义上的相对URL一样，你可以利用以“/”开始的URL告诉系统把URL视为从Web服务器根目录开始。包含文件的内容也是JSP代码，即包含文件可以包含静态HTML、脚本元素、JSP指令和动作。 <BR><BR>　　 例如，许多网站的每个页面都有一个小小的导航条。由于HTML框架存在不少问题，导航条往往用页面顶端或左边的一个表格制作，同一份HTML代码重复出现在整个网站的每个页面上。include指令是实现该功能的非常理想的方法。使用include指令，开发者不必再把导航HTML代码拷贝到每个文件中，从而可以更轻松地完成维护工作。 <BR><BR>　　 由于include指令是在JSP转换成Servlet的时候引入文件，因此如果导航条改变了，所有使用该导航条的JSP页面都必须重新转换成Servlet。如果导航条改动不频繁，而且你希望包含操作具有尽可能好的效率，使用include指令是最好的选择。然而，如果导航条改动非常频繁，你可以使用jsp:include动作。jsp:include动作在出现对JSP页面请求的时候才会引用指定的文件，请参见本文后面的具体说明。 <BR><BR>　　 12.3 实例：脚本元素和指令的应用 <BR><BR>　　 下面是一个使用JSP表达式、Scriptlet、声明、指令的简单例子。 <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞JavaServer Pages＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY BGCOLOR="#FDF5E6" TEXT="#000000" LINK="#0000EE" <BR>VLINK="#551A8B" ALINK="#FF0000"＞ <BR>＜CENTER＞ <BR>＜TABLE BORDER=5 BGCOLOR="#EF8429"＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>JSP应用实例＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR>下面是一些利用各种JSP功能生成的动态内容: <BR>＜UL＞ <BR>＜LI＞＜B＞表达式.＜/B＞＜BR＞ <BR>你的主机名: ＜%= request.getRemoteHost() %＞. <BR>＜LI＞＜B＞JSP Scriptlet.＜/B＞＜BR＞ <BR>＜% out.println("查询字符串: " + <BR>request.getQueryString()); %＞ <BR>＜LI＞＜B＞声明（和表达式）.＜/B＞＜BR＞ <BR>＜%! private int accessCount = 0; %＞ <BR>服务器启动以来访问次数: ＜%= ++accessCount %＞ <BR>＜LI＞＜B＞指令（和表达式）.＜/B＞＜BR＞ <BR>＜%@ page import = "java.util.*" %＞ <BR>当前日期: ＜%= new Date() %＞ <BR>＜/UL＞ <BR><BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 12.4 JSP预定义变量 <BR><BR>　　 为了简化JSP表达式和Scriptlet的代码，JSP提供了8个预先定义的变量（或称为隐含对象）。这些变量是request、response、out、session、application、config、pageContext和page。 <BR><BR>　　 12.4.1 request <BR><BR>　　 这是和请求关联的HttpServletRequest，通过它可以查看请求参数（调用getParameter），请求类型（GET，POST，HEAD，等），以及请求的HTTP头（Cookie，Referer，等）。严格说来，如果请求所用的是HTTP之外的其他协议，request可以是ServletRequest的子类（而不是HttpServletRequest），但在实践中几乎不会用到。 <BR><BR>　　 12.4.2 response <BR><BR>　　 这是和应答关联的HttpServletResponse。注意，由于输出流（参见下面的out）是带缓冲的，因此，如果已经向客户端发送了输出内容，普通Servlet不允许再设置HTTP状态代码，但在JSP中却是合法的。 <BR><BR>　　 12.4.3 out <BR><BR>　　 这是用来向客户端发送内容的PrintWriter。然而，为了让response对象更为实用，out是带缓存功能的PrintWriter，即JspWriter。JSP允许通过page指令的buffer属性调整缓存的大小，甚至允许关闭缓存。 <BR><BR>　　 out一般只在Scriptlet内使用，这是因为JSP表达式是自动发送到输出流的，很少需要显式地引用out。 <BR><BR>　　 12.4.4 session <BR><BR>　　 这是和请求关联的HttpSession对象。前面我们已经介绍过会话的自动创建，我们知道，即使不存在session引用，这个对象也是自动绑定的。但有一个例外，这就是如果你用page指令的session属性关闭了会话，此时对session变量的引用将导致JSP页面转换成Servlet时出错。 <BR><BR>　　 12.4.5 application <BR><BR>　　 这是一个ServletContext，也可以通过getServletConfig().getContext()获得。 <BR><BR>　　 12.4.6 config <BR><BR>　　 这是当前页面的ServletConfig对象。 <BR><BR>　　 12.4.7 pageContext <BR><BR>　　 主要用来管理页面的属性。 <BR><BR>　　 12.4.8 page <BR><BR>　　 它是this的同义词，当前用处不大。它是为了Java不再是唯一的JSP编程语言而准备的占位符。 <BR></P></div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>

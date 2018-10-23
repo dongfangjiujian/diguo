@@ -5,13 +5,20 @@
 <title>SCJP认证套题解析之一 - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="SCJP认证套题解析之一" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>SCJP认证套题解析之一</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:24&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">SCJP认证套题解析之一 <br><br>作者 Cherami<br><br>作者说明<br><br><br>写作本文的目的是总结自己学习java的知识点，也可以方便其它人学习java，个人的感觉是java确实是一个很好的编程语言，而学习好java必须先掌握java的特点，而这些特点在scjp的套题中可以充分的体现出来，套题考核的知识点非常的到位，必须对java非常了解才可以做好这些题。 <br><br>如果文中有错误之处，欢迎指正！如果有和本文相关的任何问题也欢迎来信联系。谢谢。欢迎转载，但请保持以上信息的完整 <br><br><br><br><br>--------------------------------------------------------------------------------<br>1. Which of the following range of short is correct? <br>A. -27 -- 27-1 <br>B. 0 -- 216-1 <br>C. ?215 -- 215-1 <br>D. ?231 -- 231-1 <br>翻译 下面哪些是short型的取值范围。 <br>答案<br>C 解析<br>短整型的数据类型的长度是16 bits，有符号。另外需要说明的是java中所有的整（Integral）数(包括byte,short,int,long)全是有符号的。 <br><br><br><br><br>2. Which declarations of identifiers are legal? <br>A. $persons <br>B. TwoUsers <br>C. *point <br>D. this <br>E. _endline <br>翻译 下面哪些是合法的标识符。 <br>答案<br>A,B,E 解析<br>Java的标识符可以以一个Unicode字符，下滑线（_），美元符（$）开始，后续字符可以是前面的符号和数字，没有长度限制，大小写敏感，不能是保留字。 <br><br><br><br><br>3. Which statement of assigning a long type variable to a hexadecimal value is correct? <br>A. long number = 345L;<br><br>B. long number = 0345;<br><br>C. long number = 0345L;<br><br>D. long number = 0x345L <br>翻译 哪些是将一个十六进制值赋值给一个long型变量。 <br>答案<br>D 解析<br><br>十六进制数以0x开头，long型数以L（大小写均可，一般使用大写，因为小写的l和数字1不易区分）。 <br>4.Which of the following fragments might cause errors? <br>A. String s = &quot;Gone with the wind&quot;;<br>String t = &quot; good &quot;;<br>String k = s + t;<br><br>B. String s = &quot;Gone with the wind&quot;;<br>String t;<br>t = s[3] + &quot;one&quot;;<br><br>C. String s = &quot;Gone with the wind&quot;;<br>String standard = s.toUpperCase();<br><br>D. String s = &quot;home directory&quot;;<br>String t = s - &quot;directory&quot;;<br><br>翻译 下面的哪些程序片断可能导致错误。 <br>答案B,D 解析<br>A：String类型可以直接使用+进行连接运算。<br><br>B：String是一种Object，而不是简单的字符数组，不能使用下标运算符取其值的某个元素，错误。<br><br>C：toUpperCase()方法是String对象的一个方法，作用是将字符串的内容全部转换为大写并返回转换后的结果（String类型）。<br><br>D：String类型不能进行减（-）运算，错误。 <br><br><br><br><br>5. Which are syntactically valid statement at// point x? <br>class Person {<br>private int a;<br>public int change(int m){ return m; }<br>}<br>public class Teacher extends Person {<br>public int b;<br>public static void main(String arg[]){<br>Person p = new Person();<br>Teacher t = new Teacher();<br>int i;<br>// point x<br>}<br>}<br><br>A. i = m;<br><br>B. i = b;<br><br>C. i = p.a; <br><br>D. i = p.change(30);<br><br>E. i = t.b. <br>翻译 在// point x处的哪些申明是句法上合法的。 <br>答案D,E 解析<br>A：m没有被申明过，不能使用。<br><br>B：虽然b是类Teacher的public成员变量，但是在静态方法中不能使用类中的非静态成员。<br><br>C：a是类Person的private成员，在类外不能直接引用。<br><br>D：change(int m)方法是public方法，并且返回一个int型值，可以通过类的实例变量p引用并赋值给一个int型变量。<br><br>E：b是类Teacher的public成员变量，且是int型，可以通过类的实例变量t引用并赋值给一个int型变量。 <br><br><br><br><br>6. Which layout manager is used when the frame is resized the buttons&amp;acute;s position in the Frame might be changed? <br>A. BorderLayout<br><br>B. FlowLayout<br><br>C. CardLayout<br><br>D. GridLayout <br>翻译 当Frame的大小被改变时Frame中的按钮的位置可能被改变时使用的哪一个布局管理器。 <br>答案<br>B 解析<br>A：该布局管理器将容器划分为五个部分，容器大小的改变不会影响其中的组件的位置而是影响他们的大小。<br><br>B：该布局管理器根据放入其中的组件的最合适大小调整组件的位置，根据组件放入的顺序安排，一行不能容纳时放入下一行，因此容器的大小改变可能改变组件的位置。<br><br>C：该布局管理器显示放入该容器的当前页中的组件，一次显示一个，容器大小的改变不能影响其中组件的位置。 <br>D：该布局管理器将容器划分为固定的网格，组件加入后占据一个单元，各组件的相对位置不会因为容器的大小变化而变化，改变的只是组件的大小。 <br><br><br><br>7. Given the following code fragment:<br><br>1) public void create() {<br><br>2) Vector myVect;<br><br>3) myVect = new Vector(); <br><br>4) }<br><br>Which of the following statements are true? <br>A. The declaration on line 2 does not allocate memory space for the variable myVect.<br><br>B. The declaration on line 2 allocates memory space for a reference to a Vector object.<br><br>C. The statement on line 2 creates an object of class Vector.<br><br>D. The statement on line 3 creates an object of class Vector.<br><br>E. The statement on line 3 allocates memory space for an object of class Vector <br>翻译<br>给出下面的代码片断。。。下面的哪些陈述为true(真)?<br>A. 第二行的声明不会为变量myVect分配内存空间。<br>B. 第二行的声明分配一个到Vector对象的引用的内存空间。<br>C. 第二行语句创建一个Vector类对象。<br>D. 第三行语句创建一个Vector类对象。<br>E. 第三行语句为一个Vector类对象分配内存空间。 <br>答案A,D,E 解析<br>SL-275中指出：要为一个新对象分配空间必须执行new Xxx()调用，new调用执行以下 的操作：<br><br>1． 为新对象分配空间并将其成员初始化为0或者null。<br><br>2． 执行类体中的初始化。（例如在类中有一个成员声明int a=10;在第一步后a=0 ，执行到第二步后a=10）<br><br>3． 执行构造函数。<br><br>4． 变量被分配为一个到内存堆中的新对象的引用。 <br><br><br><br><br>8. Which of the following answer is correct to express the value 8 in octal number? <br>A. 010<br><br>B. 0x10<br><br>C. 08<br><br>D. 0x8 <br>翻译<br>下面的哪些答案可以用以表示八进制值8。 <br>答案<br>A 解析<br>八进制值以0开头，以0x开头的为十六进制值，八进制中不能出现数字8，最大只有7。<br><br><br><br><br>9. Which are not Java keywords? <br>A. TRUE<br><br>B. sizeof<br><br>C. const<br><br>D. super<br><br>E. void <br>翻译<br>哪些不是Java关键字。 <br>答案A,B 解析<br>A： 不是，Java中有true,但是这也不是关键字而是字面量（literal）。<br><br>B： 不是，Java中不需要这个操作符，所有的类型（原始类型）的大小都是固定的。<br><br>C、D、E都是，需要说明的是const是java中未被使用的关键字。<br><br><br><br><br>10. Which of the following statements are true? <br>A. The equals() method determines if reference values refer to the same object.<br><br>B. The == operator determines if the contents and type of two separate objects match.<br><br>C. The equals() method returns true only when the contents of two objects match.<br><br>D. The class File overrides equals() to return true if the contents and type of two separate objects match. <br>翻译<br>下面的哪些叙述为真。A. equals()方法判定引用值是否指向同一对象。<br><br>B. == 操作符判定两个分立的对象的内容和类型是否一致。<br><br>C. equals()方法只有在两个对象的内容一致时返回true。<br><br>D. 类File重写方法equals()在两个分立的对象的内容和类型一致时返回true。 <br>答案A,D 解析<br>严格来说这个问题的答案是不确定的，因为equals()方法是可以被重载的，但是按照java语言的本意来说：如果没有重写（override）新类的equals()，则该方法和 == 操作符一样在两个变量指向同一对象时返回真，但是java推荐的是使用equals()方法来判断两个对象的内容是否一样，就像String类的equals()方法所做的那样：判定两个String对象的内容是否相同，而==操作符返回true的唯一条件是两个变量指向同一对象。从这个意义上来说选择给定的答案。从更严格的意义来说正确答案应该只有d。<br><br><br><br><br>11. Which statements about inheritance are true? <br>A. In Java programming language only allows single inheritance. <br><br>B. In Java programming language allows a class to implement only one <br>interface.<br><br>C. In Java programming language a class cannot extend a class and implement <br>a interface together.<br><br>D. In Java programming language single inheritance makes code more <br>reliable. <br>翻译<br>下面关于继承的哪些叙述是正确的。<br><br>A． 在java中只允许单一继承。<br><br>B． 在java中一个类只能实现一个接口。<br><br>C． 在java中一个类不能同时继承一个类和实现一个接口。<br><br>D． java的单一继承使代码更可靠。 <br>答案A,D 解析<br>在java中一个类只能有一个直接父类，但是可以实现多个接口，在继承的同时可以实现接口，之所以取消多继承的原因是多继承使得代码产生很多问题,而使用单一继承则可以使代码更可靠。<br><br><br><br><br>12. <br>1) class Person {<br><br>2) public void printValue(int i, int j) {/*…*/ }<br><br>3) public void printValue(int i){/*...*/ }<br><br>4) }<br><br>5) public class Teacher extends Person {<br><br>6) public void printValue() {/*...*/ }<br><br>7) public void printValue(int i) {/*...*/}<br><br>8) public static void main(String args[]){<br><br>9) Person t = new Teacher();<br><br>10) t.printValue(10);<br><br>11) }<br><br>12) } <br><br>Which method will the statement on line 10 call? <br>A. on line 2<br><br>B. on line 3<br><br>C. on line 6<br><br>D. on line 7 <br>翻译<br>第十行的声明将调用哪些方法。 <br>答案<br>D 解析<br>变量t是一个Person对象，但是它是用Teacher实例化的，这个问题涉及到java的编译时多态和运行时多态的问题，就编译时多态来说，t实际上是一个Person类，这涉及到类型的自动转换（将一个子类的实例赋值给一个父类的变量是不用进行强制类型转换，反之则需要进行强制类型转换，而且被赋值的变量实际上应该是一个子类的对象），如果对t调用了子类中新增的方法则造成编译时错误编译将不能通过，而在运行时，运行时系统将根据t实际指向的类型调用对应的方法，对于本例来说，t.print(10)将调用t实际指向的Teacher类的对应方法。在java中，可以用一个子类的实例实例化父类的一个变量，而变量在编译时是一个父类实例，在运行时可能是一个子类实例。<br><br><br><br><br>13. Which are not Java primitive types? <br>A. short<br><br>B. Boolean<br><br>C. unit<br><br>D. float <br>翻译<br>下面哪些不是java的原始数据类型。 <br>答案B,C 解析<br>Java的原始数据类型一共就八个，分别是：byte,short,int,long,boolean,char,float,double。注意这些是大小写敏感的，而Boolean是booelan的封装类（wrapper class）。<br><br><br><br><br>14. Use the operators &quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;, which statements are true? <br>A. 0000 0100 0000 0000 0000 0000 0000 0000&lt;&lt;5 gives<br><br>1000 0000 0000 0000 0000 0000 0000 0000<br><br>B. 0000 0100 0000 0000 0000 0000 0000 0000&lt;&lt;5 gives<br><br>1111 1100 0000 0000 0000 0000 0000 0000<br><br>C. 1100 0000 0000 0000 0000 0000 0000 0000&gt;&gt;5 gives<br><br>1111 1110 0000 0000 0000 0000 0000 0000<br><br>D. 1100 0000 0000 0000 0000 0000 0000 0000&gt;&gt;5 gives<br><br>0000 0110 0000 0000 0000 0000 0000 0000 <br>翻译<br>使用&quot;&lt;&lt;&quot;和 &quot;&gt;&gt;&quot;操作符的哪些陈述是对的。 <br>答案A,C 解析<br>Java的移位操作符一共有三种，分别是”&gt;&gt;”,”&gt;&gt;&gt;”,”&lt;&lt;”,执行的操作分别是有符号右移，无符号右移，左移，有符号右移的意思是说移入的最高位和原最高符号位相同，无符号右移是移入位始终补零，左移时最低位始终补零，最高位被舍弃。移位操作符另一个非常值得注意的特点是其右操作数是取模运算的，意思是说对于一个int型数据而言，对它移位32位的结果是保持不变而非变成零，即：a&gt;&gt;32的结果是a而不是0，同理，对long型数是对右操作数取64的模，a&gt;&gt;64==a；还有一点需要注意的是移位操作符”&gt;&gt;&gt;”只对int型和long型有效，对byte或者short的操作将导致自动类型转换，而且是带符号的。<br><br><br><br><br>15. Which of the following range of int is correct? <br>A. -27 -- 27-1 <br><br>B. 0 -- 232-1 <br><br>C. ?215 -- 215-1 <br><br>D. ?231 -- 231-1 <br>翻译<br>int的取值范围是哪个。 <br>答案<br>D 解析<br>int型是32位的。参看第一题的论述。<br><br><br><br><br>16. Which keyword should be used to enable interaction with the lock of an <br>object? The flag allows exclusive access to that object. <br>A. transient<br><br>B. synchronized<br><br>C. serialize<br><br>D. static <br>翻译<br>下面的哪些关键字通常用来对对象的加锁，该标记使得对对象的访问是排他的 <br>答案<br>B 解析<br>由于java是多线程的语言，多个线程可以”同时”访问同一数据区，而在处理某些数据时不希望其它的线程修改那些数据的值或者某些操作是不可打断的，要做到这个，可以使用synchronized关键字声明这一点。<br><br><br><br><br>17. Which is the return type of the method main()? <br>A. int<br><br>B. void<br><br>C. boolean<br><br>D. static <br>翻译<br>main()方法的返回类型是什么？ <br>答案<br>B 解析<br>在java中，程序运行的入口就是main()方法，它必须是这样的形式：public static void main(String args[])。但是严格来讲这个题目的答案还可以加上a和c，因为并没有限定是程序入口的main()方法，而main()方法是可以重载的。一般意义上的main()当然就是指我们刚开始所说的main()方法了。<br><br><br><br><br>18. Given the following code:<br><br>if (x&gt;0) { System.out.println(&quot;first&quot;); }<br><br>else if (x&gt;-3) { System.out.println(&quot;second&quot;); }<br><br>else { System.out.println(&quot;third&quot;); }<br><br>Which range of x value would print the string &quot;second&quot;? <br>A. x &gt; 0<br><br>B. x &gt; -3<br><br>C. x &lt;= -3<br><br>D. x &lt;= 0 &amp; x &gt; -3 <br>翻译<br>给出下面的代码：<br><br>…<br><br>x的取值在什么范围内时将打印字符串&quot;second&quot;。 <br>答案<br>D 解析<br>x&gt;0时打印&quot;first&quot;，x&gt;-3&amp;&amp;x&lt;=0时打印&quot;second&quot;，x&lt;=-3时打印&quot;third&quot;。<br><br>这个题目没有什么难的，只要理解if语句的语法就可以了。<br><br><br><br><br>19. Given the following expression about TextField which use a proportional <br>pitch font. <br><br>TextField t = new TextField(&quot;they are good&quot;,40);<br><br>Which statement is true? <br>A. The displayed string can use multiple fonts.<br><br>B. The maximum number of characters in a line will be 40.<br><br>C. The displayed width is exactly 40 characters.<br><br>D. The user can edit the characters. <br>翻译<br>给出以下关于一个使用适当的字符间距的字体的TextField的表达式。<br>…<br><br>哪些叙述是对的？<br><br>A. 被显示的字符串可以使用多种字体。<br><br>B. 一行中最大的字符数是40<br><br>C. 显示的宽度正好是40个字符宽。<br><br>D. 用户可以编辑字符。 <br>答案<br>D 解析<br>对于TextField的该种形式的构造函数来说，前一个参数是文本域中初始的字符串的显示值，而后一个是推荐的显示宽度，以列数表示，在构造文本域的时候会将这个大小设置为最佳大小，如果容器的限制使得文本域不能显示这么多也没有办法，一般来说是比这个大小大的，而且即使宽度很小，你也可以在文本域的一行中输入很长的字符串，只有你不使用回车，在超过显示宽度后文本域会自动出现水平滚动条（没有被设置为关闭，缺省是不关闭的），而文本域的缺省编辑方式是可编辑的，一个文本域只能使用一种字体，这个字体可以在运行的过程中动态的改变，但是文本域中的所有字符串都将使用这个字体显示。<br><br><br><br><br>20. Which statements about the garbage collection are true? <br>A. The program developer must create a thread to be responsible for free <br>the memory.<br><br>B. The garbage collection will check for and free memory no longer needed.<br><br>C. The garbage collection allow the program developer to explicity and <br>immediately free the memory.<br><br>D. The garbage collection can free the memory used java object at expect <br>time. <br>翻译<br>关于垃圾收集的哪些叙述是对的。<br><br>A. 程序开发者必须自己创建一个线程进行内存释放的工作。<br><br>B. 垃圾收集将检查并释放不再使用的内存。<br><br>C. 垃圾收集允许程序开发者明确指定并立即释放该内存。<br><br>D. 垃圾收集能够在期望的时间释放被java对象使用的内存。 <br>答案<br>B 解析<br>Java语言将内存分配和释放的工组交给了自己，程序员不必做这些工作，它提供一个系统级的线程跟踪每个内存的分配，在JVM的空闲处理中，垃圾收集线程将检查和释放不再使用的内存（即可以被释放的内存）。垃圾收集的过程在java程序的生存期中是自动的，不需要分配和释放内存，也避免了内存泄漏。可以调用System.gc()方法建议（suggest）JVM执行垃圾收集以使得可被释放的内存能立即被使用，当此方法返回的时候，JVM已经做了最大的努力从被丢弃的对象上回收内存空间。程序员不能指定收集哪些内存，一般而言也不用关心这个问题，除非是程序的内存消耗很大，特别是有很多临时对象时可以“建议“进行垃圾收集以提高可用内存。需要指出的是调用System.gc()方法不能保证JVM立即进行垃圾收集，而只能是建议,因为垃圾收集线程的优先级很低（通常是最低的）。<br>　 <br><p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=103&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=103&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=103">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=103&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="103" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/103.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=103"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">SCJP认证套题解析之一</h2>
+    <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:24 </span>
+SCJP认证套题解析之一 <br><br>作者 Cherami<br><br>作者说明<br><br><br>写作本文的目的是总结自己学习java的知识点，也可以方便其它人学习java，个人的感觉是java确实是一个很好的编程语言，而学习好java必须先掌握java的特点，而这些特点在scjp的套题中可以充分的体现出来，套题考核的知识点非常的到位，必须对java非常了解才可以做好这些题。 <br><br>如果文中有错误之处，欢迎指正！如果有和本文相关的任何问题也欢迎来信联系。谢谢。欢迎转载，但请保持以上信息的完整 <br><br><br><br><br>--------------------------------------------------------------------------------<br>1. Which of the following range of short is correct? <br>A. -27 -- 27-1 <br>B. 0 -- 216-1 <br>C. ?215 -- 215-1 <br>D. ?231 -- 231-1 <br>翻译 下面哪些是short型的取值范围。 <br>答案<br>C 解析<br>短整型的数据类型的长度是16 bits，有符号。另外需要说明的是java中所有的整（Integral）数(包括byte,short,int,long)全是有符号的。 <br><br><br><br><br>2. Which declarations of identifiers are legal? <br>A. $persons <br>B. TwoUsers <br>C. *point <br>D. this <br>E. _endline <br>翻译 下面哪些是合法的标识符。 <br>答案<br>A,B,E 解析<br>Java的标识符可以以一个Unicode字符，下滑线（_），美元符（$）开始，后续字符可以是前面的符号和数字，没有长度限制，大小写敏感，不能是保留字。 <br><br><br><br><br>3. Which statement of assigning a long type variable to a hexadecimal value is correct? <br>A. long number = 345L;<br><br>B. long number = 0345;<br><br>C. long number = 0345L;<br><br>D. long number = 0x345L <br>翻译 哪些是将一个十六进制值赋值给一个long型变量。 <br>答案<br>D 解析<br><br>十六进制数以0x开头，long型数以L（大小写均可，一般使用大写，因为小写的l和数字1不易区分）。 <br>4.Which of the following fragments might cause errors? <br>A. String s = &quot;Gone with the wind&quot;;<br>String t = &quot; good &quot;;<br>String k = s + t;<br><br>B. String s = &quot;Gone with the wind&quot;;<br>String t;<br>t = s[3] + &quot;one&quot;;<br><br>C. String s = &quot;Gone with the wind&quot;;<br>String standard = s.toUpperCase();<br><br>D. String s = &quot;home directory&quot;;<br>String t = s - &quot;directory&quot;;<br><br>翻译 下面的哪些程序片断可能导致错误。 <br>答案B,D 解析<br>A：String类型可以直接使用+进行连接运算。<br><br>B：String是一种Object，而不是简单的字符数组，不能使用下标运算符取其值的某个元素，错误。<br><br>C：toUpperCase()方法是String对象的一个方法，作用是将字符串的内容全部转换为大写并返回转换后的结果（String类型）。<br><br>D：String类型不能进行减（-）运算，错误。 <br><br><br><br><br>5. Which are syntactically valid statement at// point x? <br>class Person {<br>private int a;<br>public int change(int m){ return m; }<br>}<br>public class Teacher extends Person {<br>public int b;<br>public static void main(String arg[]){<br>Person p = new Person();<br>Teacher t = new Teacher();<br>int i;<br>// point x<br>}<br>}<br><br>A. i = m;<br><br>B. i = b;<br><br>C. i = p.a; <br><br>D. i = p.change(30);<br><br>E. i = t.b. <br>翻译 在// point x处的哪些申明是句法上合法的。 <br>答案D,E 解析<br>A：m没有被申明过，不能使用。<br><br>B：虽然b是类Teacher的public成员变量，但是在静态方法中不能使用类中的非静态成员。<br><br>C：a是类Person的private成员，在类外不能直接引用。<br><br>D：change(int m)方法是public方法，并且返回一个int型值，可以通过类的实例变量p引用并赋值给一个int型变量。<br><br>E：b是类Teacher的public成员变量，且是int型，可以通过类的实例变量t引用并赋值给一个int型变量。 <br><br><br><br><br>6. Which layout manager is used when the frame is resized the buttons&amp;acute;s position in the Frame might be changed? <br>A. BorderLayout<br><br>B. FlowLayout<br><br>C. CardLayout<br><br>D. GridLayout <br>翻译 当Frame的大小被改变时Frame中的按钮的位置可能被改变时使用的哪一个布局管理器。 <br>答案<br>B 解析<br>A：该布局管理器将容器划分为五个部分，容器大小的改变不会影响其中的组件的位置而是影响他们的大小。<br><br>B：该布局管理器根据放入其中的组件的最合适大小调整组件的位置，根据组件放入的顺序安排，一行不能容纳时放入下一行，因此容器的大小改变可能改变组件的位置。<br><br>C：该布局管理器显示放入该容器的当前页中的组件，一次显示一个，容器大小的改变不能影响其中组件的位置。 <br>D：该布局管理器将容器划分为固定的网格，组件加入后占据一个单元，各组件的相对位置不会因为容器的大小变化而变化，改变的只是组件的大小。 <br><br><br><br>7. Given the following code fragment:<br><br>1) public void create() {<br><br>2) Vector myVect;<br><br>3) myVect = new Vector(); <br><br>4) }<br><br>Which of the following statements are true? <br>A. The declaration on line 2 does not allocate memory space for the variable myVect.<br><br>B. The declaration on line 2 allocates memory space for a reference to a Vector object.<br><br>C. The statement on line 2 creates an object of class Vector.<br><br>D. The statement on line 3 creates an object of class Vector.<br><br>E. The statement on line 3 allocates memory space for an object of class Vector <br>翻译<br>给出下面的代码片断。。。下面的哪些陈述为true(真)?<br>A. 第二行的声明不会为变量myVect分配内存空间。<br>B. 第二行的声明分配一个到Vector对象的引用的内存空间。<br>C. 第二行语句创建一个Vector类对象。<br>D. 第三行语句创建一个Vector类对象。<br>E. 第三行语句为一个Vector类对象分配内存空间。 <br>答案A,D,E 解析<br>SL-275中指出：要为一个新对象分配空间必须执行new Xxx()调用，new调用执行以下 的操作：<br><br>1． 为新对象分配空间并将其成员初始化为0或者null。<br><br>2． 执行类体中的初始化。（例如在类中有一个成员声明int a=10;在第一步后a=0 ，执行到第二步后a=10）<br><br>3． 执行构造函数。<br><br>4． 变量被分配为一个到内存堆中的新对象的引用。 <br><br><br><br><br>8. Which of the following answer is correct to express the value 8 in octal number? <br>A. 010<br><br>B. 0x10<br><br>C. 08<br><br>D. 0x8 <br>翻译<br>下面的哪些答案可以用以表示八进制值8。 <br>答案<br>A 解析<br>八进制值以0开头，以0x开头的为十六进制值，八进制中不能出现数字8，最大只有7。<br><br><br><br><br>9. Which are not Java keywords? <br>A. TRUE<br><br>B. sizeof<br><br>C. const<br><br>D. super<br><br>E. void <br>翻译<br>哪些不是Java关键字。 <br>答案A,B 解析<br>A： 不是，Java中有true,但是这也不是关键字而是字面量（literal）。<br><br>B： 不是，Java中不需要这个操作符，所有的类型（原始类型）的大小都是固定的。<br><br>C、D、E都是，需要说明的是const是java中未被使用的关键字。<br><br><br><br><br>10. Which of the following statements are true? <br>A. The equals() method determines if reference values refer to the same object.<br><br>B. The == operator determines if the contents and type of two separate objects match.<br><br>C. The equals() method returns true only when the contents of two objects match.<br><br>D. The class File overrides equals() to return true if the contents and type of two separate objects match. <br>翻译<br>下面的哪些叙述为真。A. equals()方法判定引用值是否指向同一对象。<br><br>B. == 操作符判定两个分立的对象的内容和类型是否一致。<br><br>C. equals()方法只有在两个对象的内容一致时返回true。<br><br>D. 类File重写方法equals()在两个分立的对象的内容和类型一致时返回true。 <br>答案A,D 解析<br>严格来说这个问题的答案是不确定的，因为equals()方法是可以被重载的，但是按照java语言的本意来说：如果没有重写（override）新类的equals()，则该方法和 == 操作符一样在两个变量指向同一对象时返回真，但是java推荐的是使用equals()方法来判断两个对象的内容是否一样，就像String类的equals()方法所做的那样：判定两个String对象的内容是否相同，而==操作符返回true的唯一条件是两个变量指向同一对象。从这个意义上来说选择给定的答案。从更严格的意义来说正确答案应该只有d。<br><br><br><br><br>11. Which statements about inheritance are true? <br>A. In Java programming language only allows single inheritance. <br><br>B. In Java programming language allows a class to implement only one <br>interface.<br><br>C. In Java programming language a class cannot extend a class and implement <br>a interface together.<br><br>D. In Java programming language single inheritance makes code more <br>reliable. <br>翻译<br>下面关于继承的哪些叙述是正确的。<br><br>A． 在java中只允许单一继承。<br><br>B． 在java中一个类只能实现一个接口。<br><br>C． 在java中一个类不能同时继承一个类和实现一个接口。<br><br>D． java的单一继承使代码更可靠。 <br>答案A,D 解析<br>在java中一个类只能有一个直接父类，但是可以实现多个接口，在继承的同时可以实现接口，之所以取消多继承的原因是多继承使得代码产生很多问题,而使用单一继承则可以使代码更可靠。<br><br><br><br><br>12. <br>1) class Person {<br><br>2) public void printValue(int i, int j) {/*…*/ }<br><br>3) public void printValue(int i){/*...*/ }<br><br>4) }<br><br>5) public class Teacher extends Person {<br><br>6) public void printValue() {/*...*/ }<br><br>7) public void printValue(int i) {/*...*/}<br><br>8) public static void main(String args[]){<br><br>9) Person t = new Teacher();<br><br>10) t.printValue(10);<br><br>11) }<br><br>12) } <br><br>Which method will the statement on line 10 call? <br>A. on line 2<br><br>B. on line 3<br><br>C. on line 6<br><br>D. on line 7 <br>翻译<br>第十行的声明将调用哪些方法。 <br>答案<br>D 解析<br>变量t是一个Person对象，但是它是用Teacher实例化的，这个问题涉及到java的编译时多态和运行时多态的问题，就编译时多态来说，t实际上是一个Person类，这涉及到类型的自动转换（将一个子类的实例赋值给一个父类的变量是不用进行强制类型转换，反之则需要进行强制类型转换，而且被赋值的变量实际上应该是一个子类的对象），如果对t调用了子类中新增的方法则造成编译时错误编译将不能通过，而在运行时，运行时系统将根据t实际指向的类型调用对应的方法，对于本例来说，t.print(10)将调用t实际指向的Teacher类的对应方法。在java中，可以用一个子类的实例实例化父类的一个变量，而变量在编译时是一个父类实例，在运行时可能是一个子类实例。<br><br><br><br><br>13. Which are not Java primitive types? <br>A. short<br><br>B. Boolean<br><br>C. unit<br><br>D. float <br>翻译<br>下面哪些不是java的原始数据类型。 <br>答案B,C 解析<br>Java的原始数据类型一共就八个，分别是：byte,short,int,long,boolean,char,float,double。注意这些是大小写敏感的，而Boolean是booelan的封装类（wrapper class）。<br><br><br><br><br>14. Use the operators &quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;, which statements are true? <br>A. 0000 0100 0000 0000 0000 0000 0000 0000&lt;&lt;5 gives<br><br>1000 0000 0000 0000 0000 0000 0000 0000<br><br>B. 0000 0100 0000 0000 0000 0000 0000 0000&lt;&lt;5 gives<br><br>1111 1100 0000 0000 0000 0000 0000 0000<br><br>C. 1100 0000 0000 0000 0000 0000 0000 0000&gt;&gt;5 gives<br><br>1111 1110 0000 0000 0000 0000 0000 0000<br><br>D. 1100 0000 0000 0000 0000 0000 0000 0000&gt;&gt;5 gives<br><br>0000 0110 0000 0000 0000 0000 0000 0000 <br>翻译<br>使用&quot;&lt;&lt;&quot;和 &quot;&gt;&gt;&quot;操作符的哪些陈述是对的。 <br>答案A,C 解析<br>Java的移位操作符一共有三种，分别是”&gt;&gt;”,”&gt;&gt;&gt;”,”&lt;&lt;”,执行的操作分别是有符号右移，无符号右移，左移，有符号右移的意思是说移入的最高位和原最高符号位相同，无符号右移是移入位始终补零，左移时最低位始终补零，最高位被舍弃。移位操作符另一个非常值得注意的特点是其右操作数是取模运算的，意思是说对于一个int型数据而言，对它移位32位的结果是保持不变而非变成零，即：a&gt;&gt;32的结果是a而不是0，同理，对long型数是对右操作数取64的模，a&gt;&gt;64==a；还有一点需要注意的是移位操作符”&gt;&gt;&gt;”只对int型和long型有效，对byte或者short的操作将导致自动类型转换，而且是带符号的。<br><br><br><br><br>15. Which of the following range of int is correct? <br>A. -27 -- 27-1 <br><br>B. 0 -- 232-1 <br><br>C. ?215 -- 215-1 <br><br>D. ?231 -- 231-1 <br>翻译<br>int的取值范围是哪个。 <br>答案<br>D 解析<br>int型是32位的。参看第一题的论述。<br><br><br><br><br>16. Which keyword should be used to enable interaction with the lock of an <br>object? The flag allows exclusive access to that object. <br>A. transient<br><br>B. synchronized<br><br>C. serialize<br><br>D. static <br>翻译<br>下面的哪些关键字通常用来对对象的加锁，该标记使得对对象的访问是排他的 <br>答案<br>B 解析<br>由于java是多线程的语言，多个线程可以”同时”访问同一数据区，而在处理某些数据时不希望其它的线程修改那些数据的值或者某些操作是不可打断的，要做到这个，可以使用synchronized关键字声明这一点。<br><br><br><br><br>17. Which is the return type of the method main()? <br>A. int<br><br>B. void<br><br>C. boolean<br><br>D. static <br>翻译<br>main()方法的返回类型是什么？ <br>答案<br>B 解析<br>在java中，程序运行的入口就是main()方法，它必须是这样的形式：public static void main(String args[])。但是严格来讲这个题目的答案还可以加上a和c，因为并没有限定是程序入口的main()方法，而main()方法是可以重载的。一般意义上的main()当然就是指我们刚开始所说的main()方法了。<br><br><br><br><br>18. Given the following code:<br><br>if (x&gt;0) { System.out.println(&quot;first&quot;); }<br><br>else if (x&gt;-3) { System.out.println(&quot;second&quot;); }<br><br>else { System.out.println(&quot;third&quot;); }<br><br>Which range of x value would print the string &quot;second&quot;? <br>A. x &gt; 0<br><br>B. x &gt; -3<br><br>C. x &lt;= -3<br><br>D. x &lt;= 0 &amp; x &gt; -3 <br>翻译<br>给出下面的代码：<br><br>…<br><br>x的取值在什么范围内时将打印字符串&quot;second&quot;。 <br>答案<br>D 解析<br>x&gt;0时打印&quot;first&quot;，x&gt;-3&amp;&amp;x&lt;=0时打印&quot;second&quot;，x&lt;=-3时打印&quot;third&quot;。<br><br>这个题目没有什么难的，只要理解if语句的语法就可以了。<br><br><br><br><br>19. Given the following expression about TextField which use a proportional <br>pitch font. <br><br>TextField t = new TextField(&quot;they are good&quot;,40);<br><br>Which statement is true? <br>A. The displayed string can use multiple fonts.<br><br>B. The maximum number of characters in a line will be 40.<br><br>C. The displayed width is exactly 40 characters.<br><br>D. The user can edit the characters. <br>翻译<br>给出以下关于一个使用适当的字符间距的字体的TextField的表达式。<br>…<br><br>哪些叙述是对的？<br><br>A. 被显示的字符串可以使用多种字体。<br><br>B. 一行中最大的字符数是40<br><br>C. 显示的宽度正好是40个字符宽。<br><br>D. 用户可以编辑字符。 <br>答案<br>D 解析<br>对于TextField的该种形式的构造函数来说，前一个参数是文本域中初始的字符串的显示值，而后一个是推荐的显示宽度，以列数表示，在构造文本域的时候会将这个大小设置为最佳大小，如果容器的限制使得文本域不能显示这么多也没有办法，一般来说是比这个大小大的，而且即使宽度很小，你也可以在文本域的一行中输入很长的字符串，只有你不使用回车，在超过显示宽度后文本域会自动出现水平滚动条（没有被设置为关闭，缺省是不关闭的），而文本域的缺省编辑方式是可编辑的，一个文本域只能使用一种字体，这个字体可以在运行的过程中动态的改变，但是文本域中的所有字符串都将使用这个字体显示。<br><br><br><br><br>20. Which statements about the garbage collection are true? <br>A. The program developer must create a thread to be responsible for free <br>the memory.<br><br>B. The garbage collection will check for and free memory no longer needed.<br><br>C. The garbage collection allow the program developer to explicity and <br>immediately free the memory.<br><br>D. The garbage collection can free the memory used java object at expect <br>time. <br>翻译<br>关于垃圾收集的哪些叙述是对的。<br><br>A. 程序开发者必须自己创建一个线程进行内存释放的工作。<br><br>B. 垃圾收集将检查并释放不再使用的内存。<br><br>C. 垃圾收集允许程序开发者明确指定并立即释放该内存。<br><br>D. 垃圾收集能够在期望的时间释放被java对象使用的内存。 <br>答案<br>B 解析<br>Java语言将内存分配和释放的工组交给了自己，程序员不必做这些工作，它提供一个系统级的线程跟踪每个内存的分配，在JVM的空闲处理中，垃圾收集线程将检查和释放不再使用的内存（即可以被释放的内存）。垃圾收集的过程在java程序的生存期中是自动的，不需要分配和释放内存，也避免了内存泄漏。可以调用System.gc()方法建议（suggest）JVM执行垃圾收集以使得可被释放的内存能立即被使用，当此方法返回的时候，JVM已经做了最大的努力从被丢弃的对象上回收内存空间。程序员不能指定收集哪些内存，一般而言也不用关心这个问题，除非是程序的内存消耗很大，特别是有很多临时对象时可以“建议“进行垃圾收集以提高可用内存。需要指出的是调用System.gc()方法不能保证JVM立即进行垃圾收集，而只能是建议,因为垃圾收集线程的优先级很低（通常是最低的）。<br>　 <br></div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>

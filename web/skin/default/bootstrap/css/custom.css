@@ -1,0 +1,21 @@
+/* CSS Document */
+
+body {
+background-color:#ebebeb;
+}
+.nav-just .navbar-default {
+    margin-top:  10px;
+    margin-bottom:  10px;
+    background-color: #ffffff;
+    /* border-color: #373a3e; */
+    /* border: 5px; */
+    /* border-bottom:  3px; */
+    /* border-bottom-color:  black; */
+    /* display:  block; */
+    border-color: #801010;
+    border-top: 2px solid saddlebrown;
+    /* border-bottom: 2px solid #1a5608; */
+}
+.div-just {
+margin-left:12px;
+}

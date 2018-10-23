@@ -12,6 +12,8 @@ if(!defined('InEmpireCMS'))
 <meta name="description" content="[!--pagedes--]" />
 
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="[!--news.url--]skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="[!--news.url--]skin/default/js/tabs.js"></script>
 
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -19,9 +21,8 @@ if(!defined('InEmpireCMS'))
 
 </head>
 <body>
-<div class="container">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<div class="nav-just"><nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -30,7 +31,7 @@ if(!defined('InEmpireCMS'))
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="[!--news.url--]">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -41,8 +42,9 @@ if(!defined('InEmpireCMS'))
 	</div>
 	</div>
 </nav>
-<div>
 </div>
+<div class="container">
+
 <div class="row">
             <div class="col-md-7">
 <ol class="breadcrumb">

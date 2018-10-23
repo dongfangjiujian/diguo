@@ -3,13 +3,13 @@ if(!defined('InEmpireCMS'))
 {
 	exit();
 }
-?><!DOCTYPE html>
-<html>
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>帝国网站管理系统 - Powered by EmpireCMS</title>
-<meta name="keywords" content="帝国网站管理系统,EmpireCMS" />
-<meta name="description" content="　　帝国软件是一家专注于网络软件开发的科技公司，其主营产品“帝国网站管理系统(EmpireCMS)”是目前国内应用超高广泛的CMS程序。通过十多年的不断创新与完善，使系统集安全、稳定、强大、灵活于一身。目前EmpireCMS程序已经广泛应用在国内上百万家网站，覆盖国内数千万上网人群，并经过上千家知名网站的严格检测，被称为国内超高安全、超高稳定的开源CMS系统。" />
+<title><?=$grpagetitle?> - Powered by EmpireCMS</title>
+<meta name="keywords" content="<?=$ecms_gr[keyboard]?>" />
+<meta name="description" content="<?=$grpagetitle?>" />
 
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
@@ -21,7 +21,8 @@ if(!defined('InEmpireCMS'))
 
 </head>
 <body>
-<div class="nav-just"><nav class="nav navbar-default" role="navigation">
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
 	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -42,15 +43,22 @@ if(!defined('InEmpireCMS'))
 	</div>
 	</div>
 </nav>
-</div>
-<div class="container">
+
 <div class="row">
-            <div class="col-md-7"><div class="flash_pic"><? @sys_FlashPixpic( 0,5,640,480,1,0,3,3);?></div><? @sys_GetEcmsInfo(34,20,0,1,1,14,0);?></div>
-            <div class="col-md-5"><? @sys_GetEcmsInfo(0,10,0,1,4,13,0);?>
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><?=$grurl?></li>
 
+</ol>
+<div>
+    <h2 class="text-center"><?=$grpagetitle?></h2>
+    <span class="text-left"><?=$docheckrep[1]?ReplaceBefrom($ecms_gr[befrom]):$ecms_gr[befrom]?>1111</span><span class="pull-right"><?=date('Y-m-d H:i:s',$ecms_gr[newstime])?> </span>
+<?=strstr($ecms_gr[newstext],'[!--empirenews.page--]')?'[!--newstext--]':$ecms_gr[newstext]?>
 </div>
 
-        </div>
+
+<div class="col-md-5"></div>
+</div>
 </div>
 </body>
 </html>

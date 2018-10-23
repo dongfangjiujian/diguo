@@ -5,13 +5,20 @@
 <title>JSP技术简介 - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="JSP技术简介" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>JSP技术简介</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:39&nbsp;&nbsp;来源：不详&nbsp;&nbsp;作者：佚名</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">                            　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>一、 JSP 技术概述 <BR><BR>　　 在 Sun 正式发布 JSP(JavaServer Pages) 之后，这种新的 Web 应用开发技术很快引起了人们的关注。 JSP 为创建高度动态的 Web 应用提供了一个独特的开发环境。按照 Sun 的说法， JSP 能够适应市场上包括 Apache WebServer 、 IIS4.0 在内的 85% 的服务器产品。即使您对 ASP "一往情深"，我们认为，关注 JSP 的发展仍旧很有必要。 <BR><BR>　　 ㈠ JSP 与 ASP 的简单比较 <BR><BR>　　 JSP 与 Microsoft 的 ASP 技术非常相似。两者都提供在 HTML 代码中混合某种程序代码、由语言引擎解释执行程序代码的能力。在 ASP 或 JSP 环境下， HTML 代码主要负责描述信息的显示样式，而程序代码则用来描述处理逻辑。普通的 HTML 页面只依赖于 Web 服务器，而 ASP 和 JSP 页面需要附加的语言引擎分析和执行程序代码。程序代码的执行结果被重新嵌入到 HTML 代码中，然后一起发送给浏览器。 ASP 和 JSP 都是面向 Web 服务器的技术，客户端浏览器不需要任何附加的软件支持。 <BR><BR>　　 ASP 的编程语言是 VBScript 之类的脚本语言， JSP 使用的是 Java ，这是两者最明显的区别。此外， ASP 与 JSP 还有一个更为本质的区别：两种语言引擎用完全不同的方式处理页面中嵌入的程序代码。在 ASP 下， VBScript 代码被 ASP 引擎解释执行；在 JSP 下，代码被编译成 Servlet 并由 Java 虚拟机执行，这种编译操作仅在对 JSP 页面的第一次请求时发生。 <BR><BR>　　 ㈡运行环境 <BR><BR>　　 Sun 公司的 JSP 主页在 http://www.javasoft.com/products/jsp/index.html ，从这里还可以下载 JSP 规范，这些规范定义了供应商在创建 JSP 引擎时所必须遵从的一些规则。 <BR><BR>　　 执行 JSP 代码需要在服务器上安装 JSP 引擎。此处我们使用的是 Sun 的 JavaServer Web Development Kit （ JSWDK ）。为便于学习，这个软件包提供了大量可供修改的示例。安装 JSWDK 之后，只需执行 startserver 命令即可启动服务器。在默认配置下服务器在端口 8080 监听，使用 http://localhost:8080 即可打开缺省页面。 <BR><BR>　　 在运行 JSP 示例页面之前，请注意一下安装 JSWDK 的目录，特别是" work "子目录下的内容。执行示例页面时，可以在这里看到 JSP 页面如何被转换成 Java 源文件，然后又被编译成 class 文件（即 Servlet ）。 JSWDK 软件包中的示例页面分为两类，它们或者是 JSP 文件，或者是包含一个表单的 HTML 文件，这些表单均由 JSP 代码处理。与 ASP 一样， JSP 中的 Java 代码均在服务器端执行。因此，在浏览器中使用"查看源文件"菜单是无法看到 JSP 源代码的，只能看到结果 HTML 代码。所有示例的源代码均通过一个单独的" examples "页面提供。 <BR><BR>　　 ㈢ JSP 页面示例 <BR><BR>　　 下面我们分析一个简单的 JSP 页面。您可以在 JSWDK 的 examples 目录下创建另外一个目录存放此文件，文件名字可以任意，但扩展名必须为 .jsp 。从下面的代码清单中可以看到， JSP 页面除了比普通 HTML 页面多一些 Java 代码外，两者具有基本相同的结构。 Java 代码是通过 &lt; % 和 %&gt; 符号加入到 HTML 代码中间的，它的主要功能是生成并显示一个从 0 到 9 的字符串。在这个字符串的前面和后面都是一些通过 HTML 代码输出的文本。 <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; HEAD&gt;&lt; TITLE&gt;JSP 页面 &lt; /TITLE&gt;&lt; /HEAD&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; %! String str="0"; %&gt; <BR>　 &lt; % for (int i=1; i &lt; 10; i++) { <BR>　 str = str + i; <BR>　 } %&gt; <BR>　 JSP 输出之前。 <BR>　 &lt; P&gt; <BR>　 &lt; %= str %&gt; <BR>　 &lt; P&gt; <BR>　 JSP 输出之后。 <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 这个 JSP 页面可以分成几个部分来分析。 <BR><BR>首先是 JSP 指令。它描述的是页面的基本信息，如所使用的语言、是否维持会话状态、是否使用缓冲等。 JSP 指令由 &lt; %@ 开始， %&gt; 结束。在本例中，指令" &lt; %@ page language="java" %&gt; "只简单地定义了本例使用的是 Java 语言（当前，在 JSP 规范中 Java 是唯一被支持的语言）。 <BR>接下来的是 JSP 声明。 JSP 声明可以看成是定义类这一层次的变量和方法的地方。 JSP 声明由 &lt; %! 开始， %&gt; 结束。如本例中的" &lt; %! String str="0"; %&gt; "定义了一个字符串变量。在每一项声明的后面都必须有一个分号，就象在普通 Java 类中声明成员变量一样。 <BR>位于 &lt; % 和 %&gt; 之间的代码块是描述 JSP 页面处理逻辑的 Java 代码，如本例中的 for 循环所示。 <BR>最后，位于 &lt; %= 和 %&gt; 之间的代码称为 JSP 表达式，如本例中的" &lt; %= str %&gt; "所示。 JSP 表达式提供了一种将 JSP 生成的数值嵌入 HTML 页面的简单方法。 <BR><BR><BR>　　 会话状态维持是 Web 应用开发者必须面对的问题。有多种方法可以用来解决这个问题，如使用 Cookies 、隐藏的表单输入域，或直接将状态信息附加到 URL 中。 Java Servlet 提供了一个在多个请求之间持续有效的会话对象，该对象允许用户存储和提取会话状态信息。 JSP 也同样支持 Servlet 中的这个概念。 <BR><BR>　　 在 Sun 的 JSP 指南 中可以看到许多有关隐含对象的说明（隐含的含义是，这些对象可以直接引用，不需要显式地声明，也不需要专门的代码创建其实例）。例如 request 对象，它是 HttpServletRequest 的一个子类。该对象包含了所有有关当前浏览器请求的信息，包括 Cookies ， HTML 表单变量等等。 session 对象也是这样一个隐含对象。这个对象在第一个 JSP 页面被装载时自动创建，并被关联到 request 对象上。与 ASP 中的会话对象相似， JSP 中的 session 对象对于那些希望通过多个页面完成一个事务的应用是非常有用的。 <BR><BR>　　 为说明 session 对象的具体应用，接下来我们用三个页面模拟一个多页面的 Web 应用。第一个页面（ q1.html ）仅包含一个要求输入用户名字的 HTML 表单，代码如下： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; FORM METHOD=POST ACTION="q2.jsp"&gt; <BR>　 请输入您的姓名： <BR>　 &lt; INPUT TYPE=TEXT NAME="thename"&gt; <BR>　 &lt; INPUT TYPE=SUBMIT VALUE="SUBMIT"&gt; <BR>　 &lt; /FORM&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 第二个页面是一个 JSP 页面（ q2.jsp ），它通过 request 对象提取 q1.html 表单中的 thename 值，将它存储为 name 变量，然后将这个 name 值保存到 session 对象中。 session 对象是一个名字 / 值对的集合，在这里，名字 / 值对中的名字为" thename "，值即为 name 变量的值。由于 session 对象在会话期间是一直有效的，因此这里保存的变量对后继的页面也有效。 q2.jsp 的另外一个任务是询问第二个问题。下面是它的代码： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; %! String name=""; %&gt; <BR>　 &lt; % <BR>　 name = request.getParameter("thename"); <BR>　 session.putValue("thename", name); <BR>　 %&gt; <BR>　 您的姓名是： &lt; %= name %&gt; <BR>　 &lt; p&gt; <BR>　 &lt; FORM METHOD=POST ACTION="q3.jsp"&gt; <BR>　 您喜欢吃什么 ? <BR>　 &lt; INPUT TYPE=TEXT NAME="food"&gt; <BR>　 &lt; P&gt; <BR>　 &lt; INPUT TYPE=SUBMIT VALUE="SUBMIT"&gt; <BR>　 &lt; /FORM&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 第三个页面也是一个 JSP 页面（ q3.jsp ），主要任务是显示问答结果。它从 session 对象提取 thename 的值并显示它，以此证明虽然该值在第一个页面输入，但通过 session 对象得以保留。 q3.jsp 的另外一个任务是提取在第二个页面中的用户输入并显示它： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; %! String food=""; %&gt; <BR>　 &lt; % <BR>　 food = request.getParameter("food"); <BR>　 String name = (String) session.getValue("thename"); <BR>　 %&gt; <BR>　 您的姓名是： &lt; %= name %&gt; <BR>　 &lt; P&gt; <BR>　 您喜欢吃： &lt; %= food %&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR><BR><BR>　　 JavaBean 是一种基于 Java 的软件组件。 JSP 对于在 Web 应用中集成 JavaBean 组件提供了完善的支持。这种支持不仅能缩短开发时间（可以直接利用经测试和可信任的已有组件，避免了重复开发），也为 JSP 应用带来了更多的可伸缩性。 JavaBean 组件可以用来执行复杂的计算任务，或负责与数据库的交互以及数据提取等。如果我们有三个 JavaBean ，它们分别具有显示新闻、股票价格、天气情况的功能，则创建包含所有这三种功能的 Web 页面只需要实例化这三个 Bean ，使用 HTML 表格将它们依次定位就可以了。 <BR><BR>　　 为说明在 JSP 环境下 JavaBean 的应用，我们创建了一个名为 TaxRate 的 Bean 。它有两个属性，即 Product （产品）和 Rate （税率）。两个 set 方法分别用来设置这两个属性，两个 get 方法则用于提取这两个属性。在实际应用中，这种 Bean 一般应当从数据库提取税率值，此处我们简化了这个过程，允许任意设定税率。下面是这个 Bean 的代码清单： <BR><BR>　 package tax; <BR>　 public class TaxRate { <BR>　 String Product; <BR>　 double Rate; <BR>　 public TaxRate() { <BR>　 this.Product = "A001"; <BR>　 this.Rate = 5; <BR>　 } <BR>　 public void setProduct (String ProductName) { <BR>　 this.Product = ProductName; <BR>　 } <BR>　 public String getProduct() { <BR>　 return (this.Product); <BR>　 } <BR>　 public void setRate (double rateValue) { <BR>　 this.Rate = rateValue; <BR>　 } <BR>　 public double getRate () { <BR>　 return (this.Rate); <BR>　 } <BR>　 } <BR><BR>　　 在 JSP 页面中应用上述 Bean 要用到 &lt; jsp:useBean&gt; 标记。依赖于具体使用的 JSP 引擎的不同，在何处配置以及如何配置 Bean 的方法也可能略有不同。本文将这个 Bean 的 .class 文件放在 c:jswdk-1.0examplesWEB-INFjspeans ax 目录下，这里的 tax 是一个专门存放该 Bean 的目录。下面是一个应用上述 Bean 的示例页面： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; jsp:useBean id="taxbean" scope="application" class="tax.TaxRate" /&gt; <BR>　 &lt; % taxbean.setProduct("A002"); <BR>　 taxbean.setRate(17); <BR>　 %&gt; <BR>　 使用方法 1 ： &lt; p&gt; <BR>　 产品 : &lt; %= taxbean.getProduct() %&gt; &lt; br&gt; <BR>　 税率 : &lt; %= taxbean.getRate() %&gt; <BR>　 &lt; p&gt; <BR>　 &lt; % taxbean.setProduct("A003"); <BR>　 taxbean.setRate(3); <BR>　 %&gt; <BR>　 &lt; b&gt; 使用方法 2 ： &lt; /b&gt; &lt; p&gt; <BR>　 产品 : &lt; jsp:getProperty name="taxbean" property="Product" /&gt; <BR>　 &lt; br&gt; <BR>　 税率 : &lt; jsp:getProperty name="taxbean" property="Rate" /&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 在 &lt; jsp:useBean&gt; 标记内定义了几个属性，其中 id 是整个 JSP 页面内该 Bean 的标识， scope 属性定义了该 Bean 的生存时间， class 属性说明了该 Bean 的类文件（从包名开始）。 <BR><BR>　　 这个 JSP 页面不仅使用了 Bean 的 set 和 get 方法设置和提取属性值，还用到了提取 Bean 属性值的第二种方法，即使用 &lt; jsp:getProperty&gt; 标记。 &lt; jsp:getProperty&gt; 中的 name 属性即为 &lt; jsp:useBean&gt; 中定义的 Bean 的 id ，它的 property 属性指定的是目标属性的名字。 <BR><BR><BR>　　 事实证明， Java Servlet 是一种开发 Web 应用的理想构架。 JSP 以 Servlet 技术为基础，又在许多方面作了改进。 JSP 页面看起来象普通 HTML 页面，但它允许嵌入执行代码，在这一点上，它和 ASP 技术非常相似。利用跨平台运行的 JavaBean 组件， JSP 为分离处理逻辑与显示样式提供了卓越的解决方案。 JSP 必将成为 ASP 技术的有力竞争者。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE><p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=147&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=147&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=147">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=147&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="147" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/147.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=147"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">JSP技术简介</h2>
+    <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:39 </span>
+                            　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>一、 JSP 技术概述 <BR><BR>　　 在 Sun 正式发布 JSP(JavaServer Pages) 之后，这种新的 Web 应用开发技术很快引起了人们的关注。 JSP 为创建高度动态的 Web 应用提供了一个独特的开发环境。按照 Sun 的说法， JSP 能够适应市场上包括 Apache WebServer 、 IIS4.0 在内的 85% 的服务器产品。即使您对 ASP "一往情深"，我们认为，关注 JSP 的发展仍旧很有必要。 <BR><BR>　　 ㈠ JSP 与 ASP 的简单比较 <BR><BR>　　 JSP 与 Microsoft 的 ASP 技术非常相似。两者都提供在 HTML 代码中混合某种程序代码、由语言引擎解释执行程序代码的能力。在 ASP 或 JSP 环境下， HTML 代码主要负责描述信息的显示样式，而程序代码则用来描述处理逻辑。普通的 HTML 页面只依赖于 Web 服务器，而 ASP 和 JSP 页面需要附加的语言引擎分析和执行程序代码。程序代码的执行结果被重新嵌入到 HTML 代码中，然后一起发送给浏览器。 ASP 和 JSP 都是面向 Web 服务器的技术，客户端浏览器不需要任何附加的软件支持。 <BR><BR>　　 ASP 的编程语言是 VBScript 之类的脚本语言， JSP 使用的是 Java ，这是两者最明显的区别。此外， ASP 与 JSP 还有一个更为本质的区别：两种语言引擎用完全不同的方式处理页面中嵌入的程序代码。在 ASP 下， VBScript 代码被 ASP 引擎解释执行；在 JSP 下，代码被编译成 Servlet 并由 Java 虚拟机执行，这种编译操作仅在对 JSP 页面的第一次请求时发生。 <BR><BR>　　 ㈡运行环境 <BR><BR>　　 Sun 公司的 JSP 主页在 http://www.javasoft.com/products/jsp/index.html ，从这里还可以下载 JSP 规范，这些规范定义了供应商在创建 JSP 引擎时所必须遵从的一些规则。 <BR><BR>　　 执行 JSP 代码需要在服务器上安装 JSP 引擎。此处我们使用的是 Sun 的 JavaServer Web Development Kit （ JSWDK ）。为便于学习，这个软件包提供了大量可供修改的示例。安装 JSWDK 之后，只需执行 startserver 命令即可启动服务器。在默认配置下服务器在端口 8080 监听，使用 http://localhost:8080 即可打开缺省页面。 <BR><BR>　　 在运行 JSP 示例页面之前，请注意一下安装 JSWDK 的目录，特别是" work "子目录下的内容。执行示例页面时，可以在这里看到 JSP 页面如何被转换成 Java 源文件，然后又被编译成 class 文件（即 Servlet ）。 JSWDK 软件包中的示例页面分为两类，它们或者是 JSP 文件，或者是包含一个表单的 HTML 文件，这些表单均由 JSP 代码处理。与 ASP 一样， JSP 中的 Java 代码均在服务器端执行。因此，在浏览器中使用"查看源文件"菜单是无法看到 JSP 源代码的，只能看到结果 HTML 代码。所有示例的源代码均通过一个单独的" examples "页面提供。 <BR><BR>　　 ㈢ JSP 页面示例 <BR><BR>　　 下面我们分析一个简单的 JSP 页面。您可以在 JSWDK 的 examples 目录下创建另外一个目录存放此文件，文件名字可以任意，但扩展名必须为 .jsp 。从下面的代码清单中可以看到， JSP 页面除了比普通 HTML 页面多一些 Java 代码外，两者具有基本相同的结构。 Java 代码是通过 &lt; % 和 %&gt; 符号加入到 HTML 代码中间的，它的主要功能是生成并显示一个从 0 到 9 的字符串。在这个字符串的前面和后面都是一些通过 HTML 代码输出的文本。 <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; HEAD&gt;&lt; TITLE&gt;JSP 页面 &lt; /TITLE&gt;&lt; /HEAD&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; %! String str="0"; %&gt; <BR>　 &lt; % for (int i=1; i &lt; 10; i++) { <BR>　 str = str + i; <BR>　 } %&gt; <BR>　 JSP 输出之前。 <BR>　 &lt; P&gt; <BR>　 &lt; %= str %&gt; <BR>　 &lt; P&gt; <BR>　 JSP 输出之后。 <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 这个 JSP 页面可以分成几个部分来分析。 <BR><BR>首先是 JSP 指令。它描述的是页面的基本信息，如所使用的语言、是否维持会话状态、是否使用缓冲等。 JSP 指令由 &lt; %@ 开始， %&gt; 结束。在本例中，指令" &lt; %@ page language="java" %&gt; "只简单地定义了本例使用的是 Java 语言（当前，在 JSP 规范中 Java 是唯一被支持的语言）。 <BR>接下来的是 JSP 声明。 JSP 声明可以看成是定义类这一层次的变量和方法的地方。 JSP 声明由 &lt; %! 开始， %&gt; 结束。如本例中的" &lt; %! String str="0"; %&gt; "定义了一个字符串变量。在每一项声明的后面都必须有一个分号，就象在普通 Java 类中声明成员变量一样。 <BR>位于 &lt; % 和 %&gt; 之间的代码块是描述 JSP 页面处理逻辑的 Java 代码，如本例中的 for 循环所示。 <BR>最后，位于 &lt; %= 和 %&gt; 之间的代码称为 JSP 表达式，如本例中的" &lt; %= str %&gt; "所示。 JSP 表达式提供了一种将 JSP 生成的数值嵌入 HTML 页面的简单方法。 <BR><BR><BR>　　 会话状态维持是 Web 应用开发者必须面对的问题。有多种方法可以用来解决这个问题，如使用 Cookies 、隐藏的表单输入域，或直接将状态信息附加到 URL 中。 Java Servlet 提供了一个在多个请求之间持续有效的会话对象，该对象允许用户存储和提取会话状态信息。 JSP 也同样支持 Servlet 中的这个概念。 <BR><BR>　　 在 Sun 的 JSP 指南 中可以看到许多有关隐含对象的说明（隐含的含义是，这些对象可以直接引用，不需要显式地声明，也不需要专门的代码创建其实例）。例如 request 对象，它是 HttpServletRequest 的一个子类。该对象包含了所有有关当前浏览器请求的信息，包括 Cookies ， HTML 表单变量等等。 session 对象也是这样一个隐含对象。这个对象在第一个 JSP 页面被装载时自动创建，并被关联到 request 对象上。与 ASP 中的会话对象相似， JSP 中的 session 对象对于那些希望通过多个页面完成一个事务的应用是非常有用的。 <BR><BR>　　 为说明 session 对象的具体应用，接下来我们用三个页面模拟一个多页面的 Web 应用。第一个页面（ q1.html ）仅包含一个要求输入用户名字的 HTML 表单，代码如下： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; FORM METHOD=POST ACTION="q2.jsp"&gt; <BR>　 请输入您的姓名： <BR>　 &lt; INPUT TYPE=TEXT NAME="thename"&gt; <BR>　 &lt; INPUT TYPE=SUBMIT VALUE="SUBMIT"&gt; <BR>　 &lt; /FORM&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 第二个页面是一个 JSP 页面（ q2.jsp ），它通过 request 对象提取 q1.html 表单中的 thename 值，将它存储为 name 变量，然后将这个 name 值保存到 session 对象中。 session 对象是一个名字 / 值对的集合，在这里，名字 / 值对中的名字为" thename "，值即为 name 变量的值。由于 session 对象在会话期间是一直有效的，因此这里保存的变量对后继的页面也有效。 q2.jsp 的另外一个任务是询问第二个问题。下面是它的代码： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; %! String name=""; %&gt; <BR>　 &lt; % <BR>　 name = request.getParameter("thename"); <BR>　 session.putValue("thename", name); <BR>　 %&gt; <BR>　 您的姓名是： &lt; %= name %&gt; <BR>　 &lt; p&gt; <BR>　 &lt; FORM METHOD=POST ACTION="q3.jsp"&gt; <BR>　 您喜欢吃什么 ? <BR>　 &lt; INPUT TYPE=TEXT NAME="food"&gt; <BR>　 &lt; P&gt; <BR>　 &lt; INPUT TYPE=SUBMIT VALUE="SUBMIT"&gt; <BR>　 &lt; /FORM&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 第三个页面也是一个 JSP 页面（ q3.jsp ），主要任务是显示问答结果。它从 session 对象提取 thename 的值并显示它，以此证明虽然该值在第一个页面输入，但通过 session 对象得以保留。 q3.jsp 的另外一个任务是提取在第二个页面中的用户输入并显示它： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; %! String food=""; %&gt; <BR>　 &lt; % <BR>　 food = request.getParameter("food"); <BR>　 String name = (String) session.getValue("thename"); <BR>　 %&gt; <BR>　 您的姓名是： &lt; %= name %&gt; <BR>　 &lt; P&gt; <BR>　 您喜欢吃： &lt; %= food %&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR><BR><BR>　　 JavaBean 是一种基于 Java 的软件组件。 JSP 对于在 Web 应用中集成 JavaBean 组件提供了完善的支持。这种支持不仅能缩短开发时间（可以直接利用经测试和可信任的已有组件，避免了重复开发），也为 JSP 应用带来了更多的可伸缩性。 JavaBean 组件可以用来执行复杂的计算任务，或负责与数据库的交互以及数据提取等。如果我们有三个 JavaBean ，它们分别具有显示新闻、股票价格、天气情况的功能，则创建包含所有这三种功能的 Web 页面只需要实例化这三个 Bean ，使用 HTML 表格将它们依次定位就可以了。 <BR><BR>　　 为说明在 JSP 环境下 JavaBean 的应用，我们创建了一个名为 TaxRate 的 Bean 。它有两个属性，即 Product （产品）和 Rate （税率）。两个 set 方法分别用来设置这两个属性，两个 get 方法则用于提取这两个属性。在实际应用中，这种 Bean 一般应当从数据库提取税率值，此处我们简化了这个过程，允许任意设定税率。下面是这个 Bean 的代码清单： <BR><BR>　 package tax; <BR>　 public class TaxRate { <BR>　 String Product; <BR>　 double Rate; <BR>　 public TaxRate() { <BR>　 this.Product = "A001"; <BR>　 this.Rate = 5; <BR>　 } <BR>　 public void setProduct (String ProductName) { <BR>　 this.Product = ProductName; <BR>　 } <BR>　 public String getProduct() { <BR>　 return (this.Product); <BR>　 } <BR>　 public void setRate (double rateValue) { <BR>　 this.Rate = rateValue; <BR>　 } <BR>　 public double getRate () { <BR>　 return (this.Rate); <BR>　 } <BR>　 } <BR><BR>　　 在 JSP 页面中应用上述 Bean 要用到 &lt; jsp:useBean&gt; 标记。依赖于具体使用的 JSP 引擎的不同，在何处配置以及如何配置 Bean 的方法也可能略有不同。本文将这个 Bean 的 .class 文件放在 c:jswdk-1.0examplesWEB-INFjspeans ax 目录下，这里的 tax 是一个专门存放该 Bean 的目录。下面是一个应用上述 Bean 的示例页面： <BR><BR>　 &lt; HTML&gt; <BR>　 &lt; BODY&gt; <BR>　 &lt; %@ page language="java" %&gt; <BR>　 &lt; jsp:useBean id="taxbean" scope="application" class="tax.TaxRate" /&gt; <BR>　 &lt; % taxbean.setProduct("A002"); <BR>　 taxbean.setRate(17); <BR>　 %&gt; <BR>　 使用方法 1 ： &lt; p&gt; <BR>　 产品 : &lt; %= taxbean.getProduct() %&gt; &lt; br&gt; <BR>　 税率 : &lt; %= taxbean.getRate() %&gt; <BR>　 &lt; p&gt; <BR>　 &lt; % taxbean.setProduct("A003"); <BR>　 taxbean.setRate(3); <BR>　 %&gt; <BR>　 &lt; b&gt; 使用方法 2 ： &lt; /b&gt; &lt; p&gt; <BR>　 产品 : &lt; jsp:getProperty name="taxbean" property="Product" /&gt; <BR>　 &lt; br&gt; <BR>　 税率 : &lt; jsp:getProperty name="taxbean" property="Rate" /&gt; <BR>　 &lt; /BODY&gt; <BR>　 &lt; /HTML&gt; <BR><BR>　　 在 &lt; jsp:useBean&gt; 标记内定义了几个属性，其中 id 是整个 JSP 页面内该 Bean 的标识， scope 属性定义了该 Bean 的生存时间， class 属性说明了该 Bean 的类文件（从包名开始）。 <BR><BR>　　 这个 JSP 页面不仅使用了 Bean 的 set 和 get 方法设置和提取属性值，还用到了提取 Bean 属性值的第二种方法，即使用 &lt; jsp:getProperty&gt; 标记。 &lt; jsp:getProperty&gt; 中的 name 属性即为 &lt; jsp:useBean&gt; 中定义的 Bean 的 id ，它的 property 属性指定的是目标属性的名字。 <BR><BR><BR>　　 事实证明， Java Servlet 是一种开发 Web 应用的理想构架。 JSP 以 Servlet 技术为基础，又在许多方面作了改进。 JSP 页面看起来象普通 HTML 页面，但它允许嵌入执行代码，在这一点上，它和 ASP 技术非常相似。利用跨平台运行的 JavaBean 组件， JSP 为分离处理逻辑与显示样式提供了卓越的解决方案。 JSP 必将成为 ASP 技术的有力竞争者。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>

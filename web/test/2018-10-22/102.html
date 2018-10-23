@@ -5,13 +5,20 @@
 <title>SCJP认证套题解析之二 - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="SCJP认证套题解析之二" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>SCJP认证套题解析之二</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:24&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">21、Which of the following assignment is not correct?<br>A. float f = 11.1;<br>B. double d = 5.3E12;<br>C. double d = 3.14159;<br>D. double d = 3.14D.<br>(a)<br>题目：下面的哪些赋值语句是不对的。<br>浮点数的赋值是带有小数点的数字缺省是double型的，如果在浮点数后面加f或者F则是float，后面加d或者D则是double，科学计数法形式的浮点数也是double型的，而double的精度比float高，将一个高精度的double赋值给一个低精度的float时需要进行强制类型转换，反之则不需要。<br>22、Given the uncompleted code of a class:<br>class Person {<br>String name, department;<br>int age;<br>public Person(String n){ name = n; }<br>public Person(String n, int a){ name = n; age = a; }<br>public Person(String n, String d, int a) {<br>// doing the same as two arguments version of constructor <br>// including assignment name=n,age=a<br>department = d;<br>}<br>}<br>Which expression can be added at the &quot;doing the same as...&quot; part of the constructor? <br>A. Person(n,a);<br>B. this(Person(n,a));<br>C. this(n,a);<br>D. this(name,age).<br>(c)<br>题目：给出下面的不完整的类代码：<br>…<br>下面的哪些表达式可以加到构造方法中的&quot;doing the same as...&quot;处？<br>在同一个类的不同构造方法中调用该类的其它构造方法需要使用this(…)的形式，而且必须是在构造方法的第一行调用，这个和普通的方法重载调用的方式不同，普通的方法可以直接使用方法名加参数来调用，而且调用位置没有限制，因此答案A是不行的，B的语法就是错误的，D的错误在于在父类型的构造函数被调用前不能引用类的成员。构造方法是一个类对象实例化的起点（虽然严格来说首先执行的并不是构造方法的第一个语句，而是内存的分配），因此在构造方法中不能将成员作为参数引用。<br><br>23、Which of the following statements about variables and their scopes are true?<br><br>A. Instance variables are member variables of a class.<br>B. Instance variables are declared with the static keyword.<br>C. Local variables defined inside a method are created when the method is executed.<br>D. Local variables must be initialized before they are used.<br>(acd)<br>题目：下面关于变量及其范围的陈述哪些是对的。<br>A. 实例变量是类的成员变量。<br>B. 实例变量用关键字static声明。<br>C. 在方法中定义的局部变量在该方法被执行时创建<br>D. 局部变量在使用前必须被初始化。<br>类中有几种变量，分别是：局部变量（英文可以为：localautomatic emporarystack variable）是定义在方法里的变量；实例变量（英文为：instance variable）是在方法外而在类声明内定义的变量，有时也叫成员变量；类变量（英文为：class variable）是用关键字static声明的实例变量，他们的生存期分别是：局部变量在定义该变量的方法被调用时被创建，而在该方法退出后被撤销；实例变量在使用new Xxxx()创建该类的实例时被创建，而其生存期和该类的实例对象的生存期相同；类变量在该类被加载时被创建，不一定要用new Xxxx()创建，所有该类的实例对象共享该类变量，其生存期是类的生存期。任何变量在使用前都必须初始化,但是需要指出的是局部变量必须显式初始化，而实例变量不必，原始类型的实例变量在该类的构造方法被调用时为它分配的缺省的值，整型是0，布尔型是false，而浮点型是0.0f，引用类型（类类型）的实例变量的缺省值是null（没有进行实际的初始化，对它的使用将引起NullPointException），类变量的规则和实例变量一样，不同的是类变量的初始化是在类被加载时。<br><br>24、public void test() {<br>try { oneMethod();<br>System.out.println(&quot;condition 1&quot;);<br>} catch (ArrayIndexOutOfBoundsException e) {<br>System.out.println(&quot;condition 2&quot;);<br>} catch(Exception e) {<br>System.out.println(&quot;condition 3&quot;);<br>} finally {<br>System.out.println(&quot;finally&quot;);<br>}<br>}<br>Which will display if oneMethod run normally?<br>A. condition 1<br>B. condition 2<br>C. condition 3<br>D. finally<br>(ad)<br>题目：在oneMethod()方法运行正常的情况下将显示什么？<br>如果try块中的语句在执行时发生异常，则执行从该处中断而进入catch块，根据异常的类型进行匹配，最前面的优先进行匹配比较，只要该异常是catch中指定的异常的子类就匹配成功进而执行相应的catch中的内容，而finally块中的内容无论是否发生异常都将被执行。<br><br>25、Given the following code:<br>public class Test {<br>void printValue(int m){<br>do { System.out.println(&quot;The value is&quot;+m);<br>}<br>while( --m &gt; 10 )<br>}<br>public static void main(String arg[]) {<br>int i=10;<br>Test t= new Test();<br>t.printValue(i);<br>}<br>}<br>Which will be output?<br>A. The value is 8<br>B. The value is 9<br>C. The value is 10<br>D. The value is 11<br>(c)<br>题目：给出下面的代码：<br>…<br>输出将是什么？<br>此题考察的是do… while循环和 -- 操作符的知识，do…while最少被执行一次，在执行完do中的内容后判断while中的条件是否为true，如果为true的话就再执行do中的内容，然后再进行判断，以此类推直到while的判断为false时退出循环执行循环后面的内容，而?操作符的规则是在变量右边的 -- 将先进行运算，然后才是使变量的值减一，而在变量左边的是先将变量的值减一再运算。<br><br>26、Which of the following statements about declaration are true?<br>A. Declaration of primitive types such as boolean, byte and so on does not allocate memory space for the variable.<br>B. Declaration of primitive types such as boolean, byte and so on allocates memory space for the variable.<br>C. Declaration of nonprimitive types such as String, Vector and so on does not allocate memory space for the object.<br>D. Declaration of nonprimitive types such as String, Vector ans so on allocates memory space for the object.<br>(ad)<br>题目：下面的有关声明的哪些叙述是对的。<br>A. 对原始数据类型例如boolean,byte的变量的声明不会为该变量分配内存空间。<br>B. 对原始数据类型例如boolean,byte的变量的声明将为之分配内存空间。<br>C. 非原始数据类型例如String,Vector的变量的声明不会为该对象分配内存。<br>D. 非原始数据类型例如String,Vector的变量的声明会为该对象分配内存。<br>对原始数据类型的变量的声明将为之分配内存并赋予一个缺省值，参见23题的叙述，而非原始数据类型的变量必须用new Xxxx()分配内存及初始化。但是严格来讲此题的答案有待确定，因为只有原始类型的实例变量和类变量的声明在类对象被创建/类被加载时完成内存的自动分配，而原始类型的局部变量必须显式初始化，从这点来看原始类型的局部变量没有被自动分配内存，SL275中只提出了非原始数据类型的变量必须使用new Xxxx()完成内存的分配而没有指出原始数据类型的变量是否在声明时即自动进行内存分配，而从局部变量不能在显式初始化前使用这点来看在声明时没有进行内存分配。因此答案a的正确性还有待官方的确定。<br><br>27、In the Java API documentation which sections are included in a class document?<br>A. The description of the class and its purpose<br>B. A list of methods in its super class<br>C. A list of member variable<br>D. The class hierarchy<br>(acd)<br>题目：在Java API文档中下面的哪些部分被包括在内<br>A. 类及用途的描述<br>B. 父类的方法的列表<br>C. 成员变量的列表<br>D. 类层次<br>类文档的内容主要是：类层次、类及用途描述、成员变量列表、构造方法列表、成员方法列表、从类层次上继承的方法列表、成员变量的详细说明、构造方法详细说明、成员方法详细说明。<br><br>28、Given the following code:<br>1) public void modify() {<br>2) int i, j, k;<br>3) i = 100;<br>4) while ( i &gt; 0 ) {<br>5) j = i * 2;<br>6) System.out.println (&quot; The value of j is &quot; + j );<br>7) k = k + 1;<br>8) i--;<br>9) }<br>10) }<br>Which line might cause an error during compilation?<br>A. line 4<br>B. line 6<br>C. line 7<br>D. line 8<br>(c)<br>题目：给出下面的代码：<br>…<br>哪些行在编译时可能产生错误。<br>这个问题在前面有关变量的类型及其作用域的问题中讨论过，局部变量在使用前必须显式初始化，而代码中的变量k在使用前没有。<br><br>29、Which of the following statements about variables and scope are true?<br>A. Local variables defined inside a method are destroyed when the method is exited.<br>B. Local variables are also called automatic variables.<br>C. Variables defined outside a method are created when the object is constructed.<br>D. A method parameter variable continues to exist for as long as the object is needed in which the method is defined.<br>(abc)<br>题目：下面有关变量及其作用域的陈述哪些是对的。<br>A. 在方法里面定义的局部变量在方法退出的时候被撤销。<br>B. 局部变量也叫自动变量。<br>C. 在方法外面定义的变量（译注：即实例变量）在对象被构造时创建。<br>D. 在方法中定义的方法的参变量只要该对象被需要就一直存在。<br>本题还是讨论变量的类型及作用域，参看前面的叙述。<br><br>30、A class design requires that a member variable cannot be accessible directly outside the class. Which modifier should be used to obtain the access control?<br>A. public<br>B. no modifier<br>C. protected<br>D. private<br>(d)<br>题目：类的设计要求它的某个成员变量不能被外部类直接访问。应该使用下面的哪些修饰符获得需要的访问控制。<br>这个在前面也有叙述，java有四种访问类型，分别为：public,protected,default,private，其中public变量可以被所有的外部类访问，而pretected的可以被同一个包及该类的子类访问，default即没有任何修饰符的变量可以被同一个包中的类访问，而private变量只能在被该类内部被访问。题目中的外部类应该理解为除该类自身的所有其它类，因此只有使用private可以达到要求。<br><br>31Given the following code fragment:<br>1) String str = null;<br>2) if ((str != null) &amp;&amp; (str.length() &gt; 10)) {<br>3) System.out.println(&quot;more than 10&quot;);<br>4) } <br>5) else if ((str != null) &amp; (str.length() &lt; 5)) {<br>6) System.out.println(&quot;less than 5&quot;);<br>7) }<br>8) else { System.out.println(&quot;end&quot;); }<br>Which line will cause error?<br>A. line 1<br>B. line 2<br>C. line 5<br>D. line 8<br>(c)<br>题目：给出下面的代码片断：<br>…<br>哪些行将导致错误。<br>此题需要将代码仔细看清楚，查询没有逻辑错误，if …else的使用没有问题，也没有拼写错误，错误在于第5行的“与”操作符的使用，逻辑操作符（logical operator）的“与”应该是&amp;&amp;，而在执行“与”操作的时候，如果第一个条件为false，那么第二个条件判断运算是不做的，但是这里是位逻辑操作符（bitwise logical operator）的“与”，在进行这个运算时，无论第一个条件的结果是什么都会执行第二个的运算，因此，假设str=null，那么第5句的str.length()就会导致NullPointerException，因此本题的错误在于此。<br><br>32、Which statements about Java code security are true?<br><br>A. The bytecode verifier loads all classes needed for the execution of a program.<br>B. Executing code is performed by the runtime interpreter.<br>C. At runtime the bytecodes are loaded, checked and run in an interpreter.<br>D. The class loader adds security by separating the namespaces for the classes of the local file system from those imported from network sources.<br>(bcd)<br>题目：下面有关java代码安全性的叙述哪些是对的。<br>A. 字节码校验器加载查询执行需要的所有类。<br>B. 运行时解释器执行代码。<br>C. 在运行时，字节码被加载，验证然后在解释器里面运行。<br>D. 类加载器通过分离本机文件系统的类和从网络导入的类增加安全性。<br>SL275中描述的Java程序运行的过程是这样的：类加载器（class loader）加载程序运行所需要的所有类，它通过区分本机文件系统的类和网络系统导入的类增加安全性，这可以限制任何的特洛伊木马程序，因为本机类总是先被加载，一旦所有的类被加载完，执行文件的内存划分就固定了，在这个时候特定的内存地址被分配给对应的符号引用，查找表（lookuo table）也被建立，由于内存划分发生在运行时，解释器在受限制的代码区增加保护防止未授权的访问；然后字节码校验器（byte code verifier）进行校验，主要执行下面的检查：类符合JVM规范的类文件格式，没有违反访问限制，代码没有造成堆栈的上溢或者下溢，所有操作代码的参数类型都是正确的，没有非法的数据类型转换（例如将整型数转换成对象类型）发生；校验通过的字节码被解释器（interpreter）执行，解释器在必要时通过运行时系统执行对底层硬件的合适调用。后三个答案是SL275中的原话。<br><br>33、Given the following code:<br>public class Person{<br>static int arr[] = new int[10];<br>public static void main(String a[]) {<br>System.out.println(arr[1];)<br>}<br>}<br>Which statement is correct?<br>A. When compilation some error will occur.<br>B. It is correct when compilation but will cause error when running.<br>C. The output is zero.<br>D. The output is null.<br>(c)<br>题目：给出下面的代码：<br>…<br>那个叙述是对的。<br>A. 编译时将发生错误。<br>B. 编译时正确但是运行时出错。<br>C. 输出为0。<br>D. 输出为null<br>int型数组是类对象，它在类被加载时完成初始化，在前面题目中已经有叙述，由于是原始数据类型int，其初始值为0。<br>34、Given the following code:<br>public class Person{<br>int arr[] = new int[10];<br>public static void main(String a[]) {<br>System.out.println(arr[1]);<br>}<br>}<br>Which statement is correct?<br>A. When compilation some error will occur.<br>B. It is correct when compilation but will cause error when running.<br>C. The output is zero.<br>D. The output is null.<br>(a)<br>给出下面的代码：<br>…<br>哪些叙述是对的。<br>A. 编译时出错。<br>B. 编译时正确而运行时出错。<br>C. 输出0。<br>D. 输出null。<br>实例变量在类的一个实例构造时完成初始化，而且在类的静态方法中不能直接访问类的非静态成员而只能访问类成员（像上题中一样），类的普通方法可以访问类的所有成员和方法，而静态方法只能访问类的静态成员和方法，因为静态方法属于类，而普通方法及成员变量属于类的实例，类方法（静态方法）不能使用属于某个不确定的类的实例的方法和变量，在静态方法里面没有隐含的this，而普通方法有。<br><br>35、public class Parent {<br>public int addValue( int a, int b) {<br>int s;<br>s = a+b;<br>return s;<br>}<br>}<br>class Child extends Parent {<br><br>}<br>Which methods can be added into class Child?<br>A. int addValue( int a, int b ){// do something...}<br>B. public void addValue (){// do something...}<br>C. public int addValue( int a ){// do something...}<br>D. public int addValue( int a, int b )throws MyException {//do something...}<br>(bc)<br>题目：哪些方法可以加入类Child中。<br>此题涉及方法重载（overload），方法重写（override）以及类派生时方法重写的规则。方法重载的规则是：一、参数列表必须不同，个数的不同完全可以，如果个数相同则参数类型的不同不能引起歧意，例如int 和long,float和double就不能作为唯一的类型不同；二、返回值可以不同，但是不能是重载时唯一的不同点（这点和c++中不同，c++中返回类型必须一致）。方法重写发生在类继承时，子类可以重写一个父类中已有的方法，必须在返回类型和参数列表一样时才能说是重写，否则就是重载，java中方法重写的一个重要而且容易被忽略的规则是重写的方法的访问权限不能比被重写的方法的访问权限低！重写的另一个规则是重写的方法不能比被重写的方法抛弃(throws)更多种类的异常，其抛弃的异常只能少，或者是其子类，不能以抛弃异常的个数来判断种类，而应该是异常类层次结果上的种类。此题中答案a的错误就是重写的访问权限比被重写的方法的低，而b,c都属于重载，d的错误在于比被重写的方法抛弃了更多种类的异常。<br><br>36、A member variable defined in a class can be accessed only by the classes in the same package. Which modifier should be used to obtain the access control?<br>A. private<br>B. no modifier<br>C. public<br>D. protected<br>(b)<br>题目：一个类中定义的成员变量只能被同一包中的类访问。下面的哪些修饰符可以获得需要的访问控制。<br>参看前面的题目中的叙述。<br><br>37、A public member vairable called MAX_LENGTH which is int type, the value of the variable remains constant value 100. Use a short statement to define the variable.<br>A. public int MAX_LENGTH=100;<br>B. final int MAX_LENGTH=100;<br>C. final public int MAX_LENGTH=100;<br>D. public final int MAX_LENGTH=100.<br>(d)<br>题目：共有成员变量MAX_LENGTH是一个int型值，变量的值保持常数值100。使用一个短声明定义这个变量。<br>Java中共有变量使用public定义，常量变量使用final，另外注意的是修饰符的顺序，一个最完整的修饰是public static final int varial_a=100;这个顺序不能错，这和c++中也是不同的。而答案c恰恰错在修饰符的顺序上。<br><br>38、Which expressions are correct to declare an array of 10 String objects?<br>A. char str[];<br>B. char str[][];<br>C. String str[];<br>D. String str[10];<br>(c)<br>题目：哪些表达式是声明一个含有10个String对象的数组。<br>严格来说这个题目没有给出一个正确的答案，唯一比较正确的是c，而完全满足题目要求的应该是：String str[]=new String[10];<br>注意答案d的形式是不对的，这和c++也是不同的。<br><br>39、Which fragments are correct in Java source file?<br>A. package testpackage;<br>public class Test{//do something...}<br>B. import java.io.*;<br>package testpackage;<br>public class Test{// do something...}<br>C. import java.io.*;<br>class Person{// do something...}<br>public class Test{// do something...}<br>D. import java.io.*;<br>import java.awt.*;<br>public class Test{// do something...}<br>(acd)<br>题目：下面的那个java源文件代码片断是对的。<br>Java中的package语句必须是源文件中除去说明以外的第一条语句，导入包语句可以有几个，但是必须位于package语句之后，其它类定义之前，一个源文件中可以有几个类，但最多只能有一个是public的，如果有，则源文件的文件名必须和该类的类名相同。<br><br>40：<br>String s= &quot;hello&quot;;<br>String t = &quot;hello&quot;;<br>char c[] = {&amp;acute;h&amp;acute;,&amp;acute;e&amp;acute;,&amp;acute;l&amp;acute;,&amp;acute;l&amp;acute;,&amp;acute;o&amp;acute;} ;<br>Which return true?<br>A. s.equals(t);<br>B. t.equals(c);<br>C. s==t;<br>D. t.equals(new String(&quot;hello&quot;));<br>E. t==c.<br>(acd)<br>题目：哪些返回true。<br>这个在前面第10题的equals()方法和==操作符的讨论中论述过。==操作符比较的是操作符两端的操作数是否是同一个对象，而String的equals()方法比较的是两个String对象的内容是否一样，其参数是一个String对象时才有可能返回true，其它对象都返回假。需要指出的是由于s和t并非使用new创建的，他们指向内存池中的同一个字符串常量，因此其地址实际上是相同的（这个可以从反编译一个简单的测试程序的结果得到，限于篇幅不列出测试代码和反编译的分析），因此答案c也是正确的。　<p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=102&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=102&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=102">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=102&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="102" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/102.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=102"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">SCJP认证套题解析之二</h2>
+    <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:24 </span>
+21、Which of the following assignment is not correct?<br>A. float f = 11.1;<br>B. double d = 5.3E12;<br>C. double d = 3.14159;<br>D. double d = 3.14D.<br>(a)<br>题目：下面的哪些赋值语句是不对的。<br>浮点数的赋值是带有小数点的数字缺省是double型的，如果在浮点数后面加f或者F则是float，后面加d或者D则是double，科学计数法形式的浮点数也是double型的，而double的精度比float高，将一个高精度的double赋值给一个低精度的float时需要进行强制类型转换，反之则不需要。<br>22、Given the uncompleted code of a class:<br>class Person {<br>String name, department;<br>int age;<br>public Person(String n){ name = n; }<br>public Person(String n, int a){ name = n; age = a; }<br>public Person(String n, String d, int a) {<br>// doing the same as two arguments version of constructor <br>// including assignment name=n,age=a<br>department = d;<br>}<br>}<br>Which expression can be added at the &quot;doing the same as...&quot; part of the constructor? <br>A. Person(n,a);<br>B. this(Person(n,a));<br>C. this(n,a);<br>D. this(name,age).<br>(c)<br>题目：给出下面的不完整的类代码：<br>…<br>下面的哪些表达式可以加到构造方法中的&quot;doing the same as...&quot;处？<br>在同一个类的不同构造方法中调用该类的其它构造方法需要使用this(…)的形式，而且必须是在构造方法的第一行调用，这个和普通的方法重载调用的方式不同，普通的方法可以直接使用方法名加参数来调用，而且调用位置没有限制，因此答案A是不行的，B的语法就是错误的，D的错误在于在父类型的构造函数被调用前不能引用类的成员。构造方法是一个类对象实例化的起点（虽然严格来说首先执行的并不是构造方法的第一个语句，而是内存的分配），因此在构造方法中不能将成员作为参数引用。<br><br>23、Which of the following statements about variables and their scopes are true?<br><br>A. Instance variables are member variables of a class.<br>B. Instance variables are declared with the static keyword.<br>C. Local variables defined inside a method are created when the method is executed.<br>D. Local variables must be initialized before they are used.<br>(acd)<br>题目：下面关于变量及其范围的陈述哪些是对的。<br>A. 实例变量是类的成员变量。<br>B. 实例变量用关键字static声明。<br>C. 在方法中定义的局部变量在该方法被执行时创建<br>D. 局部变量在使用前必须被初始化。<br>类中有几种变量，分别是：局部变量（英文可以为：localautomatic emporarystack variable）是定义在方法里的变量；实例变量（英文为：instance variable）是在方法外而在类声明内定义的变量，有时也叫成员变量；类变量（英文为：class variable）是用关键字static声明的实例变量，他们的生存期分别是：局部变量在定义该变量的方法被调用时被创建，而在该方法退出后被撤销；实例变量在使用new Xxxx()创建该类的实例时被创建，而其生存期和该类的实例对象的生存期相同；类变量在该类被加载时被创建，不一定要用new Xxxx()创建，所有该类的实例对象共享该类变量，其生存期是类的生存期。任何变量在使用前都必须初始化,但是需要指出的是局部变量必须显式初始化，而实例变量不必，原始类型的实例变量在该类的构造方法被调用时为它分配的缺省的值，整型是0，布尔型是false，而浮点型是0.0f，引用类型（类类型）的实例变量的缺省值是null（没有进行实际的初始化，对它的使用将引起NullPointException），类变量的规则和实例变量一样，不同的是类变量的初始化是在类被加载时。<br><br>24、public void test() {<br>try { oneMethod();<br>System.out.println(&quot;condition 1&quot;);<br>} catch (ArrayIndexOutOfBoundsException e) {<br>System.out.println(&quot;condition 2&quot;);<br>} catch(Exception e) {<br>System.out.println(&quot;condition 3&quot;);<br>} finally {<br>System.out.println(&quot;finally&quot;);<br>}<br>}<br>Which will display if oneMethod run normally?<br>A. condition 1<br>B. condition 2<br>C. condition 3<br>D. finally<br>(ad)<br>题目：在oneMethod()方法运行正常的情况下将显示什么？<br>如果try块中的语句在执行时发生异常，则执行从该处中断而进入catch块，根据异常的类型进行匹配，最前面的优先进行匹配比较，只要该异常是catch中指定的异常的子类就匹配成功进而执行相应的catch中的内容，而finally块中的内容无论是否发生异常都将被执行。<br><br>25、Given the following code:<br>public class Test {<br>void printValue(int m){<br>do { System.out.println(&quot;The value is&quot;+m);<br>}<br>while( --m &gt; 10 )<br>}<br>public static void main(String arg[]) {<br>int i=10;<br>Test t= new Test();<br>t.printValue(i);<br>}<br>}<br>Which will be output?<br>A. The value is 8<br>B. The value is 9<br>C. The value is 10<br>D. The value is 11<br>(c)<br>题目：给出下面的代码：<br>…<br>输出将是什么？<br>此题考察的是do… while循环和 -- 操作符的知识，do…while最少被执行一次，在执行完do中的内容后判断while中的条件是否为true，如果为true的话就再执行do中的内容，然后再进行判断，以此类推直到while的判断为false时退出循环执行循环后面的内容，而?操作符的规则是在变量右边的 -- 将先进行运算，然后才是使变量的值减一，而在变量左边的是先将变量的值减一再运算。<br><br>26、Which of the following statements about declaration are true?<br>A. Declaration of primitive types such as boolean, byte and so on does not allocate memory space for the variable.<br>B. Declaration of primitive types such as boolean, byte and so on allocates memory space for the variable.<br>C. Declaration of nonprimitive types such as String, Vector and so on does not allocate memory space for the object.<br>D. Declaration of nonprimitive types such as String, Vector ans so on allocates memory space for the object.<br>(ad)<br>题目：下面的有关声明的哪些叙述是对的。<br>A. 对原始数据类型例如boolean,byte的变量的声明不会为该变量分配内存空间。<br>B. 对原始数据类型例如boolean,byte的变量的声明将为之分配内存空间。<br>C. 非原始数据类型例如String,Vector的变量的声明不会为该对象分配内存。<br>D. 非原始数据类型例如String,Vector的变量的声明会为该对象分配内存。<br>对原始数据类型的变量的声明将为之分配内存并赋予一个缺省值，参见23题的叙述，而非原始数据类型的变量必须用new Xxxx()分配内存及初始化。但是严格来讲此题的答案有待确定，因为只有原始类型的实例变量和类变量的声明在类对象被创建/类被加载时完成内存的自动分配，而原始类型的局部变量必须显式初始化，从这点来看原始类型的局部变量没有被自动分配内存，SL275中只提出了非原始数据类型的变量必须使用new Xxxx()完成内存的分配而没有指出原始数据类型的变量是否在声明时即自动进行内存分配，而从局部变量不能在显式初始化前使用这点来看在声明时没有进行内存分配。因此答案a的正确性还有待官方的确定。<br><br>27、In the Java API documentation which sections are included in a class document?<br>A. The description of the class and its purpose<br>B. A list of methods in its super class<br>C. A list of member variable<br>D. The class hierarchy<br>(acd)<br>题目：在Java API文档中下面的哪些部分被包括在内<br>A. 类及用途的描述<br>B. 父类的方法的列表<br>C. 成员变量的列表<br>D. 类层次<br>类文档的内容主要是：类层次、类及用途描述、成员变量列表、构造方法列表、成员方法列表、从类层次上继承的方法列表、成员变量的详细说明、构造方法详细说明、成员方法详细说明。<br><br>28、Given the following code:<br>1) public void modify() {<br>2) int i, j, k;<br>3) i = 100;<br>4) while ( i &gt; 0 ) {<br>5) j = i * 2;<br>6) System.out.println (&quot; The value of j is &quot; + j );<br>7) k = k + 1;<br>8) i--;<br>9) }<br>10) }<br>Which line might cause an error during compilation?<br>A. line 4<br>B. line 6<br>C. line 7<br>D. line 8<br>(c)<br>题目：给出下面的代码：<br>…<br>哪些行在编译时可能产生错误。<br>这个问题在前面有关变量的类型及其作用域的问题中讨论过，局部变量在使用前必须显式初始化，而代码中的变量k在使用前没有。<br><br>29、Which of the following statements about variables and scope are true?<br>A. Local variables defined inside a method are destroyed when the method is exited.<br>B. Local variables are also called automatic variables.<br>C. Variables defined outside a method are created when the object is constructed.<br>D. A method parameter variable continues to exist for as long as the object is needed in which the method is defined.<br>(abc)<br>题目：下面有关变量及其作用域的陈述哪些是对的。<br>A. 在方法里面定义的局部变量在方法退出的时候被撤销。<br>B. 局部变量也叫自动变量。<br>C. 在方法外面定义的变量（译注：即实例变量）在对象被构造时创建。<br>D. 在方法中定义的方法的参变量只要该对象被需要就一直存在。<br>本题还是讨论变量的类型及作用域，参看前面的叙述。<br><br>30、A class design requires that a member variable cannot be accessible directly outside the class. Which modifier should be used to obtain the access control?<br>A. public<br>B. no modifier<br>C. protected<br>D. private<br>(d)<br>题目：类的设计要求它的某个成员变量不能被外部类直接访问。应该使用下面的哪些修饰符获得需要的访问控制。<br>这个在前面也有叙述，java有四种访问类型，分别为：public,protected,default,private，其中public变量可以被所有的外部类访问，而pretected的可以被同一个包及该类的子类访问，default即没有任何修饰符的变量可以被同一个包中的类访问，而private变量只能在被该类内部被访问。题目中的外部类应该理解为除该类自身的所有其它类，因此只有使用private可以达到要求。<br><br>31Given the following code fragment:<br>1) String str = null;<br>2) if ((str != null) &amp;&amp; (str.length() &gt; 10)) {<br>3) System.out.println(&quot;more than 10&quot;);<br>4) } <br>5) else if ((str != null) &amp; (str.length() &lt; 5)) {<br>6) System.out.println(&quot;less than 5&quot;);<br>7) }<br>8) else { System.out.println(&quot;end&quot;); }<br>Which line will cause error?<br>A. line 1<br>B. line 2<br>C. line 5<br>D. line 8<br>(c)<br>题目：给出下面的代码片断：<br>…<br>哪些行将导致错误。<br>此题需要将代码仔细看清楚，查询没有逻辑错误，if …else的使用没有问题，也没有拼写错误，错误在于第5行的“与”操作符的使用，逻辑操作符（logical operator）的“与”应该是&amp;&amp;，而在执行“与”操作的时候，如果第一个条件为false，那么第二个条件判断运算是不做的，但是这里是位逻辑操作符（bitwise logical operator）的“与”，在进行这个运算时，无论第一个条件的结果是什么都会执行第二个的运算，因此，假设str=null，那么第5句的str.length()就会导致NullPointerException，因此本题的错误在于此。<br><br>32、Which statements about Java code security are true?<br><br>A. The bytecode verifier loads all classes needed for the execution of a program.<br>B. Executing code is performed by the runtime interpreter.<br>C. At runtime the bytecodes are loaded, checked and run in an interpreter.<br>D. The class loader adds security by separating the namespaces for the classes of the local file system from those imported from network sources.<br>(bcd)<br>题目：下面有关java代码安全性的叙述哪些是对的。<br>A. 字节码校验器加载查询执行需要的所有类。<br>B. 运行时解释器执行代码。<br>C. 在运行时，字节码被加载，验证然后在解释器里面运行。<br>D. 类加载器通过分离本机文件系统的类和从网络导入的类增加安全性。<br>SL275中描述的Java程序运行的过程是这样的：类加载器（class loader）加载程序运行所需要的所有类，它通过区分本机文件系统的类和网络系统导入的类增加安全性，这可以限制任何的特洛伊木马程序，因为本机类总是先被加载，一旦所有的类被加载完，执行文件的内存划分就固定了，在这个时候特定的内存地址被分配给对应的符号引用，查找表（lookuo table）也被建立，由于内存划分发生在运行时，解释器在受限制的代码区增加保护防止未授权的访问；然后字节码校验器（byte code verifier）进行校验，主要执行下面的检查：类符合JVM规范的类文件格式，没有违反访问限制，代码没有造成堆栈的上溢或者下溢，所有操作代码的参数类型都是正确的，没有非法的数据类型转换（例如将整型数转换成对象类型）发生；校验通过的字节码被解释器（interpreter）执行，解释器在必要时通过运行时系统执行对底层硬件的合适调用。后三个答案是SL275中的原话。<br><br>33、Given the following code:<br>public class Person{<br>static int arr[] = new int[10];<br>public static void main(String a[]) {<br>System.out.println(arr[1];)<br>}<br>}<br>Which statement is correct?<br>A. When compilation some error will occur.<br>B. It is correct when compilation but will cause error when running.<br>C. The output is zero.<br>D. The output is null.<br>(c)<br>题目：给出下面的代码：<br>…<br>那个叙述是对的。<br>A. 编译时将发生错误。<br>B. 编译时正确但是运行时出错。<br>C. 输出为0。<br>D. 输出为null<br>int型数组是类对象，它在类被加载时完成初始化，在前面题目中已经有叙述，由于是原始数据类型int，其初始值为0。<br>34、Given the following code:<br>public class Person{<br>int arr[] = new int[10];<br>public static void main(String a[]) {<br>System.out.println(arr[1]);<br>}<br>}<br>Which statement is correct?<br>A. When compilation some error will occur.<br>B. It is correct when compilation but will cause error when running.<br>C. The output is zero.<br>D. The output is null.<br>(a)<br>给出下面的代码：<br>…<br>哪些叙述是对的。<br>A. 编译时出错。<br>B. 编译时正确而运行时出错。<br>C. 输出0。<br>D. 输出null。<br>实例变量在类的一个实例构造时完成初始化，而且在类的静态方法中不能直接访问类的非静态成员而只能访问类成员（像上题中一样），类的普通方法可以访问类的所有成员和方法，而静态方法只能访问类的静态成员和方法，因为静态方法属于类，而普通方法及成员变量属于类的实例，类方法（静态方法）不能使用属于某个不确定的类的实例的方法和变量，在静态方法里面没有隐含的this，而普通方法有。<br><br>35、public class Parent {<br>public int addValue( int a, int b) {<br>int s;<br>s = a+b;<br>return s;<br>}<br>}<br>class Child extends Parent {<br><br>}<br>Which methods can be added into class Child?<br>A. int addValue( int a, int b ){// do something...}<br>B. public void addValue (){// do something...}<br>C. public int addValue( int a ){// do something...}<br>D. public int addValue( int a, int b )throws MyException {//do something...}<br>(bc)<br>题目：哪些方法可以加入类Child中。<br>此题涉及方法重载（overload），方法重写（override）以及类派生时方法重写的规则。方法重载的规则是：一、参数列表必须不同，个数的不同完全可以，如果个数相同则参数类型的不同不能引起歧意，例如int 和long,float和double就不能作为唯一的类型不同；二、返回值可以不同，但是不能是重载时唯一的不同点（这点和c++中不同，c++中返回类型必须一致）。方法重写发生在类继承时，子类可以重写一个父类中已有的方法，必须在返回类型和参数列表一样时才能说是重写，否则就是重载，java中方法重写的一个重要而且容易被忽略的规则是重写的方法的访问权限不能比被重写的方法的访问权限低！重写的另一个规则是重写的方法不能比被重写的方法抛弃(throws)更多种类的异常，其抛弃的异常只能少，或者是其子类，不能以抛弃异常的个数来判断种类，而应该是异常类层次结果上的种类。此题中答案a的错误就是重写的访问权限比被重写的方法的低，而b,c都属于重载，d的错误在于比被重写的方法抛弃了更多种类的异常。<br><br>36、A member variable defined in a class can be accessed only by the classes in the same package. Which modifier should be used to obtain the access control?<br>A. private<br>B. no modifier<br>C. public<br>D. protected<br>(b)<br>题目：一个类中定义的成员变量只能被同一包中的类访问。下面的哪些修饰符可以获得需要的访问控制。<br>参看前面的题目中的叙述。<br><br>37、A public member vairable called MAX_LENGTH which is int type, the value of the variable remains constant value 100. Use a short statement to define the variable.<br>A. public int MAX_LENGTH=100;<br>B. final int MAX_LENGTH=100;<br>C. final public int MAX_LENGTH=100;<br>D. public final int MAX_LENGTH=100.<br>(d)<br>题目：共有成员变量MAX_LENGTH是一个int型值，变量的值保持常数值100。使用一个短声明定义这个变量。<br>Java中共有变量使用public定义，常量变量使用final，另外注意的是修饰符的顺序，一个最完整的修饰是public static final int varial_a=100;这个顺序不能错，这和c++中也是不同的。而答案c恰恰错在修饰符的顺序上。<br><br>38、Which expressions are correct to declare an array of 10 String objects?<br>A. char str[];<br>B. char str[][];<br>C. String str[];<br>D. String str[10];<br>(c)<br>题目：哪些表达式是声明一个含有10个String对象的数组。<br>严格来说这个题目没有给出一个正确的答案，唯一比较正确的是c，而完全满足题目要求的应该是：String str[]=new String[10];<br>注意答案d的形式是不对的，这和c++也是不同的。<br><br>39、Which fragments are correct in Java source file?<br>A. package testpackage;<br>public class Test{//do something...}<br>B. import java.io.*;<br>package testpackage;<br>public class Test{// do something...}<br>C. import java.io.*;<br>class Person{// do something...}<br>public class Test{// do something...}<br>D. import java.io.*;<br>import java.awt.*;<br>public class Test{// do something...}<br>(acd)<br>题目：下面的那个java源文件代码片断是对的。<br>Java中的package语句必须是源文件中除去说明以外的第一条语句，导入包语句可以有几个，但是必须位于package语句之后，其它类定义之前，一个源文件中可以有几个类，但最多只能有一个是public的，如果有，则源文件的文件名必须和该类的类名相同。<br><br>40：<br>String s= &quot;hello&quot;;<br>String t = &quot;hello&quot;;<br>char c[] = {&amp;acute;h&amp;acute;,&amp;acute;e&amp;acute;,&amp;acute;l&amp;acute;,&amp;acute;l&amp;acute;,&amp;acute;o&amp;acute;} ;<br>Which return true?<br>A. s.equals(t);<br>B. t.equals(c);<br>C. s==t;<br>D. t.equals(new String(&quot;hello&quot;));<br>E. t==c.<br>(acd)<br>题目：哪些返回true。<br>这个在前面第10题的equals()方法和==操作符的讨论中论述过。==操作符比较的是操作符两端的操作数是否是同一个对象，而String的equals()方法比较的是两个String对象的内容是否一样，其参数是一个String对象时才有可能返回true，其它对象都返回假。需要指出的是由于s和t并非使用new创建的，他们指向内存池中的同一个字符串常量，因此其地址实际上是相同的（这个可以从反编译一个简单的测试程序的结果得到，限于篇幅不列出测试代码和反编译的分析），因此答案c也是正确的。　</div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>

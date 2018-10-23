@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>帝国网站管理系统 - Powered by EmpireCMS</title>
+<meta name="keywords" content="帝国网站管理系统,EmpireCMS" />
+<meta name="description" content="　　帝国软件是一家专注于网络软件开发的科技公司，其主营产品“帝国网站管理系统(EmpireCMS)”是目前国内应用超高广泛的CMS程序。通过十多年的不断创新与完善，使系统集安全、稳定、强大、灵活于一身。目前EmpireCMS程序已经广泛应用在国内上百万家网站，覆盖国内数千万上网人群，并经过上千家知名网站的严格检测，被称为国内超高安全、超高稳定的开源CMS系统。" />
 
-	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
+<script type="text/javascript" src="/skin/default/js/tabs.js"></script>
+
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<div class="nav-just"><nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -21,7 +26,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -31,8 +36,33 @@
 	</div>
 	</div>
 </nav>
+</div>
+<div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7"><div class="flash_pic"><script type="text/javascript">
+<!--
+ var interval_time=3;
+ var focus_width=640;
+ var focus_height=480;
+ var text_height=22;
+ var text_align="center";
+ var swf_height = focus_height+text_height;
+ var swfpath="/e/data/images/pixviewer.swf";
+ var swfpatha="/e/data/images/pixviewer.swf";
+ 
+ var pics="%2Fd%2Ffile%2Fp%2F2018%2F10-17%2F996c9f40f0fa5dfb063f97b67b15e768.jpg%7Chttp%3A%2F%2Fimg1.qq.com%2Fsports%2Fpics%2F8865%2F8865651.jpg%7Chttp%3A%2F%2Fimg1.qq.com%2Fsports%2Fpics%2F10300%2F10300435.jpg%7Chttp%3A%2F%2Fimg1.qq.com%2Fent%2Fpics%2F10290%2F10290791.jpg%7Chttp%3A%2F%2Fimg1.qq.com%2Fent%2Fpics%2F10290%2F10290789.jpg";
+ var links="%2Fnews%2Fent%2F2018-10-17%2F79.html%7C%2Fnews%2Fsports%2F2012-12-10%2F78.html%7C%2Fnews%2Fsports%2F2012-12-10%2F77.html%7C%2Fnews%2Fent%2F2012-12-10%2F76.html%7C%2Fnews%2Fent%2F2012-12-10%2F75.html";
+ var texts="||||";
+ 
+ document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+ document.write('<param name="movie" value="'+swfpath+'"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+ document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+ document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'&text_align='+text_align+'&interval_time='+interval_time+'">');
+ document.write('<embed src="'+swfpath+'" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'&text_align='+text_align+'&interval_time='+interval_time+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+ document.write('</object>');
+//-->
+</script>
+</div>
 <ul class="media-list">
             <li class="media" style="">
                 <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
@@ -59,17 +89,6 @@
             <li class="media" style="">
                 <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
                 <div class="media-body">
-                    <h5 class="media-heading"><a href="/news/china/2012-12-10/63.html">EV71病毒袭粤港澳 香港发病率高于过去3年</a></h5>
-                 
-                    <p>据香港文汇报报道，近日，包括安徽、广东、湖北、陕西、浙江等省份相继爆出手足口病疫情，引起中央高度关注。其中安徽阜阳已有22人死亡，而邻近香港的广东佛山也有2名病例死亡。</p>
-                </div>
-            </li>
-        </ul><hr>
-
-<ul class="media-list">
-            <li class="media" style="">
-                <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
-                <div class="media-body">
                     <h5 class="media-heading"><a href="/news/china/2012-12-10/67.html">杭州湾跨海大桥日均车流量逾10万(组图)</a></h5>
                  
                     <p>大桥开通头两天日均约有逾10万多车次通行。在通行首日时，很大一部分车辆是为“尝鲜”而来，不仅车流量很大，且这些车辆常会在桥上停车观光，成为大桥拥堵的重要原因。</p>
@@ -81,20 +100,9 @@
             <li class="media" style="">
                 <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
                 <div class="media-body">
-                    <h5 class="media-heading"><a href="/news/china/2012-12-10/68.html">驻日大使崔天凯:胡锦涛主席访日有三点值得关注</a></h5>
+                    <h5 class="media-heading"><a href="/news/china/2012-12-10/63.html">EV71病毒袭粤港澳 香港发病率高于过去3年</a></h5>
                  
-                    <p>中国驻日本大使崔天凯在人民日报撰文指出：胡锦涛主席访日有三点尤其值得关注。中国国家主席胡锦涛将对日本进行国事访问。这是中国国家元首时隔十年再次访日，也是新世纪首次访日</p>
-                </div>
-            </li>
-        </ul><hr>
-
-<ul class="media-list">
-            <li class="media" style="">
-                <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
-                <div class="media-body">
-                    <h5 class="media-heading"><a href="/news/china/2012-12-10/61.html">台"金援外交"丑闻涉案人遭到恐吓 警方加强保护</a></h5>
-                 
-                    <p>涉入侵吞台当局“金援外交”丑闻的中间人吴思材惊爆遭两名歹徒恐吓要求离开台湾。台湾刑事部门3日晚间已针对全案展开调查，并24小时采取贴身保护的方式，确保吴思材的人身安全。</p>
+                    <p>据香港文汇报报道，近日，包括安徽、广东、湖北、陕西、浙江等省份相继爆出手足口病疫情，引起中央高度关注。其中安徽阜阳已有22人死亡，而邻近香港的广东佛山也有2名病例死亡。</p>
                 </div>
             </li>
         </ul><hr>
@@ -125,6 +133,28 @@
             <li class="media" style="">
                 <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
                 <div class="media-body">
+                    <h5 class="media-heading"><a href="/news/china/2012-12-10/68.html">驻日大使崔天凯:胡锦涛主席访日有三点值得关注</a></h5>
+                 
+                    <p>中国驻日本大使崔天凯在人民日报撰文指出：胡锦涛主席访日有三点尤其值得关注。中国国家主席胡锦涛将对日本进行国事访问。这是中国国家元首时隔十年再次访日，也是新世纪首次访日</p>
+                </div>
+            </li>
+        </ul><hr>
+
+<ul class="media-list">
+            <li class="media" style="">
+                <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
+                <div class="media-body">
+                    <h5 class="media-heading"><a href="/news/china/2012-12-10/61.html">台"金援外交"丑闻涉案人遭到恐吓 警方加强保护</a></h5>
+                 
+                    <p>涉入侵吞台当局“金援外交”丑闻的中间人吴思材惊爆遭两名歹徒恐吓要求离开台湾。台湾刑事部门3日晚间已针对全案展开调查，并24小时采取贴身保护的方式，确保吴思材的人身安全。</p>
+                </div>
+            </li>
+        </ul><hr>
+
+<ul class="media-list">
+            <li class="media" style="">
+                <div class="media-left"><img style="width:100px" class=" img-circle" src="/e/data/images/notimg.gif" /></div>
+                <div class="media-body">
                     <h5 class="media-heading"><a href="/news/china/2012-12-10/66.html">广东省物价局：粮价节后上涨不可信</a></h5>
                  
                     <p>广东省物价局就近期粮价以及所谓节后粮价要涨的消息作出回应。省物价局监测报告以及五一期间市场检查，目前大米批零市场供应正常，仅个别国产优质米零售价格涨幅较大，进口泰国米</p>
@@ -134,18 +164,42 @@
 
 </div>
             <div class="col-md-5">        <div class="panel panel-default ">
-            <div class="panel-head"><h2><a href="/news/world/">国际新闻</a></h2></div>
+            <div class="panel-head div-just"><h2><a href="[!--the.classurl--]">[!--the.classname--]</a></h2></div>
 			<div class="panel-body">
-<ul class="list-group">
+<div class="list-group">
 
 			
-                          	<li class="list-group-item"><a href="/news/world/2012-12-10/72.html">中国紧急援助物资运抵缅甸仰光(组图)</a></li>
+                          	<a href="/news/sports/2012-12-10/78.html" class="list-group-item">中国男乒第16次捧起斯韦思林杯<span class="badge">31</span></a>
 
                        
-                          	<li class="list-group-item"><a href="/news/world/2012-12-10/70.html">俄罗斯第三任总统梅德韦杰夫宣誓就职</a></li>
+                          	<a href="/news/china/2012-12-10/69.html" class="list-group-item">广东丹霞山发现巨型"青铜剑"(组图)<span class="badge">27</span></a>
 
                        
-</ul>
+                          	<a href="/news/world/2012-12-10/72.html" class="list-group-item">中国紧急援助物资运抵缅甸仰光(组图)<span class="badge">16</span></a>
+
+                       
+                          	<a href="/news/china/2012-12-10/62.html" class="list-group-item">武汉一日两遭暴雨袭击 闪电2000次2人死亡(图)<span class="badge">3</span></a>
+
+                       
+                          	<a href="/news/world/2012-12-10/70.html" class="list-group-item">俄罗斯第三任总统梅德韦杰夫宣誓就职<span class="badge">3</span></a>
+
+                       
+                          	<a href="/news/china/2012-12-10/67.html" class="list-group-item">杭州湾跨海大桥日均车流量逾10万(组图)<span class="badge">2</span></a>
+
+                       
+                          	<a href="/news/sports/2012-12-10/71.html" class="list-group-item">奥运圣火成功登顶珠峰<span class="badge">2</span></a>
+
+                       
+                          	<a href="/news/sports/2012-12-10/77.html" class="list-group-item">科比专为大场面而生<span class="badge">2</span></a>
+
+                       
+                          	<a href="/news/ent/2018-10-17/79.html" class="list-group-item">dfffff<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+</div>
 			</div>
 		</div>
 			

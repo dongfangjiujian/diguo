@@ -5,13 +5,20 @@
 <title>SUN认证Java2程序员考试(SCJP)试题解析 - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="SUN认证Java2程序员考试(SCJP)试题解析" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>SUN认证Java2程序员考试(SCJP)试题解析</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:26&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">前言 <br><br>无论你是个新手,还是程序设计方面的专家,你都会惊异于Sun公司Java的无穷魅力。Java带给你的并不仅仅是面向对象、开放、平台无关、易用、安全和“Write once, run anywhere”等软件开发方面的优势，更重要的一点是，它提供了一种新颖的表达思想的方式，一种全新的思维模式。随着待解决问题的规模不断膨胀，Java彻底的面向对象思想的灵活性就会凸现出来。毋庸置疑，Java是你开发大型软件时最得心应手的利器或是你转行IT的入门首选。 <br><br>SCJP考试简介 <br><br>● 考试方式 <br><br>全英文试题,以电脑作答，在授权的Prometric考试中心参加考试 <br><br>考试编号：310-025 <br><br>先决条件：无 <br><br>考试题型：复选、填空和拖拽匹配 <br><br>题量：59 <br><br>及格标准：61% <br><br>时限：120分钟 <br><br>费用：1250元 <br><br>● 要求具备的能力 <br><br>● 使用Java编程语言创建Java应用程序和applets。 <br><br>● 定义和描述垃圾搜集，安全性和Java虚拟机(JVM)。 <br><br>● 描述和使用Java语言面向对象的特点。 <br><br>● 开发图形用户界面(GUI)。利用Java支持的多种布局管理。 <br><br>● 描述和使用Java的事件处理模式。 <br><br>● 使用Java语言的鼠标输入、文本、窗口和菜单窗口部件。 <br><br>● 使用Java的例外处理来控制程序执行和定义用户自己的例外事件。 <br><br>● 使用Java语言先进的面向对象特点, 包括方法重载、方法覆盖、抽象类、接口、final、static和访问控制。 <br><br>● 实现文件的输入/输出 (I/O)。 <br><br>● 使用Java语言内在的线程模式来控制多线程。 <br><br>● 使用Java 的Sockets机制进行网络通信。 <br><br>例题1： <br><br>Choose the three valid identifiers from those listed below. <br><br>A. IDoLikeTheLongNameClass <br><br>B. $byte <br><br>C. const <br><br>D. _ok <br><br>E. 3_case <br><br>解答：A, B, D <br><br>点评：Java中的标示符必须是字母、美元符($)或下划线(_)开头。关键字与保留字不能作为标示符。选项C中的const是Java的保留字，所以不能作标示符。选项E中的3_case以数字开头，违反了Java的规则。 <br><br>例题2： <br><br>How can you force garbage collection of an object? <br><br>A. Garbage collection cannot be forced <br><br>B. Call System.gc(). <br><br>C. Call System.gc(), passing in a reference to the object to be garbage collected. <br><br>D. Call Runtime.gc(). <br><br>E. Set all references to the object to new values（null, for example）. <br><br>解答：A <br><br>点评：在Java中垃圾收集是不能被强迫立即执行的。调用System.gc()或Runtime.gc()静态方法不能保证垃圾收集器的立即执行，因为，也许存在着更高优先级的线程。所以选项B、D不正确。选项C的错误在于，System.gc()方法是不接受参数的。选项E中的方法可以使对象在下次垃圾收集器运行时被收集。 <br><br>例题3： <br><br>Consider the following class: <br><br>1. class Test(int i) { <br><br>2. void test(int i) { <br><br>3. System.out.println(“I am an int.”); <br><br>4. } <br><br>5. void test(String s) { <br><br>6. System.out.println(“I am a string.”); <br><br>7. } <br><br>8. <br><br>9. public static void main(String args[]) { <br><br>10. Test t=new Test(); <br><br>11. char ch=“y”; <br><br>12. t.test(ch); <br><br>13. } <br><br>14. } <br><br>Which of the statements below is true?(Choose one.) <br><br>A. Line 5 will not compile, because void methods cannot be overridden. <br><br>B. Line 12 will not compile, because there is no version of test() that rakes a char argument. <br><br>C. The code will compile but will throw an exception at line 12. <br><br>D. The code will compile and produce the following output: I am an int. <br><br>E. The code will compile and produce the following output: I am a String. <br><br>解答：D <br><br>点评：在第12行，16位长的char型变量ch在编译时会自动转化为一个32位长的int型，并在运行时传给void test(int i)方法。 <br><br>例题4： <br><br>Which of the following lines of code will compile without error？ <br><br>A. <br><br>int i=0; <br><br>if (i) { <br><br>System.out.println(“Hi”); <br><br>} <br><br>B. <br><br>boolean b=true; <br><br>boolean b2=true; <br><br>if(b==b2) { <br><br>System.out.println(“So true”); <br><br>} <br><br>C. <br><br>int i=1; <br><br>int j=2; <br><br>if(i==1|| j==2) <br><br>System.out.println(“OK”); <br><br>D. <br><br>int i=1; <br><br>int j=2; <br><br>if (i==1 &amp;| j==2) <br><br>System.out.println(“OK”); <br><br>解答：B, C <br><br>点评：选项A错，因为if语句后需要一个boolean类型的表达式。逻辑操作有^、&amp;、| 和 &amp;&amp;、||,但是“&amp;|”是非法的，所以选项D不正确。 <br><br>例题5： <br><br>Which two demonstrate a &quot;has a&quot; relationship? (Choose two) <br><br>A. public interface Person { } <br><br>public class Employee extends Person{ } <br><br>B. public interface Shape { } <br><br>public interface Rectandle extends Shape { } <br><br>C. public interface Colorable { } <br><br>public class Shape implements Colorable <br><br>{ } <br><br>D. public class Species{ } <br><br>public class Animal{private Species species;} <br><br>E. interface Component{ } <br><br>class Container implements Component{ <br><br>private Component[] children; <br><br>} <br><br>解答：D, E <br><br>点评： 在Java中代码重用有两种可能的方式，即组合（“has a”关系）和继承（“is a”关系）。“has a”关系是通过定义类的属性的方式实现的；而“is a”关系是通过类继承实现的。本例中选项A、B、C体现了“is a”关系；选项D、E体现了“has a”关系。 <br><br>例题6： <br><br>Which two statements are true for the class java.util.TreeSet? (Choose two) <br><br>A. The elements in the collection are ordered. <br><br>B. The collection is guaranteed to be immutable. <br><br>C. The elements in the collection are guaranteed to be unique. <br><br>D. The elements in the collection are accessed using a unique key. <br><br>E. The elements in the collection are guaranteed to be synchronized <br><br>解答：A, C <br><br>点评：TreeSet类实现了Set接口。Set的特点是其中的元素惟一，选项C正确。由于采用了树形存储方式，将元素有序地组织起来，所以选项A也正确。 <br><br>例题7： <br><br>True or False: Readers have methods that can read and return floats and doubles. <br><br>A. Ture <br><br>B. False <br><br>解答：B <br><br>点评： Reader/Writer只处理Unicode字符的输入输出。float和double可以通过stream进行I/O. <br><br>例题8： <br><br>What does the following paint() method draw? <br><br>1. public void paint(Graphics g) { <br><br>2. g.drawString(“Any question”, 10, 0); <br><br>3. } <br><br>A. The string “Any question?”, with its top-left corner at 10,0 <br><br>B. A little squiggle coming down from the top of the component. <br><br>解答：B <br><br>点评：drawString(String str, int x, int y)方法是使用当前的颜色和字符，将str的内容显示出来，并且最左的字符的基线从（x,y）开始。在本题中，y=0，所以基线位于最顶端。我们只能看到下行字母的一部分，即字母‘y’、‘q’的下半部分。 <br><br>例题9： <br><br>What happens when you try to compile and run the following application? Choose all correct options. <br><br>1. public class Z { <br><br>2. public static void main(String[] args) { <br><br>3. new Z(); <br><br>4. } <br><br>5. <br><br>6. Z() { <br><br>7. Z alias1 = this; <br><br>8. Z alias2 = this; <br><br>9. synchronized(alias1) { <br><br>10. try { <br><br>11. alias2.wait(); <br><br>12. System.out.println(“DONE WAITING”); <br><br>13. } <br><br>14. catch (InterruptedException e) { <br><br>15. System.out.println(“INTERR <br><br>UPTED”); <br><br>16. } <br><br>17. catch (Exception e) { <br><br>18. System.out.println(“OTHER EXCEPTION”); <br><br>19. } <br><br>20. finally { <br><br>21. System.out.println <br><br>(“FINALLY”); <br><br>22. } <br><br>23. } <br><br>24. System.out.println(“ALL DONE”); <br><br>25. } <br><br>26. } <br><br>A. The application compiles but doesn&amp;acute;t print anything. <br><br>B. The application compiles and print “DONE WAITING” <br><br>C. The application compiles and print “FINALLY” <br><br>D. The application compiles and print “ALL DONE” <br><br>E. The application compiles and print “INTERRUPTED” <br><br>解答：A <br><br>点评：在Java中，每一个对象都有锁。任何时候，该锁都至多由一个线程控制。由于alias1与alias2指向同一对象Z，在执行第11行前，线程拥有对象Z的锁。在执行完第11行以后，该线程释放了对象Z的锁，进入等待池。但此后没有线程调用对象Z的notify()和notifyAll()方法，所以该进程一直处于等待状态，没有输出。 <br><br>例题10： <br><br>Which statement or statements are true about the code listed below? Choose three. <br><br>1. public class MyTextArea extends TextArea { <br><br>2. public MyTextArea(int nrows, int ncols) { <br><br>3. enableEvents(AWTEvent.TEXT_ <br><br>EVENT_MASK); <br><br>4. } <br><br>5. <br><br>6. public void processTextEvent <br><br>(TextEvent te) { <br><br>7. System.out.println(“Processing a text event.”); <br><br>8. } <br><br>9. } <br><br>A. The source code must appear in a file called MyTextArea.java <br><br>B. Between lines 2 and 3, a call should be made to super(nrows, ncols) so that the new component will have the correct size. <br><br>C. At line 6, the return type of processTextEvent() should be declared boolean, not void. <br><br>D. Between lines 7 and 8, the following code should appear: return true. <br><br>E. Between lines 7 and 8, the following code should appear: super.processTextEvent(te). <br><br>解答：A, B, E <br><br>点评：由于类是public，所以文件名必须与之对应，选项A正确。如果不在2、3行之间加上super(nrows,ncols)的话，则会调用无参数构建器TextArea(), 使nrows、ncols信息丢失，故选项B正确。在Java2中，所有的事件处理方法都不返回值，选项C、D错误。选项E正确，因为如果不加super.processTextEvent(te)，注册的listener将不会被唤醒。 <br><br>SCJP考试中的几点注意 <br><br>● 深刻理解面向对象的思想 <br><br>Java是一种纯粹的面向对象的程序设计语言。在正式使用Java做开发之前，必须将我们的思维方式转入一个彻底的面向对象的世界。做不到这一点，就无法体会Java语言的精髓，写不出地道的Java程序。当然，你也无法彻底理解Java中的基本概念和他们之间的联系与区别，如例题3、例题5。你可以学到Java的语法规则，却不能看到Java的灵魂。 <br><br>● 对概念细节的精确把握 <br><br>通过例题我们可以看到，SCJP的考察点相当细致。如例题1、2、4、7、8。所以只有对Java的概念、语法、规则了然于心，才能在考场上应对自如。 <br><br>● 适量的练习 <br><br>程序设计是一项实践性很强的技术。只有上机实践，才能使课本中的理论、头脑中的思想通过你的双手成为一行行代码，完成规定的目标。虽然SCJP考试不考操作与编程，但有大量的程序阅读，如例题3、4、9、10。如果你自己写过许多代码的话，这种题就是小菜一碟。 <br><br>● 广泛的交流 <br><br>善于交流是优秀程序员必备的技能，也是你解决疑难，提高水平的捷径。国内外有很多与Java认证相关的优秀网站和论坛，如: www.javaranch.com, www.javaunion.net等, 都是学习Java的宝库。同时，一些很棒的模考软件，如Jxam、JTest、 Javacert等，以及著名的模考题如MarcusGreen的三套题均可以找到。 　<p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=108&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=108&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=108">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=108&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="108" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/108.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=108"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">SUN认证Java2程序员考试(SCJP)试题解析</h2>
+    <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:26 </span>
+前言 <br><br>无论你是个新手,还是程序设计方面的专家,你都会惊异于Sun公司Java的无穷魅力。Java带给你的并不仅仅是面向对象、开放、平台无关、易用、安全和“Write once, run anywhere”等软件开发方面的优势，更重要的一点是，它提供了一种新颖的表达思想的方式，一种全新的思维模式。随着待解决问题的规模不断膨胀，Java彻底的面向对象思想的灵活性就会凸现出来。毋庸置疑，Java是你开发大型软件时最得心应手的利器或是你转行IT的入门首选。 <br><br>SCJP考试简介 <br><br>● 考试方式 <br><br>全英文试题,以电脑作答，在授权的Prometric考试中心参加考试 <br><br>考试编号：310-025 <br><br>先决条件：无 <br><br>考试题型：复选、填空和拖拽匹配 <br><br>题量：59 <br><br>及格标准：61% <br><br>时限：120分钟 <br><br>费用：1250元 <br><br>● 要求具备的能力 <br><br>● 使用Java编程语言创建Java应用程序和applets。 <br><br>● 定义和描述垃圾搜集，安全性和Java虚拟机(JVM)。 <br><br>● 描述和使用Java语言面向对象的特点。 <br><br>● 开发图形用户界面(GUI)。利用Java支持的多种布局管理。 <br><br>● 描述和使用Java的事件处理模式。 <br><br>● 使用Java语言的鼠标输入、文本、窗口和菜单窗口部件。 <br><br>● 使用Java的例外处理来控制程序执行和定义用户自己的例外事件。 <br><br>● 使用Java语言先进的面向对象特点, 包括方法重载、方法覆盖、抽象类、接口、final、static和访问控制。 <br><br>● 实现文件的输入/输出 (I/O)。 <br><br>● 使用Java语言内在的线程模式来控制多线程。 <br><br>● 使用Java 的Sockets机制进行网络通信。 <br><br>例题1： <br><br>Choose the three valid identifiers from those listed below. <br><br>A. IDoLikeTheLongNameClass <br><br>B. $byte <br><br>C. const <br><br>D. _ok <br><br>E. 3_case <br><br>解答：A, B, D <br><br>点评：Java中的标示符必须是字母、美元符($)或下划线(_)开头。关键字与保留字不能作为标示符。选项C中的const是Java的保留字，所以不能作标示符。选项E中的3_case以数字开头，违反了Java的规则。 <br><br>例题2： <br><br>How can you force garbage collection of an object? <br><br>A. Garbage collection cannot be forced <br><br>B. Call System.gc(). <br><br>C. Call System.gc(), passing in a reference to the object to be garbage collected. <br><br>D. Call Runtime.gc(). <br><br>E. Set all references to the object to new values（null, for example）. <br><br>解答：A <br><br>点评：在Java中垃圾收集是不能被强迫立即执行的。调用System.gc()或Runtime.gc()静态方法不能保证垃圾收集器的立即执行，因为，也许存在着更高优先级的线程。所以选项B、D不正确。选项C的错误在于，System.gc()方法是不接受参数的。选项E中的方法可以使对象在下次垃圾收集器运行时被收集。 <br><br>例题3： <br><br>Consider the following class: <br><br>1. class Test(int i) { <br><br>2. void test(int i) { <br><br>3. System.out.println(“I am an int.”); <br><br>4. } <br><br>5. void test(String s) { <br><br>6. System.out.println(“I am a string.”); <br><br>7. } <br><br>8. <br><br>9. public static void main(String args[]) { <br><br>10. Test t=new Test(); <br><br>11. char ch=“y”; <br><br>12. t.test(ch); <br><br>13. } <br><br>14. } <br><br>Which of the statements below is true?(Choose one.) <br><br>A. Line 5 will not compile, because void methods cannot be overridden. <br><br>B. Line 12 will not compile, because there is no version of test() that rakes a char argument. <br><br>C. The code will compile but will throw an exception at line 12. <br><br>D. The code will compile and produce the following output: I am an int. <br><br>E. The code will compile and produce the following output: I am a String. <br><br>解答：D <br><br>点评：在第12行，16位长的char型变量ch在编译时会自动转化为一个32位长的int型，并在运行时传给void test(int i)方法。 <br><br>例题4： <br><br>Which of the following lines of code will compile without error？ <br><br>A. <br><br>int i=0; <br><br>if (i) { <br><br>System.out.println(“Hi”); <br><br>} <br><br>B. <br><br>boolean b=true; <br><br>boolean b2=true; <br><br>if(b==b2) { <br><br>System.out.println(“So true”); <br><br>} <br><br>C. <br><br>int i=1; <br><br>int j=2; <br><br>if(i==1|| j==2) <br><br>System.out.println(“OK”); <br><br>D. <br><br>int i=1; <br><br>int j=2; <br><br>if (i==1 &amp;| j==2) <br><br>System.out.println(“OK”); <br><br>解答：B, C <br><br>点评：选项A错，因为if语句后需要一个boolean类型的表达式。逻辑操作有^、&amp;、| 和 &amp;&amp;、||,但是“&amp;|”是非法的，所以选项D不正确。 <br><br>例题5： <br><br>Which two demonstrate a &quot;has a&quot; relationship? (Choose two) <br><br>A. public interface Person { } <br><br>public class Employee extends Person{ } <br><br>B. public interface Shape { } <br><br>public interface Rectandle extends Shape { } <br><br>C. public interface Colorable { } <br><br>public class Shape implements Colorable <br><br>{ } <br><br>D. public class Species{ } <br><br>public class Animal{private Species species;} <br><br>E. interface Component{ } <br><br>class Container implements Component{ <br><br>private Component[] children; <br><br>} <br><br>解答：D, E <br><br>点评： 在Java中代码重用有两种可能的方式，即组合（“has a”关系）和继承（“is a”关系）。“has a”关系是通过定义类的属性的方式实现的；而“is a”关系是通过类继承实现的。本例中选项A、B、C体现了“is a”关系；选项D、E体现了“has a”关系。 <br><br>例题6： <br><br>Which two statements are true for the class java.util.TreeSet? (Choose two) <br><br>A. The elements in the collection are ordered. <br><br>B. The collection is guaranteed to be immutable. <br><br>C. The elements in the collection are guaranteed to be unique. <br><br>D. The elements in the collection are accessed using a unique key. <br><br>E. The elements in the collection are guaranteed to be synchronized <br><br>解答：A, C <br><br>点评：TreeSet类实现了Set接口。Set的特点是其中的元素惟一，选项C正确。由于采用了树形存储方式，将元素有序地组织起来，所以选项A也正确。 <br><br>例题7： <br><br>True or False: Readers have methods that can read and return floats and doubles. <br><br>A. Ture <br><br>B. False <br><br>解答：B <br><br>点评： Reader/Writer只处理Unicode字符的输入输出。float和double可以通过stream进行I/O. <br><br>例题8： <br><br>What does the following paint() method draw? <br><br>1. public void paint(Graphics g) { <br><br>2. g.drawString(“Any question”, 10, 0); <br><br>3. } <br><br>A. The string “Any question?”, with its top-left corner at 10,0 <br><br>B. A little squiggle coming down from the top of the component. <br><br>解答：B <br><br>点评：drawString(String str, int x, int y)方法是使用当前的颜色和字符，将str的内容显示出来，并且最左的字符的基线从（x,y）开始。在本题中，y=0，所以基线位于最顶端。我们只能看到下行字母的一部分，即字母‘y’、‘q’的下半部分。 <br><br>例题9： <br><br>What happens when you try to compile and run the following application? Choose all correct options. <br><br>1. public class Z { <br><br>2. public static void main(String[] args) { <br><br>3. new Z(); <br><br>4. } <br><br>5. <br><br>6. Z() { <br><br>7. Z alias1 = this; <br><br>8. Z alias2 = this; <br><br>9. synchronized(alias1) { <br><br>10. try { <br><br>11. alias2.wait(); <br><br>12. System.out.println(“DONE WAITING”); <br><br>13. } <br><br>14. catch (InterruptedException e) { <br><br>15. System.out.println(“INTERR <br><br>UPTED”); <br><br>16. } <br><br>17. catch (Exception e) { <br><br>18. System.out.println(“OTHER EXCEPTION”); <br><br>19. } <br><br>20. finally { <br><br>21. System.out.println <br><br>(“FINALLY”); <br><br>22. } <br><br>23. } <br><br>24. System.out.println(“ALL DONE”); <br><br>25. } <br><br>26. } <br><br>A. The application compiles but doesn&amp;acute;t print anything. <br><br>B. The application compiles and print “DONE WAITING” <br><br>C. The application compiles and print “FINALLY” <br><br>D. The application compiles and print “ALL DONE” <br><br>E. The application compiles and print “INTERRUPTED” <br><br>解答：A <br><br>点评：在Java中，每一个对象都有锁。任何时候，该锁都至多由一个线程控制。由于alias1与alias2指向同一对象Z，在执行第11行前，线程拥有对象Z的锁。在执行完第11行以后，该线程释放了对象Z的锁，进入等待池。但此后没有线程调用对象Z的notify()和notifyAll()方法，所以该进程一直处于等待状态，没有输出。 <br><br>例题10： <br><br>Which statement or statements are true about the code listed below? Choose three. <br><br>1. public class MyTextArea extends TextArea { <br><br>2. public MyTextArea(int nrows, int ncols) { <br><br>3. enableEvents(AWTEvent.TEXT_ <br><br>EVENT_MASK); <br><br>4. } <br><br>5. <br><br>6. public void processTextEvent <br><br>(TextEvent te) { <br><br>7. System.out.println(“Processing a text event.”); <br><br>8. } <br><br>9. } <br><br>A. The source code must appear in a file called MyTextArea.java <br><br>B. Between lines 2 and 3, a call should be made to super(nrows, ncols) so that the new component will have the correct size. <br><br>C. At line 6, the return type of processTextEvent() should be declared boolean, not void. <br><br>D. Between lines 7 and 8, the following code should appear: return true. <br><br>E. Between lines 7 and 8, the following code should appear: super.processTextEvent(te). <br><br>解答：A, B, E <br><br>点评：由于类是public，所以文件名必须与之对应，选项A正确。如果不在2、3行之间加上super(nrows,ncols)的话，则会调用无参数构建器TextArea(), 使nrows、ncols信息丢失，故选项B正确。在Java2中，所有的事件处理方法都不返回值，选项C、D错误。选项E正确，因为如果不加super.processTextEvent(te)，注册的listener将不会被唤醒。 <br><br>SCJP考试中的几点注意 <br><br>● 深刻理解面向对象的思想 <br><br>Java是一种纯粹的面向对象的程序设计语言。在正式使用Java做开发之前，必须将我们的思维方式转入一个彻底的面向对象的世界。做不到这一点，就无法体会Java语言的精髓，写不出地道的Java程序。当然，你也无法彻底理解Java中的基本概念和他们之间的联系与区别，如例题3、例题5。你可以学到Java的语法规则，却不能看到Java的灵魂。 <br><br>● 对概念细节的精确把握 <br><br>通过例题我们可以看到，SCJP的考察点相当细致。如例题1、2、4、7、8。所以只有对Java的概念、语法、规则了然于心，才能在考场上应对自如。 <br><br>● 适量的练习 <br><br>程序设计是一项实践性很强的技术。只有上机实践，才能使课本中的理论、头脑中的思想通过你的双手成为一行行代码，完成规定的目标。虽然SCJP考试不考操作与编程，但有大量的程序阅读，如例题3、4、9、10。如果你自己写过许多代码的话，这种题就是小菜一碟。 <br><br>● 广泛的交流 <br><br>善于交流是优秀程序员必备的技能，也是你解决疑难，提高水平的捷径。国内外有很多与Java认证相关的优秀网站和论坛，如: www.javaranch.com, www.javaunion.net等, 都是学习Java的宝库。同时，一些很棒的模考软件，如Jxam、JTest、 Javacert等，以及著名的模考题如MarcusGreen的三套题均可以找到。 　</div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>

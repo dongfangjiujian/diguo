@@ -5,13 +5,20 @@
 <title>我的scjp考试经历 - Powered by EmpireCMS</title>
 <meta name="keywords" content="" />
 <meta name="description" content="我的scjp考试经历" />
-<link href="/skin/default/css/style.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/skin/default/bootstrap/css/custom.css">
+
 <script type="text/javascript" src="/skin/default/js/tabs.js"></script>
-<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="showpage news">
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid"> 
+<body>
+<div class="container">
+<nav class="nav navbar-default" role="navigation">
+	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#example-navbar-collapse">
@@ -20,7 +27,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">香水百合</a>
+		<a class="navbar-brand" href="/">香水百合</a>
 	</div>
 	<div class="collapse navbar-collapse" id="example-navbar-collapse">
 		<ul class="nav navbar-nav">
@@ -30,192 +37,21 @@
 	</div>
 	</div>
 </nav>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr valign="top">
-<td class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">
-<tr>
-<td>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_info">
-<tr>
-<td><h1>我的scjp考试经历</h1></td>
-</tr>
-<tr>
-<td class="info_text">时间：2018-10-22 15:09:22&nbsp;&nbsp;来源：JSP天空网&nbsp;&nbsp;作者：未知</td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td id="text">今天是2002年6月3日星期一，早上6：30起床，到学校外面吃了早饭（武汉人叫“过早“）（小米粥+发糕）。之后回到寝室，躺在床上乱无目的的翻了翻sun 的教材，真的是什么都没看进去，这时是7：00整。同寝室的几个兄弟还在酣睡（鼾声此起彼伏，令我本来有点紧张而又兴奋的心情平静了不少）。打开电脑，看了几篇以前论坛上发表的总结性的帖子： <br>分别是sun 的33条tips, scjp中的考题陷阱，以及chinajavaworld上由网友总结的“归纳I-O，帮助记忆“。其实这个时候看这些东西没有什么大用，最多是巩固一下知识点。你的真实水平在一周前已经被锁定了（基本上是这样的）。 <br>9：00整，我收好东西，拿上准考证和身份证出发了，临走之前又回眸看了一眼几个睡得像小猪一样的室友（哎，现在的年轻人怎么这么能睡，兄弟我都要上刑场了，也没人说句安慰的话……真失败） <br>9:20来到考场，漂亮的服务小姐（在网上是不是称mm更好一些）一边吃着热干面一边热情地接待了我。之后，是相当“难熬“的2个小时………快接近中午十二点的时候我终于收到了一个令人激动的消息?---我可以开始考试了:P. 原因是今天美国sun公司那边的服务器有点问题，题目一直没有传过来。于是我就从9：30开始一直等到11：45，等的我花儿都谢了。比我晚来的考生早就考完回去了，只有我孤零零的一个人在考场里，这时我方懂得何谓未伊消得人憔悴。正准备去吃中饭的服务小姐过意不去，说要带饭给我。这时的我哪里还想着吃饭呀，赶快做题吧，要是考了个59%，还不如去吃屎。 <br>第一题是Math.cos(Math.toRadians(42))那一道，我上上下下看了5遍才确认这就是147上的那道题，之后又做了大概5道题，发现都是原题……。我用了20分钟做完全部题目，这时我觉得自己很有可能拿100%，于是又花了整整40mins to check it out,不过并没有发现什么错误。深吸一口气后，我submit了。。。。。。。。。。。。 <br>结果并不是100%，我错了4道题，一开始我觉得挺失望的，不过后来一想,自己也确实不是100%的实力，java库的底层很庞大，我有太多都从来没涉及到过，如果就让我这么糊里糊涂的拿了100%，那是有点说不过去。&amp;#61514;; <br>走出考场，前台工作人员把Examination Score Report递给了我，看到TEST STATUS: PASS.心里有一种说不出的成就感：）。 <br><br>我的REPORT 上面记述了OPERATORS AND ASSIGNMENTS部分我错了一道题，THREADS 部分有两道错题，JAVA.IO PACKAGE部分有一道错题。所以我强烈建议大家104，147的题一定要搞懂（所给的答案并不可靠），而且我发现sun会利用人的惯性思维来达到欺骗你的目的，比如说一开始给你很多你曾见过的题（没有任何改动的原题），你会随着这类题的不断涌现变得有些麻癖，你的警惕性会不断降低，这时突然给你来一道变体（你挂了）。我就是，糊里糊涂的，就错了4道！！真搞不懂，我怀疑是不是sun 作弊，故意把校正答案改错--------不会吧！！！ <br>我的考题中出现了4道写OUTPUT的题目，答案分别是 ”javajavaC”，”13423”,”ABCDE”, 5(求6^3)------做过104，147的朋友一定知道这些是什么题, 这里要注意写答案的时候对于是字符串的答案 两边要写上” ”。这一点我觉得自己很幸运，因为考前当天晚上，我上网的时候，发现有一个网友就问了这个问题。（这里要特别很感谢SJ120221兄）。此外，“javajavaC”中的c一定要大写（如果题干是大写的话） <br>对了，还有那道 <br>Integer i = new Integer (42); <br>Long 1 = new Long (42); <br>Double d = new Double (42.0); <br><br>Which two expressions evaluate to True? (Choose Two) <br><br>A.(i ==1) <br>B.(i == d) <br>C.(d == 1) <br>D.(i.equals (d)) <br>E.(d.equals (i)) <br>F.(i.equals (42)) <br><br>这题是没有正确答案的，以前有人说过这种肯定没答案的题不用选，我照做了，并且在submit的时候，考试系统提示我有一道题没做，它说如果您不选该题的话，本题将作为错误处理。 <br>我考虑了一下，还是没选。（report 上面说我在operator and assignment部分的那一道错题应该是指这道，I consider），所以我说sun作弊。：） <br><br>回头看看我的scjp之路。我是2001年8月参加的新东方scjp的培训（很早吧，估计那时和我一起学的人现在很多都成了scjd 或scja什么之类的了）。因为我大一大二的时候学pascal, c语言，汇编等学得很不爽，感觉自己很讨厌编程，其他同学都有自己的专攻项目（CB,VB,VC,SQL,DELPHI） ,而我……于是我就有了学JAVA的想法，考SCJP完全是想证明给自己看。对于scjp这门考试，我感到自己还算从中学到了不少东西，不管是基础理论还是应用实践。On the contrary, 坦白的说，如果你准备以中国人传统的考试方式去应考scjp的话，用一周的时间把几套classic 的mock 做一遍（我并不反对做mock,其实做模拟题很有助于我们对知识点的更深层理解），我保证考85%以上没问题，然后拿个很好看的证书，再自我陶醉的告诉自己“我是java programmer”,但我相信这并不是所有人想要的。类似话题在论坛上已经被讨论过无数次了，我也不想多说了，我相信道理大家都是懂的，关键是看你怎么做。在我的Examination Score Report上有一句话我觉得挺好，这里送给大家： <br>Certification testing is a means of measuring your knowledge and skill level. It can also be used to identify area that need improvement and areas of strength. It can be sued as a tool for further learning and future achievement <br><br><br>最后，由衷的感谢javaunion的chairyuan , FORMyjoy, nevergiveup, lonely,tr100,wolfshome，smart <br>chinajavaworld(java开发者论坛)的 风子璇，jiayuan, sj120021,ditty,cooljava,DersertApple <br><br>其实有太多太多的学友曾经给予过我无限的帮助，在这里tester向你们的所有，表示真心的感谢！！！ <br><br>还有要感谢的人有我的母亲和父亲，我的电脑，我的挚友xiongjiangang, Channel V , CCTV,华纳，sony……….. <br>呵呵 <br><br>ok, 祝大家考试顺利，学有所成 ！<br>　<p align="center" class="pageLink"></p></td>
-</tr>
-</table>
-<table border="0" align="center" cellpadding="0" cellspacing="8">
-<tr>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td class="diggnum" id="diggnum"><strong><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=99&down=5"></script></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=64&id=99&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');">来顶一下</a></td>
-</tr>
-</table></td>
-<td><table border="0" align="center" cellpadding="0" cellspacing="0" class="digg">
-<tr>
-<td valign="middle" class="diggnum"><strong><a href="/"><img src="/skin/default/images/back.gif" alt="返回首页" width="12" height="13" border="0" align="absmiddle" /></a></strong></td>
-</tr>
-<tr>
-<td class="diggit"><a href="/">返回首页</a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-          </td>
-</tr>
-</table>
-<script>
-		  function CheckPl(obj)
-		  {
-		  if(obj.saytext.value=="")
-		  {
-		  alert("您没什么话要说吗？");
-		  obj.saytext.focus();
-		  return false;
-		  }
-		  return true;
-		  }
-		  </script><form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
-<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
 
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title">
-<tr>
-<td><strong>发表评论</strong></td>
-<td align="right"><a href="/e/pl/?classid=64&amp;id=99">共有<span><script type="text/javascript" src="/e/public/ViewClick/?classid=64&id=99&down=2"></script></span>条评论</a></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="10" cellpadding="0">
-<tr>
-<td><table width="100%" border="0" cellpadding="0" cellspacing="2">
-<tr>
-<td width="56%" align="left">用户名:
-<input name="username" type="text" class="inputText" id="username" value="" size="16" /></td>
-<td width="44%" align="left">密码:
-<input name="password" type="password" class="inputText" id="password" value="" size="16" /></td>
-</tr>
-<tr>
-<td align="left">验证码:
-<input name="key" type="text" class="inputText" size="10" />
-<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&t='+Math.random()" title="看不清楚,点击刷新" /> </td>
-<td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked" />
-匿名发表</td>
-</tr>
-</table>
-<textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="image" src="/e/data/images/postpl.gif"/>
-<input name="id" type="hidden" id="id" value="99" />
-<input name="classid" type="hidden" id="classid" value="64" />
-<input name="enews" type="hidden" id="enews" value="AddPl" />
-<input name="repid" type="hidden" id="repid" value="0" />
-<input type="hidden" name="ecmsfrom" value="/test/2018-10-22/99.html"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table></form>
-</td>
-<td class="sider"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="title">
-<tr>
-<td><strong>推荐资讯</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="8" cellpadding="0" class="box">
-<tr>
-<td><table width=100% border=0 cellpadding=3 cellspacing=0><tr><td align=center><a href='/news/sports/2012-12-10/78.html' target=_blank><img src='http://img1.qq.com/sports/pics/8865/8865651.jpg' width='128' height='90' border=0 alt='中国男乒第16次捧起斯韦思林杯'><br><span style='line-height:15pt'>中国男乒第16次捧起斯</span></a></td><td align=center><a href='/news/sports/2012-12-10/77.html' target=_blank><img src='http://img1.qq.com/sports/pics/10300/10300435.jpg' width='128' height='90' border=0 alt='科比专为大场面而生'><br><span style='line-height:15pt'>科比专为大场面而生</span></a></td></tr><tr><td align=center><a href='/news/ent/2012-12-10/76.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290791.jpg' width='128' height='90' border=0 alt='“最美清洁工”原是《赤壁》宫女'><br><span style='line-height:15pt'>“最美清洁工”原是《</span></a></td><td align=center><a href='/news/ent/2012-12-10/75.html' target=_blank><img src='http://img1.qq.com/ent/pics/10290/10290789.jpg' width='128' height='90' border=0 alt='尹馨大胆亮相《男人装》 嫩肤美腿勾人魂'><br><span style='line-height:15pt'>尹馨大胆亮相《男人装</span></a></td></tr></table></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>相关文章</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-无相关信息</ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目更新</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_newnews.js'></script></ul></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="title margin_top">
-<tr>
-<td><strong>栏目热门</strong></td>
-</tr>
-</table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="box">
-<tr>
-<td><ul>
-              <script src='/d/js/class/class64_hotnews.js'></script></ul></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- 页脚 -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center" class="search">
-<form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-<table border="0" cellspacing="6" cellpadding="0">
-<tr>
-<td><strong>站内搜索：</strong>
-<input name="keyboard" type="text" size="32" id="keyboard" class="inputText" />
-<input type="hidden" name="show" value="title" />
-<input type="hidden" name="tempid" value="1" />
-<select name="tbname">
-<option value="news">新闻</option>
-<option value="download">下载</option>
-<option value="photo">图库</option>
-<option value="flash">FLASH</option>
-<option value="movie">电影</option>
-<option value="shop">商品</option>
-<option value="article">文章</option>
-<option value="info">分类信息</option>
-</select>
-</td>
-<td><input type="image" class="inputSub" src="/skin/default/images/search.gif" />
-</td>
-<td><a href="/search/" target="_blank">高级搜索</a></td>
-</tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="copyright">
-        <tr> 
-          <td align="center"><a href="/">网站首页</a> | <a href="#">关于我们</a> 
-            | <a href="#">服务条款</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> 
-            | <a href="#">网站地图</a> | <a href="#">免责声明</a> | <a href="/e/wap/" target="_blank">WAP</a></td>
-        </tr>
-        <tr> 
-          <td align="center">Powered by <strong><a href="http://www.phome.net" target="_blank">EmpireCMS</a></strong> 
-            <strong><font color="#FF9900">7.5</font></strong>&nbsp; &copy; 2002-2018 
-            <a href="http://www.digod.com" target="_blank">EmpireSoft Inc.</a></td>
-        </tr>
-	</table>
-</td>
-</tr>
-</table>
-<script src="/e/public/onclick/?enews=donews&classid=64&id=99"></script></body>
+<div class="row">
+            <div class="col-md-7">
+<ol class="breadcrumb">
+  <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
+
+</ol>
+<div>
+    <h2 class="text-center">我的scjp考试经历</h2>
+    <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:22 </span>
+今天是2002年6月3日星期一，早上6：30起床，到学校外面吃了早饭（武汉人叫“过早“）（小米粥+发糕）。之后回到寝室，躺在床上乱无目的的翻了翻sun 的教材，真的是什么都没看进去，这时是7：00整。同寝室的几个兄弟还在酣睡（鼾声此起彼伏，令我本来有点紧张而又兴奋的心情平静了不少）。打开电脑，看了几篇以前论坛上发表的总结性的帖子： <br>分别是sun 的33条tips, scjp中的考题陷阱，以及chinajavaworld上由网友总结的“归纳I-O，帮助记忆“。其实这个时候看这些东西没有什么大用，最多是巩固一下知识点。你的真实水平在一周前已经被锁定了（基本上是这样的）。 <br>9：00整，我收好东西，拿上准考证和身份证出发了，临走之前又回眸看了一眼几个睡得像小猪一样的室友（哎，现在的年轻人怎么这么能睡，兄弟我都要上刑场了，也没人说句安慰的话……真失败） <br>9:20来到考场，漂亮的服务小姐（在网上是不是称mm更好一些）一边吃着热干面一边热情地接待了我。之后，是相当“难熬“的2个小时………快接近中午十二点的时候我终于收到了一个令人激动的消息?---我可以开始考试了:P. 原因是今天美国sun公司那边的服务器有点问题，题目一直没有传过来。于是我就从9：30开始一直等到11：45，等的我花儿都谢了。比我晚来的考生早就考完回去了，只有我孤零零的一个人在考场里，这时我方懂得何谓未伊消得人憔悴。正准备去吃中饭的服务小姐过意不去，说要带饭给我。这时的我哪里还想着吃饭呀，赶快做题吧，要是考了个59%，还不如去吃屎。 <br>第一题是Math.cos(Math.toRadians(42))那一道，我上上下下看了5遍才确认这就是147上的那道题，之后又做了大概5道题，发现都是原题……。我用了20分钟做完全部题目，这时我觉得自己很有可能拿100%，于是又花了整整40mins to check it out,不过并没有发现什么错误。深吸一口气后，我submit了。。。。。。。。。。。。 <br>结果并不是100%，我错了4道题，一开始我觉得挺失望的，不过后来一想,自己也确实不是100%的实力，java库的底层很庞大，我有太多都从来没涉及到过，如果就让我这么糊里糊涂的拿了100%，那是有点说不过去。&amp;#61514;; <br>走出考场，前台工作人员把Examination Score Report递给了我，看到TEST STATUS: PASS.心里有一种说不出的成就感：）。 <br><br>我的REPORT 上面记述了OPERATORS AND ASSIGNMENTS部分我错了一道题，THREADS 部分有两道错题，JAVA.IO PACKAGE部分有一道错题。所以我强烈建议大家104，147的题一定要搞懂（所给的答案并不可靠），而且我发现sun会利用人的惯性思维来达到欺骗你的目的，比如说一开始给你很多你曾见过的题（没有任何改动的原题），你会随着这类题的不断涌现变得有些麻癖，你的警惕性会不断降低，这时突然给你来一道变体（你挂了）。我就是，糊里糊涂的，就错了4道！！真搞不懂，我怀疑是不是sun 作弊，故意把校正答案改错--------不会吧！！！ <br>我的考题中出现了4道写OUTPUT的题目，答案分别是 ”javajavaC”，”13423”,”ABCDE”, 5(求6^3)------做过104，147的朋友一定知道这些是什么题, 这里要注意写答案的时候对于是字符串的答案 两边要写上” ”。这一点我觉得自己很幸运，因为考前当天晚上，我上网的时候，发现有一个网友就问了这个问题。（这里要特别很感谢SJ120221兄）。此外，“javajavaC”中的c一定要大写（如果题干是大写的话） <br>对了，还有那道 <br>Integer i = new Integer (42); <br>Long 1 = new Long (42); <br>Double d = new Double (42.0); <br><br>Which two expressions evaluate to True? (Choose Two) <br><br>A.(i ==1) <br>B.(i == d) <br>C.(d == 1) <br>D.(i.equals (d)) <br>E.(d.equals (i)) <br>F.(i.equals (42)) <br><br>这题是没有正确答案的，以前有人说过这种肯定没答案的题不用选，我照做了，并且在submit的时候，考试系统提示我有一道题没做，它说如果您不选该题的话，本题将作为错误处理。 <br>我考虑了一下，还是没选。（report 上面说我在operator and assignment部分的那一道错题应该是指这道，I consider），所以我说sun作弊。：） <br><br>回头看看我的scjp之路。我是2001年8月参加的新东方scjp的培训（很早吧，估计那时和我一起学的人现在很多都成了scjd 或scja什么之类的了）。因为我大一大二的时候学pascal, c语言，汇编等学得很不爽，感觉自己很讨厌编程，其他同学都有自己的专攻项目（CB,VB,VC,SQL,DELPHI） ,而我……于是我就有了学JAVA的想法，考SCJP完全是想证明给自己看。对于scjp这门考试，我感到自己还算从中学到了不少东西，不管是基础理论还是应用实践。On the contrary, 坦白的说，如果你准备以中国人传统的考试方式去应考scjp的话，用一周的时间把几套classic 的mock 做一遍（我并不反对做mock,其实做模拟题很有助于我们对知识点的更深层理解），我保证考85%以上没问题，然后拿个很好看的证书，再自我陶醉的告诉自己“我是java programmer”,但我相信这并不是所有人想要的。类似话题在论坛上已经被讨论过无数次了，我也不想多说了，我相信道理大家都是懂的，关键是看你怎么做。在我的Examination Score Report上有一句话我觉得挺好，这里送给大家： <br>Certification testing is a means of measuring your knowledge and skill level. It can also be used to identify area that need improvement and areas of strength. It can be sued as a tool for further learning and future achievement <br><br><br>最后，由衷的感谢javaunion的chairyuan , FORMyjoy, nevergiveup, lonely,tr100,wolfshome，smart <br>chinajavaworld(java开发者论坛)的 风子璇，jiayuan, sj120021,ditty,cooljava,DersertApple <br><br>其实有太多太多的学友曾经给予过我无限的帮助，在这里tester向你们的所有，表示真心的感谢！！！ <br><br>还有要感谢的人有我的母亲和父亲，我的电脑，我的挚友xiongjiangang, Channel V , CCTV,华纳，sony……….. <br>呵呵 <br><br>ok, 祝大家考试顺利，学有所成 ！<br>　</div>
+
+
+<div class="col-md-5"></div>
+</div>
+</div>
+</body>
 </html>
