@@ -20,8 +20,7 @@ if(!defined('InEmpireCMS'))
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
-<div class="container">
+<body><div class="nav-just">
 <nav class="nav navbar-default" role="navigation">
 	<div class="container"> 
 	<div class="navbar-header">
@@ -43,7 +42,8 @@ if(!defined('InEmpireCMS'))
 	</div>
 	</div>
 </nav>
-
+</div>
+<div class="container">
 <div class="row">
             <div class="col-md-7">
 <ol class="breadcrumb">

@@ -17,5 +17,24 @@ background-color:#ebebeb;
     /* border-bottom: 2px solid #1a5608; */
 }
 .div-just {
+
 margin-left:12px;
+}
+.list-just{
+    display:block;
+    padding-left:10px;
+    padding-right:10px;
+    background-color:white; 
+	margin-top:10px;
+    padding-top:30px;
+    padding-bottom:20px
+}
+
+ul.media-list{
+   
+  
+
+}
+ol.breadcrumb {
+background-color:#FFFFFF;
 }

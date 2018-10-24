@@ -21,7 +21,8 @@ if(!defined('InEmpireCMS'))
 
 </head>
 <body>
-<div class="nav-just"><nav class="nav navbar-default" role="navigation">
+<div class="nav-just">
+<nav class="nav navbar-default" role="navigation">
 	<div class="container"> 
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"

@@ -202,3 +202,53 @@
 [Tue Oct 23 08:38:41 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
 [Tue Oct 23 08:38:41 2018] [notice] Server built: Jan  9 2007 23:17:20
 [Tue Oct 23 08:38:41 2018] [notice] Parent: Created child process 1884
+[Tue Oct 23 08:38:41 2018] [notice] Child 1884: Child process is running
+[Tue Oct 23 08:38:41 2018] [notice] Child 1884: Acquired the start mutex.
+[Tue Oct 23 08:38:41 2018] [notice] Child 1884: Starting 250 worker threads.
+[Tue Oct 23 08:38:41 2018] [notice] Child 1884: Starting thread to listen on port 80.
+[Tue Oct 23 08:53:10 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/
+[Tue Oct 23 09:43:28 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Tue Oct 23 09:43:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/e/admin/
+[Tue Oct 23 10:11:10 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:11:16 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:12:04 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:12:31 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:12:59 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:14:00 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:14:22 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:14:23 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:14:51 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:21:57 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/skin/default/bootstrap/css/bootstrap.min.css type=, referer: http://localhost/
+[Tue Oct 23 10:33:50 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 10:33:50 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 11:41:27 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 11:41:57 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 11:43:26 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:43:26 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:45:14 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:45:22 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:45:32 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:45:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:45:34 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/181.html
+[Tue Oct 23 11:46:18 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 11:47:40 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 14:43:11 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 14:43:13 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Tue Oct 23 14:44:07 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/186.html
+[Tue Oct 23 14:44:07 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/186.html
+[Tue Oct 23 14:44:48 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/180.html
+[Wed Oct 24 12:44:17 2018] [notice] Apache/2.2.4 (Win32) PHP/5.2.0 configured -- resuming normal operations
+[Wed Oct 24 12:44:17 2018] [notice] Server built: Jan  9 2007 23:17:20
+[Wed Oct 24 12:44:18 2018] [notice] Parent: Created child process 1940
+[Wed Oct 24 12:44:18 2018] [notice] Child 1940: Child process is running
+[Wed Oct 24 12:44:18 2018] [notice] Child 1940: Acquired the start mutex.
+[Wed Oct 24 12:44:18 2018] [notice] Child 1940: Starting 250 worker threads.
+[Wed Oct 24 12:44:18 2018] [notice] Child 1940: Starting thread to listen on port 80.
+[Wed Oct 24 20:08:20 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Wed Oct 24 20:08:20 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Wed Oct 24 20:42:24 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Wed Oct 24 20:42:24 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico
+[Wed Oct 24 20:42:29 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/favicon.ico, referer: http://localhost/e/admin/
+[Wed Oct 24 20:44:06 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/186.html
+[Wed Oct 24 20:44:06 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/186.html
+[Wed Oct 24 22:13:44 2018] [error] [client 127.0.0.1] File does not exist: D:/EmpireServer/web/Upload, referer: http://localhost/test/2018-10-22/182.html

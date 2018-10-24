@@ -14,28 +14,7 @@ if(!defined('InEmpireCMS'))
 <script type="text/javascript" src="[!--news.url--]skin/default/js/tabs.js"></script>
 </head>
 <body class="listpage">
-<nav class="nav navbar-default" role="navigation">
-	<div class="container"> 
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#example-navbar-collapse">
-			<span class="sr-only">切换导航</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="[!--news.url--]">香水百合</a>
-	</div>
-	<div class="collapse navbar-collapse" id="example-navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			  <? @sys_ShowClassByTemp('0',12,1,0);?>
-			
-		</ul>
-	</div>
-	</div>
-</nav>
-
+[!--temp.custom_header_2--]
 <table width="100%" border="0" cellspacing="10" cellpadding="0">
 <tr valign="top">
 <td class="news_list"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="position">

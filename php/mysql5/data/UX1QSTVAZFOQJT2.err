@@ -38,3 +38,11 @@ Version: '5.0.27-community-nt'  socket: ''  port: 3306  MySQL Community Edition 
 
 181022 23:17:01 [Note] MySQL: Shutdown complete
 
+181023  8:38:44 [Note] MySQL: ready for connections.
+Version: '5.0.27-community-nt'  socket: ''  port: 3306  MySQL Community Edition (GPL)
+181023 23:25:07 [Note] MySQL: Normal shutdown
+
+181023 23:25:08 [Note] MySQL: Shutdown complete
+
+181024 12:44:19 [Note] MySQL: ready for connections.
+Version: '5.0.27-community-nt'  socket: ''  port: 3306  MySQL Community Edition (GPL)
