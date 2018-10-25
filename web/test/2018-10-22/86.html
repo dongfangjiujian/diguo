@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP数据库连接大全</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:18 </span>
 一、jsp连接Oracle8/8i/9i数据库（用thin模式） <br><br><br> <br>testoracle.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;).newInstance(); <br>String url=&quot;jdbc:oracle:thin:@localhost:1521:orcl&quot;; <br>//orcl为你的数据库的SID <br>String user=&quot;scott&quot;; <br>String password=&quot;tiger&quot;; <br>Connection conn= DriverManager.getConnection(url,user,password); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt; <br><br>二、jsp连接Sql Server7.0/2000数据库 <br><br>testsqlserver.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;com.microsoft.jdbc.sqlserver.SQLServerDriver&quot;).newInstance(); <br>String url=&quot;jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=pubs&quot;; <br>//pubs为你的数据库的 <br>String user=&quot;sa&quot;; <br>String password=&quot;&quot;; <br>Connection conn= DriverManager.getConnection(url,user,password); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt;<br><br><br><br>三、jsp连接DB2数据库 <br><br>testdb2.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;com.ibm.db2.jdbc.app.DB2Driver &quot;).newInstance(); <br>String url=&quot;jdbc:db2://localhost:5000/sample&quot;; <br>//sample为你的数据库名 <br>String user=&quot;admin&quot;; <br>String password=&quot;&quot;; <br>Connection conn= DriverManager.getConnection(url,user,password); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt; <br><br>四、jsp连接Informix数据库<br><br>testinformix.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;com.informix.jdbc.IfxDriver&quot;).newInstance(); <br>String url = <br>&quot;jdbc:informix-sqli://123.45.67.89:1533/testDB:INFORMIXSERVER=myserver; <br>user=testuser;password=testpassword&quot;; <br>//testDB为你的数据库名 <br>Connection conn= DriverManager.getConnection(url); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt; <br><br><br><br>五、jsp连接Sybase数据库 <br><br>testmysql.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;com.sybase.jdbc.SybDriver&quot;).newInstance(); <br>String url =&quot; jdbc:sybase:Tds:localhost:5007/tsdata&quot;; <br>//tsdata为你的数据库名 <br>Properties sysProps = System.getProperties(); <br>SysProps.put(&quot;user&quot;,&quot;userid&quot;); <br>SysProps.put(&quot;password&quot;,&quot;user_password&quot;); <br>Connection conn= DriverManager.getConnection(url, SysProps); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt; <br><br>六、jsp连接MySQL数据库 <br><br>testmysql.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;org.gjt.mm.mysql.Driver&quot;).newInstance(); <br>String url =&quot;jdbc:mysql://localhost/softforum?user=soft&amp;password=soft1234&amp;useUnicode=true&amp;characterEncoding=8859_1&quot; <br>//testDB为你的数据库名 <br>Connection conn= DriverManager.getConnection(url); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt; <br><br>七、jsp连接PostgreSQL数据库 <br><br>testmysql.jsp如下： <br>&lt; %@ page contentType=&quot;text/html;charset=gb2312&quot;% &gt; <br>&lt; %@ page import=&quot;java.sql.*&quot;% &gt; <br>&lt; html &gt; <br>&lt; body &gt; <br>&lt; %Class.forName(&quot;org.postgresql.Driver&quot;).newInstance(); <br>String url =&quot;jdbc:postgresql://localhost/soft&quot; <br>//soft为你的数据库名 <br>String user=&quot;myuser&quot;; <br>String password=&quot;mypassword&quot;; <br>Connection conn= DriverManager.getConnection(url,user,password); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {% &gt; <br>您的第一个字段内容为：&lt; %=rs.getString(1)% &gt; <br>您的第二个字段内容为：&lt; %=rs.getString(2)% &gt; <br>&lt; %}% &gt; <br>&lt; %out.print(&quot;数据库操作成功，恭喜你&quot;);% &gt; <br>&lt; %rs.close(); <br>stmt.close(); <br>conn.close(); <br>% &gt; <br>&lt; /body &gt; <br>&lt; /html &gt; <br><br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

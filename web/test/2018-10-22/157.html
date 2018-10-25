@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JDBC-ODBC翻页例子</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:43 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>一、运行前准备 <BR><BR>　　 建议了一个MS SQLServer7数据库 DNS，名称为：Test_DB <BR><BR>　　 数据库中有一个表：guestbook字段为：name(varchar),email(varchar),body(text) <BR><BR>　　 数据库用户为sa 密码空，可以自己修改的。 <BR><BR>二、代码 <BR><BR>&lt;%@ page contentType="text/html;charset=gb2312"%&gt; <BR><BR>&lt;% <BR><BR>//变量声明 <BR><BR>java.sql.Connection sqlCon; //数据库连接对象 <BR><BR>java.sql.Statement sqlStmt; //SQL语句对象 <BR><BR>java.sql.ResultSet sqlRst; //结果集对象 <BR><BR>java.lang.String strCon; //数据库连接字符串 <BR><BR>java.lang.String strSQL; //SQL语句 <BR><BR>int intPageSize; //一页显示的记录数 <BR><BR>int intRowCount; //记录总数 <BR><BR>int intPageCount; //总页数 <BR><BR>int intPage; //待显示页码 <BR><BR>java.lang.String strPage; <BR><BR>int i,j,k; //设置一页显示的记录数 <BR><BR>intPageSize = 5; //取得待显示页码 <BR><BR>strPage = request.getParameter("page"); <BR><BR>if(strPage==null){ <BR><BR>//表明在QueryString中没有page这一个参数，此时显示第一页数据 <BR><BR>intPage = 1; <BR><BR>} else{ <BR><BR>//将字符串转换成整型 <BR><BR>intPage = java.lang.Integer.parseInt(strPage); <BR><BR>if(intPage&lt;1) intPage = 1; } <BR><BR>//装载JDBC-ODBC驱动程序 <BR><BR>Class.forName("sun.jdbc.odbc.JdbcOdbcDriver"); <BR><BR>//设置数据库连接字符串 <BR><BR>strCon = "jdbc:odbc:Test_DB"; <BR><BR>//连接数据库 <BR><BR>sqlCon = java.sql.DriverManager.getConnection(strCon,"sa",""); <BR><BR>//创建SQL语句对象 <BR><BR>sqlStmt = sqlCon.createStatement(); <BR><BR>//获取记录总数 <BR><BR>strSQL = "select count(*) from guestbook"; <BR><BR>sqlRst = sqlStmt.executeQuery(strSQL); <BR><BR>//执行SQL语句并取得结果集 <BR><BR>sqlRst.next(); //记录集刚打开的时候，指针位于第一条记录之前 <BR><BR>intRowCount = sqlRst.getInt(1); <BR><BR>sqlRst.close(); //关闭结果集 <BR><BR><BR><BR>//记算总页数 <BR><BR>intPageCount = (intRowCount+intPageSize-1) / intPageSize; <BR><BR>//调整待显示的页码 if(intPage&gt;intPageCount) intPage = intPageCount; <BR><BR>//设置获取数据SQL语句 <BR><BR>strSQL = "select name,email,body from guestbook"; <BR><BR>//执行SQL语句并取得结果集 <BR><BR>sqlRst = sqlStmt.executeQuery(strSQL); <BR><BR>//将记录指针定位到待显示页的第一条记录上 <BR><BR>i = (intPage-1) * intPageSize; <BR><BR>for(j=0;j&lt;i;j++) sqlRst.next(); %&gt; <BR><BR>&lt;html&gt; <BR><BR>&lt;head&gt; <BR><BR>&lt;title&gt;JSP数据库操作例程 - 数据分页显示 - JDBC-ODBC&lt;/title&gt; <BR><BR>&lt;/head&gt; <BR><BR>&lt;body&gt; <BR><BR>&lt;p align=center&gt;jdbc-odbc留言版&lt;/p&gt; <BR><BR>&lt;table border="1" cellspacing="0" cellpadding="0" width=600 align=center&gt; <BR><BR>&lt;% <BR><BR>//显示数据 <BR><BR>i = 0; <BR><BR>while(i&lt;intPageSize &amp;&amp; sqlRst.next()){ %&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td&gt;姓名：&lt;%=sqlRst.getString(1)%&gt;&lt;/td&gt; <BR><BR>&lt;td&gt;邮件：&lt;%=sqlRst.getString(2)%&gt;&lt;/td&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td colspan=2&gt;&lt;%=sqlRst.getString(3)%&gt;&lt;/td&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;% i++; } %&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td colspan=2 align=center&gt; <BR><BR>第&lt;%=intPage%&gt;页 共&lt;%=intPageCount%&gt;页 <BR><BR>&lt;%if(intPage&lt;intPageCount){%&gt; <BR><BR>&lt;a href="mssql.jsp?page=&lt;%=intPage+1%&gt;"&gt;下一页&lt;/a&gt;&lt;% <BR><BR>} <BR><BR>%&gt; <BR><BR>&lt;%if(intPage&gt;1){%&gt; <BR><BR>&lt;a href="mssql.jsp?page=&lt;%=intPage-1%&gt;"&gt;上一页&lt;/a&gt;&lt;% <BR><BR>} <BR><BR>%&gt; <BR><BR>&lt;/td&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;/table&gt; &lt;/body&gt; <BR><BR>&lt;/html&gt; <BR><BR>&lt;% <BR><BR>//关闭结果集 <BR><BR>sqlRst.close(); <BR><BR>//关闭SQL语句对象 <BR><BR>sqlStmt.close(); <BR><BR>//关闭数据库 <BR><BR>sqlCon.close(); <BR><BR>%&gt; <BR><BR>三、怎么去运行？ <BR><BR>　　 将代码存为文件test.jsp <BR><BR>Orion Application Server下： <BR><BR>Copy到orion的default-web-app目录下，通过： <BR><BR>http://localhost:port/test.jsp <BR><BR>访问测试 <BR><BR>对于Resin,Tomcat,JWS等等，都可以运行通过。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

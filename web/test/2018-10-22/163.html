@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP中”预定义变量”的使用</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:45 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>为了简化JSP表达式和scriptlets中的代码，提供了8种自动定义的变量，有时称做implicit objects(固有对象)。它们是：request,response,out,session,application,config,pageContext,和 page。下面我们来详细的了解它们。 <BR><BR>　　 request <BR><BR>　　 与request相联系的是HttpServletRequest类，使您可以得到request的参数（通过getParameter方法），request 的类型（GET，POST，HEAD，等等），和引入的HTTP头（cookies,Referer,等等）。严格来说，request是类ServletRequest的一个子类而不是HttpServletRequest类的，事实上，如果request的协议不是HTTP，那麽它几乎不会工作。 <BR><BR>　　 response <BR><BR>　　 对客户端的response与HttpServletResponse 相连。请注意，因为输出流是放入缓冲的，所以可以设置HTTP状态码和response头，尽管在标准的servlets中不允许将之发送到客户端。 <BR><BR>　　 out <BR><BR>　　 这里使用PrintWriter类来发送输出到客户端。然而，为了使response对象有效，可使用一个PrintWrite类的使用缓冲的版本JspWriter。使用session的属性page directive，您可以自己定义缓冲的大小，甚至可以在使用了buffer属性后关闭缓冲。也请注意，out仅用于scriptlets之中，因为JSP表达式自动的放入输出流，所以极少需要明确的声明out。 <BR><BR>　　 session <BR><BR>　　 应用与request相联系的HttpSession类。因为session是自动创建的，即使没有一个引入的session，这种变量仍可绑定。有一个例外是，如果您用page directive关闭session，再试图使用session时将导致错误（在JSP页面向servlet转换时）。 <BR><BR>　　 application <BR><BR>　　 使用ServeletContext类，通过使用getServletConfig().getContext()得到。 <BR><BR>　　 config <BR><BR>　　 是一个ServletConfig类的对象。 <BR><BR>　　 pageContext <BR><BR>　　 这是JSP中的一个新的类PageContext，用于精练特定服务器的特点时使用，如提高JspWriters的执行效率。如果您通过这个类访问而不是直接的，您的代码将仍然运行在“规则”的JSP /servlet引擎。 <BR><BR>　　 page <BR><BR>　　 在JAVA中不是很有用，它仅仅是用来保存在脚本的语言不是JAVA时的时间。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

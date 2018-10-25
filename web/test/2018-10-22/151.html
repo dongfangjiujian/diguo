@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP入门教程（3）</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:40 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>用脚本 <BR>在有些地方，你大概要加一些好的，成熟的程序到你的JSP页里，JSP的标签虽然很强大，但是完成某些工作还是比较费力的困难的。这时你可以使用脚本语言段来补充JSP标签。 <BR>使用的JSP引擎是支持脚本语言的，SUN的JSP参考文说明，必须使用Java程序语言来编写脚本，但是其他第三方的JSP引擎允许使用其他语言来写脚本程。 <BR>如何增加脚本 <BR>首先，你必须了解一些增加脚本元素到JSP页中的一些基本规则 <BR>1、 在JSP页面里用Page指令定义脚本（默认值是Java，一般不需要定义） <BR>2、 声明语法&lt;%!……%&gt;声明变量和方法（函数）。 <BR>3、 表达式语法&lt;%=……%&gt;定义脚本语言表达式 <BR>4、 脚本语法〈%……%&gt;可以操作声明、表达式和其他类型合法的代码段在页脚本语言。 <BR>5、 一定要在结尾加%&gt;标签 <BR>声明、表达式、脚本使用起来有一些相似，但也有一些不同让我们用一些例子来讲述一下相同点和不同点吧。 <BR>声明&lt;%!……%&gt;包含了一个或多个变量和方法，结尾以分号分隔。 <BR>例：&lt;%! Int I=0 ; %&gt; <BR>&lt;%! Int a, b ; double c ; %&gt; <BR>&lt;%! Circle a = new circle(2.0) ; %&gt; <BR>在页面中使用变量和方法之前必须声明 <BR>声明的范围通常是JSP页，但如果页面中使用INCLUDE指令包含其他页面，范围应变得扩展到被包含的页面。 <BR>表达式&lt;%=……%&gt;可以在页面中包含任何合法的语言表达式，不用分号。 <BR>例：&lt;%= Math.sqrt(2) %&gt; <BR>&lt;%= item[I] %&gt; <BR>&lt;%= a+b+c %&gt; <BR>&lt;%= new java.util.date() %&gt; <BR>表达式和脚本的一个关键的不同点就是不需要分号。如果你需要在脚本中使用表达式就必须加分号。 <BR>脚本&lt;%……%&gt;允许你写的任何数量的脚本语言 <BR>例：&lt;% String name=null ; <BR>If (request.getParmeter("name")==null{ <BR>%&gt; <BR>记住在脚本中必须使用分号结尾。 <BR>猜数字游戏 <BR>猜数字游戏非常的有趣，而且从这里你还可以学到很多表达式的用法。 <BR>代码 <BR>显示用的主屏幕（numguess.jsp） <BR>&lt;!-- <BR>Number Guess Game <BR>Written by Jason Hunter, CTO, K&amp;A Software <BR>jasonh@kasoftware.com, http://www.servlets.com <BR>Copyright 1999, K&amp;A Software <BR>Distributed by Sun Microsystems with permission <BR>--&gt; <BR>&lt;%@ page import = "num.NumberGuessBean" %&gt; <BR><BR>&lt;jsp:useBean id="numguess" class="num.NumberGuessBean" scope="session" /&gt; <BR>&lt;jsp:setProperty name="numguess" property="*" /&gt; <BR><BR>&lt;html&gt; <BR>&lt;head&gt;&lt;title&gt;Number Guess&lt;/title&gt;&lt;/head&gt; <BR>&lt;body bgcolor="white"&gt; <BR>&lt;font size=4&gt; <BR><BR>&lt;% if (numguess.getSuccess() ) { %&gt; <BR><BR>Congratulations! You got it. <BR>And after just &lt;%= numguess.getNumGuesses() %&gt;tries.&lt;p&gt; <BR><BR>&lt;% numguess.reset(); %&gt; <BR>Care to &lt;a href="numguess.jsp"&gt;try again&lt;/a&gt;? <BR><BR>&lt;% } else if (numguess.getNumGuesses() == 0) { %&gt; <BR><BR>Welcome to the Number Guess game.&lt;p&gt; <BR>I'm thinking of a number between 1 and 100.&lt;p&gt; <BR><BR>&lt;form method=get&gt; <BR>What's your guess? &lt;input type=text name=guess&gt; <BR>&lt;input type=submit value="Submit"&gt; <BR>&lt;/form&gt; <BR><BR>&lt;% } else { %&gt; <BR>Good guess, but nope. Try &lt;b&gt;&lt;%= numguess.getHint() %&gt;&lt;/b&gt;. <BR>You have made &lt;%= numguess.getNumGuesses() %&gt; guesses. <BR>&lt;p&gt;I'm thinking of a number between 1 and 100. <BR>&lt;p&gt;&lt;form method=get&gt; <BR><BR>What's your guess? &lt;input type=text name=guess&gt; <BR>&lt;input type=submit value="Submit"&gt; <BR>&lt;/form&gt; <BR>&lt;% } %&gt; <BR>&lt;/font&gt; <BR>&lt;/body&gt; <BR>&lt;/html&gt; <BR><BR>操作程序(NumberGuessBean.java) <BR>// Number Guess Game <BR>// Written by Jason Hunter, CTO, K&amp;A Software <BR>// jasonh@kasoftware.com, http://www.servlets.com <BR>// Copyright 1999, K&amp;A Software <BR>// Distributed by Sun Microsystems with permission <BR><BR>package num; <BR>import java.util.*; <BR>public class NumberGuessBean { <BR>int answer; <BR>boolean success; <BR>String hint; <BR>int numGuesses; <BR>public NumberGuessBean() { <BR>reset(); <BR>} <BR>public void setGuess(String guess) { <BR>numGuesses++; <BR>int g; <BR>try { <BR>g = Integer.parseInt(guess); <BR>} <BR>catch (NumberFormatException e) { <BR>g = -1; <BR>} <BR>if (g == answer) { <BR>success = true; <BR>} <BR>else if (g == -1) { <BR>hint = "a number next time"; <BR>} <BR>else if (g &lt; answer) { <BR>hint = "higher"; <BR>} <BR>else if (g &gt; answer) { <BR>hint = "lower"; <BR>} <BR>} <BR>public boolean getSuccess() { <BR>return success; <BR>} <BR>public String getHint() { <BR>return "" + hint; <BR>} <BR>public int getNumGuesses() { <BR>return numGuesses; <BR>} <BR>public void reset() { <BR>answer = Math.abs(new Random().nextInt() % 100) <BR>+ 1; <BR>success = false; <BR>numGuesses = 0; <BR>} <BR>} <BR><BR>在JSP文件中使用脚本 <BR>numguess.jsp是一个非常有趣儿的用脚本写的例子，你看他的结构其实是一个很大的IF……ELSE结构，但是很一个从句又都是用HTML写的，看起来象一个大的程序段。 <BR>不过你也不一定非得象numguess.jsp那样用HTML和JSP标签一起来写脚本。在&lt;%和%&gt;标签之间，你可以写任意多行的脚本代码，在通常情况下，尽量少用脚本来处理程序，而尽可能的使用servlets或者Beans，这样你的程序看起来会非常的清析，明了。话又说回来，怎么写JSP还得根据你的习惯和爱好，我不强迫非得使用任何一种方法，SUN的JSP详细说明书不规定脚本的长度。 <BR><BR>用标签组合脚本 <BR>使用HTML和JSP标签来写脚本的时候，注意前后的标签不要忘记，一定要“封”好。说的不明白，举个例子吧： <BR>&lt;% } else { %&gt; &lt;!-- 用JSP标签的时候先关上 --&gt; <BR><BR>... 这时候用JSP标签吧 ... <BR><BR>&lt;% } %&gt; &lt;!-- 这样你应该看懂了吧？！ --&gt; <BR>开始的时候这种做法看起来可能有一点奇怪，但它以确保你JSP文件编译的时候脚本的成功转换。 <BR><BR>那么，脚本什么时候执行呢？ <BR>一个JSP原文件的处理分为两个阶段：一个是HTTP的编译时候，一个是请求的处理时间。 <BR><BR>HTTP编译的时候，当用户第一次读JSP页面的时候，JSP的原代码被编译成CLASS，通常是servlet。HTML标签和JSP标签在这个时候同时被处理了，这之前用户还没有任何的请求被提交。 <BR><BR>请求处理时间是当用户在JSP页面中提交了一个请求，这时请求由客户端被request对象传到了服务器端，JSP引擎根据用户提交的值执行编译过的JSP文件或者servlet。 <BR><BR>当你在JSP页中使用脚本的时候，你必须知道他们什么时候被执行。声明在HTTP编译阶段就已经被处理了，其他脚本，表达式在编译JSP文件的时候也可用。表达式在HTTP编译的时候也被执行了。表达式的值被转换成了字符串被插入到JSP文件中一块儿被编译。其实在请求阶段，脚本也是可以利用的。 <BR><BR>如何运行例子 <BR>我现在给出的都是在UNIX风格下的路径，如果你用Windows，那么改成Windows风格路径 <BR>1、猜数字游戏在装TOMCAT或者JSWDK的时候就已经装好了。 <BR>2、.jsp和.html文件在../jswdk-1.0.1/examples/num中 <BR>3、.java和.class文件在../jswdk-1.0.1/examples/WEB-INF/jsp/bean/num中 <BR>4、开浏览器,http://机器名/examples/jsp/num/numguess.jsp </P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

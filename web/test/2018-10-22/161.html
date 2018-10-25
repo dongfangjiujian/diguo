@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP概述、元素、语法、解释</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:44 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>JSP概述 <BR><BR><BR>　　 JSP（IAVA SERVER PAGES）是由Sun 公司在java语言上开发出来的一种动态网页制作技术，其可使您可以将网页中的动态部分和静态的HTML相分离。您可以使用平常得心应手的工具并按照平常的方式来书写HTML语句。然后，将动态部分用特殊的标记嵌入即可，这些标记常常以“&lt;%”开始并以“%&gt;”结束。例如，这儿有一个JSP页面: <BR><BR>&lt;html&gt; <BR><BR>&lt;head&gt;&lt;title&gt;jsp教程&lt;/title&gt;&lt;/head&gt; <BR><BR>&lt;body&gt; <BR><BR>&lt;I&gt;&lt;%out.println(“hello world”);%&gt;&lt;/I&gt; <BR><BR>&lt;/body&gt;&lt;/html&gt; <BR><BR>它将输出“hello world”。 <BR><BR>　　 通常，您要将文件以“.jsp”为扩展名，并将它放置到任何您可以放置普通WEB页面的路径下。尽管JSP文件看起来更象是HTML文件而不是Servlet文件，但，事实上，它恰恰将转换为Servlet文件，其中的静态HTML仅仅用来输出Servlet服务方法返回的信息。如果JSP pages 已经被转换为Servlet且Servlet 被编译进而被装载（在第一次被Request时），当您再次Request 此JSP页面时，将察觉不到一瞬的延迟。也请留意这个现象，一些Web Servers允许您为它定义别名，从而，好象一个URL是指向一个HTML，但事实上它指向的是一个Servlet 或JSP pages. <BR><BR>　　 构造一个JSP page,除了可内嵌的规则的HTML，还有三类主要的JSP元素：Scripting elements,Directives,和 Actions.使用Scripting elements您可以定义最终转换为Servlet的部分，Directives 使您可以控制这个Servlet的整体结构，而Actions使您可以指定可重用的已有组件，另外，还可控制JSP引擎的运行。为了简化Scripting elements,您可以在某一段上利用一些预定义的变量，如request。 <BR><BR>本教程式是以JSP最新的1.1版本，进行讲解的。其语法概括如下表，其详细使用在随后的课程中详细讲解. <BR><BR><BR>JSP 元素 <BR>语法 <BR>解释 <BR><BR>JSP Expression <BR>&lt;%= 表达式 %&gt; <BR>Expression 用于计算并用于输出。 <BR>&lt;jsp:expression&gt;表达式&lt;/jsp:expression&gt;，可使用的预定义的变量有request, response, out, session, application, config, and pageContext（在Sriptlets中也可使用）。 <BR><BR>JSP Scriptlet <BR>&lt;% 代码 %&gt; <BR>插入用于服务的代码。 <BR>&lt;jsp:scriptlet&gt;代码&lt;/jsp:scriptlet&gt; <BR><BR>JSP Declaration <BR>&lt;!% 代码 %&gt; <BR>属于Servlet部分的代码但并不是服务方法。 <BR>&lt;jsp:declaration&gt;代码&lt;/jsp:declaration&gt; <BR><BR>JSP page Directive <BR>&lt;%@ page att=”val” %&gt; <BR>指向Servlet引擎的路径。 <BR>&lt;jsp:directive.page att="val"&gt;. 以下是其合法的属性（缺省值加粗）: <BR><BR>l import="package.class" <BR><BR><BR>l contentType="MIME-Type" <BR><BR><BR>l isThreadSafe="true|false" <BR><BR><BR>l session="true|false" <BR><BR><BR>l buffer="sizekb|none" <BR><BR><BR>l autoflush="true|false" <BR><BR><BR>l extends="package.class" <BR><BR><BR>l info="message" <BR><BR><BR>l errorPage="url" <BR><BR><BR>l isErrorPage="true|false" <BR><BR><BR>l language="java" <BR><BR><BR>JSP include Directive <BR>&lt;%@ include file =”URL” %&gt; <BR>当JSP page被翻译成Servlet 时将被包含进去的本地系统上的文件。 <BR>&lt;jsp:directive.include file=”URL”&gt; 这个URL必须是相对的。当页面被请求时才用 “jsp:include action”调入。 <BR><BR>JSP 注释 <BR>&lt;%-- 注释--%&gt; <BR>当JSP 转换为Servlet 时将被忽略。 <BR>&lt;-- 注释 --&gt; <BR><BR>The JSP:include Action <BR>&lt;jsp:include page=”relative URL” flush=”true”/&gt; <BR>在页面被请求（Requested）时调入文件。 <BR>如果您想要在页面被转化（Translated）时将文件包含进来，则，请使用上面所提到的directive来代替。警告：在一些服务器上（Servers），被包含的文件只能是HTML或JSP，一般以文件的后缀名来判定。 <BR><BR>The jsp:useBean Action <BR>&lt;jsp:useBean att=val*/&gt;或&lt;jsp:useBean att=val*&gt; <BR>….. <BR>&lt;/jsp:useBean&gt; <BR>寻找或生成一个Java Bean. <BR>可能的属性是： <BR><BR>l id="name" <BR><BR><BR>l scope="page|request|session|application" <BR><BR><BR>l class="package.class" <BR><BR><BR>l type="package.class" <BR><BR><BR>l beanName="package.class" <BR><BR><BR>The jsp:setProperty Action <BR>&lt;jsp:setProperty att=val*/&gt; <BR>设置bean的属性，通过明确的指定或使用request得到的参数。 <BR>合法的属性： <BR><BR>l name="beanName" <BR><BR><BR>l property="propertyName|*" <BR><BR><BR>l param="parameterName" <BR><BR><BR>l value="val” <BR><BR><BR>The jsp:getProperty Action <BR>&lt;jsp:getProperty name=”propertyName” value=”val”/&gt; <BR>检索并输出bean的属性。 <BR><BR>The jsp:forward Action <BR>&lt;jsp:forward page=”relative URL”/&gt; <BR>向前请求（request）另一个页面。 <BR><BR><BR>The jsp:plugin Action <BR>&lt;jsp:plugin attribute=”value”*&gt; <BR>&lt;/jsp:plugin&gt; <BR>生成特定的浏览器的OBJECT 或EMBED标签，用来明确运行Applet所 使用的JAVA插件（plugin）。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

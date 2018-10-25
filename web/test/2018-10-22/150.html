@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP入门教程（2）</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:40 </span>
                             　<P>第二课：用HTML表单 <BR><BR>大多数情况下，商业的网站都要有一些表单，比如说输入一下消费者的姓名啦，地址啦，或者敲一个词来用搜索引擎来查一下啦，或者市场人员从来访者处收集一些数据供参考什么的。 <BR><BR>那些表单传回的数据怎么处理的？ <BR><BR>来访者通过表单向JSP引擎输入了数据，并保存在了request对象中，那么接下来怎么办？ <BR><BR>图2-1向你展示了数据流是如何在服务器和客户之间传递的（至少在SUN的JSP reference implementation是这么做的，别的JSP引擎工作起来可能会有一点点的不同，其实大同小异，都差不多） <BR><BR><BR><BR>字儿太小了，可能看不大清吧？俺来解释一下了只好。 <BR><BR>首先，JSP引擎把存放在request对象中的数据发到JSP页面指定的服务器端的组件（JavaBeans组件, servlet,或者enterprise bean），组件收到这些个数据以后，有可能再存这些数据到数据库或者其他的地方存放起来，同时，返回一个response对象给JSP引擎。JSP引擎再把response对象传给JSP页面，这时的页面包含了定义好的格式和从服务器端得到的数据。这时JSP引擎和Web服务器再发送一个整理好的完整的页面给客户，也就是这们在浏览器上看到的结果。客户和服务器间的通信协议可以用HTTP，当然也可以用其他的。 <BR><BR>Request和Response对象在你制作的JSP原代码中起作用。到于request对象到底怎么用，我要在接下来详细的讲给你听。 <BR><BR>如何创建表单 <BR><BR>用HTML定义一些有代表性的表单做成一个JSP文件，然后用JSP标签在表单和服务器端对象（通常都用Bean）传递数据。一般情况下是这么干的： <BR><BR>1、 写JSP原文件，创建一些HTML的表单并命名。 <BR><BR>2、 在Java文件里写Bean，定义属性，GET或者SET方法来配合已经被你指定好名字的表单。 <BR><BR>3、 回到JSP原文件中，增加&lt;jsp:useBean&gt;标签来创建一个或者调用一个现成的Bean。 <BR><BR>4、 增加&lt;jsp:setProperty&gt;标签设置HTML表单中需要SET方法的Bean的属性。 <BR><BR>5、 增加&lt;jsp:getProperty&gt;标签设置HTML表单中需要GET方法的Bean的属性。 <BR><BR>6、 如果需要处理更多的用户数据，用request对象。 <BR><BR>说了半天你可能看不懂，其实看一个例子你就懂了。 <BR><BR>先看一个简单的hello的例子吧： <BR><BR>这段程序其实还是计算机程序里那个最经典的“hello,world”的程序，只不过呢，我使他挠了一点弯儿，使他看起来比较智能和复杂。首先你输入你的名字，然后Duke跟你说：“hello!” <BR><BR><BR><BR><BR><BR>看看代码吧： <BR><BR>dukebanner.html <BR><BR>&lt;table border="0" width="400" cellspacing="0" cellpadding="0"&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td height="150" width="150"&gt; &amp;nbsp; &lt;/td&gt; <BR><BR>&lt;td width="250"&gt; &amp;nbsp; &lt;/td&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td width="150"&gt; &amp;nbsp; &lt;/td&gt; <BR><BR>&lt;td align="right" width="250"&gt; <BR>&lt;img src="duke.waving.gif"&gt; &lt;/td&gt; <BR><BR>&lt;/tr&gt;&lt;/table&gt;&lt;br&gt; <BR><BR>主JSP文件：hellouser.jsp <BR><BR>&lt;%@ page import="hello.NameHandler" %&gt; <BR><BR>&lt;jsp:useBean id="mybean" scope="page" class="hello.NameHandler" /&gt; <BR><BR>&lt;jsp:setProperty name="mybean" property="*" /&gt; <BR><BR>&lt;html&gt; <BR><BR>&lt;head&gt;&lt;title&gt;Hello, User&lt;/title&gt;&lt;/head&gt; <BR><BR>&lt;body bgcolor="#ffffff" background="background.gif"&gt; <BR><BR>&lt;%@ include file="dukebanner.html" %&gt; <BR><BR>&lt;table border="0" width="700"&gt; <BR><BR>&lt;tr&gt;&lt;td width="150"&gt; &amp;nbsp; &lt;/td&gt; <BR><BR>&lt;td width="550"&gt; <BR><BR>&lt;h1&gt;My name is Duke. What's yours?&lt;/h1&gt;&lt;/td&gt;&lt;/tr&gt; <BR><BR>&lt;tr&gt;&lt;td width="150" &amp;nbsp; &lt;/td&gt;&lt;td width="550"&gt; <BR><BR>&lt;form method="get"&gt; <BR><BR>&lt;input type="text" name="username" size="25"&gt; <BR><BR>&lt;br&gt; <BR><BR>&lt;input type="submit" value="Submit"&gt; <BR><BR>&lt;input type="reset" value="Reset"&gt; <BR><BR>&lt;/td&gt;&lt;/tr&gt; <BR><BR>&lt;/form&gt; <BR><BR>&lt;/table&gt; <BR><BR>&lt;% <BR><BR>If ( request.getParameter("username") != null ) <BR><BR>{ <BR><BR>%&gt; <BR><BR>&lt;% @ include file="response.jsp" %&gt; <BR><BR>&lt;% } <BR><BR>%&gt; <BR><BR>&lt;/body&gt;&lt;/html&gt; <BR><BR>回应文件：response.jsp <BR><BR>&lt;table border="0" width="700"&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td width="150"&gt; &amp;nbsp; &lt;/td&gt; <BR><BR>&lt;td width="550"&gt; <BR><BR>&lt;h1&gt;Hello, &lt;jsp:getProperty name="mybean" property="username" /&gt;! <BR><BR>&lt;/h1&gt; <BR><BR>&lt;/td&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;/table&gt; <BR><BR>处理数据的Bean：(namehandler.java) <BR><BR>package hello; <BR><BR>public class NameHandler <BR><BR>{ <BR><BR>private String username; <BR><BR>public NameHandler() { <BR><BR>username = null; <BR><BR>} <BR><BR>public void setUsername( String name ) { <BR><BR>username = name; <BR><BR>} <BR><BR>public String getUsername() { <BR><BR>return username; <BR><BR>} <BR><BR>} <BR><BR>建立HTML表单 <BR><BR>一个HTML的窗分为三个部分：&lt;form&gt;标签，输入方法，提交按钮发数据到服务器。一般的HTML页面里，是这么写的&lt;form method=get action=someurl&gt;，在其他的页面里的action属性可能是其他特殊的CGI程序或者其他能处理数据的程序，那么在JSP里边是怎么用的呢，呵，如果你想把数据发到Bean里的话那么你可以省略action里边的东里了，直接写&lt;jsp:useBean&gt;标签或者其他特定的JSP文件了。接下来的那些表单和普通的HTML差不多了，&lt;input&gt;的方法，然后加一个提交按钮，可能还有一个Reset按钮，对了，别忘了，还得给每一个input表单加一个名字。 <BR>这么写：&lt;input type="text" name="username"&gt; <BR><BR>使用GET和POST方法 <BR><BR>用GET和POST方法可以发数据到服务器，在JSP程序中GET和POST方法可以发数据到Bean、servlet、或者其他服务器端的组件。 <BR><BR>理论上说，GET是从服务器上请求数据，POST是发送数据到服务器。事实上，GET方法是把数据参数队列（query string）加到一个URL上，值和表单是一一对应的。比如说，name=John。在队列里，值和表单用一个&amp;符号分开，空格用+号替换，特殊的符号转换成十六进制的代码。因为这一队列在URL里边，这样队列的参数就能看得到，可以被记录下来，或更改。通常GET方法还限制字符的大小。事实上POST方法可以没有时间限制的传递数据到服务器，用户在浏览器端是看不到这一过程的，所以POST方法比较适合用于发送一个保密的（比如信用卡号）或者比较大量的数据到服务器。 <BR><BR>写Bean <BR><BR>如果JSP程序用到了Bean，你就得按照JavaBeans API的说明设计你的Bean。 <BR><BR>记住下面两个关键部分。 <BR><BR>如果JSP程序里用&lt;jsp:getProperty&gt;标签，那你就得在Bean里边配合的GET方法。 <BR><BR>如果JSP程序进而用 &lt;jsp:setProperty&gt;标签，那你就得在Bean里边配合的Set方法。 <BR><BR>设置参数到Bean或者从里边取参数将在以后的部分详细介绍。 <BR><BR><BR><BR>传数据到Bean <BR>把HTML表单的数据传到Bean里需要两个工作： <BR><BR>· 用&lt;jsp:useBean&gt;标签创建或者定位到Bean <BR><BR>· 在Bean里面用&lt;jsp:serProperty&gt;设置属性值 <BR><BR>第一步用&lt;jsp:useBean&gt;标签创建或者定位到Bean一定要用在&lt;jsp:setProperty&gt;之前，&lt;jsp:useBean&gt;首先按照你指定的名字查找Bean，如果没找到，会给你指定一个。允许在一个JSP文件中创建一个Bean，然后再另一个文件中调用，这就给了Bean一个很广泛的运行空间。 <BR><BR>第二步在Bean里面用&lt;jsp:setProperty&gt;设置属性值。最简单的方法是把值定义成与表单名相配合。举个例子，如果你把表单名定义成“username”那么，你就在Bean里定义属性“username”然后用方法getUsername和setUsername。 <BR><BR>当然也可以定义成不同的名字，只要你不认为麻烦。谁让你记忆力好呢！ <BR><BR>Request对象 <BR>用户输入的数据用来存放在Request对象里，用javax.servlet.HttpServletRequest来执行（你也可以用其他不同的工具来执行，但他们其实都是javax.servlet.HttpServletRequest的子集） <BR><BR>你也可以直接用scriptlet来直接访问Request对象。Scriptlet将在下一讲里边详细的讨论，现在你只需要知道他是用脚本语言写的一段放在&lt;% 和%&gt; 之间的代码就足够了。在JSP 1.0中，你必须用JavaTM程序语言作为你的脚本语言。 <BR>你经常会用到如下方法处理Request对象： <BR><BR>方法 <BR>说明 <BR>执行结果 <BR><BR>getRequest <BR>Javax.servlet.jsp.PageContext <BR>返回当前Request对象 <BR><BR>getParameterNames <BR>javax.servlet.ServletRequest <BR>返回当前Request对象参数名 <BR><BR>getParameterValues <BR>javax.servlet.ServletRequest <BR>返回当前Request对象参数值 <BR><BR><BR>你将会发现其他方法包括ServletRequest，HttpServletRequest或者其他任何ServletRequest的子集。 <BR><BR>JSP引擎经常在scenes之后使用Request对象，即使你没有明确地在JSP文件中调用。 <BR><BR>从Bean中调数据到JSP页面 <BR>一旦用户的数据被传到Bean，你就想重新得到数据，然后在JSP面页中显示出来。想达到这一步，你就得用到&lt;jsp:getProperty&gt;标签。传Bean名和属性名： <BR><BR>&lt;h1&gt;Hello, &lt;jsp:getProperty name="mybean" property="username"/&gt;! <BR><BR>&lt;jsp:useBean&gt;, &lt;jsp:setProperty&gt;, 和 &lt;jsp:getProperty&gt;标签必须相配，举个例子： <BR><BR>hellouser.jsp: <BR>&lt;jsp:useBean id="mybean" scope="session" class="hello.NameHandler" /&gt; <BR>&lt;jsp:setProperty name="mybean" property="*" /&gt; <BR>response.jsp: <BR>&lt;h1&gt;Hello, &lt;jsp:getProperty name="mybean" property="username"/&gt;! <BR><BR>在这个例子里，标签被放在两个文件中，但是指定的名字都是相同的，如果不同的话，那么系统会返回一个错误信息。 <BR><BR>如何运行例子 <BR>我用的是ＵＮＩＸ主机，如果你用windows，那么改相应的路径即可。 <BR><BR>创建路径../jswdk-1.0/examples/jsp/tutorial/hellouser. <BR><BR>把文件background.gif, duke.waving.gif, dukebanner.html, hellousr.jsp和response.jsp文件放进去。 <BR><BR>创建一个目录，../jswdk-1.0/examples/WEB-INF/jsp/beans/hello <BR><BR>把文件NameHandler.java和NameHandler.class放进去。 <BR><BR>cd../jswdk-1.0然后startserver <BR><BR>打开浏览器http://计算机名:8080/examples/jsp/tutorial/hellouser/hellouser.jsp <BR></P></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

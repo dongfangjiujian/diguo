@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">RESIN/TOMCAT和MYSQL的连接解决方法</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:20 </span>
 解决方法的主要手段: <br>1.mysql的授权用户权限必须@%而不是@localhost <br>2.jsp使用jdbc驱动连接数据库的连接字符实际上应该算远程访问 <br>3.切记:@%代表在远程的权限，@localhost实际上只有在本机的权限 <br><br>也许我太笨了，折磨了我一个多月吧，这个问题，一直没法连接到数据库上，头都大了因我安装mysql后习惯删除user表里的3个多余的帐号，以加强安全，所以这个问题一直没解决掉(但我想不删也好象一样有问题吧?毕竟那几个帐号都不是@%的)，总是找不到原因，在CU的斑竹的提示下(虽然没给我实际解决的方法，但我还是要谢谢他们)，后来根据出错信息查了一下国外的BBS，找到了一个类似的回答同样的错误，不过一个老外提示说把连接字符串里的localhost换成实际的域名或者IP我试了一下，没效，不过我突然想了下，又加了一个帐号@%的试验，成功了!心情很爽,再也不用郁闷了，还有，说一下，mysql这个数据库只有root帐号能有管理的特权，其他帐号是没权限动它的。 <br><br>希望我的心得能给别人带来些帮助! <br><br>下面是测试用的jsp脚本，测试前请确保你的test数据库里面有个test表，随便填 <br>两个字段和输入几行数据。 <br>&lt;%@ page contentType=&quot;text/html;charset=gb2312&quot;%&gt; <br>&lt;%@ page import=&quot;java.sql.*&quot;%&gt; <br>&lt;html&gt; <br>&lt;body&gt; <br>&lt;%Class.forName(&quot;com.mysql.jdbc.Driver&quot;).newInstance(); <br>String url =&quot;jdbc:mysql://localhost/test?user=test&amp;password=test&amp;useUnicode=true&amp;characterEncoding=8859_1&quot; ; <br>//假设test是你的数据库 <br>Connection conn= DriverManager.getConnection(url); <br>Statement stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE); <br>String sql=&quot;select * from test&quot;; <br>//从test表读数据 <br>ResultSet rs=stmt.executeQuery(sql); <br>while(rs.next()) {%&gt; <br>您的第一个字段内容为：&lt;%=rs.getString(1)%&gt; <br>您的第二个字段内容为：&lt;%=rs.getString(2)%&gt; <br>&lt;%}%&gt; <br>&lt;%out.print(&quot;数据库操作成功，恭喜你&quot;);%&gt; <br>&lt;%rs.close(); <br>stmt.close(); <br>conn.close(); <br>%&gt; <br>&lt;/body&gt; <br>&lt;/html&gt;&nbsp;&nbsp;<br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

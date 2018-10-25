@@ -65,7 +65,8 @@ if(!defined('InEmpireCMS'))
 
 </div>
 </div>
-            <div class="col-md-5"></div>
+            <div class="col-md-5"><? @sys_GetEcmsInfo(0,10,0,0,0,13);?>
+</div>
 
 </div>
 </div>

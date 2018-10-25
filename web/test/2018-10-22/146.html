@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP动作</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:39 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>JSP动作利用XML语法格式的标记来控制Servlet引擎的行为。利用JSP动作可以动态地插入文件、重用JavaBean组件、把用户重定向到另外的页面、为Java插件生成HTML代码。 <BR><BR>　　 JSP动作包括： <BR><BR>jsp:include：在页面被请求的时候引入一个文件。 <BR>jsp:useBean：寻找或者实例化一个JavaBean。 <BR>jsp:setProperty：设置JavaBean的属性。 <BR>jsp:getProperty：输出某个JavaBean的属性。 <BR>jsp:forward：把请求转到一个新的页面。 <BR>jsp:plugin：根据浏览器类型为Java插件生成OBJECT或EMBED标记。 <BR>　　 13.1 jsp:include动作 <BR><BR>　　 该动作把指定文件插入正在生成的页面。其语法如下： <BR>＜jsp:include page="relative URL" flush="true" /＞ <BR><BR><BR><BR>　　 前面已经介绍过include指令，它是在JSP文件被转换成Servlet的时候引入文件，而这里的jsp:include动作不同，插入文件的时间是在页面被请求的时候。jsp:include动作的文件引入时间决定了它的效率要稍微差一点，而且被引用文件不能包含某些JSP代码（例如不能设置HTTP头），但它的灵活性却要好得多。 <BR><BR>　　 例如，下面的JSP页面把4则新闻摘要插入一个“What's New ?”页面。改变新闻摘要时只需改变这四个文件，而主JSP页面却可以不作修改： <BR><BR>　　 WhatsNew.jsp <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞What's New＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY BGCOLOR="#FDF5E6" TEXT="#000000" LINK="#0000EE" <BR>VLINK="#551A8B" ALINK="#FF0000"＞ <BR><BR>＜CENTER＞ <BR>＜TABLE BORDER=5 BGCOLOR="#EF8429"＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>What's New at JspNews.com＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR>Here is a summary of our four most recent news stories: <BR>＜OL＞ <BR>＜LI＞＜jsp:include page="news/Item1.html" flush="true"/＞ <BR>＜LI＞＜jsp:include page="news/Item2.html" flush="true"/＞ <BR>＜LI＞＜jsp:include page="news/Item3.html" flush="true"/＞ <BR>＜LI＞＜jsp:include page="news/Item4.html" flush="true"/＞ <BR>＜/OL＞ <BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 13.2 jsp:useBean动作 <BR><BR>　　 jsp:useBean动作用来装载一个将在JSP页面中使用的JavaBean。这个功能非常有用，因为它使得我们既可以发挥Java组件重用的优势，同时也避免了损失JSP区别于Servlet的方便性。jsp:useBean动作最简单的语法为： <BR>＜jsp:useBean id="name" class="package.class" /＞ <BR><BR><BR><BR>　　 这行代码的含义是：“创建一个由class属性指定的类的实例，然后把它绑定到其名字由id属性给出的变量上”。不过，就象我们接下来会看到的，定义一个scope属性可以让Bean关联到更多的页面。此时，jsp:useBean动作只有在不存在同样id和scope的Bean时才创建新的对象实例，同时，获得现有Bean的引用就变得很有必要。 <BR><BR>　　 获得Bean实例之后，要修改Bean的属性既可以通过jsp:setProperty动作进行，也可以在Scriptlet中利用id属性所命名的对象变量，通过调用该对象的方法显式地修改其属性。这使我们想起，当我们说“某个Bean有一个类型为X的属性foo”时，就意味着“这个类有一个返回值类型为X的getFoo方法，还有一个setFoo方法以X类型的值为参数”。 <BR><BR>　　 有关jsp:setProperty动作的详细情况在后面讨论。但现在必须了解的是，我们既可以通过jsp:setProperty动作的value属性直接提供一个值，也可以通过param属性声明Bean的属性值来自指定的请求参数，还可以列出Bean属性表明它的值应该来自请求参数中的同名变量。 <BR><BR>　　 在JSP表达式或Scriptlet中读取Bean属性通过调用相应的getXXX方法实现，或者更一般地，使用jsp:getProperty动作。 <BR><BR>　　 注意包含Bean的类文件应该放到服务器正式存放Java类的目录下，而不是保留给修改后能够自动装载的类的目录。例如，对于Java Web Server来说，Bean和所有Bean用到的类都应该放入classes目录，或者封装进jar文件后放入lib目录，但不应该放到servlets下。 <BR><BR>　　 下面是一个很简单的例子，它的功能是装载一个Bean，然后设置/读取它的message属性。 <BR><BR>　　 BeanTest.jsp <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞Reusing JavaBeans in JSP＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY＞ <BR>＜CENTER＞ <BR>＜TABLE BORDER=5＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>Reusing JavaBeans in JSP＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR><BR>＜jsp:useBean id="test" class="hall.SimpleBean" /＞ <BR>＜jsp:setProperty name="test" <BR>property="message" <BR>value="Hello WWW" /＞ <BR>＜H1＞Message: ＜I＞ <BR>＜jsp:getProperty name="test" property="message" /＞ <BR>＜/I＞＜/H1＞ <BR><BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 SimpleBean.java <BR><BR>　　 BeanTest页面用到了一个SimpleBean。SimpleBean的代码如下： <BR>package hall; <BR><BR>public class SimpleBean { <BR>private String message = "No message specified"; <BR><BR>public String getMessage() { <BR>return(message); <BR>} <BR><BR>public void setMessage(String message) { <BR>this.message = message; <BR>} <BR>} <BR><BR><BR><BR>　　 13.3 关于jsp:useBean的进一步说明 <BR><BR>　　 使用Bean最简单的方法是先用下面的代码装载Bean： <BR>＜jsp:useBean id="name" class="package.class" /＞ <BR><BR><BR><BR>　　 然后通过jsp:setProperty和jsp:getProperty修改和提取Bean的属性。不过有两点必须注意。第一，我们还可以用下面这种格式实例化Bean： <BR>＜jsp:useBean ...＞ <BR>Body <BR>＜/jsp:useBean＞ <BR><BR><BR><BR>　　 它的意思是，只有当第一次实例化Bean时才执行Body部分，如果是利用现有的Bean实例则不执行Body部分。正如下面将要介绍的，jsp:useBean并非总是意味着创建一个新的Bean实例。 <BR><BR>　　 第二，除了id和class外，jsp:useBean还有其他三个属性，即：scope，type，beanName。下表简要说明这些属性的用法。 属性 用法 <BR>id 命名引用该Bean的变量。如果能够找到id和scope相同的Bean实例，jsp:useBean动作将使用已有的Bean实例而不是创建新的实例。 <BR>class 指定Bean的完整包名。 <BR>scope 指定Bean在哪种上下文内可用，可以取下面的四个值之一：page，request，session和application。 <BR>默认值是page，表示该Bean只在当前页面内可用（保存在当前页面的PageContext内）。 <BR>request表示该Bean在当前的客户请求内有效（保存在ServletRequest对象内）。 <BR>session表示该Bean对当前HttpSession内的所有页面都有效。 <BR>最后，如果取值application，则表示该Bean对所有具有相同ServletContext的页面都有效。 <BR>scope之所以很重要，是因为jsp:useBean只有在不存在具有相同id和scope的对象时才会实例化新的对象；如果已有id和scope都相同的对象则直接使用已有的对象，此时jsp:useBean开始标记和结束标记之间的任何内容都将被忽略。 <BR><BR>type 指定引用该对象的变量的类型，它必须是Bean类的名字、超类名字、该类所实现的接口名字之一。请记住变量的名字是由id属性指定的。 <BR>beanName 指定Bean的名字。如果提供了type属性和beanName属性，允许省略class属性。 <BR><BR><BR>　　 13.4 jsp:setProperty动作 <BR><BR>　　 jsp:setProperty用来设置已经实例化的Bean对象的属性，有两种用法。首先，你可以在jsp:useBean元素的外面（后面）使用jsp:setProperty，如下所示： <BR>＜jsp:useBean id="myName" ... /＞ <BR>... <BR>＜jsp:setProperty name="myName" <BR>property="someProperty" ... /＞ <BR><BR><BR><BR>　　 此时，不管jsp:useBean是找到了一个现有的Bean，还是新创建了一个Bean实例，jsp:setProperty都会执行。第二种用法是把jsp:setProperty放入jsp:useBean元素的内部，如下所示： <BR>＜jsp:useBean id="myName" ... ＞ <BR>... <BR>＜jsp:setProperty name="myName" <BR>property="someProperty" ... /＞ <BR>＜/jsp:useBean＞ <BR><BR><BR><BR>　　 此时，jsp:setProperty只有在新建Bean实例时才会执行，如果是使用现有实例则不执行jsp:setProperty。 <BR><BR>　　 jsp:setProperty动作有下面四个属性： 属性 说明 <BR>name name属性是必需的。它表示要设置属性的是哪个Bean。 <BR>property property属性是必需的。它表示要设置哪个属性。有一个特殊用法：如果property的值是“*”，表示所有名字和Bean属性名字匹配的请求参数都将被传递给相应的属性set方法。 <BR>value value属性是可选的。该属性用来指定Bean属性的值。字符串数据会在目标类中通过标准的valueOf方法自动转换成数字、boolean、Boolean、byte、Byte、char、Character。例如，boolean和Boolean类型的属性值（比如“true”）通过Boolean.valueOf转换，int和Integer类型的属性值（比如“42”）通过Integer.valueOf转换。 <BR>value和param不能同时使用，但可以使用其中任意一个。 <BR><BR>param param是可选的。它指定用哪个请求参数作为Bean属性的值。如果当前请求没有参数，则什么事情也不做，系统不会把null传递给Bean属性的set方法。因此，你可以让Bean自己提供默认属性值，只有当请求参数明确指定了新值时才修改默认属性值。 <BR>例如，下面的代码片断表示：如果存在numItems请求参数的话，把numberOfItems属性的值设置为请求参数numItems的值；否则什么也不做。 <BR><BR>＜jsp:setProperty name="orderBean" <BR>property="numberOfItems" <BR>param="numItems" /＞ <BR><BR>如果同时省略value和param，其效果相当于提供一个param且其值等于property的值。进一步利用这种借助请求参数和属性名字相同进行自动赋值的思想，你还可以在property（Bean属性的名字）中指定“*”，然后省略value和param。此时，服务器会查看所有的Bean属性和请求参数，如果两者名字相同则自动赋值。 <BR><BR><BR><BR>　　 下面是一个利用JavaBean计算素数的例子。如果请求中有一个numDigits参数，则该值被传递给Bean的numDigits属性；numPrimes也类似。 <BR><BR>　　 JspPrimes.jsp <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞ <BR>＜TITLE＞在JSP中使用JavaBean＜/TITLE＞ <BR>＜/HEAD＞ <BR><BR>＜BODY＞ <BR><BR>＜CENTER＞ <BR>＜TABLE BORDER=5＞ <BR>＜TR＞＜TH CLASS="TITLE"＞ <BR>在JSP中使用JavaBean＜/TABLE＞ <BR>＜/CENTER＞ <BR>＜P＞ <BR><BR>＜jsp:useBean id="primeTable" class="hall.NumberedPrimes" /＞ <BR>＜jsp:setProperty name="primeTable" property="numDigits" /＞ <BR>＜jsp:setProperty name="primeTable" property="numPrimes" /＞ <BR><BR>Some ＜jsp:getProperty name="primeTable" property="numDigits" /＞ <BR>digit primes: <BR>＜jsp:getProperty name="primeTable" property="numberedList" /＞ <BR><BR>＜/BODY＞ <BR>＜/HTML＞ <BR><BR><BR><BR>　　 注：NumberedPrimes的代码略。 <BR><BR>　　 13.5 jsp:getProperty动作 <BR><BR>　　 jsp:getProperty动作提取指定Bean属性的值，转换成字符串，然后输出。jsp:getProperty有两个必需的属性，即：name，表示Bean的名字；property，表示要提取哪个属性的值。下面是一个例子，更多的例子可以在前文找到。 <BR>＜jsp:useBean id="itemBean" ... /＞ <BR>... <BR>＜UL＞ <BR>＜LI＞Number of items: <BR>＜jsp:getProperty name="itemBean" property="numItems" /＞ <BR>＜LI＞Cost of each: <BR>＜jsp:getProperty name="itemBean" property="unitCost" /＞ <BR>＜/UL＞ <BR><BR><BR><BR>　　 13.6 jsp:forward动作 <BR><BR>　　 jsp:forward动作把请求转到另外的页面。jsp:forward标记只有一个属性page。page属性包含的是一个相对URL。page的值既可以直接给出，也可以在请求的时候动态计算，如下面的例子所示： <BR>＜jsp:forward page="/utils/errorReporter.jsp" /＞ <BR>＜jsp:forward page="＜%= someJavaExpression %＞" /＞ <BR><BR><BR><BR>　　 13.7 jsp:plugin动作 <BR><BR>　　 jsp:plugin动作用来根据浏览器的类型，插入通过Java插件 运行Java Applet所必需的OBJECT或EMBED元素。 <BR><BR>　　 附录：JSP注释和字符引用约定 <BR><BR>　　 下面是一些特殊的标记或字符，你可以利用它们插入注释或可能被视为具有特殊含义的字符。 语法 用途 <BR>＜%-- comment --%＞ JSP注释，也称为“隐藏注释”。JSP引擎将忽略它。标记内的所有JSP脚本元素、指令和动作都将不起作用。 <BR>＜!-- comment --＞ HTML注释，也称为“输出的注释”，直接出现在结果HTML文档中。标记内的所有JSP脚本元素、指令和动作正常执行。 <BR>＜＼% 在模板文本（静态HTML）中实际上希望出现“＜%”的地方使用。 <BR>%＼＞ 在脚本元素内实际上希望出现“%＞”的地方使用。 <BR>＼' 使用单引号的属性内的单引号。不过，你既可以使用单引号也可以使用双引号，而另外一种引号将具有普通含义。 <BR>＼" 使用双引号的属性内的双引号。参见“＼'”的说明。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

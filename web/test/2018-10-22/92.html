@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP数据库连接池的必要性</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:20 </span>
 最近我作了数据库JSP的频繁连接,在此给出数据库连接池的必要性,对于JSP来说一个很好的J2EE服务器是很必要的，JBOOS,WebLogic都是很好的解决方案。 <br><br><br>一般情况下，在使用开发基于数据库的WEB程序时，传统的模式基本是按以下步骤：<br>　　1． 在主程序（如Servlet、Beans）中建立数据库连接。 <br>　　2． 进行SQL操作，取出数据。<br>　　3． 断开数据库连接。<br>　　使用这种模式开发，存在很多问题。首先，我们要为每一次WEB请求（例如察看某一篇文章的内容）建立一次数据库连接，对于一次或几次操作来讲，或许你觉察不到系统的开销，但是，对于WEB程序来讲，即使在某一较短的时间段内，其操作请求数也远远不是一两次，而是数十上百次（想想全世界的网友都有可能在您的网页上查找资料），在这种情况下，系统开销是相当大的。事实上，在一个基于数据库的WEB系统中，建立数据库连接的操作将是系统中代价最大的操作之一。很多时候，可能您的网站速度瓶颈就在于此。<br>　　其次，使用传统的模式，你必须去管理每一个连接，确保他们能被正确关闭，如果出现程序异常而导致某些连接未能关闭，将导致数据库系统中的内存泄露，最终我们将不得不重启数据库。<br>　　针对以上问题，我们首先想到可以采用一个全局的Connection对象，创建后就不关闭，以后程序一直使用它，这样就不存在每次创建、关闭连接的问题了。但是，同一个连接使用次数过多，将会导致连接的不稳定，进而会导致WEB SERVER的频频重启。故而，这种方法也不可取。实际上，我们可以使用连接池技术来解决上述问题。首先，介绍一下连接池技术的基本原理。顾名思义，连接池最基本的思想就是预先建立一些连接放置于内存对象中以备使用：<br><br><br><br>如图所示，当程序中需要建立数据库连接时，只须从内存中取一个来用而不用新建。同样，使用完毕后，只需放回内存即可。而连接的建立、断开都有连接池自身来管理。同时，我们还可以通过设置连接池的参数来控制连接池中的连接数、每个连接的最大使用次数等等。通过使用连接池，将大大提高程序效率，同时，我们可以通过其自身的管理机制来监视数据库连接的数量、使用情况等。下面我们以一个名为ConnectionPool的连接池为例来看看连接池的实现。先看看ConnectionPool的基本属性：<br>　　m_ConnectionPoolSize：连接池中连接数量下限<br>　　m_ConnectionPoolMax：连接池中连接数量上限 <br>　　m_ConnectionUseCount：一个连接的最大使用次数<br>　　m_ConnectionTimeout：一个连接的最长空闲时间<br>　　m_MaxConnections = -1：同一时间的最大连接数<br>　　m_timer：定时器 <br>　　这些属性定义了连接池与其中的每个连接的有效状态值。连接池的自我管理，实际上就是通过定时的对每个连接的状态、连接的数量进行判断而进行相应操作。其管理流程如下：<br><br><br><br>通过上图，我们可以定义出ConnectionPool要完成管理所需要的基本接口： <br>public class ConnectionPool implements TimerListener{<br>　　public boolean initialize() //连接池初始化 <br>　　public void destroy() //连接池的销毁 <br>　　public synchronized java.sql.Connection getConnection() //取一个连接 <br>　　public synchronized void close() //关闭一个连接 <br>　　private synchronized void removeFromPool() //把一个连接从连接池中删除 <br>　　private synchronized void fillPool() //维护连接池大小 <br>　　public synchronized void TimerEvent() //定时器事件处理函数 <br>} <br>　　通过这几个接口，已经可以完成连接池的基本管理。在TimeEvent（）函数中完成连接池的状态检验工作，fillPool()时连接池至少保持最小连接数。因为我们要保存每一个连接的状态，所以还需要一个数据库连接对象： <br>class ConnectionObject{<br>　　public java.sql.Connection con; public boolean inUse; //是否被使用标志 <br>　　public long lastAccess; //最近一次开始使用时间 <br>　　public int useCount; //被使用次数<br>}<br>加入了ConnectionObject对象后，在ConnectionPool中操作的应该只是ConnectionObject,而其他进程需要的只是ConnectionObject的con属性，因此我们再加入一个类，作为其他进程获得与返回连接的接口： CLASS Conn{<br>　　GetConnection(); //从连接池中取出一个有效连接 <br>　　CloseConnection(); //返回连接，此时并没有关闭连接，只是放回了连接池 <br>　　DestroyPool(); //销毁连接池 <br>}<br>　　最后我们的整个系统总的架构如下：<br><br><br><br>通过上面的介绍，我们可以看出，连接池技术的关键就是其自身的管理机制，以上的管理流程只是本人一点见解，关键是想向大家介绍一种思路，在此基础上，您可以进一步完善连接池技术为您所用。</div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

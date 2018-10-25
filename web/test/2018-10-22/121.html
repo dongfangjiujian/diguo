@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之十三(Applet调用JavaScript函数)(译)</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:30 </span>
 下面的例子将说明在applet中去调用javascript函数 。 一、applet源代码（tmin_JS.java）<br><br>// Importations<br>import java.awt.Graphics ;<br>import java.awt.Event ;<br><br>// LiveConnect... for JavaScript<br>import netscape.javascript.JSObject ;<br><br>public class tmin_JS extends java.applet.Applet {<br>// Variables<br><br>// Initialisation de l'applet<br>public void init() { // Methode init()<br>}<br><br>// Dessiner l'applet<br>public void paint(Graphics g) { // Methode paint()<br>g.drawString(&quot;Click here...&quot;, 5, 10) ;<br>}<br><br>// Mouse down<br>public boolean mouseDown(Event e, int x, int y) { <br>try { // create JSObject<br>JSObject.getWindow (this).eval (&quot;javascript:ale<br>rt('tmin_JS click &quot; + <br>&quot; x=&quot; + x + &quot; y=&quot; + y + &quot;')&quot;) ; <br>}<br>catch (Exception ex) { // Error on create JSObject<br>showStatus( &quot;Error call javascript err=&quot; + ex );<br>}<br>return true ;<br>}<br><br>}<br><br>二、注意的地方<br><br>(1)在调用javascipt函数的时候，要加这行：<br><br>JSObject.getWindow (this).eval (&quot;javascript:... &quot;) ; <br><br>(2)要将JSObject引用进来：<br><br>import netscape.javascript.JSObject ; <br><br>(3)定义applet的时候要加“MAYSCRIPT”标记<br><br>&lt;APPLET codeBase=&quot;./&quot; code=tmin_JS width=80 height=25 MAYSCRIPT&gt;<br><br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

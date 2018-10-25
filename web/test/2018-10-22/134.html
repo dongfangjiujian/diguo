@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">Servlet和JSP概述</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:34 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>1.1 Java Servlet及其特点 <BR><BR>　　 Servlet是Java技术对CGI编程的回答。Servlet程序在服务器端运行，动态地生成Web页面。与传统的CGI和许多其他类似CGI的技术相比，Java Servlet具有更高的效率，更容易使用，功能更强大，具有更好的可移植性，更节省投资（更重要的是， Servlet程序员收入要比Perl程序员高:-）： <BR><BR>高效。 <BR><BR>在传统的CGI中，每个请求都要启动一个新的进程，如果CGI程序本身的执行时间较短，启动进程所需要的开销很可能反而超过实际执行时间。而在Servlet中，每个请求由一个轻量级的Java线程处理（而不是重量级的操作系统进程）。 <BR>在传统CGI中，如果有N个并发的对同一CGI程序的请求，则该CGI程序的代码在内存中重复装载了N次；而对于Servlet，处理请求的是N个线程，只需要一份Servlet类代码。在性能优化方面，Servlet也比CGI有着更多的选择，比如缓冲以前的计算结果，保持数据库连接的活动，等等。 <BR><BR><BR>方便。 <BR><BR>Servlet提供了大量的实用工具例程，例如自动地解析和解码HTML表单数据、读取和设置HTTP头、处理Cookie、跟踪会话状态等。 <BR><BR><BR>功能强大。 <BR><BR>在Servlet中，许多使用传统CGI程序很难完成的任务都可以轻松地完成。例如，Servlet能够直接和Web服务器交互，而普通的CGI程序不能。Servlet还能够在各个程序之间共享数据，使得数据库连接池之类的功能很容易实现。 <BR><BR><BR>可移植性好。 <BR><BR>Servlet用Java编写，Servlet API具有完善的标准。因此，为I-Planet Enterprise Server写的Servlet无需任何实质上的改动即可移植到Apache、Microsoft IIS或者WebStar。几乎所有的主流服务器都直接或通过插件支持Servlet。 <BR><BR><BR>节省投资。 <BR><BR>不仅有许多廉价甚至免费的Web服务器可供个人或小规模网站使用，而且对于现有的服务器，如果它不支持Servlet的话，要加上这部分功能也往往是免费的（或只需要极少的投资）。 <BR>　　 1.2 JSP及其特点 <BR><BR>　　 JavaServer Pages（JSP）是一种实现普通静态HTML和动态HTML混合编码的技术，有关JSP基础概念的说明请参见《JSP技术简介 》。 <BR><BR>　　 许多由CGI程序生成的页面大部分仍旧是静态HTML，动态内容只在页面中有限的几个部分出现。但是包括Servlet在内的大多数CGI技术及其变种，总是通过程序生成整个页面。JSP使得我们可以分别创建这两个部分。例如，下面就是一个简单的JSP页面： <BR>＜!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"＞ <BR>＜HTML＞ <BR>＜HEAD＞＜TITLE＞欢迎访问网上商店＜/TITLE＞＜/HEAD＞ <BR>＜BODY＞ <BR>＜H1＞欢迎＜/H1＞ <BR>＜SMALL＞欢迎, <BR>＜!-- 首次访问的用户名字为"New User" --＞ <BR>＜% out.println(Utils.getUserNameFromCookie(request)); %＞ <BR>要设置帐号信息，请点击 <BR>＜A HREF="Account-Settings.html"＞这里＜/A＞＜/SMALL＞ <BR>＜P＞ <BR>页面的其余内容。. <BR>＜/BODY＞＜/HTML＞ <BR><BR><BR><BR>　　 下面是JSP和其他类似或相关技术的一个简单比较： <BR><BR>JSP和Active Server Pages（ASP）相比 <BR><BR>Microsoft的ASP是一种和JSP类似的技术。JSP和ASP相比具有两方面的优点。首先，动态部分用Java编写，而不是VB Script或其他Microsoft语言，不仅功能更强大而且更易于使用。第二，JSP应用可以移植到其他操作系统和非Microsoft的Web服务器上。 <BR><BR><BR>JSP和纯Servlet相比 <BR><BR>JSP并没有增加任何本质上不能用Servlet实现的功能。但是，在JSP中编写静态HTML更加方便，不必再用 println语句来输出每一行HTML代码。更重要的是，借助内容和外观的分离，页面制作中不同性质的任务可以方便地分开：比如，由页面设计专家进行HTML设计，同时留出供Servlet程序员插入动态内容的空间。 <BR><BR><BR>JSP和服务器端包含（Server-Side Include，SSI）相比 <BR><BR>SSI是一种受到广泛支持的在静态HTML中引入外部代码的技术。JSP在这方面的支持更为完善，因为它可以用Servlet而不是独立的程序来生成动态内容。另外，SSI实际上只用于简单的包含，而不是面向那些能够处理表单数据、访问数据库的“真正的”程序。 <BR><BR><BR>JSP和JavaScript相比 <BR><BR>JavaScript能够在客户端动态地生成HTML。虽然JavaScript很有用，但它只能处理以客户端环境为基础的动态信息。除了Cookie之外，HTTP状态和表单提交数据对JavaScript来说都是不可用的。另外，由于是在客户端运行，JavaScript不能访问服务器端资源，比如数据库、目录信息等等。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

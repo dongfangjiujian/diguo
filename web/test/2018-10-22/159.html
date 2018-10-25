@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">Orion下自定义Tag</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:43 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>一、前言 (本文译自Orion官方站点) <BR><BR>　　 本文将一步一步介绍在Orion Application Server下定义自己的标签，然后，实现该标签的功能，最后用一个jsp例子测试。 <BR><BR>二、建立标签，实现该标签的功能。 <BR><BR>1.命名package为：com.acme.mytags(为了和原文相同，我不做改动) <BR><BR>package com.acme.mytags; <BR><BR>2.import相关class <BR><BR>import javax.servlet.jsp.*; <BR><BR>import javax.servlet.jsp.tagext.*; <BR><BR>3.实现javax.servlet.jsp.tagext.Tag接口： <BR><BR>public class HelloWorld implements Tag <BR><BR>{ <BR><BR>4.定义局部变量 <BR><BR>private PageContext pageContext; <BR><BR>private Tag parent; <BR><BR>5.调用标签开始的实现方法 <BR><BR>public int doStartTag() throws javax.servlet.jsp.JspException <BR><BR>{ <BR><BR>return SKIP_BODY; <BR><BR>} <BR><BR>注意：这个方法返回 SKIP_BODY，就是标签的body为空的时候，将返回这个值，否则将返回：EVAL_BODY_INCLUDE <BR><BR>6.调用标签结束的实现方法 <BR><BR>public int doEndTag() throws javax.servlet.jsp.JspException <BR><BR>{ <BR><BR>try <BR><BR>{ <BR><BR>pageContext.getOut().write("Hello World!"); <BR><BR>} <BR><BR>catch(java.io.IOException e) <BR><BR>{ <BR><BR>throw new JspException("IO Error: " + e.getMessage()); <BR><BR>} <BR><BR>return EVAL_PAGE; <BR><BR>} <BR><BR>这样将在jsp文件的自定义标签结束地方输出“Hello World!” <BR><BR>7.还不够，我们还要写下面的方法： <BR><BR>public void release() {} <BR><BR>对于本简单的例子，上面的方法不需要任何实现。 <BR><BR>8.JSP的容器要调用下面的方法： <BR><BR>public void setPageContext(final javax.servlet.jsp.PageContext pageContext) { <BR><BR>this.pageContext=pageContext; <BR><BR>} <BR><BR>JSP容器通过上面的方法调用标签，而且上面的方法用来设置标签的PageContext. <BR><BR>9.JSP的容器还要调用下面的方法： <BR><BR>public void setParent(final javax.servlet.jsp.tagext.Tag parent) <BR><BR>{ <BR><BR>this.parent=parent; <BR><BR>} <BR><BR>JSP容器通过上面的方法设置标签的parent-Tag，因为每个标签的PageContext都要保留它的parent标签。 <BR><BR>10.最后，实现方法： <BR><BR>public javax.servlet.jsp.tagext.Tag getParent() <BR><BR>{ <BR><BR>return parent; <BR><BR>} <BR><BR>} <BR><BR>11. 编译标签。 <BR><BR>三、描叙标签 <BR><BR>现在将要写一个描叙文件，描叙该标签。 <BR><BR>1.建立一个taglib.tld文件， <BR><BR>2.taglib.tld是一个XML格式的文本文件，XML的头如下： <BR><BR>&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt; <BR>&lt;!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" <BR>"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd"&gt; <BR><BR>3.描叙标签库 <BR><BR>&lt;taglib&gt; <BR><BR>&lt;tlibversion&gt;1.0&lt;/tlibversion&gt; <BR><BR>&lt;jspversion&gt;1.1&lt;/jspversion&gt; <BR><BR>&lt;shortname&gt;mt&lt;/shortname&gt; &lt;uri&gt;http://www.orionserver.com/tutorials/tagtut/lesson1/mytags.jar&lt;/uri&gt; <BR><BR>&lt;info&gt;My first Tag library&lt;/info&gt; <BR><BR>4.描叙标签 <BR><BR>&lt;tag&gt; <BR><BR>&lt;name&gt;helloWorld&lt;/name&gt; <BR><BR>&lt;tagclass&gt;com.acme.mytags.HelloWorld&lt;/tagclass&gt; <BR><BR>&lt;bodycontent&gt;empty&lt;/bodycontent&gt; <BR><BR>&lt;info&gt;A Hello world Tag&lt;/info&gt; <BR><BR>&lt;/tag&gt; <BR><BR>5.结束 <BR><BR>&lt;/taglib&gt; <BR><BR>四、打包 <BR><BR>名称为：mytags.jar <BR><BR>其目录结构为： <BR><BR>com/acme/mytags/HelloWorld.class <BR><BR>META-INF/taglib.tld <BR><BR>五、在jsp文件中使用自定义标签 <BR><BR>建立hello.jsp如下： <BR><BR>&lt;%@ taglib uri="mytags.jar" prefix="mt" %&gt; <BR><BR>&lt;HTML&gt; <BR><BR>&lt;HEAD&gt; <BR><BR>&lt;TITLE&gt;Hello World!&lt;/TITLE&gt; <BR><BR>&lt;/HEAD&gt; &lt;BODY BGCOLOR="#FFFFFF"&gt; <BR><BR>&lt;HR&gt; <BR><BR>&lt;mt:helloWorld/&gt; <BR><BR>&lt;HR&gt; <BR><BR>&lt;/BODY&gt; <BR><BR>&lt;/HTML&gt; <BR><BR>六、测试运行 <BR><BR>在orion目录下，建立如下结构，其中，tag是自己建立的，前面的目录是本来就有的。 <BR><BR>E:oriondefault-web-apptag <BR><BR>将jar文件和jsp文件全部放到这个目录下。 <BR><BR>然后，访问： <BR><BR>http://localhost:[port]/tag/hello.jsp <BR><BR>将出现： <BR><BR><BR>-------------------------------------------------------------------------------- <BR><BR><BR>Hello World!　 <BR><BR><BR>-------------------------------------------------------------------------------- <BR><BR>七、恭喜，你已经成功了！ <BR><BR>附：mytags.jar和hello.jsp 文件本站下载地址： <BR><BR>http://www.wodejia.net/softdownload/java/orion_tag01.zip <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

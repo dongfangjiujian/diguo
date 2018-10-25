@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之十一(简单的“抓网页”代码)</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:30 </span>
 一、前言 <br><br>　　从一个网站上，看到一个“抓网页”的代码，觉得有点意思，但是没有提供源代码，于是，自己想写一个，其实代码比较简单的。 <br><br>二、代码<br><br>&lt;%@ page contentType=&quot;text/html;charset=gb2312&quot;%&gt; <br><br>&lt;% <br><br>String sCurrentLine; <br><br>String sTotalString; <br><br>sCurrentLine=&quot;&quot;; <br><br>sTotalString=&quot;&quot;; <br><br>java.io.InputStream l_urlStream; <br><br>java.net.URL l_url = new java.net.URL(&quot;http://www.163.net/&quot;); <br><br>java.net.HttpURLConnection l_connection = (java.net.HttpURLConnection) l_url.openConnection();<br><br>l_connection.connect(); <br><br>l_urlStream = l_connection.getInputStream(); <br><br>java.io.BufferedReader l_reader = new java.io.BufferedReader(new java.io.InputStreamReader(l_urlStream)); <br><br>while ((sCurrentLine = l_reader.readLine()) != null) <br><br>{ <br><br>sTotalString+=sCurrentLine; <br><br>} <br><br>out.println(sTotalString); <br><br>%&gt; <br><br>三、后记<br><br>　　虽然代码比较简单，但是，我认为根据这个，可以实现“网络爬虫”的功能，比如从页面找href连接，然后再得到那个连接，然后再“抓”，不停止地（当然可以限定层数），这样，可以实现“网页搜索”功能。<br><br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

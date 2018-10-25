@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之三(Resin+Apache的安装)</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:42 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>一、前言 <BR><BR>　　 对于初学者来说，要执行JSP和Servlet，Tomcat是一个很不错的选择。你也可以用Resin，这两个产品都是可以不花一分钱的。 Resin对Xml的支持是很好的。 <BR><BR>二、下载，安装 <BR><BR>　　 下载地址为Resin官方站点：http://www.caucho.com/。 <BR><BR>从这个地址可以下载：http://www.caucho.com/download/index.xtp，我下载的是Resin1.1.4版本。 <BR><BR>　　 下载完，解压到一个目录，我这里用E:resin114作为例子。 <BR><BR><BR><BR>三、配置 <BR><BR>　　 在这之前，当然我们要先安装了Apache，而且能正常运行了。 <BR><BR>　　 (1)配置Apache <BR><BR>打开apache的conf子目录下的httpd.conf文件，用文本编辑工具编辑它。加入如下几行： <BR><BR>LoadModule caucho_module "E:resin114srunwin32-1.3.6mod_caucho.dll" <BR><BR>AddModule mod_caucho.c <BR><BR>&lt;IfModule mod_caucho.c&gt; <BR><BR>CauchoConfigFile "E:resin114confresin.conf" <BR><BR>&lt;Location /caucho-status&gt; <BR><BR>SetHandler caucho-status <BR><BR>&lt;/Location&gt; <BR><BR>&lt;/IfModule&gt; <BR><BR>注意：上面的步骤也可以通过更加简单的方式实现，就是直接运行E:resin114bin目录下的setup.exe，勾上apache，然后Apply,最后OK。这样，上面这些行应该会自动加上的。 <BR><BR>　　 (2)配置Resin <BR><BR>在resin的conf子目录下有个resin.conf文件，将该文件备份一个。然后建立resin.conf文件，如下内容： <BR><BR>&lt;caucho.com&gt; <BR><BR>&lt;http-server app-dir='e:/apache/htdocs'&gt; <BR><BR>&lt;error-log id='log/error.log'/&gt; <BR><BR>&lt;classpath id='WEB-INF/classes' source='WEB-INF/classes' compile='true'/&gt; <BR><BR>&lt;servlet-mapping url-pattern='/servlets/*' servlet-name='invoker'/&gt; <BR><BR>&lt;servlet-mapping url-pattern='*.xtp' servlet-name='com.caucho.jsp.XtpServlet'/&gt; <BR><BR>&lt;servlet-mapping url-pattern='*.jsp' servlet-name='com.caucho.jsp.JspServlet'/&gt; <BR><BR>&lt;/http-server&gt; <BR><BR>&lt;/caucho.com&gt; <BR><BR>四、测试 <BR><BR>　　 (1)启动Resin： <BR><BR>在resin的bin下有一个srun.exe，运行它，将出现一个窗口。 <BR><BR><BR><BR><BR><BR><BR>　　 (2)做一个简单的jsp文件test.jsp（我们用resin站点的例子） <BR><BR>该文件放在：apache/htdocs/test.jsp <BR><BR>内容如下： <BR><BR>&lt;%@ page language=javascript %&gt; <BR><BR>2 + 2 = &lt;%= 2 + 2 %&gt; <BR><BR>　　 (3)运行 <BR><BR>在浏览器中输入：http://localhost/test.jsp，应该出现下面结果： <BR><BR>2+2=4 <BR><BR>好了，到这里你已经安装成功了，你可以在htdocs下建立一些自己的子目录， 管理文件。 <BR><BR>注意：在四（1）中，启动resin 可以将srun加在Win2000的服务中，让每次这个resin服务自动启动，不必每次都运行srun.exe。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

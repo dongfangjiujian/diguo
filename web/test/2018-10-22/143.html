@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">会话状态</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:37 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>10.1 会话状态概述 <BR><BR>　　 HTTP协议的“无状态”（Stateless）特点带来了一系列的问题。特别是通过在线商店购物时，服务器不能顺利地记住以前的事务就成了严重的问题。它使得“购物篮”之类的应用很难实现：当我们把商品加入购物篮时，服务器如何才能知道篮子里原先有些什么？即使服务器保存了上下文信息，我们仍旧会在电子商务应用中遇到问题。例如，当用户从选择商品的页面（由普通的服务器提供）转到输入信用卡号和送达地址的页面（由支持SSL的安全服务器提供），服务器如何才能记住用户买了些什么？ <BR><BR>　　 这个问题一般有三种解决方法： <BR><BR>Cookie。利用HTTP Cookie来存储有关购物会话的信息，后继的各个连接可以查看当前会话，然后从服务器的某些地方提取有关该会话的完整信息。这是一种优秀的，也是应用最广泛的方法。然而，即使Servlet提供了一个高级的、使用方便的Cookie接口，仍旧有一些繁琐的细节问题需要处理： <BR>从其他Cookie中分别出保存会话标识的Cookie。 <BR>为Cookie设置合适的作废时间（例如，中断时间超过24小时的会话一般应重置）。 <BR>把会话标识和服务器端相应的信息关联起来。（实际保存的信息可能要远远超过保存到Cookie的信息，而且象信用卡号等敏感信息永远不应该用Cookie来保存。） <BR>改写URL。你可以把一些标识会话的数据附加到每个URL的后面，服务器能够把该会话标识和它所保存的会话数据关联起来。这也是一个很好的方法，而且还有当浏览器不支持Cookie或用户已经禁用Cookie的情况下也有效这一优点。然而，大部分使用Cookie时所面临的问题同样存在，即服务器端的程序要进行许多简单但单调冗长的处理。另外，还必须十分小心地保证每个URL后面都附加了必要的信息（包括非直接的，如通过Location给出的重定向URL）。如果用户结束会话之后又通过书签返回，则会话信息会丢失。 <BR>隐藏表单域。HTML表单中可以包含下面这样的输入域：＜INPUT TYPE="HIDDEN" NAME="session" VALUE="..."＞。这意味着，当表单被提交时，隐藏域的名字和数据也被包含到GET或POST数据里，我们可以利用这一机制来维持会话信息。然而，这种方法有一个很大的缺点，它要求所有页面都是动态生成的，因为整个问题的核心就是每个会话都要有一个唯一标识符。 <BR>　　 Servlet为我们提供了一种与众不同的方案：HttpSession API。HttpSession API是一个基于Cookie或者URL改写机制的高级会话状态跟踪接口：如果浏览器支持Cookie，则使用Cookie；如果浏览器不支持Cookie或者Cookie功能被关闭，则自动使用URL改写方法。Servlet开发者无需关心细节问题，也无需直接处理Cookie或附加到URL后面的信息，API自动为Servlet开发者提供一个可以方便地存储会话信息的地方。 <BR><BR>　　 10.2 会话状态跟踪API <BR><BR>　　 在Servlet中使用会话信息是相当简单的，主要的操作包括：查看和当前请求关联的会话对象，必要的时候创建新的会话对象，查看与某个会话相关的信息，在会话对象中保存信息，以及会话完成或中止时释放会话对象。 <BR><BR>　　 10.2.1 查看当前请求的会话对象 <BR><BR>　　 查看当前请求的会话对象通过调用HttpServletRequest的getSession方法实现。如果getSession方法返回null，你可以创建一个新的会话对象。但更经常地，我们通过指定参数使得不存在现成的会话时自动创建一个会话对象，即指定getSession的参数为true。因此，访问当前请求会话对象的第一个步骤通常如下所示： <BR>HttpSession session = request.getSession(true); <BR><BR><BR><BR>　　 10.2.2 查看和会话有关的信息 <BR><BR>　　 HttpSession对象生存在服务器上，通过Cookie或者URL这类后台机制自动关联到请求的发送者。会话对象提供一个内建的数据结构，在这个结构中可以保存任意数量的键-值对。在2.1或者更早版本的Servlet API中，查看以前保存的数据使用的是getValue("key")方法。getValue返回Object，因此你必须把它转换成更加具体的数据类型。如果参数中指定的键不存在，getValue返回null。 <BR><BR>　　 API 2.2版推荐用getAttribute来代替getValue，这不仅是因为getAttribute和setAttribute的名字更加匹配（和getValue匹配的是putValue，而不是setValue），同时也因为setAttribute允许使用一个附属的HttpSessionBindingListener 来监视数值，而putValue则不能。 <BR><BR>　　 但是，由于目前还只有很少的商业Servlet引擎支持2.2，下面的例子中我们仍旧使用getValue。这是一个很典型的例子，假定ShoppingCart是一个保存已购买商品信息的类： <BR>HttpSession session = request.getSession(true); <BR>ShoppingCart previousItems = <BR>(ShoppingCart)session.getValue("previousItems"); <BR>if (previousItems != null) { <BR>doSomethingWith(previousItems); <BR>} else { <BR>previousItems = new ShoppingCart(...); <BR>doSomethingElseWith(previousItems); <BR>} <BR><BR><BR><BR>　　 大多数时候我们都是根据特定的名字寻找与它关联的值，但也可以调用getValueNames得到所有属性的名字。getValuesNames返回的是一个String数组。API 2.2版推荐使用getAttributeNames，这不仅是因为其名字更好，而且因为它返回的是一个Enumeration，和其他方法（比如HttpServletRequest的getHeaders和getParameterNames）更加一致。 <BR><BR>　　 虽然开发者最为关心的往往是保存到会话对象的数据，但还有其他一些信息有时也很有用。 <BR><BR>getID：该方法返回会话的唯一标识。有时该标识被作为键-值对中的键使用，比如会话中只保存一个值时，或保存上一次会话信息时。 <BR>isNew：如果客户（浏览器）还没有绑定到会话则返回true，通常意味着该会话刚刚创建，而不是引用自客户端的请求。对于早就存在的会话，返回值为false。 <BR>getCreationTime：该方法返回建立会话的以毫秒计的时间，从1970.01.01（GMT）算起。要得到用于打印输出的时间值，可以把该值传递给Date构造函数，或者GregorianCalendar的setTimeInMillis方法。 <BR>getLastAccessedTime：该方法返回客户最后一次发送请求的以毫秒计的时间，从1970.01.01（GMT）算起。 <BR>getMaxInactiveInterval：返回以秒计的最大时间间隔，如果客户请求之间的间隔不超过该值，Servlet引擎将保持会话有效。负数表示会话永远不会超时。 <BR>　　 10.2.3 在会话对象中保存数据 <BR><BR>　　 如上节所述，读取保存在会话中的信息使用的是getValue方法（或，对于2.2版的Servlet规范，使用getAttribute）。保存数据使用putValue（或setAttribute）方法，并指定键和相应的值。注意putValue将替换任何已有的值。有时候这正是我们所需要的（如下例中的referringPage），但有时我们却需要提取原来的值并扩充它（如下例previousItems）。示例代码如下： <BR>HttpSession session = request.getSession(true); <BR>session.putValue("referringPage", request.getHeader("Referer")); <BR>ShoppingCart previousItems = <BR>(ShoppingCart)session.getValue("previousItems"); <BR>if (previousItems == null) { <BR>previousItems = new ShoppingCart(...); <BR>} <BR>String itemID = request.getParameter("itemID"); <BR>previousItems.addEntry(Catalog.getEntry(itemID)); <BR><BR>session.putValue("previousItems", previousItems); <BR><BR><BR><BR>　　 10.3 实例：显示会话信息 <BR><BR>　　 下面这个例子生成一个Web页面，并在该页面中显示有关当前会话的信息。 <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.net.*; <BR>import java.util.*; <BR><BR>public class ShowSession extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>HttpSession session = request.getSession(true); <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>String title = "Searching the Web"; <BR>String heading; <BR>Integer accessCount = new Integer(0);; <BR>if (session.isNew()) { <BR>heading = "Welcome, Newcomer"; <BR>} else { <BR>heading = "Welcome Back"; <BR>Integer oldAccessCount = <BR>// 在Servlet API 2.2中使用getAttribute而不是getValue <BR>(Integer)session.getValue("accessCount"); <BR>if (oldAccessCount != null) { <BR>accessCount = <BR>new Integer(oldAccessCount.intValue() + 1); <BR>} <BR>} <BR>// 在Servlet API 2.2中使用putAttribute <BR>session.putValue("accessCount", accessCount); <BR><BR>out.println(ServletUtilities.headWithTitle(title) + <BR>"＜BODY BGCOLOR=＼"#FDF5E6＼"＞＼n" + <BR>"＜H1 ALIGN=＼"CENTER＼"＞" + heading + "＜/H1＞＼n" + <BR>"＜H2＞Information on Your Session:＜/H2＞＼n" + <BR>"＜TABLE BORDER=1 ALIGN=CENTER＞＼n" + <BR>"＜TR BGCOLOR=＼"#FFAD00＼"＞＼n" + <BR>" ＜TH＞Info Type＜TH＞Value＼n" + <BR>"＜TR＞＼n" + <BR>" ＜TD＞ID＼n" + <BR>" ＜TD＞" + session.getId() + "＼n" + <BR>"＜TR＞＼n" + <BR>" ＜TD＞Creation Time＼n" + <BR>" ＜TD＞" + new Date(session.getCreationTime()) + "＼n" + <BR>"＜TR＞＼n" + <BR>" ＜TD＞Time of Last Access＼n" + <BR>" ＜TD＞" + new Date(session.getLastAccessedTime()) + "＼n" + <BR>"＜TR＞＼n" + <BR>" ＜TD＞Number of Previous Accesses＼n" + <BR>" ＜TD＞" + accessCount + "＼n" + <BR>"＜/TABLE＞＼n" + <BR>"＜/BODY＞＜/HTML＞"); <BR>} <BR>public void doPost(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>doGet(request, response); <BR>} <BR>} <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

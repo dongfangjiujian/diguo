@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">读取HTTP请求头</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:36 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>5.1 HTTP请求头概述 <BR><BR>　　 HTTP客户程序（例如浏览器），向服务器发送请求的时候必须指明请求类型（一般是GET或者POST）。如有必要，客户程序还可以选择发送其他的请求头。大多数请求头并不是必需的，但Content-Length除外。对于POST请求来说Content-Length必须出现。 <BR><BR>　　 下面是一些最常见的请求头： <BR><BR>Accept：浏览器可接受的MIME类型。 <BR>Accept-Charset：浏览器可接受的字符集。 <BR>Accept-Encoding：浏览器能够进行解码的数据编码方式，比如gzip。Servlet能够向支持gzip的浏览器返回经gzip编码的HTML页面。许多情形下这可以减少5到10倍的下载时间。 <BR>Accept-Language：浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。 <BR>Authorization：授权信息，通常出现在对服务器发送的WWW-Authenticate头的应答中。 <BR>Connection：表示是否需要持久连接。如果Servlet看到这里的值为“Keep-Alive”，或者看到请求使用的是HTTP 1.1（HTTP 1.1默认进行持久连接），它就可以利用持久连接的优点，当页面包含多个元素时（例如Applet，图片），显著地减少下载所需要的时间。要实现这一点，Servlet需要在应答中发送一个Content-Length头，最简单的实现方法是：先把内容写入ByteArrayOutputStream，然后在正式写出内容之前计算它的大小。 <BR>Content-Length：表示请求消息正文的长度。 <BR>Cookie：这是最重要的请求头信息之一，参见后面《Cookie处理》一章中的讨论。 <BR>From：请求发送者的email地址，由一些特殊的Web客户程序使用，浏览器不会用到它。 <BR>Host：初始URL中的主机和端口。 <BR>If-Modified-Since：只有当所请求的内容在指定的日期之后又经过修改才返回它，否则返回304“Not Modified”应答。 <BR>Pragma：指定“no-cache”值表示服务器必须返回一个刷新后的文档，即使它是代理服务器而且已经有了页面的本地拷贝。 <BR>Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。 <BR>User-Agent：浏览器类型，如果Servlet返回的内容与浏览器类型有关则该值非常有用。 <BR>UA-Pixels，UA-Color，UA-OS，UA-CPU：由某些版本的IE浏览器所发送的非标准的请求头，表示屏幕大小、颜色深度、操作系统和CPU类型。 <BR>　　 有关HTTP头完整、详细的说明，请参见http://www.w3.org/Protocols/的HTTP规范。 <BR><BR>　　 5.2 在Servlet中读取请求头 <BR><BR>　　 在Servlet中读取HTTP头是非常方便的，只需要调用一下HttpServletRequest的getHeader方法即可。如果客户请求中提供了指定的头信息，getHeader返回对应的字符串；否则，返回null。部分头信息经常要用到，它们有专用的访问方法：getCookies方法返回Cookie头的内容，经解析后存放在Cookie对象的数组中，请参见后面有关Cookie章节的讨论；getAuthType和getRemoteUser方法分别读取Authorization头中的一部分内容；getDateHeader和getIntHeader方法读取指定的头，然后返回日期值或整数值。 <BR><BR>　　 除了读取指定的头之外，利用getHeaderNames还可以得到请求中所有头名字的一个Enumeration对象。 <BR><BR>　　 最后，除了查看请求头信息之外，我们还可以从请求主命令行获得一些信息。getMethod方法返回请求方法，请求方法通常是GET或者POST，但也有可能是HEAD、PUT或者DELETE。getRequestURI方法返回URI（URI是URL的从主机和端口之后到表单数据之前的那一部分）。getRequestProtocol返回请求命令的第三部分，一般是“HTTP/1.0”或者“HTTP/1.1”。 <BR><BR>　　 5.3 实例：输出所有的请求头 <BR><BR>　　 下面的Servlet实例把所有接收到的请求头和它的值以表格的形式输出。另外，该Servlet还会输出主请求命令的三个部分：请求方法，URI，协议/版本。 <BR><BR>　　 ShowRequestHeaders.java <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.util.*; <BR><BR>public class ShowRequestHeaders extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>String title = "显示所有请求头"; <BR>out.println(ServletUtilities.headWithTitle(title) + <BR>"＜BODY BGCOLOR=＼"#FDF5E6＼"＞＼n" + <BR>"＜H1 ALIGN=CENTER＞" + title + "＜/H1＞＼n" + <BR>"＜B＞Request Method: ＜/B＞" + <BR>request.getMethod() + "＜BR＞＼n" + <BR>"＜B＞Request URI: ＜/B＞" + <BR>request.getRequestURI() + "＜BR＞＼n" + <BR>"＜B＞Request Protocol: ＜/B＞" + <BR>request.getProtocol() + "＜BR＞＜BR＞＼n" + <BR>"＜TABLE BORDER=1 ALIGN=CENTER＞＼n" + <BR>"＜TR BGCOLOR=＼"#FFAD00＼"＞＼n" + <BR>"＜TH＞Header Name＜TH＞Header Value"); <BR>Enumeration headerNames = request.getHeaderNames(); <BR>while(headerNames.hasMoreElements()) { <BR>String headerName = (String)headerNames.nextElement(); <BR>out.println("＜TR＞＜TD＞" + headerName); <BR>out.println(" ＜TD＞" + request.getHeader(headerName)); <BR>} <BR>out.println("＜/TABLE＞＼n＜/BODY＞＜/HTML＞"); <BR>} <BR><BR>public void doPost(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>doGet(request, response); <BR>} <BR>} <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

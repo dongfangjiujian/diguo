@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">一道SCJP考题,要考SCJP的不能不看!</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:27 </span>
 这道题目很有意义,我转贴到这儿. <br>(我从www.itpub.net转贴) <br><br><br>谁能告诉我这样的代码,编译为何不会报错? <br><br>class Base <br>{ <br>public void aMethod() throws ClassNotFoundException <br>{ <br>} <br>} <br><br>public class Derived extends Base <br>{ <br>public void aMethod() throws RuntimeException <br>{ <br>} <br>} <br><br>我这道题目是这样的: <br>父类Base的方法aMethod?出一个ClassNotFoundException异常 <br>子类Derived重写aMethod方法并?出一个RuntimeException异常 <br>如果按照Java的Exception理论,那么应该是: <br>子类Derived的aMethod方法要么不?异常, <br><br>要么就必须?出ClassNotFoundException异常或是ClassNotFoundException异常的子类才行. <br>而RuntimeException并不是ClassNotFoundException的子类. <br>它们没有任何的继承关系. <br>按照Java的Exception理论,应该编译不能通过. <br>但是现在可以编译通过,请问这是为什么? <br><br>runtimeexception是自动throws的，不需要declare（decalre了效果也不会有任何变化），即使声明了throws runtime exception,编译器也不会按通常的规则处理。所以上述代码的等效形式是： <br><br>class Base <br>{ <br>public void aMethod() throws ClassNotFoundException <br>{ <br>} <br>} <br><br>public class Derived extends Base <br>{ <br>public void aMethod() <br>{ <br>} <br>} <br><br><br>******答案***** <br>java中的异常可以分为3种类型： <br>1。从Exception类直接派生出来的异常类 <br>2。运行时刻类（RuntimeException） <br>3。I/O异常类 <br>你说的那个理论对于1，3成立 <br>但是RuntimeException是没有必要去catch的.　</div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

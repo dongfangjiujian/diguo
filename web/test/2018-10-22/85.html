@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP数据库操作例程</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:17 </span>
 通过jdbc:odbc可以实现Jsp对数据库的操作，在这个例子中我将数据库的连接写在了一个JavaBean中，可以实现重复使用 <br>pagetest.jsp文件： <br><br>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt; <br>&lt;%@page contentType=&quot;text/html;charset=gb2312&quot; %&gt; <br>&lt;jsp:useBean id=&quot;Htool&quot; scope=&quot;session&quot; class=&quot;zbean.HtmlTool&quot;/&gt; <br>&lt;jsp:useBean id=&quot;Jodb&quot; scope=&quot;session&quot; class=&quot;zbean.Jodb&quot;/&gt; <br>&lt;html&gt; <br>&lt;head&gt; <br>&lt;title&gt;数据库分页测试&lt;/title&gt; <br>&lt;/head&gt; <br>&lt;% <br>//定义ResultSet类 <br>java.sql.ResultSet rst; <br><br>//设定Odbc数据源 <br>Jodb.setConnStr(&quot;jdbc:odbc:jtest&quot;,&quot;&quot;,&quot;&quot;); <br><br>//设定Jdbc驱动程序 <br>Jodb.setDbDriver(&quot;sun.jdbc.odbc.JdbcOdbcDriver&quot;); <br><br>//执行Sql语句，调用Jodb类的execute方法 <br>rst=Jodb.execute(&quot;select * from gbook&quot;); <br>%&gt; <br><br><br>&nbsp;&nbsp;&lt;% <br><br>int startRowNum; <br>int pageSize=10; <br>rst.last(); <br>int rowCount=rst.getRow(); <br>int pageCount=(rowCount+pageSize-1)/pageSize; <br>int intPage; <br>String strPage=request.getParameter(&quot;page&quot;); <br>if(strPage==null) <br>{ <br>intPage=1; <br>} <br>else <br>{ <br>intPage=java.lang.Integer.parseInt(strPage); <br>if(intPage&lt;1)intPage=1; <br>if(intPage&gt;pageCount)intPage=pageCount; <br>} <br>startRowNum=(intPage-1)*pageSize+1; <br>%&gt; <br>&lt;body&gt; <br><br><br>&lt;div align=&quot;center&quot;&gt; <br>&lt;center&gt; <br>&lt;p&gt;数据库分页测试&lt;/p&gt; <br>&lt;p&gt;&lt;%= Htool.getStr(Jodb.pageStr(intPage,pageCount,&quot;pagetest.jsp?&quot;,&quot;en&quot;)) %&gt;&lt;/p&gt; <br>&lt;table border=&quot;1&quot; width=&quot;600&quot; bordercolorlight=&quot;#000000&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot; bordercolordark=&quot;#FFFFFF&quot;&gt; <br>&nbsp;&nbsp;&lt;tr&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;49&quot;&gt;&lt;font size=&quot;2&quot;&gt;编号&lt;/font&gt;&lt;/td&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;91&quot;&gt;&lt;font size=&quot;2&quot;&gt;姓 名&lt;/font&gt;&lt;/td&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;174&quot;&gt;&lt;font size=&quot;2&quot;&gt;电子邮箱&lt;/font&gt;&lt;/td&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;250&quot;&gt;&lt;font size=&quot;2&quot;&gt;留言&lt;/font&gt;&lt;/td&gt; <br>&nbsp;&nbsp;&lt;/tr&gt; <br><br>&lt;% <br>for(int i=0;i&lt;pageSize;i++){ <br><br>rst.absolute(startRowNum+i); <br><br>if(rst.isAfterLast()) <br>{ <br>break; <br>} <br><br>%&gt; <br>&lt;tr&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;49&quot;&gt;&lt;%= rst.getLong(&quot;id&quot;) %&gt;　&lt;/td&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;91&quot;&gt;&lt;%= rst.getString(&quot;name&quot;) %&gt;　&lt;/td&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;174&quot;&gt;&lt;%= rst.getString(&quot;email&quot;) %&gt;　&lt;/td&gt; <br>&nbsp;&nbsp;&nbsp;&lt;td width=&quot;250&quot;&gt;&lt;%= rst.getString(&quot;pnote&quot;) %&gt;　&lt;%= rst.getRow() %&gt;&lt;/td&gt; <br>&nbsp;&nbsp;&lt;/tr&gt; <br>&lt;% <br>} <br>%&gt; <br>&lt;/table&gt; <br>&lt;/center&gt; <br>&lt;/div&gt; <br><br>&lt;/body&gt; <br>&lt;/html&gt; <br><br><br>Jodb.java文件如下： <br><br>package zbean; <br>import java.sql.*; <br>//import zbean.*; <br><br>public class Jodb <br>{ <br>&nbsp;&nbsp;&nbsp;&nbsp;public String sdbdriver=&quot;sun.jdbc.odbc.JdbcOdbcDriver&quot;; <br>public String sConnStr; <br>public long count; <br>String uid; <br>String pwd; <br>Connection conn=null; <br>ResultSet rs=null; <br><br>public Jodb() <br>{ <br>try <br>{ <br>Class.forName(sdbdriver); <br>} <br>catch(java.lang.ClassNotFoundException e) <br>{ <br>System.err.println(&quot;Jodb():&quot;+e.getMessage()); <br>} <br>} <br><br><br>public void setDbDriver(String y) <br>{ <br>sdbdriver=y; <br>} <br><br>public void setConnStr(String x,String z,String a) <br>{ <br>sConnStr=x; <br>uid=z; <br>pwd=a; <br>} <br><br>public ResultSet execute(String sql) <br>{ <br>rs=null; <br><br><br>try <br>{ <br>conn=DriverManager.getConnection(sConnStr,uid,pwd); <br>Statement stmt=conn.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); <br>rs=stmt.executeQuery(sql); <br>} <br>catch(SQLException ex) <br>{ <br>System.err.println(&quot;Jodb.execute():&quot;+ex.getMessage()); <br>} <br>return rs; <br>} <br><br>public long update(String sql) <br>{ <br>long x=0; <br>try <br>{ <br>conn=DriverManager.getConnection(sConnStr); <br>Statement stmt=conn.createStatement(); <br>x=stmt.executeUpdate(sql); <br>} <br>catch(SQLException ey) <br>{ <br>System.err.println(&quot;Jodb.update():&quot;+ey.getMessage()); <br>} <br>return x; <br>} <br><br>public String pageStr(int page,int pageCount,String url,String showStr) <br>{ <br>//String str=&quot;Page:(&quot;+page+&quot;/&quot;+pageCount+&quot;)&nbsp;&nbsp;&quot;; <br>String str=&quot;&quot;; <br>String fstr; <br>String pstr; <br>String nstr; <br>String lstr; <br>//int page=currPage; <br>//int pageCount=pageCt; <br><br>if(showStr==&quot;cn&quot;) <br>{ <br>fstr=&quot;第一页&quot;; <br>pstr=&quot;上一页&quot;; <br>nstr=&quot;下一页&quot;; <br>lstr=&quot;最末页&quot;; <br>} <br>else if(showStr==&quot;en&quot;) <br>{ <br>fstr=&quot;First&quot;; <br>pstr=&quot;Previous&quot;; <br>nstr=&quot;Next&quot;; <br>lstr=&quot;Last&quot;; <br>} <br>else <br>{ <br>String[] temp_array=split(showStr,&quot;,&quot;); <br>if(temp_array==null) <br>{ <br>str=&quot;Please input String like: &quot;First,Previous,Next,Last&quot;&quot;; <br>return str; <br>} <br>fstr=temp_array[0]; <br>pstr=temp_array[1]; <br>nstr=temp_array[2]; <br>lstr=temp_array[3]; <br>} <br>/* <br>int npage; <br>npgae=page+1; <br>int ppage; <br>ppage=page-1; <br>if(npage&gt;pageCount) <br>{npae=pageCount;} <br>if(ppgae&lt;1) <br>{ppage=1;} <br>*/ <br>if(page==1){ <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=&quot;+(page+1)+&quot;&gt;&quot;+nstr+&quot;&lt;/a&gt; &quot;; <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=&quot;+pageCount+&quot;&gt;&quot;+lstr+&quot;&lt;/a&gt; &quot;; <br>} <br>if(page==pageCount){ <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=1&gt;&quot;+fstr+&quot;&lt;/a&gt; &quot;; <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=&quot;+(page-1)+&quot;&gt;&quot;+pstr+&quot;&lt;/a&gt; &quot;; <br>} <br>if(page&gt;1&amp;&amp;page&lt;pageCount){ <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=1&gt;&quot;+fstr+&quot;&lt;/a&gt; &quot;; <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=&quot;+(page-1)+&quot;&gt;&quot;+pstr+&quot;&lt;/a&gt; &quot;; <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=&quot;+(page+1)+&quot;&gt;&quot;+nstr+&quot;&lt;/a&gt; &quot;; <br>str=str+&quot;&lt;a href=&quot;+url+&quot;page=&quot;+pageCount+&quot;&gt;&quot;+lstr+&quot;&lt;/a&gt; &quot;; <br>} <br><br>return str; <br>} <br><br>public String[] split(String str,String strIn) <br>{ <br>char[] temp_array; <br>temp_array=str.toCharArray(); <br>int strLength=str.length(); <br>int strInLength=strIn.length(); <br>int strInTimes=0; <br>int strIndex[]=new int[strLength]; <br><br>int i=0; <br>int ii=0; <br>while(i&lt;=strLength-strInLength) <br>{ <br>String temp_str=&quot;&quot;; <br>for(int j=i;j&lt;i+strInLength;j++) <br>{ <br>temp_str=temp_str+temp_array[j]; <br>} <br>if(temp_str.equals(strIn)) <br>{ <br>strInTimes++; <br>strIndex[ii]=i; <br>i=i+strInLength; <br>ii++; <br>} <br>else <br>{ <br>i++; <br>} <br><br>} <br><br>if(strInTimes&lt;1) <br>{ <br>String[] back_str=null; <br>return back_str; <br>} <br>else <br>{ <br>String back_str[]=new String[strInTimes+1]; <br>back_str[0]=str.substring(0,strIndex[0]); <br>for(int k=1;k&lt;strInTimes;k++) <br>{ <br>back_str[k]=str.substring(strIndex[k-1]+strInLength,strIndex[k]); <br>} <br>back_str[strInTimes]=str.substring(strIndex[strInTimes-1]+strInLength,str.length()); <br>return back_str; <br>} <br><br>} <br><br>}&nbsp;</div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

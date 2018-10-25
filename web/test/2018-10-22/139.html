@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">访问CGI变量</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:36 </span>
                             　<P>6.1 CGI变量概述 <BR><BR>　　 如果你是从传统的CGI编程转而学习Java Servlet，或许已经习惯了“CGI变量”这一概念。CGI变量汇集了各种有关请求的信息： <BR><BR>部分来自HTTP请求命令和请求头，例如Content-Length头； <BR>部分来自Socket本身，例如主机的名字和IP地址； <BR>也有部分与服务器安装配置有关，例如URL到实际路径的映射。 <BR>　　 6.2 标准CGI变量的Servlet等价表示 <BR><BR>　　 下表假定request对象是提供给doGet和doPost方法的HttpServletRequest类型对象。 CGI变量 含义 从doGet或doPost访问 <BR>AUTH_TYPE 如果提供了Authorization头，这里指定了具体的模式（basic或者digest）。 request.getAuthType() <BR>CONTENT_LENGTH 只用于POST请求，表示所发送数据的字节数。 严格地讲，等价的表达方式应该是String.valueOf(request.getContentLength())（返回一个字符串）。但更常见的是用request.getContentLength()返回含义相同的整数。 <BR>CONTENT_TYPE 如果指定的话，表示后面所跟数据的类型。 request.getContentType() <BR>DOCUMENT_ROOT 与http://host/对应的路径。 getServletContext().getRealPath("/") <BR>注意低版本Servlet规范中的等价表达方式是request.getRealPath("/")。 <BR><BR>HTTP_XXX_YYY 访问任意HTTP头。 request.getHeader("Xxx-Yyy") <BR>PATH_INFO URL中的附加路径信息，即URL中Servlet路径之后、查询字符串之前的那部分。 request.getPathInfo() <BR>PATH_TRANSLATED 映射到服务器实际路径之后的路径信息。 request.getPathTranslated() <BR>QUERY_STRING 这是字符串形式的附加到URL后面的查询字符串，数据仍旧是URL编码的。在Servlet中很少需要用到未经解码的数据，一般使用getParameter访问各个参数。 request.getQueryString() <BR>REMOTE_ADDR 发出请求的客户机的IP地址。 request.getRemoteAddr() <BR>REMOTE_HOST 发出请求的客户机的完整的域名，如java.sun.com。如果不能确定该域名，则返回IP地址。 request.getRemoteHost() <BR>REMOTE_USER 如果提供了Authorization头，则代表其用户部分。它代表发出请求的用户的名字。 request.getRemoteUser() <BR>REQUEST_METHOD 请求类型。通常是GET或者POST。但偶尔也会出现HEAD，PUT， DELETE，OPTIONS，或者 TRACE. request.getMethod() <BR>SCRIPT_NAME URL中调用Servlet的那一部分，不包含附加路径信息和查询字符串。 request.getServletPath() <BR>SERVER_NAME Web服务器名字。 request.getServerName() <BR>SERVER_PORT 服务器监听的端口。 严格地说，等价表达应该是返回字符串的String.valueOf(request.getServerPort())。但经常使用返回整数值的request.getServerPort()。 <BR>SERVER_PROTOCOL 请求命令中的协议名字和版本（即HTTP/1.0或HTTP/1.1）。 request.getProtocol() <BR>SERVER_SOFTWARE Servlet引擎的名字和版本。 getServletContext().getServerInfo() <BR><BR><BR>　　 6.3 实例：读取CGI变量 <BR><BR>　　 下面这个Servlet创建一个表格，显示除了HTTP_XXX_YYY之外的所有CGI变量。HTTP_XXX_YYY是HTTP请求头信息，请参见上一节介绍。 <BR><BR>　　 ShowCGIVariables.java <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR>import java.util.*; <BR><BR>public class ShowCGIVariables extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>String[][] variables = <BR>{ { "AUTH_TYPE", request.getAuthType() }, <BR>{ "CONTENT_LENGTH", String.valueOf(request.getContentLength()) }, <BR>{ "CONTENT_TYPE", request.getContentType() }, <BR>{ "DOCUMENT_ROOT", getServletContext().getRealPath("/") }, <BR>{ "PATH_INFO", request.getPathInfo() }, <BR>{ "PATH_TRANSLATED", request.getPathTranslated() }, <BR>{ "QUERY_STRING", request.getQueryString() }, <BR>{ "REMOTE_ADDR", request.getRemoteAddr() }, <BR>{ "REMOTE_HOST", request.getRemoteHost() }, <BR>{ "REMOTE_USER", request.getRemoteUser() }, <BR>{ "REQUEST_METHOD", request.getMethod() }, <BR>{ "SCRIPT_NAME", request.getServletPath() }, <BR>{ "SERVER_NAME", request.getServerName() }, <BR>{ "SERVER_PORT", String.valueOf(request.getServerPort()) }, <BR>{ "SERVER_PROTOCOL", request.getProtocol() }, <BR>{ "SERVER_SOFTWARE", getServletContext().getServerInfo() } <BR>}; <BR>String title = "显示CGI变量"; <BR>out.println(ServletUtilities.headWithTitle(title) + <BR>"＜BODY BGCOLOR=＼"#FDF5E6＼"＞＼n" + <BR>"＜H1 ALIGN=CENTER＞" + title + "＜/H1＞＼n" + <BR>"＜TABLE BORDER=1 ALIGN=CENTER＞＼n" + <BR>"＜TR BGCOLOR=＼"#FFAD00＼"＞＼n" + <BR>"＜TH＞CGI Variable Name＜TH＞Value"); <BR>for(int i=0; i＜variables.length; i++) { <BR>String varName = variables[i][0]; <BR>String varValue = variables[i][1]; <BR>if (varValue == null) <BR>varValue = "＜I＞Not specified＜/I＞"; <BR>out.println("＜TR＞＜TD＞" + varName + "＜TD＞" + varValue); <BR>} <BR>out.println("＜/TABLE＞＜/BODY＞＜/HTML＞"); <BR>} <BR><BR>public void doPost(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>doGet(request, response); <BR>} <BR>} <BR></P></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

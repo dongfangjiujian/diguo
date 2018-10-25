@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">第一个Servlet</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:35 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>3.1 Servlet基本结构 <BR><BR>　　 下面的代码显示了一个简单Servlet的基本结构。该Servlet处理的是GET请求，所谓的GET请求，如果你不熟悉HTTP，可以把它看成是当用户在浏览器地址栏输入URL、点击Web页面中的链接、提交没有指定METHOD的表单时浏览器所发出的请求。Servlet也可以很方便地处理POST请求。POST请求是提交那些指定了METHOD=“POST”的表单时所发出的请求，具体请参见稍后几节的讨论。 <BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR><BR>public class SomeServlet extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR><BR>// 使用“request”读取和请求有关的信息（比如Cookies） <BR>// 和表单数据 <BR><BR>// 使用“response”指定HTTP应答状态代码和应答头 <BR>// （比如指定内容类型，设置Cookie） <BR><BR>PrintWriter out = response.getWriter(); <BR>// 使用 "out"把应答内容发送到浏览器 <BR>} <BR>} <BR><BR><BR><BR><BR>　　 如果某个类要成为Servlet，则它应该从HttpServlet 继承，根据数据是通过GET还是POST发送，覆盖doGet、doPost方法之一或全部。doGet和doPost方法都有两个参数，分别为HttpServletRequest 类型和HttpServletResponse 类型。HttpServletRequest提供访问有关请求的信息的方法，例如表单数据、HTTP请求头等等。HttpServletResponse除了提供用于指定HTTP应答状态（200，404等）、应答头（Content-Type，Set-Cookie等）的方法之外，最重要的是它提供了一个用于向客户端发送数据的PrintWriter 。对于简单的Servlet来说，它的大部分工作是通过println语句生成向客户端发送的页面。 <BR><BR>　　 注意doGet和doPost抛出两个异常，因此你必须在声明中包含它们。另外，你还必须导入java.io包（要用到PrintWriter等类）、javax.servlet包（要用到HttpServlet等类）以及javax.servlet.http包（要用到HttpServletRequest类和HttpServletResponse类）。 <BR><BR>　　 最后，doGet和doPost这两个方法是由service方法调用的，有时你可能需要直接覆盖service方法，比如Servlet要处理GET和POST两种请求时。 <BR><BR>　　 3.2 输出纯文本的简单Servlet <BR><BR>　　 下面是一个输出纯文本的简单Servlet。 <BR><BR>　　 3.2.1 HelloWorld.java <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR><BR>public class HelloWorld extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>PrintWriter out = response.getWriter(); <BR>out.println("Hello World"); <BR>} <BR>} <BR><BR><BR><BR><BR>　　 3.2.2 Servlet的编译和安装 <BR><BR>　　 不同的Web服务器上安装Servlet的具体细节可能不同，请参考Web服务器文档了解更权威的说明。假定使用Java Web Server（JWS）2.0，则Servlet应该安装到JWS安装目录的servlets子目录下。在本文中，为了避免同一服务器上不同用户的Servlet命名冲突，我们把所有Servlet都放入一个独立的包hall中；如果你和其他人共用一个服务器，而且该服务器没有“虚拟服务器”机制来避免这种命名冲突，那么最好也使用包。把Servlet放入了包hall之后，HelloWorld.java实际上是放在servlets目录的hall子目录下。 <BR><BR>　　 大多数其他服务器的配置方法也相似，除了JWS之外，本文的Servlet和JSP示例已经在BEA WebLogic和IBM WebSphere 3.0下经过测试。WebSphere具有优秀的虚拟服务器机制，因此，如果只是为了避免命名冲突的话并非一定要用包。 <BR><BR>　　 对于没有使用过包的初学者，下面我们介绍编译包里面的类的两种方法。 <BR><BR>　　 一种方法是设置CLASSPATH，使其指向实际存放Servlet的目录的上一级目录（Servlet主目录），然后在该目录中按正常的方式编译。例如，如果Servlet的主目录是C:＼JavaWebServer＼servlets，包的名字（即主目录下的子目录名字）是hall，在Windows下，编译过程如下： <BR>DOS＞ set CLASSPATH=C:＼JavaWebServer＼servlets;%CLASSPATH% <BR>DOS＞ cd C:＼JavaWebServer＼servlets＼hall <BR>DOS＞ javac YourServlet.java <BR><BR><BR><BR>　　 第二种编译包里面的Servlet的方法是进入Servlet主目录，执行“javac directory＼YourServlet.java”（Windows）或者“javac directory/YourServlet.java”（Unix）。例如，再次假定Servlet主目录是C:＼JavaWebServer＼servlets，包的名字是hall，在Windows中编译过程如下： <BR>DOS＞ cd C:＼JavaWebServer＼servlets <BR>DOS＞ javac hall＼YourServlet.java <BR><BR><BR><BR>　　 注意在Windows下，大多数JDK 1.1版本的javac要求目录名字后面加反斜杠(＼)。JDK1.2已经改正这个问题，然而由于许多Web服务器仍旧使用JDK 1.1，因此大量的Servlet开发者仍旧在使用JDK 1.1。 <BR><BR>　　 最后，Javac还有一个高级选项用于支持源代码和.class文件的分开放置，即你可以用javac的“-d”选项把.class文件安装到Web服务器所要求的目录。 <BR><BR>　　 3.2.3 运行Servlet <BR><BR>　　 在Java Web Server下，Servlet应该放到JWS安装目录的servlets子目录下，而调用Servlet的URL是http://host/servlet/ServletName。注意子目录的名字是servlets（带“s”），而URL使用的是“servlet”。由于HelloWorld Servlet放入包hall，因此调用它的URL应该是http://host/servlet/hall.HelloWorld。在其他的服务器上，安装和调用Servlet的方法可能略有不同。 <BR><BR>　　 大多数Web服务器还允许定义Servlet的别名，因此Servlet也可能用http://host/any-path/any-file.html形式的URL调用。具体如何进行配置完全依赖于服务器类型，请参考服务器文档了解细节。 <BR><BR>　　 3.3 输出HTML的Servlet <BR><BR>　　 大多数Servlet都输出HTML，而不象上例一样输出纯文本。要输出HTML还有两个额外的步骤要做：告诉浏览器接下来发送的是HTML；修改println语句构造出合法的HTML页面。 <BR><BR>　　 第一步通过设置Content-Type（内容类型）应答头完成。一般地，应答头可以通过HttpServletResponse的setHeader方法设置，但由于设置内容类型是一个很频繁的操作，因此Servlet API提供了一个专用的方法setContentType。注意设置应答头应该在通过PrintWriter发送内容之前进行。下面是一个实例： <BR><BR>　　 HelloWWW.java <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR><BR>public class HelloWWW extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>out.println("＜!DOCTYPE HTML PUBLIC ＼"-//W3C//DTD HTML 4.0 " + <BR>"Transitional//EN＼"＞＼n" + <BR>"＜HTML＞＼n" + <BR>"＜HEAD＞＜TITLE＞Hello WWW＜/TITLE＞＜/HEAD＞＼n" + <BR>"＜BODY＞＼n" + <BR>"＜H1＞Hello WWW＜/H1＞＼n" + <BR>"＜/BODY＞＜/HTML＞"); <BR>} <BR>} <BR><BR><BR><BR><BR>　　 3.4 几个HTML工具函数 <BR><BR>　　 通过println语句输出HTML并不方便，根本的解决方法是使用JavaServer Pages（JSP）。然而，对于标准的Servlet来说，由于Web页面中有两个部分（DOCTYPE和HEAD）一般不会改变，因此可以用工具函数来封装生成这些内容的代码。 <BR><BR>　　 虽然大多数主流浏览器都会忽略DOCTYPE行，但严格地说HTML规范是要求有DOCTYPE行的，它有助于HTML语法检查器根据所声明的HTML版本检查HTML文档合法性。在许多Web页面中，HEAD部分只包含＜TITLE＞。虽然许多有经验的编写者都会在HEAD中包含许多META标记和样式声明，但这里只考虑最简单的情况。 <BR><BR>　　 下面的Java方法只接受页面标题为参数，然后输出页面的DOCTYPE、HEAD、TITLE部分。清单如下： <BR><BR>　　 ServletUtilities.java <BR>package hall; <BR><BR>public class ServletUtilities { <BR>public static final String DOCTYPE = <BR>"＜!DOCTYPE HTML PUBLIC ＼"-//W3C//DTD HTML 4.0 Transitional//EN＼"＞"; <BR><BR>public static String headWithTitle(String title) { <BR>return(DOCTYPE + "＼n" + <BR>"＜HTML＞＼n" + <BR>"＜HEAD＞＜TITLE＞" + title + "＜/TITLE＞＜/HEAD＞＼n"); <BR>} <BR><BR>// 其他工具函数的代码在本文后面介绍 <BR>} <BR><BR><BR><BR><BR>　　 HelloWWW2.java <BR><BR>　　 下面是应用了ServletUtilities之后重写HelloWWW类得到的HelloWWW2： <BR>package hall; <BR><BR>import java.io.*; <BR>import javax.servlet.*; <BR>import javax.servlet.http.*; <BR><BR>public class HelloWWW2 extends HttpServlet { <BR>public void doGet(HttpServletRequest request, <BR>HttpServletResponse response) <BR>throws ServletException, IOException { <BR>response.setContentType("text/html"); <BR>PrintWriter out = response.getWriter(); <BR>out.println(ServletUtilities.headWithTitle("Hello WWW") + <BR>"＜BODY＞＼n" + <BR>"＜H1＞Hello WWW＜/H1＞＼n" + <BR>"＜/BODY＞＜/HTML＞"); <BR>} <BR>} <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP概述、元素、语法、解释（2）</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:45 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>JSP directive mso-hansi-font-family:""&gt;影响servlet 类的整体结构。它常用以下形式： <BR><BR>　　 &lt;%@ directive attribute=”value”%&gt; <BR><BR>　　 而且，您可以将多个属性写在一个语句中： <BR><BR>　　 &lt;%@ directive attribute1="value1" <BR>　　 attribute2="value2" <BR>　　 attributeN="valueN" %&gt; <BR><BR>　　 有两种主要的directive: <BR><BR>　　 page,允许您做一些类似import classes的事，定义servlet的超类（Superclass）， <BR>mso-hansi-font-family:""&gt;等； <BR><BR>　　 include,允许您将文件插入servlet类中（当JSP文件翻译为servlet时）。 <BR><BR>　　 一、JSP page Directive <BR>语法： <BR><BR>&lt;%@ page <BR>[ language="java" ] <BR>[ extends="package .class" ] <BR>[ import="{package .class | .*}, ..." ] <BR>[ session="true|false" ] <BR>[ buffer="none|8kb|sizekb" ] <BR>[ autoFlush="true|false" ] <BR>[ isThreadSafe="true|false" ] <BR>[ info="text" ] <BR>[ errorPage="relativeURL" ] <BR>[ contentType="mimeType [ ;charset=characterSet ]" | <BR>"text/html ; charset=ISO-8859-1" ] <BR>[ isErrorPage="true|false" ] <BR><BR>%&gt; <BR><BR>　　 Page directive mso-hansi-font-family:""&gt;允许您定义一些区分大小写的属性： <BR><BR>　　 (1)import = “package.class”或 import = “package.class1,..,package.classN”。 <BR>mso-hansi-font-family:""&gt; <BR>您可以定想要import的packages。例如： <BR><BR>&lt;%@ page import="java.util.*" %&gt; <BR><BR>import属性是这几个属性中唯一一个可以在一个JSP中出现多次的。 <BR><BR>　　 (2)contenType = “MIME=Type” 或contentType=“MIME-Type;charset=Character-Set” <BR>mso-hansi-font-family:""&gt; <BR>它指定输出的MIME类型。缺省为“text/html”。例如: <BR>&lt;%@ page contentType="text/plain" %&gt;" <BR><BR>在scriptlet中等价于： <BR><BR>&lt;% response.setContentType("text/plain"); %&gt; <BR><BR><BR>　　 (3)isThreadSafe = “true | false”.如果值为“true”（缺省）表示：将进行普通的servlet处理，多个请求将被一个servlet实例并行处理，在这种情况下，编程人员同步访问多个实例变量。值为“false”时表示：servlet将实现单线程模式（SingleThreadModel）,不管请求是顺序提交还是并发出现，都将提供不同的分离的servlet实例。 <BR><BR><BR><BR>　　 （4）session=”true | false”。 如果值为“true”（缺省）表示：预定义变量session（继承HttpSession）应该绑定到一个已存在的session，否则就应该创建一个并将之绑定。值为“false”时表示：将不使用session变量，如果试图使用，将在JSP向servlet转化时出现错误。 <BR><BR>　　 （5）buffer = “sizekb | none”。为JspWriter输出确定缓冲的大小。缺省由服务器而定，但至少要有8kb。 <BR><BR>　　 (6)autoflush=”true | false”。 如果值为“true mso-hansi-font-family:""&gt;”（缺省）表示：当缓冲满时将自动清空，值为“false mso-hansi-font-family:""&gt;”时表示：当缓冲满时递出一个异常，这很少使用。当buffer=”none”是若用false mso-hansi-font-family:""&gt;值是不合法的。 <BR><BR>　　 (7)extends=”package.class”。这将为servlet产生一个超类。请特别谨慎的使用这一功能，因为，服务器也许已经定义了一个。 <BR><BR>　　 (8)info = “message”。定义一个可以通过调用getServletInfo方法得到的串。 <BR><BR>　　 (9)errorPage = “URL”。指定一个JSP mso-hansi-font-family:""&gt;页面来处理任何一个可抛出的但当前页面并未处理的意外错误。 <BR><BR>　　 (10)isErrorPage = “true | false”。指定当前页面是否可以处理来自另一个页面的错误，缺省为“false”。 <BR><BR>　　 (11)language = “java” mso-hansi-font-family:""&gt;。指出以下将使用的语言。不过，不必为这一属性费心，因为，“java mso-hansi-font-family:""&gt;”既是缺省又是唯一合法的选择。 <BR><BR>二JSP include Directive 这种directive 使您可以在JSP转换为servlet时将一个文件包含进来。语法： <BR>&lt;jsp:include page="{relativeURL | &lt;%= expression %&gt;}" flush="true" /&gt;mso-hansi-font-family:";mso-font-kerning: 0pt"&gt;或 <BR>&lt;jsp:include page="{relativeURL | &lt;%= expression %&gt;}" flush="true" &gt; <BR>&lt;jsp:param name="parameterName" <BR>value="{parameterValue | &lt;%=expression %&gt;}" /&gt;+ <BR>&lt;/jsp:include&gt; <BR><BR>　　 URL mso-hansi-font-family:""&gt;通常相对于指向它的JSP页面，但是，普遍使用相对“URL”，您可以使用一个斜杠“/”作为URL的开始来告知系统URL mso-hansi-font-family:""&gt;相对的Web server的主路径。被包含的文件将以规则的JSP形式来解析，因此，您可以在其中使用静态HTML,scripting elements,directives,和 actions。 <BR><BR>　　 让我们来看一个例子，许多站点在每一个页面上包含一个小型的导航条。它通常出现在页面的顶部或左右侧，并包含在每一个页面里。这用include directive 来实现是很自然的，若用规则的HTML mso-hansi-font-family:""&gt;来把这些语句拷到每一个页面无疑是个梦魇。请看下列代码： <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt; JSP教程&lt;/TITLE&gt; <BR>&lt;/HEAD&gt; <BR>&lt;BODY&gt; <BR>&lt;%@ include file="/navbar.html" %&gt; <BR>&lt;!— 本页面的其他部分... --&gt; <BR>&lt;/BODY&gt; <BR>&lt;/HTML&gt; <BR>　　 因为文件是在页面被转换时插入的，因此，如果导航条改变了，您需要将所有指向它的JSP mso-hansi-font-family:""&gt;页面全部重新编译一次。如果您的导航条并不常改变这样做无疑是高效的，但是，如果您的被包含文件更改频繁，则建议您使用jsp:include action（后面将谈到）来替代，它在页面被请求时才包含文件。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

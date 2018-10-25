@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之十二(JSP生成jpeg图片用于投票)</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:30 </span>
 一、前言 <br><br>　　 本文原作者为Tony Wang ，该文章涉及到文件的读写和jpg图片的自动生成。利用jsp+servlet的技术，jsp调用servlet生成图片。 <br><br>二、首文件index.jsp如下：<br><br>&lt;%-- <br><br>Author: Tony Wang <br><br>E-mail: lucky_tony@163.net <br><br>Date: 2001-01-01 <br><br>如果对程序有什么疑问，可以和我联系， 另外程序如果有什么bug，麻烦指出！！ <br><br>--%&gt;<br><br>&lt;%@ page contentType=&quot;text/html;charSet=gb2312&quot;%&gt;<br>&lt;%<br>response.setHeader(&quot;Cache-Control&quot;,&quot;no-store&quot;);<br>response.setDateHeader(&quot;Expires&quot;,0);<br>%&gt;<br>&lt;%!<br>public String[] getQuestion(String s)<br>{<br>String[] strQ = new String[4];<br>String strTemp = null;<br>int i;<br>java.io.RandomAccessFile rf = null;<br>try {<br>rf = new java.io.RandomAccessFile(s,&quot;r&quot;);<br>} catch(Exception e)<br>{<br>System.out.println(e);<br>System.exit(0);<br>}<br>for(i=0;i&lt;4;i++) <br>{<br>try {<br>strTemp = rf.readLine();<br>} catch(Exception e) {<br>strTemp = &quot;None Question&quot;;<br>}<br>if(strTemp==null)strTemp = &quot;None Question&quot;;<br>strQ[i] = strTemp;<br>}<br>return strQ;<br>}<br><br>%&gt;<br><br>&lt;%<br>String s = null;<br>String[] question = new String[4];<br><br>s = request.getRealPath(&quot;question.txt&quot;);<br>question = getQuestion(s);<br>%&gt;<br><br><br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;title&gt;&lt;/title&gt;<br>&lt;link href=&quot;css.css&quot; rel=&quot;StyleSheet&quot; type=&quot;text/css&quot;&gt;&lt;/link&gt;<br>&lt;/head&gt;<br><br>&lt;body&gt;<br>&lt;table width=&quot;180&quot; border=&quot;1&quot; bordercolor=&quot;#999999&quot;&gt;<br>&lt;tr&gt;<br>&lt;td align=center&gt;冰帆调查&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;form name=frm method=post action=write.jsp&gt;<br>&lt;tr&gt; <br>&lt;td&gt;<br>&lt;%<br>String ss = null;<br>for (int i=0;i&lt;4;i++)<br>{<br>ss = &quot;&lt;input type=&quot;radio&quot; name=&quot;choice&quot; value=&quot; + i+&quot;&gt;&quot;+<br><br>(char)('A'+i)+&quot;、&quot;+ question[i]+&quot;&lt;br&gt;&quot;;<br>out.println(ss);<br>}<br>%&gt;<br>&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;<br>&lt;td align=center&gt;&lt;input type=submit value=&quot;我 投 一 票&quot;&gt;&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;<br>&lt;td align=center&gt;&lt;img src=&quot;/vote/servlet/VoteImage&quot; width=150 <br><br>height=100&gt;&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;/form&gt;<br>&lt;/table&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br><br>三、写文件write.jsp<br><br>&lt;%--<br>Author: Tony Wang<br>E-mail: lucky_tony@163.net<br>Date: 2001-01-01<br>如果对程序有什么疑问，可以和我联系，<br>另外程序如果有什么bug，麻烦指出！！<br>--%&gt;<br>&lt;%!<br>public int[] getNumber(String s)<br>{<br>int[] mCount = new int[4];<br>String strTemp = null;<br>int i;<br>java.io.RandomAccessFile rf = null;<br>try {<br>rf = new java.io.RandomAccessFile(s,&quot;r&quot;);<br>} catch(Exception e)<br>{<br>System.out.println(e);<br>System.exit(0);<br>}<br>for(i=0;i&lt;4;i++) <br>{<br>try {<br>strTemp = rf.readLine();<br>} catch(Exception e) {<br>strTemp = &quot;0&quot;;<br>}<br>if(strTemp==null)strTemp = &quot;0&quot;;<br>mCount[i] = new Integer(strTemp).intValue();<br>}<br>return mCount;<br>}<br><br>public void setNumber(String s,int[] x)<br>{<br>try {<br>java.io.PrintWriter pw = new java.io.PrintWriter(new java.io.<br><br>FileOutputStream(s));<br>for (int i=0;i&lt;4;i++){<br>pw.println(x[i]+&quot;&quot;);<br>}<br>pw.close();<br>} catch(Exception e) {<br>System.out.println(&quot;Write file error:&quot;+e.getMessage());<br>}<br>}<br>%&gt;<br><br><br>&lt;%<br>String tmp = null;<br>int choice = -1;<br>int[] count = new int[4];<br>tmp = request.getParameter(&quot;choice&quot;);<br>if (tmp==null){<br>} else {<br>choice = new Integer(tmp).intValue();<br>}<br>/////////////<br>String s = request.getRealPath(&quot;count.txt&quot;);<br>if(choice&gt;=0){<br>count = getNumber(s);<br>count[choice]++;<br>setNumber(s,count);<br>}<br><br>response.sendRedirect(&quot;index.jsp&quot;);<br>%&gt;<br>四、servlet原代码：VoteImage.java :<br><br>/*<br>Author: Tony Wang<br>E-mail: lucky_tony@163.net<br>Date: 2001-01-01<br>如果对程序有什么疑问，可以和我联系，<br>另外程序如果有什么bug，麻烦指出！！<br>*/<br>import java.io.*;<br>import java.util.*;<br>import com.sun.image.codec.jpeg.*;<br>import javax.servlet.*;<br>import javax.servlet.http.*;<br>import java.awt.*;<br>import java.awt.geom.*;<br>import java.awt.image.*;<br>public class VoteImage extends HttpServlet <br>{<br>private String strFile = null;<br>private Color color[]={Color.red,Color.black,Color.orange,<br><br>Color.green};<br>private int baseAng = 30;<br>public void doGet(HttpServletRequest request,HttpServletResponse<br><br>response)<br>throws ServletException,IOException <br>{<br>strFile = request.getRealPath(&quot;count.txt&quot;);<br>float[][] xy = new float[4][2];<br>xy = getNumAndPercent(strFile);<br><br>int[] ang = new int[4];<br>ang[0] = (int)(xy[0][1]*360);<br>ang[1] = (int)(xy[1][1]*360);<br>ang[2] = (int)(xy[2][1]*360);<br>ang[3] = 360-ang[0]-ang[1]-ang[2];<br><br>response.setHeader(&quot;Cache-Control&quot;,&quot;no-store&quot;);<br>response.setDateHeader(&quot;Expires&quot;,0);<br>response.setContentType(&quot;image/jpeg&quot;);<br>ServletOutputStream out=response.getOutputStream();<br>BufferedImage image=new BufferedImage(150,100,BufferedImage.<br><br>TYPE_INT_RGB);<br>Graphics2D g=(Graphics2D)image.getGraphics();<br>g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,<br><br>RenderingHints.VALUE_ANTIALIAS_ON);<br>g.setColor(Color.white);<br>g.fillRect(0,0,150,100); <br>AffineTransform at = null;<br>Arc2D arc = null;<br>int fromAng = baseAng;<br><br>at = AffineTransform.getRotateInstance((-20*java.lang.Math.PI)<br><br>/180,45,37);<br>g.setTransform(at);<br><br>int r =6;<br>int dx = (int)(r*java.lang.Math.cos((baseAng+ang[0])/2.0*java.<br><br>lang.Math.PI/180));<br>int dy = (int)(r*java.lang.Math.sin((baseAng+ang[0])/2.0*java.<br><br>lang.Math.PI/180));<br>arc = new Arc2D.Double(10+dx,24-dy,80,50,fromAng,ang[0],Arc2D.PIE);<br>g.setColor(color[0]);<br>g.fill(arc);<br>fromAng+=ang[0];<br>for (int i=1;i&lt;4;i++)<br>{<br>g.setColor(color[i]);<br>arc = new Arc2D.Double(10,24,80,50,fromAng,ang[i],Arc2D.PIE);<br>g.fill(arc);<br>fromAng+=ang[i];<br>if (fromAng&gt;360)<br>{<br>fromAng-=360;<br>}<br>}<br><br>at = AffineTransform.getRotateInstance(0,arc.getCenterX(),arc.<br><br>getCenterY());<br>g.setTransform(at);<br><br>for (int i=0;i&lt;4;i++){<br>g.setColor(color[i]);<br>g.fillRect(100,15*i+20,10,10);<br>g.drawString((char)('A'+i)+&quot;&quot;,120,15*i+20+8);<br>}<br>JPEGImageEncoder encoder=JPEGCodec.createJPEGEncoder(out);<br>encoder.encode(image);<br>out.close();<br>}<br><br>public void doPost(HttpServletRequest request,HttpServletResponse<br><br>response)<br>throws ServletException,IOException <br>{<br>doGet(request,response);<br>}<br><br>public synchronized float[][] getNumAndPercent(String sFileName)<br>{<br>float xx[][] = new float[4][2];<br>int totalNum = 0 ;<br>String strTemp = null;<br>int i = 0;<br>java.io.RandomAccessFile rf = null;<br>try <br>{<br>rf = new java.io.RandomAccessFile (sFileName,&quot;r&quot;);<br>} catch(Exception e)<br>{<br>System.out.println(e);<br>System.exit(0);<br>}<br>for (i=0;i&lt;4;i++)<br>{<br>int m=0;<br>try {<br>strTemp = rf.readLine();<br>} catch (Exception e){<br>strTemp = &quot;0&quot;;<br>}<br><br>if (strTemp == null) strTemp = &quot;0&quot;;<br>m = new Integer(strTemp).intValue();<br>xx[i][0]=m;<br>totalNum += m;<br>}<br>if (totalNum==0) totalNum=1;<br>for ( i=0;i&lt;4;i++){<br>xx[i][1] = xx[i][0]/totalNum;<br>}<br>return xx;<br>}<br>}<br><br>五、在index.jsp目录下建立question.txt和count.txt文件分别用来保存投<br><br>票的问题和投票的数量，用户投票后，就修改count.txt的值。<br><br>为了对原作者表示感谢，这2个文件内容不变化，如下：<br><br>question.txt:<br><br>Yes,I think so! <br><br>No,I dont think so! <br><br>Sorry,I dont know the answer!<br><br><br><br>count.txt:<br><br>12<br><br>9<br><br>5<br><br>9 <br><br>六、目录结构：<br><br>(1)jsp文件和txt文件同一个目录<br><br>(2).java文件是servlet目录下<br><br>七、测试：<br><br>http://[server:port]/dir/index.jsp<br><br> <br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

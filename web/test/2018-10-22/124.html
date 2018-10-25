@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之十(JavaMail API发邮件[servlet])</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:31 </span>
 一：条件 必须下载sun公司的JavaMail API包，地址为：http://java.sun.com/products/javamail/<br><br>我这里用的是1.2版本，将相关包(jar文件)加到CLASSPATH中<br><br>二：该程序非常简单，不需要我们考虑很多地层的东西，因为API都帮我们做好了这些事情，下面是一个简单的发邮件的Servlet：(对于熟悉的人来说，恐怕是再简单不过了的一个servlet)<br><br>import java.io.*;<br><br>import javax.servlet.*;<br><br>import javax.servlet.http.*; <br><br>import sun.net.smtp.*; <br><br>public class SendMailServlet extends HttpServlet { <br><br>public static String MAIL_FROM = &quot;from&quot;; <br><br>public static String MAIL_TO = &quot;to&quot;; <br><br>public static String MAIL_SUBJECT = &quot;subject&quot;; <br><br>public static String MAIL_BODY = &quot;body&quot;; <br><br>public static String MAIL_HOST = &quot;mailhost&quot;; <br><br>public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException <br><br>{<br><br>resp.setContentType(&quot;text/html; charset=gb2312&quot;); <br><br>PrintWriter out = resp.getWriter(); <br><br>out.println(&quot;&lt;form method=POST action=&quot;&quot; + req.getRequestURI() + &quot;&quot;&gt;&quot;); <br><br>out.println(&quot;&lt;table&gt;&quot;);<br><br>out.println(&quot;&lt;tr&gt;&lt;td&gt;send mail server:&lt;/td&gt;&quot;); <br><br>out.println(&quot;&lt;td&gt;&lt;input type=text name=&quot; + MAIL_HOST + &quot; size=30&gt;&lt;/td&gt;&lt;/tr&gt;&quot;); <br><br>out.println(&quot;&lt;tr&gt;&lt;td&gt;from:&lt;/td&gt;&quot;); <br><br>out.println(&quot;&lt;td&gt;&lt;input type=text name=&quot; + MAIL_FROM + &quot; size=30&gt;&lt;/td&gt;&lt;/tr&gt;&quot;); <br><br>out.println(&quot;&lt;tr&gt;&lt;td&gt;to:&lt;/td&gt;&quot;); <br><br>out.println(&quot;&lt;td&gt;&lt;input type=text name=&quot; + MAIL_TO + &quot; size=30&gt;&lt;/td&gt;&lt;/tr&gt;&quot;);<br><br>out.println(&quot;&lt;tr&gt;&lt;td&gt;subject:&lt;/td&gt;&quot;); <br><br>out.println(&quot;&lt;td&gt;&lt;input type=text name=&quot; + MAIL_SUBJECT + &quot; size=30&gt;&lt;/td&gt;&lt;/tr&gt;&quot;); <br><br>out.println(&quot;&lt;tr&gt;&lt;td&gt;text:&lt;/td&gt;&quot;); <br><br>out.println(&quot;&lt;td&gt;&lt;textarea name=&quot; + MAIL_BODY + &quot; cols=40 rows=10&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;/tr&gt;&quot;); <br><br>out.println(&quot;&lt;/table&gt;&lt;br&gt;&quot;); <br><br>out.println(&quot;&lt;input type=submit value=&quot;Send&quot;&gt;&quot;); <br><br>out.println(&quot;&lt;input type=reset value=&quot;Reset&quot;&gt;&quot;); <br><br>out.println(&quot;&lt;/form&gt;&quot;);<br><br>out.flush();<br><br>} <br><br>public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException <br><br>{ <br><br>resp.setContentType(&quot;text/html; charset=gb2312&quot;); <br><br>PrintWriter out = new PrintWriter(resp.getOutputStream()); <br><br>String from = req.getParameter(MAIL_FROM); <br><br>String to = req.getParameter(MAIL_TO); <br><br>String subject = req.getParameter(MAIL_SUBJECT); <br><br>String body = req.getParameter(MAIL_BODY); <br><br>String mailhost = req.getParameter(MAIL_HOST); <br><br>try <br><br>{ <br><br>SmtpClient mailer = new SmtpClient(mailhost); <br><br>mailer.from(from);<br><br>mailer.to(to);<br><br>PrintStream ps = mailer.startMessage();<br><br>ps.println(&quot;From: &quot; + from);<br><br>ps.println(&quot;To: &quot; + to); <br><br>ps.println(&quot;Subject: &quot; + subject); <br><br>ps.println(body); <br><br>mailer.closeServer(); <br><br>out.println(&quot;Success!&quot;); <br><br>} <br><br>catch (Exception ex) <br><br>{ <br><br>out.println(&quot;An error about:&quot; + ex.getMessage()); <br><br>}<br><br>out.flush();<br><br>}<br><br>public void init(ServletConfig cfg) throws ServletException <br><br>{<br><br>super.init(cfg);<br><br>}<br><br>public void destroy() <br><br>{<br><br>super.destroy(); <br><br>}<br><br>} <br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

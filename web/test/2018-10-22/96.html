@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">SCJP考题中的陷阱</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:22 </span>
 1) Two public classes in the same file. (illegal) <br><br>(2) Main method calling a non-static method. (illegal) <br><br>(3) Methods with the same name as the constructor(s). (这种题常有) <br><br>(4) Thread initiation with classes that do not have a run() method. (常考之题) <br><br>(5) Local inner classes trying to access non-final vars. (illegal) <br><br>(6) Case statements with values out of permissible range. (byte,int, short, chat) <br><br>(7) Math class being an option for immutable classes !! (totally wrong!) <br><br>(8) instanceOf is not same as instanceof. <br><br>(9) Private constructors. (legal) <br><br>(10) An assignment statement which looks like a comparison. (比如说if(a=true),对于这种题眼睛亮一点) <br><br>(11) System.exit() in try-catch-finally blocks. (finally 不会执行) <br><br>(12) Order of try-catch-finally blocks matters. (若顺序错的话: error: No try before catch) <br><br>(13) main() can be declared final. (OK) <br><br>(14) -0.0 == 0.0 is true. <br><br>(15) A class without abstract methods can still be declared abstract. <br><br>(16) RandomAccessFile descends from Object and implements DataInput and DataOutput. <br><br>(17) Map does not implement Collection. <br><br>(18) Dictionary is a class, not an interface. <br><br>(19) Collection is an Interface where as Collections is a helper class. (这题我倒没见过,但还真容易看混) <br><br>(20) Class declarations can come in any order. <br>(也就是说: class Child extends Parents{} <br>class Parents{} <br>这种顺序是可以的.) <br><br>(21) Forward references to variables gives compiler error. <br><br>(22) Multi dimensional arrays can be sparce. <br>(这句话是说: 多维数组中子数组不一定必须有一定个数的元素,比如我们把一个二维数组看成一个矩阵,那么行与列中的元素可以不完整,可以不对齐.) <br><br>(23) Arrays, whether local or class-level, are always initialized. <br><br>(24) Strings are initialized to null, not empty string. <br><br>(25) An empty string is NOT the same as a null string. <br><br>(26) A declaration cannot be labelled. <br><br>(27) &quot;continue&quot; must be in a loop(for, do, while). It cannot appear in case constructs. <br><br>(28) Primitive array types can never be assigned to each other, eventhough the primitives themselves can be assigned. <br>(也就是说: ArrayofLongPrimitives = ArrayofIntegerPrimitives 会编译出错,但 longvar = intvar 是合法的) <br><br>(29) A constructor can throw any exception. <br><br>(30) Initilializer blocks are executed in the order of declaration. <br><br>(31) Instance initializer(s) gets executed ONLY IF the objects are constructed. <br><br>(32) All comparisons involving NaN and a non-Nan would always result false. (对大多数朋友来说这可是个盲点噢) <br><br>(33) Default type of a numeric literal with a decimal point is double. <br>(我在这里把Java成员变量默认初始化原则写一下: <br>成员变量类型 取值 <br>byte 0 <br>short 0 <br>int 0 <br>long 0L <br>char &amp;acute;u0000&amp;acute; <br>float 0.0F <br>double 0.0D <br>boolean false <br>所有引用类型 null ) <br><br>(34) integer (and long ) operations / and % can throw ArithmeticException while float / and % will never, even in case of division by zero. <br><br>(35) == gives compiler error if the operands are cast-incompatible. <br><br>(36) You can never cast objects of sibling classes( sharing the same parent ), even with an explicit cast. <br><br>(37) .equals returns false if the object types are different.It does not raise a compiler error. <br><br>(38) No inner class can have a static member.(but static inner class can) <br><br>(39) File class has NO methods to deal with the contents of the file.(also the existing directory) <br><br>(40) InputStream and OutputStream are abstract classes, while DataInput and DataOutput are interfaces. <br><br><br>当然以上这些都是从题目中总结出来的技巧,其实书上也都有,大家还是多看看书噢. 又大致翻译了一下，有意见可以提出来大家讨论 <br>(1) Two public classes in the same file. (illegal) <br>同一个文件里有两个public类。(非法) <br><br>(2) Main method calling a non-static method. (illegal) <br>在main(String[] args)方法内调用一个非静态方法。(非法) <br><br>(3) Methods with the same name as the constructor(s). (这种题常有) <br>与Constructor(s)有相同名字的方法。 <br><br>(4) Thread initiation with classes that do not have a run() method. (常考之题) <br>初始化了一个没有run()方法的线程类。 <br><br>(5) Local inner classes trying to access non-final vars. (illegal) <br>内部类尝试访问非final变量(非法) <br><br>(6) Case statements with values out of permissible range. (byte,int, short, chat) <br>选择语句case中，没有使用允许的值。如(byte,int,short,char)等 <br><br>(7) Math class being an option for immutable classes !! (totally wrong!) <br>Math类作为不可改变类。(完全错误) (请提意见) <br><br>(8) instanceOf is not same as instanceof. <br>instanceOf 不是 instanceof。 <br><br>(9) Private constructors. (legal) <br>私有 的Constructor。 (合法) <br><br>(10) An assignment statement which looks like a comparison. <br>一个 赋值语句 看起来像 比较语句。 <br>比如说if(a=true),和if(a==true)。对于这种题眼睛亮一点。 <br><br>(11) System.exit() in try-catch-finally blocks. (finally 不会执行) <br>在try-catch-final块中的退出语句。 (finally不会执行) <br><br>(12) Order of try-catch-finally blocks matters. (若顺序错的话: error: No try before catch) <br>try-catch-final块的顺序问题。 <br><br>(13) main() can be declared final. (OK) <br>main()方法 可以声明为 final. <br><br>(14) -0.0 == 0.0 is true. <br>如题。 <br><br>(15) A class without abstract methods can still be declared abstract <br>没有 抽象方法的类，仍然可以定义为抽象类。 <br><br>(16) RandomAccessFile descends from Object and implements DataInput and DataOutput. <br>RandomAccessFile 类继承Object，并且实现了DataInput和DataOutput接口。 <br><br>(17) Map does not implement Collection. <br>Map 并不实现 Collection. <br><br>(18) Dictionary is a class, not an interface. <br>Dictionary 是一个类，不是接口。 <br><br>(19) Collection is an Interface where as Collections is a helper class. (这题我倒没见过,但还真容易看混) <br>Collection是一个接口，但 Collections却是一个辅助类。 <br><br>(20) Class declarations can come in any order. <br>(也就是说: class Child extends Parents{} <br>class Parents{} <br>这种顺序是可以的.) <br>可以以任何顺序申明类。 <br><br>(21) Forward references to variables gives compiler error. <br>把 reference 给 变量，会产生编译错误。 (请提意见) <br><br>(22) Multi dimensional arrays can be sparce. <br>(这句话是说: 多维数组中子数组不一定必须有一定个数的元素,比如我们把一个二维数组看成一个矩阵,那么行与列中的元素可以不完整,可以不对齐.) <br>如jiayuan所说。 <br><br>(23) Arrays, whether local or class-level, are always initialized. <br>数组，无论是当前的，还是类等级的，都会被初始化。 <br><br>(24) Strings are initialized to null, not empty string. <br>String 是被初始化为 null,不是空字符。 <br><br>(25) An empty string is NOT the same as a null string. <br>一个空字符串 不是 一个null字符。 <br><br>(26) A declaration cannot be labelled. <br>一个声明语句不能被标记。 <br><br>(27) &quot;continue&quot; must be in a loop(for, do, while). It cannot appear in case constructs. <br>“continue”已经要在一个循环里(如for,do,while)，它不能在case语句中出现。 <br><br>(28) Primitive array types can never be assigned to each other, eventhough the primitives themselves can be assigned. <br>(也就是说: ArrayofLongPrimitives = ArrayofIntegerPrimitives 会编译出错, 但 longvar = intvar 是合法的) <br><br>Primitive(int,char,long等)数组是不能互相赋值的，即使它们本身可以。 <br>解释见jiayuan所说。 <br><br>(29) A constructor can throw any exception. <br>一个Constructor可以抛出任何异常。 <br><br>(30) Initilializer blocks are executed in the order of declaration. <br>初始化块是按照声明的顺序执行的。(请提意见) <br><br>(31) Instance initializer(s) gets executed ONLY IF the objects are constructed. <br>实例初始化语句块只有在它建立后才会被执行。 <br><br>(32) All comparisons involving NaN and a non-Nan would always result false. (对大多数朋友来说这可是个盲点噢) <br>所有关于 NaN(Not a Number) 和 non-NaN 的比较，都返回false. <br>这条很重要。 <br><br>(33) Default type of a numeric literal with a decimal point is double. <br>我在这里把Java成员变量默认初始化原则写一下: <br>成员变量类型 取值 <br>byte 0 <br>short 0 <br>int 0 <br>long 0L <br>char &amp;acute;u0000&amp;acute; <br>float 0.0F <br>double 0.0D <br>boolean false <br>所有引用类型 null <br><br>(34) integer (and long ) operations / and % can throw ArithmeticException while float / and % will never, even in case of division by zero. <br>integer和long 操作 /和% 的话， 会抛出ArithmeticException， <br>但是 float形不会，即使是除以0。 <br><br>(35) == gives compiler error if the operands are cast-incompatible. <br>==会产生编译错误，如果两边 不兼容的话。 <br><br>(36) You can never cast objects of sibling classes( sharing the same parent ), even with an explicit cast. <br>你永远不可能 转化具有同一个超类的类的对象，即使是刻意转化。(请提意见) <br><br>(37) .equals returns false if the object types are different.It does not raise a compiler error. <br>equals() 返回 false 如果对象类型不同，但不产生 编译错误。 <br><br>(38) No inner class can have a static member.(but static inner class can) <br>没有内部类 可以拥有 静态成员。(但静态内部类可以) <br><br>(39) File class has NO methods to deal with the contents of the file.(also the existing directory) <br>File类没有 任何 处理文件内容的方法。(当然，存在的目录也一样) <br><br>(40) InputStream and OutputStream are abstract classes, while DataInput and DataOutput are interfaces. <br>InputStream 和 OutputStream 是 抽象类,但是 DataInput 和 DataOutput是 接口。 <br>　 <br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

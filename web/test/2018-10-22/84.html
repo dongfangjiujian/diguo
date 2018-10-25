@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">Jsp中调用Oracle存储过程的小例子</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:17 </span>
 *执行一条insert语句并传参数*/<br>create or replace procedure p_test2(i in number) as<br>begin<br>insert into t values (i,'x'||to_char(i));<br>commit;<br>end;<br>/<br><br>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html;charset=gb2312&quot;%&gt;<br>&lt;%@page import=&quot;java.sql.*&quot;%&gt;<br>&lt;html&gt;<br>&lt;body&gt;<br>&lt;table&gt;<br>&lt;tr&gt;&lt;td&gt;aaa&lt;/td&gt;&lt;td&gt;bbb&lt;/td&gt;&lt;/tr&gt;<br>&lt;%<br>String driver = &quot;oracle.jdbc.driver.OracleDriver&quot;;<br>String strUrl = &quot;jdbc:oracle:thin:@192.168.1.6:1521:db&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Class.forName(driver);<br>&nbsp;&nbsp;&nbsp;&nbsp;Connection conn = DriverManager.getConnection(strUrl, &quot;scott&quot;, &quot;tiger&quot;);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;String procedure = &quot;{call p_test2 (?) }&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;CallableStatement cstmt = conn.prepareCall(procedure);<br>&nbsp;&nbsp;&nbsp;&nbsp;cstmt.setInt(1,33);<br>&nbsp;&nbsp;&nbsp;&nbsp;cstmt.executeUpdate();<br><br>&nbsp;&nbsp;&nbsp;&nbsp;Statement stmt = conn.createStatement();<br>&nbsp;&nbsp;&nbsp;&nbsp;ResultSet rs = stmt.executeQuery(&quot;select * from t&quot;);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;while(rs.next())<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;tr&gt;&lt;td&gt;&quot; + rs.getString(1) + &quot;&lt;/td&gt;&lt;td&gt;&quot; + rs.getString(2) + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;rs.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;stmt.close();<br>&nbsp;&nbsp;&nbsp;&nbsp;conn.close();<br>%&gt;<br>&lt;/table&gt;<br>&lt;p&gt;<br>&lt;%<br>out.print(conn.isClosed());<br>%&gt;<br><br>&lt;/body&gt;<br>&lt;/html&gt;<br>&lt;/body&gt; <br>&lt;/html&gt; <br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

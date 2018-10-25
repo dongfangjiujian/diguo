@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">怎么在JSP中跳转到别一页面</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:45 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>在JSP中使用jsp forward Action来实现页面的跳转功能。 <BR><BR>　　 语法： <BR><BR>&lt;jsp:forward page="{relativeURL|&lt;%= expression %&gt;}"/&gt; 或 <BR>&lt;jsp:forward page="{relativeURL|&lt;%= expression %&gt;}"&gt; <BR>&lt;jsp:param name="parameterName" <BR>value="{parameterValue|&lt;%= expression %&gt;}"/&gt;+&lt;/jsp:forward&gt; <BR><BR>　　 这个action使您可以将request向前到另外一个页面。它只有一个属性，page。Page应有一个相对的URL组成。这可以是一个静态的值或者是能够在被请求的时候计算得到的值，就如下面两个例子一般： <BR><BR>&lt;jsp:forward page="/utils/errorReporter.jsp"/&gt; <BR>&lt;jsp:forward page="&lt;%= someJavaExpression %&gt;"/&gt; <BR>!supportEmptyParas]&gt; <BR><BR>　　 现在以一个具体例子来说明：在test1.jsp中使用forward使其跳转到test2.jsp页面中。 <BR><BR>Test1.jsp <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt;forward test&lt;/TITLE&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;/HEAD&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;BODY BGCOLOR="#FFFFFF"&gt; <BR>&lt;!--跳转到test2.jsp--!&gt; <BR>&lt;jsp:forward page="/test2.jsp"/&gt; <BR>&lt;/BODY&gt; <BR>&lt;/HTML&gt; <BR>!supportEmptyParas]&gt; <BR>test2.jsp <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt; forward test &lt;/TITLE&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;/HEAD&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;BODY BGCOLOR="#FFFFFF"&gt; <BR>&lt;%out.println("这是jsp2.jsp页面产生出的输出");%&gt; <BR>&lt;/BODY&gt; <BR>&lt;/HTML&gt; <BR>!supportEmptyParas]&gt; <BR>　　 运行test1.jsp，可在浏览器中看见："这是jsp2.jsp页面产生出的输出"的输出信息。但是如果你在test1.jsp和test2.jsp这两个页面中有参数传递怎么办呢？用get方式吧，不但总的长度有限制，使用现在十分不方便，而且有时候还不安全。其实我们完全可以使用jsp1.1中给forward里提供的para属性就可以解决。现以test3.jsp和test4.jsp来说明。 <BR><BR>!supportEmptyParas]&gt; <BR>Test1.jsp <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt; forward test &lt;/TITLE&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;/HEAD&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;BODY BGCOLOR="#FFFFFF"&gt; <BR>&lt;jsp:forward page="/test4.jsp"&gt; <BR>&lt;jsp:param name="name" value="powerman"/&gt; <BR>&lt;jsp:param name="address" value=" 北京西大街188号"/&gt; <BR>&lt;/jsp:forward&gt; <BR>&lt;/BODY&gt; <BR>&lt;/HTML&gt; <BR>!supportEmptyParas]&gt; <BR>test2.jsp <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt;forward test&lt;/TITLE&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;/HEAD&gt; <BR>!supportEmptyParas]&gt; <BR>&lt;BODY BGCOLOR="#FFFFFF"&gt; <BR>&lt;% <BR>out.println("这是jsp4.jsp页面产生出的输出"+"&lt;br&gt;"); <BR>out.println("姓名："+request.getParameter("name")+"&lt;br&gt;"); <BR>out.println("地址："+request.getParameter("address")+"&lt;br&gt;"); <BR>!supportEmptyParas]&gt; <BR>%&gt; <BR>&lt;/BODY&gt; <BR>&lt;/HTML&gt; <BR><BR>　　 运行test3.jsp，可在浏览器中看见： <BR><BR>　　 "这是jsp4.jsp页面产生出的输出 <BR>　　 姓名：powerman <BR>　　 地址：北京西大街188号" <BR><BR>的输出信息 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

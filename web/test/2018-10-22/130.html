@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之四(Orion App Server的安装)</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:33 </span>
 Orion这个东西，小巧，但是功能却非常多，废话不讲，看它目前的支持就知道了： <br>(1)Servlets/JSP <br><br>(2)EJB <br><br>(3)HTTP (注：说明不再需要Apache或者IIS等Web Server) <br><br>二、下载，安装<br><br>　　 下载地址为Orion Application Server官方站点：http://www.orionserver.com/，我下载的是Orion1.4版本。<br><br>　　 下载完，解压到一个目录，我这里用E:Orion作为例子。<br><br>三、配置<br><br>　　 (1)根据Orion官方站点的安装说明，如果要支持JSP等技术的话，要将JDK的tools.jar复制到e:orion目录下，tools.jar文件在你安装的JDK目录的lib子目录下。<br><br>到现在，其实已经成功了缺省的配置了，如果你的80端口没有被占用，而且你也想用80作为端口的话，你到这里已经完成了，否则，请继续下面的配置。<br><br>　　 (2)配置端口<br><br>在E:orionconfig目录下有个default-web-site.xml文件，找到文件中下面行：<br><br><br><br>将这行改为：<br><br><br><br>注意，我这里使用的是8008端口。<br><br>四、测试<br><br>　　 (1)启动Orion：<br><br>在Orion目录下，command方式运行：<br><br>java -jar orion.jar<br><br>将出现Orion/x.x.x initialized，我这里版本是1.4所以显示：<br><br>Orion/1.4.0 initialized<br><br>到此，说明你已经成功了。<br><br>　　 (2)执行jsp文件<br><br>在浏览器中输入：<br><br>http://localhost:8008/<br><br>出现：Orion Application Server 1.4.0 - Up and running，下面有JSP examples你可以试着运行。<br> <br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

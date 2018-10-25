@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">利用weblogic的POOL（连接池）连接数据库</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:16 </span>
 以往用JAVA存取数据库都是直接用JDBC连接数据库； <br>一般的，每个数据库客户端应用程序都要打开一个或一个以上的数据库连接， <br>而在weblogic下我们可以利用weblogic提供的POOL来存取数据库， <br>使每个数据库客户端共同分享一个或一个以上的数据库连接， <br>从而可以提高程序的执行效率和减轻数据库服务器的负担。 <br>这篇文章主要讨论的是服务器的配置和代码的实现，在这里在下不想讨论太多POOL的概念和特点， <br><br>至于POOL的概念及原理，我建议大家看看一篇题为“用连接池提高Servlet访问数据库的效率”的资料，作者是好兵。 <br><br>本文以Weblogic 5.1＋mysql 为例向大家介绍weblogic提供的POOL， <br>我分别写了两个 servlet 作为对照的例子，一个是用 mysql 提供的JDBC来直接存取MYSQL， <br>另一个是weblogic提供的POOL来存取数据库。 <br>首先请看用 mysql 提供的JDBC来直接存取MYSQL的代码： <br><br>myjdbc.java <br>----------------------------------------------------------------------------- <br>import java.io.*; <br>import java.sql.*; <br>import weblogic.db.jdbc.*; <br>import java.util.Properties; <br>import javax.servlet.*; <br>import javax.servlet.http.*; <br><br><br>public class myjdbc extends HttpServlet { <br><br>&nbsp;&nbsp;public void service(HttpServletRequest req, HttpServletResponse res) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws IOException <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;res.setContentType(&quot;text/html&quot;); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out = res.getWriter(); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World!&lt;/title&gt;&lt;/head&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;body&gt;&lt;h1&gt;TEST JDBC!&lt;/h1&gt;&lt;pre&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;Connection Conn = null; <br><br>&nbsp;&nbsp;&nbsp;try { <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>//================================================================================= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class.forName(&quot;org.gjt.mm.mysql.Driver&quot;).newInstance();&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost/zjws?user=zjxyz&amp;password=xyz&quot;); <br>//================================================================================= <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement Stmt = Conn.createStatement(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResultSet RS = Stmt.executeQuery(&quot;SELECT * from users&quot;); <br><br><br>while (RS.next()) { <br><br>out.println(RS.getString(&quot;userid&quot;)+&quot;t&quot; <br>+RS.getString(&quot;passwd&quot;) <br>+&quot;t&quot;+RS.getString(&quot;name&quot;)); <br>&nbsp;&nbsp;} <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RS.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stmt.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn.close(); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch (Exception E) { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.println(&quot;Unable to load driver.&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E.printStackTrace(); <br>&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;&quot;); <br>&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;<br>} <br><br>上面的代码功能是把mysql 的 zjws数据库里面 users 表列出来，我把装入JDBC驱动的语句做了标记 <br>下面是利用POOL读取数据库，装入JDBC驱动的语句我也做了标记，请仔细比较。 <br><br>首先是要配置好服务器，在weblogic.properties加入， <br><br>#===================================================== <br><br>weblogic.jdbc.connectionPool.mysqlPool1= <br>&nbsp;&nbsp;&nbsp;url=jdbc:mysql://localhost/zjws?user=zjxyz, <br>&nbsp;&nbsp;&nbsp;driver=org.gjt.mm.mysql.Driver, <br>&nbsp;&nbsp;&nbsp;loginDelaySecs=1, <br>&nbsp;&nbsp;&nbsp;initialCapacity=4, <br>&nbsp;&nbsp;&nbsp;maxCapacity=10, <br>&nbsp;&nbsp;&nbsp;capacityIncrement=2, <br>&nbsp;&nbsp;&nbsp;allowShrinking=true, <br>&nbsp;&nbsp;&nbsp;shrinkPeriodMins=15, <br>&nbsp;&nbsp;&nbsp;refreshMinutes=10, <br>&nbsp;&nbsp;&nbsp;allow=guest, <br>&nbsp;&nbsp;&nbsp;props=user=zjxyz;password=xyz;server=zjxyz <br><br><br>#===================================================== <br><br>把mysql 的JDBC驱动放在 /weblogic/myserver/serverclasses/ 目录下，不知为何， <br>我把jar包把放在其目录下，把路径加入 classpath 中，结果启动时说找不到class， <br>所以我只好解开的org目录及其里面的文件放进去，结果可以了。 <br><br>mysql一定要比weblogic先启动，因为weblogic在启动时要创建POOL。 <br><br><br>mysqlpool.java <br>-------------------------------------------------------------------------------------------------- <br>import java.io.*; <br>import java.sql.*; <br>import weblogic.db.jdbc.*; <br>import java.util.Properties; <br>import javax.servlet.*; <br>import javax.servlet.http.*; <br><br><br>public class mysqlpool extends HttpServlet { <br><br>&nbsp;&nbsp;public void service(HttpServletRequest req, HttpServletResponse res) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws IOException <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;res.setContentType(&quot;text/html&quot;); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out = res.getWriter(); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World!&lt;/title&gt;&lt;/head&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;body&gt;&lt;h1&gt;TEST Weblogic Pool!&lt;/h1&gt;&lt;pre&gt;&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;Connection Conn = null; <br><br>&nbsp;&nbsp;&nbsp;try { <br>//================================================================================= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Properties props =new Properties(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>props.setProperty(&quot;user&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;system&quot;); <br>props.setProperty(&quot;password&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;zjxyzken&quot;); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Driver myDriver =&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Driver) Class.forName(&quot;weblogic.jdbc.pool.Driver&quot;).newInstance(); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn =&nbsp;&nbsp;myDriver.connect(&quot;jdbc:weblogic:pool:mysqlPool1&quot;,props); <br>//================================================================================= <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statement Stmt = Conn.createStatement(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResultSet RS = Stmt.executeQuery(&quot;SELECT * from users&quot;); <br><br>while (RS.next()) { <br><br>out.println(RS.getString(&quot;userid&quot;)+&quot;t&quot; <br>+RS.getString(&quot;passwd&quot;) <br>+&quot;t&quot;+RS.getString(&quot;name&quot;)); <br>&nbsp;&nbsp;} <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RS.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stmt.close(); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conn.close(); <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch (Exception E) { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.println(&quot;Unable to load driver.&quot;); <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E.printStackTrace(); <br>&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;&quot;); <br>&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;<br>} <br><br>经过阅读源代码，我们可以发现，作为程序员某定程度上根本不需要理会服务器装的是什么SQL数据库， <br>只需连接到weblogic创建提供的POOL就可以了，这样一来除了可以提高效率外还令到代码的可重用性大大提高。 <br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

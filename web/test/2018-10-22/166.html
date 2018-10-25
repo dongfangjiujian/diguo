@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">pluginAction的使用</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:46 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>jsp:plugin Action 使您能插入所需的特定的浏览器的OBJECT或EMBED元素来指定浏览器运行一个JAVA Applet所需的插件。 <BR><BR>语法： <BR>&lt;jsp:plugin <BR>type="bean|applet" <BR>code="classFileName" <BR>codebase="classFileDirectoryName" <BR>[ name="instanceName" ] <BR>[ archive="URIToArchive, ..." ] <BR>[ align="bottom|top|middle|left|right" ] <BR>[ height="displayPixels" ] <BR>[ width="displayPixels" ] <BR>[ hspace="leftRightPixels" ] <BR>[ vspace="topBottomPixels" ] <BR>[ jreversion="JREVersionNumber | 1.1" ] <BR>[ nspluginurl="URLToPlugin" ] <BR>[ iepluginurl="URLToPlugin" ] &gt; <BR>[ &lt;jsp:params&gt; <BR>[ &lt;jsp:param name="parameterName" <BR>value="{parameterValue | &lt;%= expression %&gt;}" /&gt; ]+ <BR>&lt;/jsp:params&gt; ] <BR>[ &lt;jsp:fallback&gt; text message for user &lt;/jsp:fallback&gt; ] <BR>&lt;/jsp:plugin&gt; <BR>示例： <BR>&lt;jsp:plugin type=applet code="Molecule.class" codebase="/html"&gt; <BR>&lt;jsp:params&gt; <BR>&lt;jsp:param name="molecule" value="molecules/benzene.mol" /&gt; <BR>&lt;/jsp:params&gt; <BR>&lt;jsp:fallback&gt; <BR>&lt;p&gt;Unable to load applet&lt;/p&gt; <BR>&lt;/jsp:fallback&gt; <BR>&lt;/jsp:plugin&gt; <BR>属性详解： <BR><BR>属性 用法 <BR>type = “bean | applet” <BR>插件将执行的对象的类型。您必须在bean或applet中指定一个，因为，这个属性没有缺省值。 <BR>class=”classFileName” <BR>插件将执行的JAVA类文件的名称。在名称中您必须包含扩展名。且此文件必须在用“codebase”属性指明的目录下。 <BR>codebase=“classFileDirectoryName” <BR>包含插件将运行的JAVA类的目录或指向这个目录的路径。缺省为此JSP文件的路径。 <BR>name=”instanceName” <BR>Bean或 applet的实例的名称。使得被同一个JSP文件调用的bean或 applet之间的通信成为可能。 <BR>archive = “URLToArchive,…” <BR>以逗号分隔的路径名列表。是那些用以codebase指定的目录下的类装载器预装载的存档文件所在的路径名。通常，这些存档文件通过网络被安全的加载，可以显著的提高applet的性能。 <BR>注释和字符引用习惯 <BR><BR>　　 您可以使用一些特定的元素来插入注释和一些通常是作为特殊标志的字符。以下是一个总结： 语法 目的 <BR>&lt;%-- 注释 --%&gt; JSP形式的注释。将被JSP-to-scriptlet编译器所忽略。任何内嵌JSP scripting elements,directives,或actins都将被忽略。例： <BR><BR>&lt;%@ page language="java" %&gt; <BR><BR><BR>&lt;html&gt; <BR><BR><BR>&lt;head&gt;&lt;title&gt;A Comment Test&lt;/title&gt;&lt;/head&gt; <BR><BR><BR>&lt;body&gt; <BR><BR><BR>&lt;h2&gt;A Test of Comments&lt;/h2&gt; <BR><BR><BR>&lt;%-- 这部分注释将不会在查看源代码的时候看到 --%&gt; <BR><BR><BR>&lt;/body&gt; <BR>&lt;/html&gt; <BR><BR><BR>&lt;!-- 注释--&gt; HTML形式的注释。直接传送到最终的HTML。任何内嵌JSP scripting elements,directives,或actins都将被正常的执行。例： <BR><BR>&lt;!-- This page was loaded on <BR><BR><BR>&lt;%= (new java.util.Date()).toLocaleString() %&gt; --&gt; <BR><BR>查看源代码时将看到： <BR><BR><BR>&lt;!-- This page was loaded on January 1, 2000 --&gt; <BR><BR><BR>&lt;% 在template text（静态HTML）中，当您想在页面上输出这个特殊符号（&lt;%）时请如此书写。 <BR>%&gt; 在scripting elements中使用，作用与上面的“&lt;/%”类似。 <BR>' 在使用了“'”的属性中表明是字符“'”。当然，您也可以使用“””来作为区分。例：' pig”fhjgj” ',或,'pig'fhjgj'' <BR>” 在使用了“””的属性中表明是字符“””。当然，您也可以使用“'”来作为区分。例：” pig'fhjgj'”,或,”pig”fhjgj”” <BR>%&gt; 在属性中的“%&gt;”。 <BR>&lt;% 在属性中的“&lt;%”。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

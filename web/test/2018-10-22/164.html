@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP Actions的使用</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:45 </span>
                             　<P>JSP actions 使用您可以动态的插入一个文件，重用JavaBeans组件，前进到另一个页面，或为Java 插件生成一个HTML。可以使用的action 有： <BR><BR>(1) jsp:include --在页面被请求时包含进一个文件。 <BR>(2) jsp:useBean--找到或实例化一个JavaBean。 <BR>(3) jsp:setProperty--设置一个JavaBean属性。 <BR>(4) jsp:getProperty--将JavaBean的属性插入到输出。 <BR>(5) jsp:forward--让请求者可以向前到一个新的页面。 <BR>(6) jsp:plugin--用OBJECT或EMBED标签为Java plugins生成特定的浏览器的代码。 <BR><BR>　　 1、jsp:include Action <BR><BR>　　 这个action使您可以在即将生成的页面上包含进一些文件： <BR><BR>　　 &lt;jsp:include page="relative URL" flush="true" /&gt; <BR><BR>　　 与include directive不同，这个action是在页面被请求时才将文件包含进来，而，include directive则是在JSP页面被转换为servlet时包含文件。为了提高效率，include action做了一点小小的牺牲，即，它不允许被包含的页面含有一般的JSP代码（例如，不可设置HTTP头），但是，它具有显著的灵活性，如下面的JSP 代码，它实现将四个不同的片段插入如下的页面。每一次当标题改变的时候，您仅需修改这四个文件而无须更改主要的JSP 页面。 <BR><BR>WhatsNew.jsp <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt; JSP教程&lt;/TITLE&gt; <BR>&lt;BODY &gt; <BR>&lt;CENTER&gt; <BR>&lt;TABLE BORDER=5 BGCOLOR="#EF8429"&gt; <BR>&lt;TR&gt;&lt;TH CLASS="TITLE"&gt; What"s New at Chinese comic sites&lt;/TABLE&gt; <BR>&lt;/CENTER&gt; <BR>&lt;P&gt; <BR>Here is a summary of our four most recent news stories: <BR>&lt;OL&gt; <BR>&lt;LI&gt;&lt;jsp:include page="news/Item1.html" flush="true"/&gt; <BR>&lt;LI&gt;&lt;jsp:include page="news/Item2.html" flush="true"/&gt; <BR>&lt;LI&gt;&lt;jsp:include page="news/Item3.html" flush="true"/&gt; <BR>&lt;LI&gt;&lt;jsp:include page="news/Item4.html" flush="true"/&gt; <BR>&lt;/OL&gt; <BR>&lt;/BODY&gt; <BR>&lt;/HTML&gt; <BR>　　 当然您可以定义自己的HTML文件，但有一点请注意： <BR><BR>　　 您应该将文件放到您的JSP目录下的news目录内。 <BR>jsp:useBean Action 的使用 <BR><BR>　　 一、 语法： <BR>&lt;jsp:useBean <BR>id="beanInstanceName" <BR>scope="page|request|session|application" <BR>{ class="package.class" | <BR>type="package.class" | <BR>class="package.class" type="package.class" | <BR>beanName="{package.class | &lt;%= expression %&gt;}" type="package.class" <BR>} <BR>{ /&gt; | <BR>&gt; 其他元素 <BR>&lt;/jsp:useBean&gt; <BR>} <BR><BR>　　 这个action使您能将一个JavaBean装入一个JSP页面。这是一个非常有用的能力，因为它使您可以使用可重用的JAVA类而不需牺牲性能。最简单的语法用于指定一个bean： <BR><BR>　　 &lt;jsp:useBean id="name" class="package.class" /&gt; <BR><BR>　　 这通常意味着“实例化一个类的对象通过指定一个类，并将之与一个通过id指定名称的变量绑定”。然而，就象我们看到的，您可以指定一个scope属性来使得bean不仅仅与当前的页面相联系。在这种情形下，得到一个对已存在的bean的引用是非常有用的，而且，仅当没有相同的id和scope的bean存在时才创建一个新的。现在，您已有了bean，您可以通过jsp:setProperty来修改它，或者，通过使用之前用id指定的名字来使用scriptlet或明确的调用方法。当您说“这个bean有一个称为foo的X类型的属性”，您真正的意思是“这个类有一个称为getFoo的方法，它返回X类型的某类值，还有另一个方法称为setFoo，它以X为参数。”这jsp:setProperty action 将在下一单元详细的介绍，但是现在您既可以给出一个明确的值，给出一个属性来说明此值是从request的参数继承而来，也可以仅仅列出属性来标志此值应该从与属性名同名的参数继承而来。您可以通过调用适用的getXxx方法，或更普遍的，使用jsp:getProperty action，来得到已存在的JSP表达式或scriptlet属性。 <BR><BR>　　 请注意，为bean指定的类必须在服务器的规则的类路径下，而不是用来保留当改变时自动装载的类的路径。例如，在Java Web Server上，它和它所用的类必须到类的目录或在lib目录下的一个jar文件内，而不是在servlets的目录下。 <BR><BR>　　 下面让我们来看一个非常简单的例子，它装载一个bean并且设置/得到一个简单的串参数。 <BR><BR>BeanTest.jsp <BR>&lt;HTML&gt; <BR>&lt;HEAD&gt; <BR>&lt;TITLE&gt;Reusing JavaBeans in JSP&lt;/TITLE&gt; <BR>&lt;/HEAD&gt; <BR>&lt;BODY&gt; <BR>&lt;CENTER&gt; <BR>&lt;TABLE BORDER=5&gt; <BR>&lt;TR&gt;&lt;TH CLASS="TITLE"&gt; <BR>Reusing JavaBeans in JSP&lt;/TABLE&gt; <BR>&lt;/CENTER&gt; <BR>&lt;P&gt; <BR>&lt;jsp:useBean id="test" class="hall.SimpleBean" /&gt; <BR>&lt;jsp:setProperty name="test" <BR>property="message" <BR>value="Hello WWW" /&gt; <BR>&lt;H1&gt;Message: &lt;I&gt; <BR>&lt;jsp:getProperty name="test" property="message" /&gt; <BR>&lt;/I&gt;&lt;/H1&gt; <BR>&lt;/BODY&gt; <BR>SimpleBean.java <BR><BR>　　 以下是bean的原代码： <BR><BR>package hall; <BR>public class SimpleBean { <BR>private String message = "No message specified"; <BR>public String getMessage() { <BR>return(message); <BR>} <BR>public void setMessage(String message) { <BR>this.message = message; <BR>} <BR>} <BR><BR>　　 运行结果为：页面输出: Reusing JavaBeans in JSP <BR><BR>　　 b&gt;Message:Hello WWW <BR><BR>　　 二、jsp:useBean 的详细用法 <BR><BR>　　 最简单的使用bean的方式是： <BR><BR>　　 &lt;jsp:useBean id="name" class="package.class"/&gt; <BR>　　 为了装载bean，需要用jsp:setProperty和 jsp:getProperty来修改和检索bean的属性。且，还有两种别的选项。首先，您可以使用容器的格式，也就是： <BR><BR>&lt;jsp:useBean ...&gt; <BR>Body <BR>&lt;/jsp:useBean&gt; <BR><BR>要指出的是，Body部分应该仅在bean第一次实例化时被执行，而不是在每次被找到和使用时。Beans能够被共享，因此，并不是所有的jsp:useBean 陈述都产生一个新的bean的实例。其次，除了id 或class以外，还有三种属性您可以使用：scope,type,和beanName。这些属性总结如下： <BR><BR>　　 属性 <BR><BR>　　 用法 <BR><BR>id <BR>　　 给一个变量命名，此变量将指向bean。如果发现存在一个具有相同的id和scope 的bean则使用之而不新建一个。 <BR><BR>class <BR>　　 指出bean的完整的包名。 <BR><BR>scope <BR>　　 指明bean在之上可以被使用的前后关系。有四个可能的值：page,request,session,和application。缺省为page，表明bean仅在当前页可用（保存在当前的PageContext中）。request的一个值表明bean仅用于当前客户端的请求（保存在ServletRequest对象中）。Session的值指出在当前的HttpSession的生命周期内，对象对所有的页面可用。 最后，application的值指出对象对所有共享ServletsContext的页面可以使用。使用jsp:useBean 仅在没有相同的id和scope 的bean时创建一个新的bean，如果已有则使用之，并忽略以jsp:useBean标志开始和结尾的代码。 <BR><BR>type <BR>　　 指明将指向对象的变量的类型。这必须与类名相匹配或是一个超类或者是一个实现类的接口。记住，变量的名由id属性来指定。 <BR><BR>beanName <BR>　　 赋予bean一个名字，您应该在Beans的实例化方法中提供。它允许您给出type和一个beanName,并省略类属性。 <BR>　　 三、jsp:setProperty Action <BR><BR>　　 语法： <BR><BR>&lt;jsp:setProperty <BR>name="beanInstanceName" <BR>{ property="*" | <BR>property="propertyName" [ param="parameterName" ] | <BR>property="propertyName" value="{string | &lt;%= expression %&gt;}" <BR>} <BR>/&gt; <BR><BR>　　 在前面我们就知道了可以使用 jsp:setProperty 来为一个bean的属性赋值。您可以使用两种方式实现它。其一是，在jsp:useBean后（而不是在之内）使用jsp:setProperty： <BR><BR>&lt;jsp:useBean id="myName" ... /&gt; <BR>... <BR>&lt;jsp:setProperty name="myName" <BR>property="someProperty" ... /&gt; <BR><BR>　　 在这种方式中，jsp:setProperty 将被执行无论是否已有一个具有相同的id和scope的bean存在。另一种方式是，jsp:setProperty出现在jsp:useBean 元素内，如： <BR><BR>&lt;jsp:useBean id="myName" ... &gt; <BR>... <BR>&lt;jsp:setProperty name="myName" <BR>property="someProperty" ... /&gt; <BR>&lt;/jsp:useBean&gt; <BR><BR>　　 此种情况下，jsp:setProperty仅在新的对象被实例化时才执行。 <BR><BR>　　 以下是四种jsp:setProperty的可用的属性： <BR><BR>　　 属性 <BR><BR>　　 用法 <BR><BR>name <BR>　　 这是一个必选属性。它指出哪一个bean的属性将被设置。jsp:usebean必须出现在jsp:setProperty之前。 <BR><BR>property <BR>　　 这是一个必选属性。表明您将设置哪一个属性。然而，有一个特殊的情况：如果以"*"为值意味着，所有的名称与bean的属性匹配的request参数都将被传递到相应的属性设置方法。 <BR>value <BR>　　 这是一个可选属性。它指定被设置的属性的值。字符串的值通过相应的对象或包的标准的valueOf方法将自动的转换为numbers,boolean,Boolean,byte,Byte,char,和Character。例如，boolean或Boolean属性的值“true”将通过Boolean.valueOf方法转化，而，一个int或Integer属性的值“42”将通过Integer.valueOf转化。您不能同时使用value和param属性，但，两个都不用是允许的。 <BR><BR>param <BR>　　 这是一个可选属性。它指明了bean的属性应该继承的request的参数。如果当前的request没有这样的一个参数，就什麽也不做：系统并不将null传给设置属性的方法。因此，您可以使用bean的缺省值。例如下面的这段程序执行“将numberOfItems属性设置为任意numItems request参数的值，如果有这样的一个request参数，否则什么也不做。” <BR><BR>&lt;jsp:setProperty name="orderBean" <BR>property="numberOfItems" <BR>param="numItems" /&gt; <BR><BR>　　 如果您将value和param同时缺省，这和您将param的名称设为bean的属性名相同一样。您可以通过将name的值设置为”*”和省略value和param来自动的使用与bean的属性相应的request的属性。在这种情况下，服务器将反复的查找可用的属性和request参数来匹配具有相同名字的。 <BR><BR>　　 四、jsp:getProperty Action <BR><BR>　　 语法： <BR><BR>　　 &lt;jsp:getProperty name="beanInstanceName" property="propertyName" /&gt; <BR><BR>　　 这个属性检索出bean的属性的值并将之转化为一个字符串，然后将之插入到输出。它有两个必选属性：name，在之前用jsp:useBean引入的名称，property，必须被插入值的属性。<BR></P></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

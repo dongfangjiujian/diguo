@@ -45,19 +45,19 @@ if(!defined('InEmpireCMS'))
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><?=$grurl?></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center"><?=$grpagetitle?></h2>
     <span class="text-left"><?=$docheckrep[1]?ReplaceBefrom($ecms_gr[befrom]):$ecms_gr[befrom]?>1111</span><span class="pull-right"><?=date('Y-m-d H:i:s',$ecms_gr[newstime])?> </span>
 <?=strstr($ecms_gr[newstext],'[!--empirenews.page--]')?'[!--newstext--]':$ecms_gr[newstext]?>
 </div>
+</div>
 
-
-<div class="col-md-5"></div>
+<div class="col-md-4"><? @sys_GetEcmsInfo(0,10,0,0,0,13);?></div>
 </div>
 </div>
 </body>

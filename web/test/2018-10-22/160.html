@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">改写MySQL翻页例子</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:44 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>一、前言 <BR><BR>　　 其实，改写后的JDBC Data-Source是运行在Servlet中的，通过JNDI去查找数据源。我用Orion试的，将本站《JAVA/JSP学习系列之六(MySQL翻页例子) 》 简单改写了一下。 <BR><BR>二、配置 <BR><BR>(1)JDBC <BR><BR>　　 需要将用到的JDBC驱动Copy到[ORION]/lib目录下 <BR><BR>(2)data-source <BR><BR>　　 在[ORION]/config/data-sources.xml文件中加入如下： <BR><BR>〈data-source <BR><BR>class="com.evermind.sql.DriverManagerDataSource" <BR><BR>name="mySqlDbpage" <BR><BR>location="jdbc/HypersonicCoreDS" <BR><BR>xa-location="jdbc/xa/HypersonicXADS" <BR><BR>ejb-location="jdbc/mysqlDbPage" <BR><BR>connection-driver="org.gjt.mm.mysql.Driver" <BR><BR>username="root" <BR><BR>password="" <BR><BR>url="jdbc:mysql://localhost/test" <BR><BR>inactivity-timeout="30" <BR><BR>/〉 <BR><BR>需要注意的是： <BR><BR>(1)ejb-location这个后面的“jdbc/mysqlDbPage”是JNDI要来查找的。 <BR><BR>(2)connection-driver为JDBC数据库驱动 <BR><BR>(3)url是JDBC中的URL <BR><BR>(4)username为数据库用户名 <BR><BR>(5)password为用户密码 <BR><BR>(6)inactivity-timeout为数据库连接超时，默认为30秒 <BR><BR>对于其他的地方不要改。 <BR><BR>三、改写后的代码如下： <BR><BR>&lt;%@ page contentType="text/html;charset=gb2312" %&gt; <BR><BR>&lt;%@ page import="java.sql.*, javax.sql.DataSource, javax.naming.InitialContext" %&gt; <BR><BR>&lt;% <BR><BR>//建立一个JNDI查找对象 <BR><BR>InitialContext JNDI_Context = new InitialContext(); <BR><BR>//JNDI查找数据源 <BR><BR>DataSource ds = (DataSource) JNDI_Context.lookup("jdbc/mysqlDbPage"); <BR><BR>//得到一个数据源连接 <BR><BR>Connection conn = ds.getConnection(); <BR><BR>int intPageSize; //一页显示的记录数 <BR><BR>int intRowCount; //记录总数 <BR><BR>int intPageCount; //总页数 <BR><BR>int intPage; //待显示页码 <BR><BR>java.lang.String strPage; <BR><BR>int i; <BR><BR>//设置一页显示的记录数 <BR><BR>intPageSize = 2; <BR><BR>//取得待显示页码 <BR><BR>strPage = request.getParameter("page"); <BR><BR>if(strPage==null){ <BR><BR>//表明在QueryString中没有page这一个参数，此时显示第一页数据 <BR><BR>intPage = 1; <BR><BR>} else{ <BR><BR>//将字符串转换成整型 <BR><BR>intPage = java.lang.Integer.parseInt(strPage); <BR><BR>if(intPage&lt;1) intPage = 1; <BR><BR>} <BR><BR>// 得到结果 <BR><BR>stmt = conn.createStatement(); <BR><BR>ResultSet sqlRst = stmt.executeQuery("select f1 from test"); <BR><BR>//获取记录总数 <BR><BR>sqlRst.last(); <BR><BR>intRowCount = sqlRst.getRow(); <BR><BR>//记算总页数 <BR><BR>intPageCount = (intRowCount+intPageSize-1) / intPageSize; <BR><BR>//调整待显示的页码 <BR><BR>if(intPage&gt;intPageCount) <BR><BR>intPage = intPageCount; <BR><BR>%&gt; <BR><BR>&lt;html&gt; <BR><BR>&lt;head&gt; <BR><BR>&lt;meta http-equiv="Content-Type" content="text/html; charset=gb2312"&gt; <BR><BR>&lt;title&gt;JSP数据库操作例程 - 数据分页显示 - JDBC 2.0 - mysql&lt;/title&gt; <BR><BR>&lt;/head&gt; <BR><BR>&lt;body&gt; <BR><BR>&lt;table border="1" cellspacing="0" cellpadding="0"&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;th&gt;姓名&lt;/th&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;% if(intPageCount&gt;0) <BR><BR>{ <BR><BR>//将记录指针定位到待显示页的第一条记录上 <BR><BR>sqlRst.absolute((intPage-1) * intPageSize + 1); <BR><BR>//显示数据 <BR><BR>i = 0; <BR><BR>while(i&lt;intPageSize &amp;&amp; !sqlRst.isAfterLast()){ %&gt; <BR><BR>&lt;tr&gt; <BR><BR>&lt;td&gt; <BR><BR>&lt;%=sqlRst.getString(1)%&gt; <BR><BR>&lt;/td&gt; <BR><BR>&lt;/tr&gt; <BR><BR>&lt;% sqlRst.next(); <BR><BR>i++; <BR><BR>} <BR><BR>} <BR><BR>%&gt; <BR><BR>&lt;/table&gt; <BR><BR>第&lt;%=intPage%&gt;页 共&lt;%=intPageCount%&gt;页 <BR><BR>&lt;%if(intPage&lt;intPageCount){%&gt;&lt;a href="mysqlpage.jsp?page=&lt;%=intPage+1%&gt;"&gt;下一页&lt;/a&gt;&lt;%}%&gt; <BR><BR>&lt;%if(intPage&gt;1){%&gt;&lt;a href="mysqlpage.jsp?page=&lt;%=intPage-1%&gt;"&gt;上一页&lt;/a&gt;&lt;%}%&gt; <BR><BR>&lt;/body&gt; <BR><BR>&lt;/html&gt; <BR><BR>&lt;% <BR><BR>//关闭结果集 <BR><BR>sqlRst.close(); <BR><BR>%&gt; <BR><BR>三、怎么去运行？ <BR><BR>　　 见前文《JAVA/JSP学习系列之五(JDBC-ODBC翻页例子)》。 <BR><BR>注意：MySQL数据库为test，中间有个表test，有个字段f1(varchar) <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">我的scjp考试经历</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:22 </span>
 今天是2002年6月3日星期一，早上6：30起床，到学校外面吃了早饭（武汉人叫“过早“）（小米粥+发糕）。之后回到寝室，躺在床上乱无目的的翻了翻sun 的教材，真的是什么都没看进去，这时是7：00整。同寝室的几个兄弟还在酣睡（鼾声此起彼伏，令我本来有点紧张而又兴奋的心情平静了不少）。打开电脑，看了几篇以前论坛上发表的总结性的帖子： <br>分别是sun 的33条tips, scjp中的考题陷阱，以及chinajavaworld上由网友总结的“归纳I-O，帮助记忆“。其实这个时候看这些东西没有什么大用，最多是巩固一下知识点。你的真实水平在一周前已经被锁定了（基本上是这样的）。 <br>9：00整，我收好东西，拿上准考证和身份证出发了，临走之前又回眸看了一眼几个睡得像小猪一样的室友（哎，现在的年轻人怎么这么能睡，兄弟我都要上刑场了，也没人说句安慰的话……真失败） <br>9:20来到考场，漂亮的服务小姐（在网上是不是称mm更好一些）一边吃着热干面一边热情地接待了我。之后，是相当“难熬“的2个小时………快接近中午十二点的时候我终于收到了一个令人激动的消息?---我可以开始考试了:P. 原因是今天美国sun公司那边的服务器有点问题，题目一直没有传过来。于是我就从9：30开始一直等到11：45，等的我花儿都谢了。比我晚来的考生早就考完回去了，只有我孤零零的一个人在考场里，这时我方懂得何谓未伊消得人憔悴。正准备去吃中饭的服务小姐过意不去，说要带饭给我。这时的我哪里还想着吃饭呀，赶快做题吧，要是考了个59%，还不如去吃屎。 <br>第一题是Math.cos(Math.toRadians(42))那一道，我上上下下看了5遍才确认这就是147上的那道题，之后又做了大概5道题，发现都是原题……。我用了20分钟做完全部题目，这时我觉得自己很有可能拿100%，于是又花了整整40mins to check it out,不过并没有发现什么错误。深吸一口气后，我submit了。。。。。。。。。。。。 <br>结果并不是100%，我错了4道题，一开始我觉得挺失望的，不过后来一想,自己也确实不是100%的实力，java库的底层很庞大，我有太多都从来没涉及到过，如果就让我这么糊里糊涂的拿了100%，那是有点说不过去。&amp;#61514;; <br>走出考场，前台工作人员把Examination Score Report递给了我，看到TEST STATUS: PASS.心里有一种说不出的成就感：）。 <br><br>我的REPORT 上面记述了OPERATORS AND ASSIGNMENTS部分我错了一道题，THREADS 部分有两道错题，JAVA.IO PACKAGE部分有一道错题。所以我强烈建议大家104，147的题一定要搞懂（所给的答案并不可靠），而且我发现sun会利用人的惯性思维来达到欺骗你的目的，比如说一开始给你很多你曾见过的题（没有任何改动的原题），你会随着这类题的不断涌现变得有些麻癖，你的警惕性会不断降低，这时突然给你来一道变体（你挂了）。我就是，糊里糊涂的，就错了4道！！真搞不懂，我怀疑是不是sun 作弊，故意把校正答案改错--------不会吧！！！ <br>我的考题中出现了4道写OUTPUT的题目，答案分别是 ”javajavaC”，”13423”,”ABCDE”, 5(求6^3)------做过104，147的朋友一定知道这些是什么题, 这里要注意写答案的时候对于是字符串的答案 两边要写上” ”。这一点我觉得自己很幸运，因为考前当天晚上，我上网的时候，发现有一个网友就问了这个问题。（这里要特别很感谢SJ120221兄）。此外，“javajavaC”中的c一定要大写（如果题干是大写的话） <br>对了，还有那道 <br>Integer i = new Integer (42); <br>Long 1 = new Long (42); <br>Double d = new Double (42.0); <br><br>Which two expressions evaluate to True? (Choose Two) <br><br>A.(i ==1) <br>B.(i == d) <br>C.(d == 1) <br>D.(i.equals (d)) <br>E.(d.equals (i)) <br>F.(i.equals (42)) <br><br>这题是没有正确答案的，以前有人说过这种肯定没答案的题不用选，我照做了，并且在submit的时候，考试系统提示我有一道题没做，它说如果您不选该题的话，本题将作为错误处理。 <br>我考虑了一下，还是没选。（report 上面说我在operator and assignment部分的那一道错题应该是指这道，I consider），所以我说sun作弊。：） <br><br>回头看看我的scjp之路。我是2001年8月参加的新东方scjp的培训（很早吧，估计那时和我一起学的人现在很多都成了scjd 或scja什么之类的了）。因为我大一大二的时候学pascal, c语言，汇编等学得很不爽，感觉自己很讨厌编程，其他同学都有自己的专攻项目（CB,VB,VC,SQL,DELPHI） ,而我……于是我就有了学JAVA的想法，考SCJP完全是想证明给自己看。对于scjp这门考试，我感到自己还算从中学到了不少东西，不管是基础理论还是应用实践。On the contrary, 坦白的说，如果你准备以中国人传统的考试方式去应考scjp的话，用一周的时间把几套classic 的mock 做一遍（我并不反对做mock,其实做模拟题很有助于我们对知识点的更深层理解），我保证考85%以上没问题，然后拿个很好看的证书，再自我陶醉的告诉自己“我是java programmer”,但我相信这并不是所有人想要的。类似话题在论坛上已经被讨论过无数次了，我也不想多说了，我相信道理大家都是懂的，关键是看你怎么做。在我的Examination Score Report上有一句话我觉得挺好，这里送给大家： <br>Certification testing is a means of measuring your knowledge and skill level. It can also be used to identify area that need improvement and areas of strength. It can be sued as a tool for further learning and future achievement <br><br><br>最后，由衷的感谢javaunion的chairyuan , FORMyjoy, nevergiveup, lonely,tr100,wolfshome，smart <br>chinajavaworld(java开发者论坛)的 风子璇，jiayuan, sj120021,ditty,cooljava,DersertApple <br><br>其实有太多太多的学友曾经给予过我无限的帮助，在这里tester向你们的所有，表示真心的感谢！！！ <br><br>还有要感谢的人有我的母亲和父亲，我的电脑，我的挚友xiongjiangang, Channel V , CCTV,华纳，sony……….. <br>呵呵 <br><br>ok, 祝大家考试顺利，学有所成 ！<br>　</div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

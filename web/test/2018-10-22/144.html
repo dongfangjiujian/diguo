@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JSP及语法概要</h2>
     <span class="text-left">不详1111</span><span class="pull-right">2018-10-22 15:09:38 </span>
                             　<TABLE cellSpacing=0 cellPadding=0 width=750 border=0><TBODY><TR><TD><TABLE cellSpacing=0 cellPadding=0 width=740 align=right border=0><TBODY><TR><TD align=left width=720 background=images/bg.JPG colSpan=2><P>11.1 概述 <BR><BR>　　 JavaServer Pages（JSP）使得我们能够分离页面的静态HTML和动态部分。HTML可以用任何通常使用的Web制作工具编写，编写方式也和原来的一样；动态部分的代码放入特殊标记之内，大部分以“＜%”开始，以“%＞”结束。例如，下面是一个JSP页面的片断，如果我们用http://host/OrderConfirmation.jsp?title=Core+Web+Programming这个URL打开该页面，则结果显示“Thanks for ordering Core Web Programming”。 <BR>Thanks for ordering <BR>＜I＞＜%= request.getParameter("title") %＞＜/I＞ <BR><BR><BR><BR>　　 JSP页面文件通常以.jsp为扩展名，而且可以安装到任何能够存放普通Web页面的地方。虽然从代码编写来看，JSP页面更象普通Web页面而不象Servlet，但实际上，JSP最终会被转换成正规的Servlet，静态HTML直接输出到和Servlet service方法关联的输出流。 <BR><BR>　　 JSP到Servlet的转换过程一般在出现第一次页面请求时进行。因此，如果你希望第一个用户不会由于JSP页面转换成Servlet而等待太长的时间，希望确保Servlet已经正确地编译并装载，你可以在安装JSP页面之后自己请求一下这个页面。 <BR><BR>　　 另外也请注意，许多Web服务器允许定义别名，所以一个看起来指向HTML文件的URL实际上可能指向Servlet或JSP页面。 <BR><BR>　　 除了普通HTML代码之外，嵌入JSP页面的其他成分主要有如下三种：脚本元素（Scripting Element），指令（Directive），动作（Action）。脚本元素用来嵌入Java代码，这些Java代码将成为转换得到的Servlet的一部分；JSP指令用来从整体上控制Servlet的结构；动作用来引入现有的组件或者控制JSP引擎的行为。为了简化脚本元素，JSP定义了一组可以直接使用的变量（预定义变量），比如前面代码片断中的request就是其中一例。 <BR><BR>　　 注意本文以JSP 1.0规范为基础。和0.92版相比，新版本的JSP作了许多重大的改动。虽然这些改动只会使JSP变得更好，但应注意1.0的JSP页面几乎和早期的JSP引擎完全不兼容。 <BR><BR>　　 11.2 JSP语法概要表 JSP元素 语法 说明 备注 <BR>JSP表达式 ＜%= expression %＞ 计算表达式并输出结果。 等价的XML表达是： <BR>＜jsp:expression＞ <BR>expression <BR>＜/jsp:expression＞ <BR><BR>可以使用的预定义变量包括：request，response，out，session，application，config，pageContext。这些预定义变量也可以在JSP Scriptlet中使用。 <BR><BR>JSP Scriptlet ＜% code %＞ 插入到service方法的代码。 等价的XML表达是： <BR>＜jsp:scriptlet＞ <BR>code <BR>＜/jsp:scriptlet＞ <BR><BR>JSP声明 ＜%! code %＞ 代码被插入到Servlet类（在service方法之外）。 等价的XML表达是： <BR>＜jsp:declaration＞ <BR>code <BR>＜/jsp:declaration＞ <BR><BR>page指令 ＜%@ page att="val" %＞ 作用于Servlet引擎的全局性指令。 等价的XML表达是 <BR>＜jsp:directive.page att="val"＼＞。 <BR><BR>合法的属性如下表，其中粗体表示默认值： <BR><BR>import="package.class" <BR>contentType="MIME-Type" <BR>isThreadSafe="true|false" <BR>session="true|false" <BR>buffer="size kb|none" <BR>autoflush="true|false" <BR>extends="package.class" <BR>info="message" <BR>errorPage="url" <BR>isErrorPage="true|false" <BR>language="java" <BR><BR>include指令 ＜%@ include file="url" %＞ 当JSP转换成Servlet时，应当包含本地系统上的指定文件。 等价的XML表达是： <BR><BR>＜jsp:directive.include <BR>file="url"＼＞. <BR><BR>其中URL必须是相对URL。 <BR><BR>利用jsp:include动作可以在请求的时候（而不是JSP转换成Servlet时）引入文件。 <BR><BR>JSP注释 ＜%-- comment --%＞ 注释；JSP转换成Servlet时被忽略。 如果要把注释嵌入结果HTML文档，使用普通的HTML注释标记＜-- comment --＞。 <BR>jsp:include动作 ＜jsp:include <BR>page="relative URL" <BR>flush="true"/＞ 当Servlet被请求时，引入指定的文件。 如果你希望在页面转换的时候包含某个文件，使用JSP include指令。 <BR>注意：在某些服务器上，被包含文件必须是HTML文件或JSP文件，具体由服务器决定（通常根据文件扩展名判断）。 <BR><BR>jsp:useBean动作 ＜jsp:useBean att=val*/＞ 或者 <BR>＜jsp:useBean att=val*＞ <BR>... <BR>＜/jsp:useBean＞ 寻找或实例化一个Java Bean。 可能的属性包括： <BR>id="name" <BR>scope="page|request <BR>|session|application" <BR>class="package.class" <BR>type="package.class" <BR>beanName="package.class" <BR><BR>jsp:setProperty动作 ＜jsp:setProperty att=val*/＞ 设置Bean的属性。既可以设置一个确定的值，也可以指定属性值来自请求参数。 合法的属性包括： <BR>name="beanName" <BR>property="propertyName|*" <BR>param="parameterName" <BR>value="val" <BR><BR>jsp:getProperty动作 ＜jsp:getProperty <BR>name="propertyName" <BR>value="val"/＞ 提取并输出Bean的属性。 　 <BR>jsp:forward动作 ＜jsp:forward <BR>page="relative URL"/＞ 把请求转到另外一个页面。 　 <BR>jsp:plugin动作 ＜jsp:plugin <BR>attribute="value"*＞ <BR>... <BR>＜/jsp:plugin＞ 根据浏览器类型生成OBJECT或者EMBED标记，以便通过Java Plugin运行Java Applet。 　 <BR><BR><BR>　　 11.3 关于模板文本（静态HTML） <BR><BR>　　 许多时候，JSP页面的很大一部分都由静态HTML构成，这些静态HTML也称为“模板文本”。模板文本和普通HTML几乎完全相同，它们都遵从相同的语法规则，而且模板文本也是被Servlet直接发送到客户端。此外，模板文本也可以用任何现有的页面制作工具来编写。 <BR><BR>　　 唯一的例外在于，如果要输出“＜%”，则模板文本中应该写成“＜＼%”。 <BR></P></TD><TD width=20 background=/images/bg2.gif>&nbsp;</TD></TR></TBODY></TABLE></TD></TR><TR><TD>&nbsp;</TD></TR></TBODY></TABLE></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

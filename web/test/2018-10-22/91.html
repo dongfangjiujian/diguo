@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">通过JDBC连接oracle数据库的十大技巧</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:20 </span>
 Java数据库连接（JDBC）API是一系列能够让Java编程人员访问数据库的接口，各个开发商的接口并不完全相同。在使用多年的Oracle公司的JDBC后，我积累了许多技巧，这些技巧能够使我们更好地发挥系统的性能和实现更多的功能。<br><br>　　1、在客户端软件开发中使用Thin驱动程序<br><br>　　在开发Java软件方面，Oracle的数据库提供了四种类型的驱动程序，二种用于应用软件、applets、servlets等客户端软件，另外二种用于数据库中的Java存储过程等服务器端软件。在客户机端软件的开发中，我们可以选择OCI驱动程序或Thin驱动程序。OCI驱动程序利用Java本地化接口（JNI），通过Oracle客户端软件与数据库进行通讯。Thin驱动程序是纯Java驱动程序，它直接与数据库进行通讯。为了获得最高的性能，Oracle建议在客户端软件的开发中使用OCI驱动程序，这似乎是正确的。但我建议使用Thin驱动程序，因为通过多次测试发现，在通常情况下，Thin驱动程序的性能都超过了OCI驱动程序。<br><br>　　2、关闭自动提交功能，提高系统性能<br><br>　　在第一次建立与数据库的连接时，在缺省情况下，连接是在自动提交模式下的。为了获得更好的性能，可以通过调用带布尔值false参数的Connection类的setAutoCommit()方法关闭自动提交功能，如下所示：<br><br>　　conn.setAutoCommit(false);<br><br>　　值得注意的是，一旦关闭了自动提交功能，我们就需要通过调用Connection类的commit()和rollback()方法来人工的方式对事务进行管理。<br><br>　　3、在动态SQL或有时间限制的命令中使用Statement对象<br><br>　　在执行SQL命令时，我们有二种选择：可以使用PreparedStatement对象，也可以使用Statement对象。无论多少次地使用同一个SQL命令，PreparedStatement都只对它解析和编译一次。当使用Statement对象时，每次执行一个SQL命令时，都会对它进行解析和编译。这可能会使你认为，使用PreparedStatement对象比使用Statement对象的速度更快。然而，我进行的测试表明，在客户端软件中，情况并非如此。因此，在有时间限制的SQL操作中，除非成批地处理SQL命令，我们应当考虑使用Statement对象。<br><br>　　此外，使用Statement对象也使得编写动态SQL命令更加简单，因为我们可以将字符串连接在一起，建立一个有效的SQL命令。因此，我认为，Statement对象可以使动态SQL命令的创建和执行变得更加简单。<br><br>　　4、利用helper函数对动态SQL命令进行格式化<br><br>　　在创建使用Statement对象执行的动态SQL命令时，我们需要处理一些格式化方面的问题。例如，如果我们想创建一个将名字O'Reilly插入表中的SQL命令，则必须使用二个相连的“''”号替换O'Reilly中的“'”号。完成这些工作的最好的方法是创建一个完成替换操作的helper方法，然后在连接字符串心服用公式表达一个SQL命令时，使用创建的helper方法。与此类似的是，我们可以让helper方法接受一个Date型的值，然后让它输出基于Oracle的to_date()函数的字符串表达式。<br><br>　　5、利用PreparedStatement对象提高数据库的总体效率<br><br>　　在使用PreparedStatement对象执行SQL命令时，命令被数据库进行解析和编译，然后被放到命令缓冲区。然后，每当执行同一个PreparedStatement对象时，它就会被再解析一次，但不会被再次编译。在缓冲区中可以发现预编译的命令，并且可以重新使用。在有大量用户的企业级应用软件中，经常会重复执行相同的SQL命令，使用PreparedStatement对象带来的编译次数的减少能够提高数据库的总体性能。如果不是在客户端创建、预备、执行PreparedStatement任务需要的时间长于Statement任务，我会建议在除动态SQL命令之外的所有情况下使用PreparedStatement对象。<br><br>　　6、在成批处理重复的插入或更新操作中使用PreparedStatement对象<br><br>　　如果成批地处理插入和更新操作，就能够显著地减少它们所需要的时间。Oracle提供的Statement和 CallableStatement并不真正地支持批处理，只有PreparedStatement对象才真正地支持批处理。我们可以使用addBatch()和executeBatch()方法选择标准的JDBC批处理，或者通过利用PreparedStatement对象的setExecuteBatch()方法和标准的executeUpdate()方法选择速度更快的Oracle专有的方法。要使用Oracle专有的批处理机制，可以以如下所示的方式调用setExecuteBatch()：<br>PreparedStatement pstmt3D null;<br>try {<br>((OraclePreparedStatement)<br>pstmt).setExecuteBatch(30);<br>...<br>pstmt.executeUpdate();<br>} <br><br><br>　　调用setExecuteBatch()时指定的值是一个上限，当达到该值时，就会自动地引发SQL命令执行，标准的executeUpdate()方法就会被作为批处理送到数据库中。我们可以通过调用PreparedStatement类的sendBatch()方法随时传输批处理任务。<br><br>　　7、使用Oracle locator方法插入、更新大对象（LOB）<br><br>　　Oracle的PreparedStatement类不完全支持BLOB和CLOB等大对象的处理，尤其是Thin驱动程序不支持利用PreparedStatement对象的setObject()和setBinaryStream()方法设置BLOB的值，也不支持利用setCharacterStream()方法设置CLOB的值。只有locator本身中的方法才能够从数据库中获取LOB类型的值。可以使用PreparedStatement对象插入或更新LOB，但需要使用locator才能获取LOB的值。由于存在这二个问题，因此，我建议使用locator的方法来插入、更新或获取LOB的值。<br><br>　　8、使用SQL92语法调用存储过程<br><br>　　在调用存储过程时，我们可以使用SQL92或Oracle PL/SQL，由于使用Oracle PL/SQL并没有什么实际的好处，而且会给以后维护你的应用程序的开发人员带来麻烦，因此，我建议在调用存储过程时使用SQL92。<br><br>　　9、使用Object SQL将对象模式转移到数据库中<br><br>　　既然可以将Oracle的数据库作为一种面向对象的数据库来使用，就可以考虑将应用程序中的面向对象模式转到数据库中。目前的方法是创建Java bean作为伪装的数据库对象，将它们的属性映射到关系表中，然后在这些bean中添加方法。尽管这样作在Java中没有什么问题，但由于操作都是在数据库之外进行的，因此其他访问数据库的应用软件无法利用对象模式。如果利用Oracle的面向对象的技术，可以通过创建一个新的数据库对象类型在数据库中模仿其数据和操作，然后使用JPublisher等工具生成自己的Java bean类。如果使用这种方式，不但Java应用程序可以使用应用软件的对象模式，其他需要共享你的应用中的数据和操作的应用软件也可以使用应用软件中的对象模式。<br><br>　　10、利用SQL完成数据库内的操作<br><br>　　我要向大家介绍的最重要的经验是充分利用SQL的面向集合的方法来解决数据库处理需求，而不是使用Java等过程化的编程语言。<br><br>　　如果编程人员要在一个表中查找许多行，结果中的每个行都会查找其他表中的数据，最后，编程人员创建了独立的UPDATE命令来成批地更新第一个表中的数据。与此类似的任务可以通过在set子句中使用多列子查询而在一个UPDATE命令中完成。当能够在单一的SQL命令中完成任务，何必要让数据在网上流来流去的？我建议用户认真学习如何最大限度地发挥SQL的功能。&nbsp;&nbsp;<br></div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>

@@ -39,18 +39,58 @@
 </div>
 <div class="container">
 <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
 <ol class="breadcrumb">
   <li><a href="/">首页</a>&nbsp;>&nbsp;<a href="/test/">test</a></li>
 
 </ol>
-<div>
+<div class="article">
     <h2 class="text-center">JAVA/JSP学习系列之六(MySQL翻页例子)</h2>
     <span class="text-left">JSP天空网1111</span><span class="pull-right">2018-10-22 15:09:32 </span>
 一、运行前准备 <br><br>　　 下载了mysql的jdbc驱动（一个jar文件）并加载在CLASSPATH(方法见《JAVA/JSP学习系列之一(JDK安装) 》)<br><br>　　 (如果找不到，请从本站下载)<br><br>　　 建一个MySQL数据库test <br><br>　　 数据库中有一个表：note，字段为：name(varchar) <br><br>二、下载，安装 <br><br>&lt;%@ page contentType=&quot;text/html;charset=gb2312&quot; %&gt; <br><br>&lt;% java.sql.Connection sqlCon; //数据库连接对象<br><br>java.sql.Statement sqlStmt; //SQL语句对象 <br><br>java.sql.ResultSet sqlRst; //结果集对象 <br><br>java.lang.String strCon; //数据库连接字符串<br><br>java.lang.String strSQL; //SQL语句 <br><br>int intPageSize; //一页显示的记录数 <br><br>int intRowCount; //记录总数 <br><br>int intPageCount; //总页数 <br><br>int intPage; //待显示页码 <br><br>java.lang.String strPage; <br><br>int i; <br><br>//设置一页显示的记录数 <br><br>intPageSize = 2; <br><br>//取得待显示页码 <br><br>strPage = request.getParameter(&quot;page&quot;);<br><br>if(strPage==null){<br><br>//表明在QueryString中没有page这一个参数，此时显示第一页数据 <br><br>intPage = 1; <br><br>} else{<br><br>//将字符串转换成整型 <br><br>intPage = java.lang.Integer.parseInt(strPage); <br><br>if(intPage&lt;1) intPage = 1; <br><br>} <br><br>//装载JDBC驱动程序<br><br>Class.forName(&quot;org.gjt.mm.mysql.Driver&quot;).newInstance(); <br><br>//连接数据库 <br><br>sqlCon= java.sql.DriverManager.getConnection(&quot;jdbc:mysql://localhost/test&quot;); <br><br>//创建语句对象 <br><br>sqlStmt = sqlCon.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.<br><br>ResultSet.CONCUR_READ_ONLY); //执行SQL语句<br><br>strSQL = &quot;select name from note&quot;; <br><br>//执行SQL语句并获取结果集 <br><br>sqlRst = sqlStmt.executeQuery(strSQL);<br><br>//获取记录总数 <br><br>sqlRst.last();<br><br>intRowCount = sqlRst.getRow(); <br><br>//记算总页数<br><br>intPageCount = (intRowCount+intPageSize-1) / intPageSize; <br><br>//调整待显示的页码 <br><br>if(intPage&gt;intPageCount) intPage = intPageCount; <br><br>%&gt;<br><br>&lt;html&gt;<br><br>&lt;head&gt;<br><br>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt; <br><br>&lt;title&gt;JSP数据库操作例程 - 数据分页显示 - JDBC 2.0 - mysql&lt;/title&gt; <br><br>&lt;/head&gt; <br><br>&lt;body&gt; <br><br>&lt;table border=&quot;1&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;<br><br>&lt;tr&gt; <br><br>&lt;th&gt;姓名&lt;/th&gt; <br><br>&lt;/tr&gt;<br><br>&lt;% if(intPageCount&gt;0)<br><br>{ <br><br>//将记录指针定位到待显示页的第一条记录上 <br><br>sqlRst.absolute((intPage-1) * intPageSize + 1); <br><br>//显示数据 <br><br>i = 0;<br><br>while(i&lt;intPageSize &amp;&amp; !sqlRst.isAfterLast()){ %&gt; <br><br>&lt;tr&gt; <br><br>&lt;td&gt;<br><br>&lt;%=sqlRst.getString(1)%&gt;<br><br>&lt;/td&gt; <br><br>&lt;/tr&gt;<br><br>&lt;% sqlRst.next(); <br><br>i++; <br><br>} <br><br>} <br><br>%&gt; <br><br>&lt;/table&gt;<br><br>第&lt;%=intPage%&gt;页 共&lt;%=intPageCount%&gt;页 <br><br>&lt;%if(intPage&lt;intPageCount){%&gt;&lt;a href=&quot;mysqlpage.jsp?page=&lt;%=intPage+1%&gt;&quot;&gt;下一页&lt;/a&gt;&lt;%}%&gt;<br><br>&lt;%if(intPage&gt;1){%&gt;&lt;a href=&quot;mysqlpage.jsp?page=&lt;%=intPage-1%&gt;&quot;&gt;上一页&lt;/a&gt;&lt;%}%&gt; <br><br>&lt;/body&gt; <br><br>&lt;/html&gt;<br><br>&lt;% <br><br>//关闭结果集 <br><br>sqlRst.close(); <br><br>//关闭SQL语句对象 <br><br>sqlStmt.close(); <br><br>//关闭数据库 <br><br>sqlCon.close();<br><br>%&gt;<br><br>三、怎么去运行？<br><br>　　 见前文《JAVA/JSP学习系列之五(JDBC-ODBC翻页例子)》。</div>
+</div>
 
+<div class="col-md-4">        <div class="panel panel-default ">
+            <div class="panel-head div-just"><h2></h2></div>
+			<div class="panel-body">
+<div class="list-group">
 
-<div class="col-md-5"></div>
+			
+                          	<a href="/test/2018-10-22/180.html" class="list-group-item">松脂精油Terebinth<span class="badge">2</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/181.html" class="list-group-item">桦木精油Birch<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/182.html" class="list-group-item">绿薄荷精油Spearmint<span class="badge">1</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/183.html" class="list-group-item">万寿菊精油Tagetes<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/184.html" class="list-group-item">红柑精油Tangerine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/185.html" class="list-group-item">玉桂子精油Pimento<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/186.html" class="list-group-item">愈创木精油Guaiacwood<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/187.html" class="list-group-item">松树精油Pine<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/188.html" class="list-group-item">桔精油（橘精油）Mandarin<span class="badge">0</span></a>
+
+                       
+                          	<a href="/test/2018-10-22/189.html" class="list-group-item">苦橙叶精油Petitgrain<span class="badge">0</span></a>
+
+                       
+</div>
+			</div>
+		</div>
+			
+</div>
 </div>
 </div>
 </body>
